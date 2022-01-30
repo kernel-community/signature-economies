@@ -1,0 +1,7 @@
+node_modules/
+artifacts
+cache
+coverage*
+.env.local
+package-lock.json
+.openzeppelin
