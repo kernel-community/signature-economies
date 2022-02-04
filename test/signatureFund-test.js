@@ -24,19 +24,17 @@ describe("SignatureFund", function () {
             .to.emit(this.signatureFund, 'DonationReceived')
             .withArgs(this.alice.address, ethers.utils.parseEther("0.5"), 0);
            // A critical learning from this test: only use _strings_, do not pass in numbers
-           expect (await this.signatureNFT.tokenURI(0)).to.equal("https://dyju7q4vpr4tvs4fwdi5l7ru72qlbmfiznfhn63m7eeoyk3tq4eq.arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/one.jpg");
+           expect (await this.signatureNFT.tokenURI(0)).to.equal("https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/one.jpg");
 
            await expect(this.signatureFund.connect(this.alice).receiveDonation("one", { value: ethers.utils.parseEther("1.5") }))
             .to.emit(this.signatureFund, 'DonationReceived')
             .withArgs(this.alice.address, ethers.utils.parseEther("1.5"), 1);
-           // A critical learning from this test: only use _strings_, do not pass in numbers
-           expect (await this.signatureNFT.tokenURI(1)).to.equal("https://dyju7q4vpr4tvs4fwdi5l7ru72qlbmfiznfhn63m7eeoyk3tq4eq.arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/one.jpg");
+           expect (await this.signatureNFT.tokenURI(1)).to.equal("https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/one.jpg");
 
            await expect(this.signatureFund.connect(this.alice).receiveDonation("one", { value: ethers.utils.parseEther("15") }))
             .to.emit(this.signatureFund, 'DonationReceived')
             .withArgs(this.alice.address, ethers.utils.parseEther("15"), 2);
-           // A critical learning from this test: only use _strings_, do not pass in numbers
-           expect (await this.signatureNFT.tokenURI(2)).to.equal("https://dyju7q4vpr4tvs4fwdi5l7ru72qlbmfiznfhn63m7eeoyk3tq4eq.arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/10/one.jpg");
+           expect (await this.signatureNFT.tokenURI(2)).to.equal("https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/10/one.jpg");
         })
     })
 });
