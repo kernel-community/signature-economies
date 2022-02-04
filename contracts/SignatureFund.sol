@@ -35,11 +35,11 @@ contract SignatureFund {
         // Each of these is already stored in Arweave, with 3 different versions.
         // Depending on the value of the message which mints the selected NFT, we assign
         // the metadataURI used when minting the NFT
-        // https://dyju7q4vpr4tvs4fwdi5l7ru72qlbmfiznfhn63m7eeoyk3tq4eq.arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/1.jpg or
-        // https://dyju7q4vpr4tvs4fwdi5l7ru72qlbmfiznfhn63m7eeoyk3tq4eq.arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/2.jpg etc.
+        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/1.jpg or
+        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/2.jpg etc.
 
         uint256 tokenId;
-        string memory arweaveBase = 'https://dyju7q4vpr4tvs4fwdi5l7ru72qlbmfiznfhn63m7eeoyk3tq4eq.arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/';
+        string memory arweaveBase = 'https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/';
         
         if(msg.value >= 0.001 ether && msg.value < 1 ether) {
             tokenId = _nft.safeMint(msg.sender, string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".jpg")));
