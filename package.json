@@ -1,11 +1,11 @@
 {
   "name": "signature-economies",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Meaningful economies of sign",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kernel-community/signature-contract.git"
+    "url": "git+https://github.com/kernel-community/signature-economies.git"
   },
   "keywords": [
     "signatures",
@@ -15,9 +15,27 @@
   "author": "cryptowanderer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kernel-community/signature-contract/issues"
+    "url": "https://github.com/kernel-community/signature-economies/issues"
   },
-  "homepage": "https://github.com/kernel-community/signature-contract#readme",
+  "homepage": "https://github.com/kernel-community/signature-economies#readme",
+  "dependencies": {
+    "@tailwindcss/typography": "^0.4.1",
+    "ab-react-diff-viewer": "*",
+    "arbundles": "^0.2.10",
+    "arweave": "^1.10.18",
+    "ethers": "^5.5.1",
+    "highlightable": "^1.0.7",
+    "next": "latest",
+    "rc-tooltip": "^5.1.1",
+    "react": "^17.0.2",
+    "react-async-hook": "^4.0.0",
+    "react-dom": "^17.0.2",
+    "react-highlight-pop": "^1.0.2",
+    "react-hook-form": "^7.18.0",
+    "react-markdown": "^7.1.0",
+    "react-modal": "^3.14.3",
+    "react-spinners": "^0.11.0"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.4",
     "@nomiclabs/hardhat-waffle": "^2.0.2",
@@ -26,9 +44,16 @@
     "dotenv": "^14.3.2",
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.5.3",
-    "hardhat": "^2.8.3"
+    "hardhat": "^2.8.3",
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4",
+    "tailwindcss-text-indent": "^1.0.2"
   },
   "scripts": {
-    "test": "npx hardhat test"
+    "test": "npx hardhat test",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   }
 }
