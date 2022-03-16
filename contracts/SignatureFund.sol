@@ -1,35 +1,38 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.0 <0.9.0;
+pragma solidity ^0.8.11;
 
-import "@openzeppelin/contracts/utils/Address.sol";
-import "./SignatureNFT.sol";
+import { ERC721Tradable } from "./base/ERC721Tradable.sol";
+import { IERC20 } from '@openzeppelin/contracts/token/ERC20/IERC20.sol';
+import { IWETH } from './interfaces/IWETH.sol';
+import { Counters } from "@openzeppelin/contracts/utils/Counters.sol";
 
-contract SignatureFund {
+contract SignatureFund is ERC721Tradable {
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIdCounter;
 
-    using Address for address payable;
+    // A Kernel address for proper attribution
+    address public creator;
 
-    SignatureNFT private _nft;
-    address payable private _wallet;
+    // The address of the WETH contract
+    address public weth;
 
-    event DonationReceived(address indexed donor, uint256 amount, uint256 indexed tokenID);
+    event DonationReceived(address indexed donor, uint256 amount, uint256 indexed tokenID, string uri);
 
-    constructor(SignatureNFT nftAddress, address payable wallet) {
-        _nft = nftAddress;
-        _wallet = wallet;
-    }
-
-    /**
-     * @dev Returns the address of the NFT contract.
-     */
-    function getSignatureNFT() public view virtual returns (SignatureNFT) {
-        return _nft;
+    constructor(
+        address _proxyRegistryAddress,
+        address _creator,
+        address _weth
+    ) ERC721Tradable('Signature Fund', 'SING', _proxyRegistryAddress) {
+        creator = _creator;
+        weth = _weth;
     }
 
     /**
      * @dev Receives donation and mints new NFT for donor
+     * @param selectedNFT a string that allows us to determine which NFT at which level to mint and return to the donor
      */
     function receiveDonation(string memory selectedNFT) public payable {
-        require(msg.value >= 0.001 ether, "Minimum donation is 0.001 ETH");
+        require(msg.value >= 0.001 ether, "SignatureFund: Minimum donation is 0.001 ETH");
 
         // Here, we let the reader select which of the 8 available NFTs they wish to mint.
         // Each of these is already stored in Arweave, with 3 different versions.
@@ -38,19 +41,43 @@ contract SignatureFund {
         // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/1.jpg or
         // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/2.jpg etc.
 
-        uint256 tokenId;
+        string memory uri;
         string memory arweaveBase = 'https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/';
         
         if(msg.value >= 0.001 ether && msg.value < 1 ether) {
-            tokenId = _nft.safeMint(msg.sender, string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".jpg")));
+            uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".jpg"));
         } else if(msg.value >= 1 ether && msg.value < 10 ether) {
-            tokenId = _nft.safeMint(msg.sender, string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".jpg")));
+            uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".jpg"));
         } else {
-            tokenId = _nft.safeMint(msg.sender, string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".jpg")));
+            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".jpg"));
         }
 
-        _wallet.sendValue(msg.value);
-        emit DonationReceived(msg.sender, msg.value, tokenId);
+        uint256 newTokenId = _tokenIdCounter.current();
+        _safeMint(creator, msg.sender, newTokenId);
+        _setTokenURI(newTokenId, uri);
+        _tokenIdCounter.increment();
+
+        _safeTransferETHWithFallback(msg.value);
+        emit DonationReceived(msg.sender, msg.value, newTokenId, uri);
+    }
+
+    /**
+     * @notice Transfer ETH. If the ETH transfer fails, wrap the ETH and try send it as WETH.
+     * @param amount the total amount
+     */
+    function _safeTransferETHWithFallback(uint256 amount) internal {
+        if (!_safeTransferETH(amount)) {
+            IWETH(weth).deposit{ value: amount }();
+            IERC20(weth).transfer(creator, amount);
+        }
+    }
+
+    /**
+     * @notice Transfer ETH and return the success status.
+     */
+    function _safeTransferETH(uint256 amount) internal returns (bool) {
+        (bool success, ) = creator.call{value: amount, gas: 30_000 }(new bytes(0));
+        return success;
     }
 
 }
