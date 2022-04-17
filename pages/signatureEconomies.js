@@ -1,36 +1,25 @@
 import HeadComponent from "../components/Head";
 import React, { Fragment, useRef, useState } from 'react'
 import HighlightPop from 'react-highlight-pop';
-
-
-// All the ways to get the Selected Text 
-function getSelectedText() {
-    var selectedText = '';
-    if (typeof window !== "undefined") {
-      // window.getSelection
-      if (window.getSelection) {
-          selectedText = window.getSelection();
-      }
-    }
-    else if (typeof document !== "undefined") {
-      // document.getSelection
-      if (document.getSelection) {
-          selectedText = document.getSelection();
-      }
-      // document.selection
-      else if (document.selection) {
-          selectedText = 
-          document.selection.createRange().text;
-      } else return;
-      // To write the selected text into the textarea
-      document.testform.selectedtext.value = selectedText;
-
-  }
-
-}
+import Modal from "react-modal";
+import Image from "next/image";
+import Button from "../components/core/Button";
+import Box from "../components/core/Box";
+import SelectedTextNFT from "../components/SelectedTextNFT";
 
 
 export default function SignatureEconomies() {
+
+  const [NFTmodalIsOpen, setIsOpen] = React.useState(false);
+  const [selectedText, setSelectedText] = React.useState("");
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <>
     <div>
@@ -50,15 +39,19 @@ export default function SignatureEconomies() {
             <div className="flex-0 w-full flex justify-center sm:justify-end">
             </div>
           </div>
-        <HighlightPop 
-        popoverItems={itemClass => (
-             <Fragment>
-                <span 
-                    className={itemClass} onClick={() => alert(window.getSelection())}>
-                      🍀 Mint
-                </span>
-             </Fragment>
-            )}>
+        <HighlightPop
+          popoverItems={itemClass => (
+            <Fragment>
+              <span className={itemClass} onClick={() => {
+                openModal()
+                setSelectedText(window.getSelection().toString())}}>
+                🍀  Mint  
+              </span>
+            </Fragment>)}>       
+        <SelectedTextNFT 
+          isOpen={NFTmodalIsOpen}
+          closeModal={closeModal}
+          selectedText={selectedText}/>
         <h2 className="mt-20 text-3xl font-title w-full font-bold px-20 text-center">
           Signature Economies
         </h2>
