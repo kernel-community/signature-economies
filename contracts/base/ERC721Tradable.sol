@@ -10,9 +10,7 @@
 pragma solidity ^0.8.11;
 
 import { ERC721 } from "./ERC721.sol";
-import { ERC721Enumerable } from "./ERC721Enumerable.sol";
 import { ERC721URIStorage } from "./ERC721URIStorage.sol";
-import { ERC721Burnable } from "./ERC721Burnable.sol";
 
 contract OwnableDelegateProxy {}
 
@@ -20,11 +18,7 @@ contract ProxyRegistry {
     mapping(address => OwnableDelegateProxy) public proxies;
 }
 
-contract ERC721Tradable is
-    ERC721Enumerable,
-    ERC721URIStorage,
-    ERC721Burnable
-{
+contract ERC721Tradable is ERC721URIStorage {
 
     // OpenSea's Proxy Registry
     address proxyRegistryAddress;
@@ -39,22 +33,15 @@ contract ERC721Tradable is
 
     function _beforeTokenTransfer(address from, address to, uint256 tokenId)
         internal
-        override(ERC721, ERC721Enumerable)
+        override(ERC721)
     {
         super._beforeTokenTransfer(from, to, tokenId);
-    }
-
-    function _burn(uint256 tokenId)
-        internal
-        override(ERC721, ERC721URIStorage)
-    {
-        super._burn(tokenId);
     }
 
     function tokenURI(uint256 tokenId)
         public
         view
-        override(ERC721, ERC721URIStorage)
+        override(ERC721URIStorage)
         returns (string memory)
     {
         return super.tokenURI(tokenId);
@@ -63,7 +50,7 @@ contract ERC721Tradable is
     function supportsInterface(bytes4 interfaceId)
         public
         view
-        override(ERC721, ERC721Enumerable)
+        override(ERC721)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
