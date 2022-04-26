@@ -28,6 +28,25 @@ contract SignatureFund is ERC721Tradable {
     }
 
     /**
+     * @dev Link to Contract metadata https://docs.opensea.io/docs/contract-level-metadata
+    */
+    function contractURI() public pure returns (string memory) {
+        //TODO: finish the json file is /assets and upload to Arweave.
+        return "https://arweave.net/";
+    }
+
+    /** @notice Set the royalties for the whole contract. Our intention is to set it to 10% in perpetuity.
+     *  @param recipient the royalties recipient - will always be pr1s0nart, for regulatory reasons.
+     *  @param value royalties value (between 0 and 10000)
+    */
+    function setRoyalties(address recipient, uint256 value) 
+        public
+    {
+        require(msg.sender == creator, "Only the creator of this contract can set and change royalites");
+        _setRoyalties(recipient, value);
+    }
+
+    /**
      * @dev Receives donation and mints new NFT for donor
      * @param selectedNFT a string that allows us to determine which NFT at which level to mint and return to the donor
      */

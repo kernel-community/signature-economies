@@ -28,6 +28,17 @@ contract SignatureNFT is ERC721Tradable {
         return "https://arweave.net/";
     }
 
+    /** @notice Set the royalties for the whole contract. Our intention is to set it to 10% in perpetuity.
+     *  @param recipient the royalties recipient - will always be pr1s0nart, for regulatory reasons.
+     *  @param value royalties value (between 0 and 10000)
+    */
+    function setRoyalties(address recipient, uint256 value) 
+        public
+    {
+        require(msg.sender == creator, "Only the creator of this contract can set and change royalites");
+        _setRoyalties(recipient, value);
+    }
+
     /**
      * @dev mints a unique NFT from some user-selected piece of text (which we make into an image & store in Arweave)
      * @param uri arweave url

@@ -11,6 +11,7 @@ pragma solidity ^0.8.11;
 
 import { ERC721 } from "./ERC721.sol";
 import { ERC721URIStorage } from "./ERC721URIStorage.sol";
+import { ERC2981ContractWideRoyalties, ERC2981Royalties } from "./ERC2981ContractWideRoyalties.sol";
 
 contract OwnableDelegateProxy {}
 
@@ -18,7 +19,10 @@ contract ProxyRegistry {
     mapping(address => OwnableDelegateProxy) public proxies;
 }
 
-contract ERC721Tradable is ERC721URIStorage {
+contract ERC721Tradable is 
+    ERC721URIStorage,
+    ERC2981ContractWideRoyalties 
+{
 
     // OpenSea's Proxy Registry
     address proxyRegistryAddress;
@@ -50,7 +54,7 @@ contract ERC721Tradable is ERC721URIStorage {
     function supportsInterface(bytes4 interfaceId)
         public
         view
-        override(ERC721)
+        override(ERC721, ERC2981Royalties)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
