@@ -1,0 +1,12 @@
+node_modules
+artifacts
+cache
+coverage*
+package-lock.json
+.openzeppelin
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

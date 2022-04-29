@@ -3,18 +3,6 @@ import Checkmark from './core/icons/Checkmark';
 import React from "react";
 import {dedupe, fetchSignatures, sortSigs} from "../arweaveFns";
 
-const cleanHandle = (handle, address, verified) => {
-  if (verified) {
-    if (handle.length === 0) {
-      return handle;
-    } else {
-      const firstChar = handle[0];
-      return firstChar === "@" ? handle : '@' + handle;
-    }
-  }
-  return address.slice(0, 8);
-}
-
 export default function Signatures({txId, sigs, setSigs}) {
   const [cursor, setCursor] = React.useState("")
   const [sortedSigs, setSortedSigs] = React.useState([])
@@ -33,6 +21,8 @@ export default function Signatures({txId, sigs, setSigs}) {
       setSigs(oldSigs => [...oldSigs, ...newSigs])
     }
   }, [cursor])
+
+  // Instead of Twitter handles in the below, I would prefer to simply display either ENS names, or 0x... addresses. No social verification required.
 
   return (
     <Box
