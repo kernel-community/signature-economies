@@ -17,25 +17,32 @@ this is mysterious power.
 
 ## Contributing
 
-We recommend using **Node v16**. The easiest way to manage node versions is with [nvm](https://github.com/nvm-sh/nvm).
+1. We recommend using **Node v14 or v16**. The easiest way to manage node versions is with [nvm](https://github.com/nvm-sh/nvm).
 
+2. Make sure you have [yarn](https://classic.yarnpkg.com/lang/en/docs/install) and [hardhat](https://hardhat.org/) globally installed:
+
+```bash
+npm i -g yarn
+npm i -g hardhat
 ```
+
+3. Clone this repo and install all the necessary dependcies:
+
+```bash
 git clone https://github.com/kernel-community/signature-economies.git
 cd signature-economies
-npm i
-npm test
-npm run dev
+yarn install
 ```
 
-### ToDo
+4. Now you can begin running the various scripts in the `package.json` file. For instance, to run the smart contract tests found in `packages/hardhat/test`:
 
-When finished, this project will allow readers to mint two different kinds of NFTs, as well as sign the document gaslessly to ensure there are free and literally non-financial ways to interact with the text meaningfully.
-
-1. Any reader can select any text they like and mint that as an NFT using a background we design. The reader pays for the gas to do so, but there is no additional cost than this. They can do as they please with their NFT.
-2. Any reader can buy a 1/infinity editions of the images or quotes (all text currently encapsulated in the `poetry` class). Based on the simple Arweave hack [here](https://github.com/kernel-community/signature-economies/blob/main/contracts/SignatureFund.sol#L44), they will get different backgrounds based on how much they donate when buying NFTs from this signature fund. All funds go directly to [Kernel](https://kernel.community) - an open source educational public good.
-
-- [ ] Link footnotes for easier navigation.
-- [ ] Wire up contracts to frontend for both kinds of minting actions.
+```bash
+yarn hadhat:test
+```
+Or, to run the React application found in `packages/dapp`:
+```bash
+yarn dapp:start
+```
 
 ## Thanks
 

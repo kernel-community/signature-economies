@@ -1,8 +1,9 @@
 {
   "name": "signature-economies",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Meaningful economies of sign",
-  "main": "index.js",
+  "private": true,
+  "workspaces": ["packages/dapp", "packages/hardhat"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kernel-community/signature-economies.git"
@@ -12,48 +13,26 @@
     "meaning",
     "stewardship"
   ],
-  "author": "cryptowanderer",
+  "author": "cryptowanderer, malayvasa, danishabbir, noskovvkirill",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kernel-community/signature-economies/issues"
   },
   "homepage": "https://github.com/kernel-community/signature-economies#readme",
-  "dependencies": {
-    "@tailwindcss/typography": "^0.4.1",
-    "ab-react-diff-viewer": "*",
-    "arbundles": "^0.2.10",
-    "arweave": "^1.10.18",
-    "ethers": "^5.5.1",
-    "highlightable": "^1.0.7",
-    "next": "latest",
-    "rc-tooltip": "^5.1.1",
-    "react": "^17.0.2",
-    "react-async-hook": "^4.0.0",
-    "react-dom": "^17.0.2",
-    "react-highlight-pop": "^1.0.2",
-    "react-hook-form": "^7.18.0",
-    "react-markdown": "^7.1.0",
-    "react-modal": "^3.14.3",
-    "react-spinners": "^0.11.0"
-  },
-  "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.0.4",
-    "@nomiclabs/hardhat-waffle": "^2.0.2",
-    "@openzeppelin/contracts": "^4.4.2",
-    "chai": "^4.3.6",
-    "dotenv": "^14.3.2",
-    "ethereum-waffle": "^3.4.0",
-    "ethers": "^5.5.3",
-    "hardhat": "^2.8.3",
-    "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4",
-    "tailwindcss-text-indent": "^1.0.2"
-  },
   "scripts": {
-    "test": "npx hardhat test",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dapp:start": "yarn workspace dapp start",
+    "dapp:build": "yarn workspace dapp build",
+    "dapp:test": "yarn workspace dapp test",
+    "dapp:eject": "yarn workspace dapp lint",
+    "hardhat:clean": "yarn workspace hardhat clean",
+    "hardhat:compile": "yarn workspace hardhat compile",
+    "hardhat:watch": "yarn workspace hardhat watch",
+    "hardhat:localnode": "yarn workspace hardhat localnode",
+    "hardhat:test": "yarn workspace hardhat test",
+    "hardhat:coverage": "yarn workspace hardhat coverage",
+    "hardhat:deployrinkeby": "yarn workspace hardhat deployrinkeby",
+    "hardhat:accounts": "yarn workspace hardhat accounts",
+    "hardhat:check": "yarn workspace hardhat checksol",
+    "hardhat:lint": "yarn workspace hardhat lint"
   }
 }

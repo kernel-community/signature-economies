@@ -1,15 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {generateSignature, signDeclaration} from "../arweaveFns";
+import {generateSignature, signDeclaration} from "./arweave";
 import Modal from "react-modal";
 import Button from "./core/Button";
 import Box from "./core/Box";
 import ScaleLoader from "react-spinners/ScaleLoader";
-import VerificationPopUp from "./VerificationPopup";
-import SocialProofPopup from "./SocialProofPopup";
-import SocialProofConfirmation from "./SocialProofConfirmation";
 import MetaMaskIcon from "./core/icons/MetaMaskIcon";
 
+// TODO: check that the stags I removed didn't break anything. Check that the social verification I removed didn't break anything.
+//       Remove all the next.js stuff if we decide not to use it.
 Modal.setAppElement('#__next');
 Modal.defaultStyles.overlay.backgroundColor = '#555555aa';
 
@@ -60,7 +59,6 @@ export default function Sign({ txId, declaration }) {
     reset,
   } = useForm();
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [stage, setStage] = React.useState(0);
   const [formData, setFormData] = React.useState();
   const [signSuccess, setSignSuccess] = React.useState(false)
 
@@ -68,18 +66,17 @@ export default function Sign({ txId, declaration }) {
   const [displayedError, setDisplayedError] = React.useState(false);
 
   function openModal() {
-    setStage(0);
     setIsOpen(true);
   }
 
   function closeModal() {
-    if (stage === 0 || signSuccess) {
+    if (signSuccess) {
       setIsOpen(false);
       setIsLoading(false);
       setDisplayedError(null);
       reset();
     } else {
-      setStage(stage => stage - 1)
+      // log an err - I removed stages here
     }
   }
 
@@ -96,7 +93,6 @@ export default function Sign({ txId, declaration }) {
     setDisplayedError(null);
     generateSignature(declaration)
       .then((sig) => {
-        setStage(1)
         setFormData({
           sig,
           name: data.name,
@@ -117,10 +113,10 @@ export default function Sign({ txId, declaration }) {
     <>
       <div className="my-4">
         <p className="font-mono mb-6 text-left">
-          If you'd like to endorse this declaration, you can sign it by clicking the button below. Signatures will become part of this document's permanent history on the Arweave blockchain.
+          If you'd like to sign this essay, simply click the button below. Signing your unique mark is free and will become part of this document's permanent history on the Arweave smartweave.
         </p>
         <a className="mt-4 font-mono underline font-light text-gray-400"
-          href="https://scribehow.com/shared/How-to-Sign-the-Declaration__Ws7_UIe0RNeBb2a-tEf3FA"> 
+          href="https://kernel.community/en/guiding/"> 
           First time wallet user? Here is your guide. 
         </a>
         <div className="mt-4">
@@ -141,10 +137,7 @@ export default function Sign({ txId, declaration }) {
         
         contentLabel="sign-modal"
       >
-        {stage === 0 && <SignScreen {...{handleSubmit, onSubmit, register, displayedError, loading}} />}
-        {stage === 1 && <SocialProofPopup {...{setStage, formData, sign}} />}
-        {stage === 2 && <VerificationPopUp {...{setStage, formData, sign }} /> }
-        {stage === 3 && <SocialProofConfirmation closeModal={closeModal} /> }
+        {<SignScreen {...{handleSubmit, onSubmit, register, displayedError, loading}} />}
       </Modal>
     </>} />
   );
