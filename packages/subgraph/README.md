@@ -1,12 +1,12 @@
 # Subgraph
 
-Getting a subgraph set up locally is a little more challenging that run the contracts or the dapp in the other parts of this repo. So, it gets its own README to try and help you through all the steps required to start developing locally in a more decentralized manner.
+Getting a subgraph set up locally is a little more challenging than just running the contracts or the dapp in the other parts of this repo. So, it gets its own README to try and help you through all the steps required to start developing locally in a more decentralized manner.
 
 ## Preflight Checks
 
 I use a **linux** distro, and am running **Node v16**, using [nvm](https://github.com/nvm-sh/nvm). It's likely that you can get this all working on a Mac without too much trouble. I can't speak for Windows users: good luck to you.
 
-Let's start at the beginning. That way, if you run into a problem, you'll know about it early on. The biggest thing to get going is TheGraph. **NOTE: To build graph-node with cargo, 8GB RAM are required**. As you can tell, there are some intricacies to running a graph node locally and quite a few dependencies. Let's see if you can get it all set up:
+Let's start at the beginning. That way, if you run into a problem, you'll know about it early on. The biggest thing to get going is TheGraph. **NOTE: To build graph-node with cargo, 8GB RAM are required**. There are some intricacies to running a graph node locally and quite a few dependencies. Let's see if you can get it all set up:
 
 1. Install Rust:
 
@@ -16,7 +16,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 2. Make sure you hav [postgres installed](https://www.postgresql.org/download/). Most modern Linux distros come with it pre-installed. Running Ubuntu 20.04 LTS I did not need to do anything further.
 
-3. Install [IPFS](https://docs.ipfs.io/install/command-line/#official-distributions) from your home directory:
+3. Install [IPFS](https://docs.ipfs.io/install/command-line/#official-distributions) from your home directory (These instructions are for Linux users only. Follow the link on "IPFS" to get instructions for other OS):
 
 ```bash
 wget https://dist.ipfs.io/go-ipfs/v0.12.0/go-ipfs_v0.12.0_linux-amd64.tar.gz
@@ -28,7 +28,6 @@ sudo bash install.sh
 ipfs --version
 
 ```
-(These instructions are for Linux users only. Follow the link on "IPFS" to get instructions for other OS)
 
 4. Install further dependencies if you're on Ubuntu:
 
@@ -92,7 +91,7 @@ cd ~/TheGraph/graph-node
 cargo run -p graph-node --release -- --postgres-url postgresql://<yourname>:<pswd>@localhost:5432/graph-node --ethereum-rpc localhost:http://127.0.0.1:8545 --ipfs 127.0.0.1:5001
 ```
 
-5. Before we build the frontend querying application for our graph node, we need to get some data into it. Let's mint an NFT and prepare it for auction:
+5. Before we build the frontend querying application for our graph node, we need to get some data into it. Let's mint both kinds of NFTs for this project:
 
 ```bash
 cd ~/signature-economies/
