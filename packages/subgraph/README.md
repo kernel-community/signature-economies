@@ -111,7 +111,7 @@ yarn create:local
 yarn deploy:local
 ```
 
-You can navigate to http://localhost:8000/subgraphs/name/sign-eco/sign-eco-subgraph-localhost/graphql to see your graph query engine. Put the below query into the left-hand pane and then click the Play button at the top to see your NFT and the auction we just created:
+You can navigate to http://localhost:8000/subgraphs/name/sign-eco/sign-eco-subgraph-localhost/graphql to see your graph query engine. Put the below query into the left-hand pane and then click the Play button at the top to see the different kinds of NFTs we just created:
 
 ```graphql
 query MyQuery {
