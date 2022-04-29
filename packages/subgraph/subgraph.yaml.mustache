@@ -1,0 +1,48 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SignatureNFT
+    network: {{network}}
+    source:
+      address: "{{signatureNFTAddress}}"
+      abi: SignatureNFT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - NFT
+        - Account
+      abis:
+        - name: SignatureNFT
+          file: ../../packages/hardhat/deployments/{{network}}/SignatureNFT.json
+      eventHandlers:
+        - event: NewSignature(address,indexed uint256,string)
+          handler: handleNewSignature
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/signatureNFT-mapping.ts
+  - kind: ethereum
+    name: SignatureFund
+    network: {{network}}
+    source:
+      address: "{{signatureFundAddress}}"
+      abi: SignatureFund
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - NFT
+        - Account
+      abis:
+        - name: SignatureFund
+          file: ../../packages/hardhat/deployments/{{network}}/SignatureFund.json
+      eventHandlers:
+        - event: DonationReceived(indexed address,uint256,indexed uint256,string)
+          handler: handleDonationReceived
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/signatureFund-mapping.ts
