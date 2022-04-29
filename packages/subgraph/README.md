@@ -6,7 +6,7 @@ Getting a subgraph set up locally is a little more challenging than just running
 
 I use a **linux** distro, and am running **Node v16**, using [nvm](https://github.com/nvm-sh/nvm). It's likely that you can get this all working on a Mac without too much trouble. I can't speak for Windows users: good luck to you.
 
-Let's start at the beginning. That way, if you run into a problem, you'll know about it early on. The biggest thing to get going is TheGraph. **NOTE: To build graph-node with cargo, 8GB RAM are required**. There are some intricacies to running a graph node locally and quite a few dependencies. Let's see if you can get it all set up:
+Let's start at the beginning. That way, if you run into a problem, you'll know about it early on. **NOTE: To build graph-node with cargo, 8GB RAM are required**. There are some intricacies to running a graph node locally and quite a few dependencies. Let's see if you can get it all set up:
 
 1. Install Rust:
 
@@ -103,12 +103,12 @@ yarn hardhat:mintlocal
 yarn hardhat:receivelocal
 ```
 
-6. Open a new terminal and build the frontend application for your graph-node. In order to do this, you will need to be back in the subgraph package of this repo:
+6. Open a new terminal, again in the project root, and build the frontend application for your graph-node:
 
 ```bash
-cd ~/signature-economies/packages/subgraph
-yarn create:local
-yarn deploy:local
+cd ~/signature-economies/
+yarn subgraph:createlocal
+yarn subgraph:deploylocal
 ```
 
 You can navigate to http://localhost:8000/subgraphs/name/sign-eco/sign-eco-subgraph-localhost/graphql to see your graph query engine. Put the below query into the left-hand pane and then click the Play button at the top to see the different kinds of NFTs we just created:
