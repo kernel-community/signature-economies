@@ -20,6 +20,10 @@ async function main() {
   addresses['wallet'] = wallet;
 
   addresses['network'] = network.name;
+
+  const WETH = await ethers.getContractFactory("WETH");
+  let weth = await WETH.deploy();
+  console.log("WETH address: ", weth.address);
   
   console.log("Deploying contracts with the account:", deployer.address);
   console.log("Account balance:", 
@@ -28,13 +32,13 @@ async function main() {
 
   // First the NFT
   const SignatureNFT = await hre.ethers.getContractFactory("SignatureNFT");
-  const signatureNFT = await SignatureNFT.deploy(PROXY_REGISTRATION_ADDRESS);
+  const signatureNFT = await SignatureNFT.deploy(PROXY_REGISTRATION_ADDRESS, wallet);
   await signatureNFT.deployed();
   console.log("Signature NFT deployed to:", signatureNFT.address);
   
   // Then the Fund
   const SignatureFund = await hre.ethers.getContractFactory("SignatureFund");
-  const signatureFund = await SignatureFund.deploy(signatureNFT.address, wallet);
+  const signatureFund = await SignatureFund.deploy(PROXY_REGISTRATION_ADDRESS, wallet, weth.address);
   await signatureFund.deployed();
   console.log("Signature fUND deployed to:", signatureFund.address);
 }

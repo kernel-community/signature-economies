@@ -30,6 +30,7 @@
     "hardhat:localnode": "yarn workspace hardhat localnode",
     "hardhat:test": "yarn workspace hardhat test",
     "hardhat:coverage": "yarn workspace hardhat coverage",
+    "hardhat:deploylocal": "yarn workspace hardhat deploylocal",
     "hardhat:deployrinkeby": "yarn workspace hardhat deployrinkeby",
     "hardhat:accounts": "yarn workspace hardhat accounts",
     "hardhat:check": "yarn workspace hardhat checksol",

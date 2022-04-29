@@ -14,18 +14,21 @@
     "dotenv": "^14.3.2",
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.5.3",
-    "hardhat": "^2.8.3"
+    "hardhat": "^2.8.3",
+    "hardhat-deploy": "^0.11.4",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13"
   },
   "scripts": {
     "clean": "yarn hardhat clean",
     "compile": "yarn hardhat compile",
-    "localnode": "yarn hardhat node --export-all ../dapp/src/deployments.json,",
-    "watch": "yarn hardhat node --watch --export-all ../dapp/src/deployments.json",
+    "localnode": "yarn hardhat node",
+    "watch": "yarn hardhat node --watch",
     "test": "yarn hardhat test",
     "coverage": "yarn hardhat coverage",
     "accounts": "yarn hardhat accounts",
     "checksol": "yarn hardhat check",
     "lint": "eslint --color -c .eslintrc --ext .ts .",
-    "deployrinkeby": "yarn hardhat deploy --network rinkeby --export-all ../dapp/src/deployments.json"
+    "deploylocal": "yarn hardhat run --network localhost scripts/deploy.js",
+    "deployrinkeby": "yarn hardhat run --network rinkeby scripts/deploy.js"
   }
 }

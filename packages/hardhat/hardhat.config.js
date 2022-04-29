@@ -1,4 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
+require('hardhat-deploy');
 
 if (process.env.PROD_ENV == null) {
   // only update env manually if not already updated (eg by netlify)

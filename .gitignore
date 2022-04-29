@@ -1,4 +1,6 @@
 node_modules
+generated
+build
 
 # misc
 .DS_Store
