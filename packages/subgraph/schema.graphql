@@ -1,0 +1,38 @@
+type SignatureFund @entity {
+  "The NFT's ERC721 token id"
+  id: ID!
+
+  "The steward of the NFT"
+  steward: Account!
+
+  "The uri of the token, stored always in Arweave for both types"
+  uri: String!
+
+  "The donation amount if it was a SignatureFund NFT"
+  donationAmount: BigInt!
+}
+
+type SignatureNFT @entity {
+  "The NFT's ERC721 token id"
+  id: ID!
+
+  "The time that the NFT was created"
+  createdAtTimestamp: BigInt!
+
+  "The steward of the NFT"
+  steward: Account!
+
+  "The uri of the token, stored always in Arweave for both types"
+  uri: String!
+}
+
+type Account @entity {
+  "An Account is any address that holds any amount of NFTs, the id used is the blockchain address."
+  id: ID!
+
+  "The signatureNFTs stewarded by this account"
+  signatureNft: [SignatureNFT!]! @derivedFrom(field: "steward")
+
+  "The signatureFunds stewarded by this account"
+  signatureFunds: [SignatureFund!]! @derivedFrom(field: "steward")
+}

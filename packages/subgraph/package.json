@@ -1,0 +1,30 @@
+{
+  "name": "subgraph",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf ./generated ./build subgraph.*.yaml",
+    "prepare-yaml": "ts-node src/generate-subgraph-yaml.ts",
+    "codegen": "graph codegen ./subgraph.localhost.yaml",
+    "codegen:rinkeby": "graph codegen ./subgraph.rinkeby.yaml",
+    "codegen:mainnet": "graph codegen ./subgraph.mainnet.yaml",
+    "build": "graph build ./subgraph.localhost.yaml",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ sign-eco",
+    "deploy:rinkeby": "graph deploy --product hosted-service --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ sign-eco/sign-eco-subgraph-rinkeby ./subgraph.rinkeby.yaml --access-token",
+    "deploy:mainnet": "graph deploy --product hosted-service --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ sign-eco/sign-eco-subgraph-mainnet ./subgraph.mainnet.yaml --access-token",
+    "create:local": "graph create --node http://localhost:8020/ sign-eco/sign-eco-subgraph-localhost",
+    "remove:local": "graph remove --node http://localhost:8020/ sign-eco/sign-eco-subgraph-localhost",
+    "deploy:local": "yarn clean && yarn prepare-yaml && yarn codegen && graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sign-eco/sign-eco-subgraph-localhost ./subgraph.localhost.yaml"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.29.0",
+    "@graphprotocol/graph-ts": "0.26.0",
+    "mustache": "^4.2.0",
+    "typescript": "^4.6.4"
+  },
+  "devDependencies": {
+    "@types/mustache": "^4.1.2",
+    "ts-node": "^10.6.0",
+    "rimraf": "^3.0.2"
+  }
+}

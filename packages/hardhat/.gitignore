@@ -5,6 +5,9 @@ coverage*
 package-lock.json
 .openzeppelin
 
+# hardhat-deploy localhost results
+deloyments/localhost
+
 # local env files
 .env.local
 .env.development.local

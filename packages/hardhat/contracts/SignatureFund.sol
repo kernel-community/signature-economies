@@ -16,7 +16,7 @@ contract SignatureFund is ERC721Tradable {
     // The address of the WETH contract
     address public weth;
 
-    event DonationReceived(address indexed donor, uint256 amount, uint256 indexed tokenID, string uri);
+    event DonationReceived(address indexed donor, uint256 amount, uint256 indexed tokenId, string uri);
 
     constructor(
         address _proxyRegistryAddress,
@@ -51,19 +51,19 @@ contract SignatureFund is ERC721Tradable {
      * @param selectedNFT a string that allows us to determine which NFT at which level to mint and return to the donor
      */
     function receiveDonation(string memory selectedNFT) public payable {
-        require(msg.value >= 0.001 ether, "SignatureFund: Minimum donation is 0.001 ETH");
+        require(msg.value >= 0.01 ether, "SignatureFund: Minimum donation is 0.01 ETH");
 
         // Here, we let the reader select which of the 8 available NFTs they wish to mint.
         // Each of these is already stored in Arweave, with 3 different versions.
         // Depending on the value of the message which mints the selected NFT, we assign
         // the metadataURI used when minting the NFT
-        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/1.jpg or
-        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/2.jpg etc.
+        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/one.jpg or
+        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/two.jpg etc.
 
         string memory uri;
         string memory arweaveBase = 'https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/';
         
-        if(msg.value >= 0.001 ether && msg.value < 1 ether) {
+        if(msg.value >= 0.01 ether && msg.value < 1 ether) {
             uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".jpg"));
         } else if(msg.value >= 1 ether && msg.value < 10 ether) {
             uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".jpg"));

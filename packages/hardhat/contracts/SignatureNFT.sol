@@ -11,7 +11,7 @@ contract SignatureNFT is ERC721Tradable {
     // A Kernel address for proper attribution
     address public creator;
 
-    event newSignature(address signer, uint256 indexed newTokenId, string uri);
+    event NewSignature(address signer, uint256 indexed tokenId, string uri);
 
     constructor(
         address _proxyRegistryAddress,
@@ -52,6 +52,6 @@ contract SignatureNFT is ERC721Tradable {
         _setTokenURI(newTokenId, uri);
         _tokenIdCounter.increment();
 
-        emit newSignature(msg.sender, newTokenId, uri);
+        emit NewSignature(msg.sender, newTokenId, uri);
     }
 }
