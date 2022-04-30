@@ -458,7 +458,12 @@ function App() {
           ‘economy’: to use sparingly. The messages we sign as a means of
           managing our shared record cannot be censored by anyone, but they can
           be seen by everyone, so be careful what kinds of money you make
-          meaningful. With programmable power comes permanent accountability.
+          meaningful. With programmable power comes permanent accountability. 
+          As John O’Donohue remembers, though, “Real power has nothing to do 
+          with force, control, status, or money. Real power is the persistent 
+          courage to be at ease with the unsolved and the unfinished. To be able 
+          to recognise, in the scattered graffiti of your desires, the signature  
+          of the eternal.”
         </div>
         <div>
           ‘The Ownership Economy’ doesn’t describe the kind of world we want to
