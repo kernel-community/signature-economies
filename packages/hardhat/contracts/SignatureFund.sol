@@ -57,18 +57,18 @@ contract SignatureFund is ERC721Tradable {
         // Each of these is already stored in Arweave, with 3 different versions.
         // Depending on the value of the message which mints the selected NFT, we assign
         // the metadataURI used when minting the NFT
-        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/one.jpg or
-        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/two.jpg etc.
+        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/0/one.mp4 or
+        // https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/1/two.mp4 etc.
 
         string memory uri;
         string memory arweaveBase = 'https://arweave.net/HhNPw5V8eTrLhbDR1f40_qCwsKjLSnb7bPkI7Ctzhwk/';
         
         if(msg.value >= 0.01 ether && msg.value < 1 ether) {
-            uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".jpg"));
+            uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".mp4"));
         } else if(msg.value >= 1 ether && msg.value < 10 ether) {
-            uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".jpg"));
+            uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".mp4"));
         } else {
-            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".jpg"));
+            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".mp4"));
         }
 
         uint256 newTokenId = _tokenIdCounter.current();
