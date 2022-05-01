@@ -1,30 +1,9 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import image1 from './images/image1.png';
 import signature_derrida from './images/signature_derrida.png';
 import SliderModal from './components/slider-modal';
 import HighlightModal from './components/highlight-modal';
 import HighlightPop from 'react-highlight-pop';
-
-function getSelectedText() {
-  var selectedText = '';
-  if (typeof window !== 'undefined') {
-    // window.getSelection
-    if (window.getSelection) {
-      selectedText = window.getSelection();
-    }
-  } else if (typeof document !== 'undefined') {
-    // document.getSelection
-    if (document.getSelection) {
-      selectedText = document.getSelection();
-    }
-    // document.selection
-    else if (document.selection) {
-      selectedText = document.selection.createRange().text;
-    } else return;
-    // To write the selected text into the textarea
-    document.testform.selectedtext.value = selectedText;
-  }
-}
 
 function App() {
   const [sliderModalVisible, setSliderModalVisible] = useState(false);
@@ -41,9 +20,9 @@ function App() {
           onClick={() => {
             setSliderModalVisible(true);
           }}
-          className="fixed z-50 bottom-8 right-8 border-2 rounded-md p-4 px-12 hover:border-black transition-all font-serif"
+          className="fixed z-50 bottom-8 right-8 border-2 rounded-md p-4 px-12 hover:border-black font-redaction transition-all font-serif"
         >
-          Mint 1/1 NFTs
+          Mint a Sealed NFT
         </div>
       )}
       {sliderModalVisible && (

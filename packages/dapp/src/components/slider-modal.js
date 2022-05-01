@@ -4,7 +4,7 @@ function SliderModal({ setModalVisible }) {
   const [sliderValue, setSliderValue] = useState(0);
 
   return (
-    <div className="flex justify-center relative my-auto w-[800px] h-[500px] rounded-lg shadow-xl bg-slate-100 ">
+    <div className="flex justify-center relative my-auto w-[800px] h-[500px] rounded-lg shadow-xl bg-white ">
      <div className='flex flex-row gap-x-8 my-auto'>
      <input type="range" defaultValue="0" min="0" max="50" step="1" className='w-96'
        onChange={(event) => setSliderValue(event.target.value)} />
