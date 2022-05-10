@@ -4,9 +4,9 @@ schema:
 dataSources:
   - kind: ethereum
     name: SignatureNFT
-    network: localhost
+    network: rinkeby
     source:
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+      address: "0x5104c86eaA9f0E07640A7F2D6497A8ba839C283c"
       abi: SignatureNFT
     mapping:
       kind: ethereum/events
@@ -17,7 +17,7 @@ dataSources:
         - Account
       abis:
         - name: SignatureNFT
-          file: ../../packages/hardhat/deployments/localhost/SignatureNFT.json
+          file: ../../packages/hardhat/deployments/rinkeby/SignatureNFT.json
       eventHandlers:
         - event: NewSignature(address,indexed uint256,string)
           handler: handleNewSignature
@@ -26,9 +26,9 @@ dataSources:
       file: ./src/signatureNFT-mapping.ts
   - kind: ethereum
     name: SignatureFund
-    network: localhost
+    network: rinkeby
     source:
-      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+      address: "0xB8EAe71B269E98E3Fe7069912CadAc90B4927636"
       abi: SignatureFund
     mapping:
       kind: ethereum/events
@@ -39,7 +39,7 @@ dataSources:
         - Account
       abis:
         - name: SignatureFund
-          file: ../../packages/hardhat/deployments/localhost/SignatureFund.json
+          file: ../../packages/hardhat/deployments/rinkeby/SignatureFund.json
       eventHandlers:
         - event: SignCreated(indexed address,uint256,indexed uint256,string)
           handler: handleSignCreated

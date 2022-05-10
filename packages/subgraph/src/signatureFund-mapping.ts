@@ -2,7 +2,7 @@ import { BigInt, log } from '@graphprotocol/graph-ts';
 import {
   Approval,
   ApprovalForAll,
-  DonationReceived,
+  SignCreated,
   Transfer,
 } from '../generated/SignatureFund/SignatureFund';
 import { Account, SignatureFund } from '../generated/schema';
@@ -12,7 +12,7 @@ export function handleApproval(event: Approval): void {}
 
 export function handleApprovalForAll(event: ApprovalForAll): void {}
 
-export function handleDonationReceived(event: DonationReceived): void {
+export function handleSignCreated(event: SignCreated): void {
   const donor = event.params.donor.toHexString();
   const tokenId = event.params.tokenId.toString();
 

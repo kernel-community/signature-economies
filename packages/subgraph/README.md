@@ -100,7 +100,7 @@ cd ~/signature-economies/
 yarn hardhat:mintlocal
 
 # mints a signatureFund NFT, which will be minted when people choose preselected NFTs and specific donation amounts
-yarn hardhat:receivelocal
+yarn hardhat:signlocal
 ```
 
 6. Open a new terminal, again in the project root, and build the frontend application for your graph-node:
