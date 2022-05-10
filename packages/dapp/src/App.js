@@ -488,12 +488,23 @@ function App() {
             managing our shared record cannot be censored by anyone, but they
             can be seen by everyone, so be careful what kinds of money you make
             meaningful. With programmable power comes permanent accountability.
-            As John O’Donohue remembers, though, “Real power has nothing to do
+            As another poet remembers, though:
+          </div>
+
+          <div className="mx-auto flex flex-col w-full md:w-[600px] gap-y-4 px-8 md:px-0 text-md md:text-2xl font-garamond text-center text-gray-800">
+            “Real power has nothing to do
             with force, control, status, or money. Real power is the persistent
             courage to be at ease with the unsolved and the unfinished. To be
             able to recognise, in the scattered graffiti of your desires, the
             signature of the eternal.”
-          </div>
+            <div className="font-bold">
+              -{' '}
+              <a href="https://www.goodreads.com/book/show/134981.Eternal_Echoes">
+                John O'Donohue
+              </a>
+            </div>
+          </div>  
+
           <div>
             ‘The Ownership Economy’ doesn’t describe the kind of world we want
             to create together. Noticing this is not just a question about what
