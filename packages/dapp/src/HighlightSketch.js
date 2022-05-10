@@ -65,7 +65,7 @@ function HighlightSketch(p5) {
   };
 
   p5.setup = () => {
-    p5.createCanvas(800, 800);
+    p5.createCanvas(800, 1200);
     p5.angleMode(p5.DEGREES);
     p5.colorMode(p5.HSB);
     console.log(selectedText.length);
@@ -83,20 +83,24 @@ function HighlightSketch(p5) {
     p5.background(254,97,26);
     p5.translate(p5.width / 2, p5.height / 2);
 
-    let ang = p5.map(selectedText.length, 0, 200, 0, 360);
     let offset = p5.floor(p5.map(selectedText.length, 0, 700, 2, 10));
     console.log(offset);
 
-    for (var i = offset; i < n+offset; i++) {
+    // p5.fill("#fff");
+    // p5.text(selectedText,-p5.width/2,-p5.height/2+40);
+
+    for (var i = offset; i <= n+offset; i++) {
       var a = i * 107.5;
       var r = c*1.2 * p5.sqrt(i);
       var x = r * p5.cos(a);
       var y = r * p5.sin(a);
-      var hu = p5.map(i, 0, selectedText.length, 0, 100);
       p5.fill(150, 200, 55, 0.3);
       p5.noStroke();
-      let alphab = selectedText[i-offset];
       
+      let alphab = selectedText[i-offset];
+
+      p5.push();
+      p5.translate(0,-200);
       //p5.circle(x, y, c*2);
       switch (alphab.toUpperCase()) {
         case 'A':
@@ -181,6 +185,7 @@ function HighlightSketch(p5) {
           p5.image(imgEmpty, x-c/2, y-c/2,c,c);
           break;
       }
+      p5.pop();
     }
 
     if (n < selectedText.length) {
