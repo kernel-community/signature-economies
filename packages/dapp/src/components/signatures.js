@@ -1,7 +1,7 @@
 import Box from "./core/Box";
 import Checkmark from './core/icons/Checkmark';
 import React from "react";
-import {dedupe, fetchSignatures, sortSigs} from "../arweaveFns";
+import {dedupe, fetchSignatures, sortSigs} from "../arweave";
 
 export default function Signatures({txId, sigs, setSigs}) {
   const [cursor, setCursor] = React.useState("")

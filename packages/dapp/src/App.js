@@ -125,9 +125,6 @@ function App() {
               className="group-hover:bg-white  group-hover:shadow-lg rounded-lg transition-all p-8"
               alt="logo"
             />
-            <div className=" select-none w-48 absolute right-0 left-0 z-10 rounded-lg -bottom-4 mx-auto text-transparent group-hover:text-green-900 border-green-900 group-hover:border font-redaction text-xl shadow-none group-hover:shadow-lg bg-transparent text-center h-12 flex items-center justify-center group-hover:bg-green-300 transition-all">
-              Mint
-            </div>
           </div>
         </div>
 
@@ -595,9 +592,6 @@ function App() {
               className="group-hover:bg-white  group-hover:shadow-lg rounded-lg transition-all p-8"
               alt="Signature_Derrida"
             />
-            <div className=" select-none w-48 absolute right-0 left-0 z-10 rounded-lg -bottom-4 mx-auto text-transparent group-hover:text-green-900 border-green-900 group-hover:border font-redaction text-xl shadow-none group-hover:shadow-lg bg-transparent text-center h-12 flex items-center justify-center group-hover:bg-green-300 transition-all">
-              Mint
-            </div>
           </div>
         </div>
 

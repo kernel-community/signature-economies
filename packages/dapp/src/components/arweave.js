@@ -1,4 +1,15 @@
-// Arweave and Ethereum signing utilities.
+// Arweave utility.
+
+// This file will need to be refactored entirely.
+// We want it to fulfill two and only two functions:
+
+// 1. Upload dynamically generated images from reader-selected text and return the Arweave url at which
+// the image is stored so we can pass it in as the 'uri' param to signatureNFT.mintSelected().
+
+// 2. Store the signed messages of those who have signed the essay for free so we can display them easily
+// below the essay and ensure that references to those signatures are stored permanently somewhere accessible.
+
+// All Ethereum signing functionality ought to be moved to sign.js
 import Arweave from 'arweave';
 import {ethers} from "ethers";
 
@@ -15,13 +26,7 @@ function init() {
 const arweave = init();
 
 const ADMIN_ACCT = "aTVJ7D57uAZWpMixb5igGF7ThGwW43NGkt7HBzYr7hg";
-const DOC_TYPE = "sign_eco_doc_type";
-const DOC_REF = "sign_eco_doc_ref";
 const SIG_ADDR = "sign_eco_sig_addr";
-const SIG_SIG = "sign_eco_sig_signature";
-
-// TODO: are we still going to use next.js?
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8080";
 
 const jsonOrErrorHandler = async response => {
   const resp = response.json()
@@ -38,6 +43,7 @@ const jsonOrErrorHandler = async response => {
 }
 
 export async function generateSignature(sign_eco) {
+  // We should be using the wagmi hooks here instead of window.ethereum checks.
   if (!window.ethereum) {
     throw new Error("No wallet found. Please install Metamask or another Web3 wallet provider.");
   }
@@ -163,51 +169,4 @@ export function dedupe(sigs) {
 // TODO: sort these by block signed, placing the most recent ones first so we have a rolling list of sigs at the bottom of the essay
 export function sortSigs(sigs) {
   return sigs.sort((a, b) => priority(a) - priority(b));
-}
-
-// I don't think we need this as there is no forking enabled for this essay, but perhaps still necessary to fetch the essay from Arweave, where we will put it?
-export async function getEssay(txId) {
-
-  const res = {
-    txId,
-    data: {},
-    sigs: [],
-    status: 404,
-  };
-  const txStatus = await arweave.transactions.getStatus(txId);
-  if (txStatus.status !== 200) {
-    res.status = txStatus.status;
-    return res;
-  }
-
-  const transactionMetadata = await arweave.transactions.get(txId);
-  const tags = transactionMetadata.get('tags').reduce((prev, tag) => {
-    let key = tag.get('name', {decode: true, string: true});
-    prev[key] = tag.get('value', {decode: true, string: true});
-    return prev;
-  }, {});
-
-  // ensure correct type, return undefined otherwise
-  if (!(DOC_TYPE in tags) || !['document', 'sign_eco'].includes(tags[DOC_TYPE])) {
-    return res;
-  }
-
-  // otherwise metadata seems correct, go ahead and fetch
-  const blockId = txStatus.confirmed.block_indep_hash;
-  const blockMeta = await arweave.blocks.get(blockId);
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  const time = new Date(blockMeta.timestamp * 1000);
-  const data = JSON.parse(await arweave.transactions.getData(txId, {
-    decode: true,
-    string: true,
-  }));
-  data.body = data.document || data.sign_eco // backwards compatability
-
-  res.data = {
-    ...data,
-    timestamp: time.toLocaleDateString('en-US', options),
-  };
-
-  res.status = 200;
-  return res;
 }

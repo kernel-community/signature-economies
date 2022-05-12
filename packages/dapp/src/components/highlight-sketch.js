@@ -1,30 +1,30 @@
-import urlA from './images/alphabets/A.png';
-import urlB from './images/alphabets/B.png';
-import urlC from './images/alphabets/C.png';
-import urlD from './images/alphabets/D.png';
-import urlE from './images/alphabets/E.png';
-import urlF from './images/alphabets/F.png';
-import urlG from './images/alphabets/G.png';
-import urlH from './images/alphabets/H.png';
-import urlI from './images/alphabets/I.png';
-import urlJ from './images/alphabets/J.png';
-import urlK from './images/alphabets/K.png';
-import urlL from './images/alphabets/L.png';
-import urlM from './images/alphabets/M.png';
-import urlN from './images/alphabets/N.png';
-import urlO from './images/alphabets/O.png';
-import urlP from './images/alphabets/P.png';
-import urlQ from './images/alphabets/Q.png';
-import urlR from './images/alphabets/R.png';
-import urlS from './images/alphabets/S.png';
-import urlT from './images/alphabets/T.png';
-import urlU from './images/alphabets/U.png';
-import urlV from './images/alphabets/V.png';
-import urlW from './images/alphabets/W.png';
-import urlX from './images/alphabets/X.png';
-import urlY from './images/alphabets/Y.png';
-import urlZ from './images/alphabets/Z.png';
-import Empty from './images/alphabets/Empty.png';
+import urlA from '../images/alphabets/A.png';
+import urlB from '../images/alphabets/B.png';
+import urlC from '../images/alphabets/C.png';
+import urlD from '../images/alphabets/D.png';
+import urlE from '../images/alphabets/E.png';
+import urlF from '../images/alphabets/F.png';
+import urlG from '../images/alphabets/G.png';
+import urlH from '../images/alphabets/H.png';
+import urlI from '../images/alphabets/I.png';
+import urlJ from '../images/alphabets/J.png';
+import urlK from '../images/alphabets/K.png';
+import urlL from '../images/alphabets/L.png';
+import urlM from '../images/alphabets/M.png';
+import urlN from '../images/alphabets/N.png';
+import urlO from '../images/alphabets/O.png';
+import urlP from '../images/alphabets/P.png';
+import urlQ from '../images/alphabets/Q.png';
+import urlR from '../images/alphabets/R.png';
+import urlS from '../images/alphabets/S.png';
+import urlT from '../images/alphabets/T.png';
+import urlU from '../images/alphabets/U.png';
+import urlV from '../images/alphabets/V.png';
+import urlW from '../images/alphabets/W.png';
+import urlX from '../images/alphabets/X.png';
+import urlY from '../images/alphabets/Y.png';
+import urlZ from '../images/alphabets/Z.png';
+import Empty from '../images/alphabets/Empty.png';
 
 
 function HighlightSketch(p5) {
@@ -86,9 +86,6 @@ function HighlightSketch(p5) {
     let offset = p5.floor(p5.map(selectedText.length, 0, 700, 2, 10));
     console.log(offset);
 
-    // p5.fill("#fff");
-    // p5.text(selectedText,-p5.width/2,-p5.height/2+40);
-
     for (var i = offset; i <= n+offset; i++) {
       var a = i * 107.5;
       var r = c*1.2 * p5.sqrt(i);
@@ -101,7 +98,6 @@ function HighlightSketch(p5) {
 
       p5.push();
       p5.translate(0,-200);
-      //p5.circle(x, y, c*2);
       switch (alphab.toUpperCase()) {
         case 'A':
           p5.image(imgA, x-c/2, y-c/2,c,c);

@@ -65,7 +65,7 @@ contract SignatureFund is ERC721Tradable {
         string memory uri;
         string memory arweaveBase = 'https://arweave.net/dmG--hCRlyIpfkWo99e1QkaFXDm5Lq-kK8trHcbLfso/';
         
-        if(msg.value >= 0.01 ether && msg.value < 1 ether) {
+        if(msg.value < 1 ether) {
             uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".png"));
         } else if(msg.value >= 1 ether && msg.value < 10 ether) {
             uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".png"));

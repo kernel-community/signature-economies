@@ -20,6 +20,11 @@ describe("SignatureFund", function () {
             expect(await this.signatureFund.name()).to.equal("Signature Fund");
             expect(await this.signatureFund.symbol()).to.equal("SING");
           });
+        it("should revert if someone tries to mint an NFT with low amounts", async function() {
+           const value = ethers.utils.parseEther("0.009");
+           const tx = this.signatureFund.connect(this.alice).createSign("one", {value: value});
+           await expect(tx).to.be.revertedWith('SignatureFund: Minimum donation is 0.01 ETH');
+        });
         it("should accept donations and allocate correct metadata URIs based on amounts", async function () {
            const creatorBalance = await this.creator.getBalance();
            

@@ -1,5 +1,5 @@
 import { ReactP5Wrapper } from 'react-p5-wrapper';
-import HighlightSketch from '../HighlightSketch';
+import HighlightSketch from './highlight-sketch';
 
 function HighlightModal({ setModalVisible, selectedText }) {
   return (
@@ -23,10 +23,6 @@ function HighlightModal({ setModalVisible, selectedText }) {
         </div>
 
         <div className="flex flex-col font-redaction justify-between">
-          {/* <div className='flex-grow overflow-scroll max-h-96'>
-        {selectedText}
-        </div> */}
-
           <div className="flex flex-row w-full justify-end gap-x-4 text-center">
             <div
               onClick={() => {

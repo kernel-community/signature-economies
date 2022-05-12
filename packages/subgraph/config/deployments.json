@@ -1062,7 +1062,7 @@
                   "type": "string"
                 }
               ],
-              "name": "DonationReceived",
+              "name": "SignCreated",
               "type": "event"
             },
             {
@@ -1138,6 +1138,19 @@
                 }
               ],
               "stateMutability": "pure",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "selectedNFT",
+                  "type": "string"
+                }
+              ],
+              "name": "createSign",
+              "outputs": [],
+              "stateMutability": "payable",
               "type": "function"
             },
             {
@@ -1226,19 +1239,6 @@
                 }
               ],
               "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "string",
-                  "name": "selectedNFT",
-                  "type": "string"
-                }
-              ],
-              "name": "receiveDonation",
-              "outputs": [],
-              "stateMutability": "payable",
               "type": "function"
             },
             {
