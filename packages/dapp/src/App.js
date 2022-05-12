@@ -37,7 +37,7 @@ function App() {
           onClick={() => {
             setSliderModalVisible(true);
           }}
-          className="fixed bg-white animate-bounce select-none border-gray-600 hover:animate-none z-50 bottom-8 w-max md:w-auto left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 my-auto md:right-8 border-2 rounded-md p-2 md:p-4 px-12 hover:border-black font-redaction transition-all"
+          className="fixed bg-white md:animate-bounce select-none border-gray-600 hover:animate-none z-50 bottom-8 w-max md:w-auto left-1/2 -translate-y-8 md:left-auto  md:translate-x-0 my-auto md:right-8 border-2 rounded-md p-2 md:p-4 px-12 hover:border-black font-redaction transition-all"
         >
           Mint a Sealed NFT
         </motion.div>

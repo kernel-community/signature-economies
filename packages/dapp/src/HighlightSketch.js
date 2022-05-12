@@ -69,7 +69,7 @@ function HighlightSketch(p5) {
     p5.angleMode(p5.DEGREES);
     p5.colorMode(p5.HSB);
     console.log(selectedText.length);
-    c = p5.map(selectedText.length, 0, 300, 36, 18, true);
+    c = p5.map(selectedText.length, 0, 300, 36, 20, true);
   };
 
   p5.updateWithProps = (props) => {
@@ -80,7 +80,7 @@ function HighlightSketch(p5) {
   };
 
   p5.draw = () => {
-    p5.background(254,97,26);
+    p5.background(0);
     p5.translate(p5.width / 2, p5.height / 2);
 
     let offset = p5.floor(p5.map(selectedText.length, 0, 700, 2, 10));
