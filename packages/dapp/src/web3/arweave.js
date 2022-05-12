@@ -4,7 +4,7 @@
 // We want it to fulfill two and only two functions:
 
 // 1. Upload dynamically generated images from reader-selected text and return the Arweave url at which
-// the image is stored so we can pass it in as the 'uri' param to signatureNFT.mintSelected().
+// the image is stored so we can pass it in as the 'url' param in highlight-modal.js.
 
 // 2. Store the signed messages of those who have signed the essay for free so we can display them easily
 // below the essay and ensure that references to those signatures are stored permanently somewhere accessible.

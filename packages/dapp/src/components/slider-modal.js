@@ -149,12 +149,12 @@ function SliderModal({ setModalVisible }) {
 
       <div className="flex flex-col md:flex-grow md:h-full p-8">
         <div className="flex-grow flex text-center justify-center  items-center">
-          <div class="flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
+          <div className="flip-card">
+            <div className="flip-card-inner">
+              <div className="flip-card-front">
                 <img src={sealedNFTS[selectedNFT].imageA_Front} alt="Front" />
               </div>
-              <div class="flip-card-back">
+              <div className="flip-card-back">
                 <img src={sealedNFTS[selectedNFT].imageA_Back} alt="Back" />
               </div>
             </div>
@@ -188,7 +188,7 @@ function SliderModal({ setModalVisible }) {
         <svg
           width="36"
           height="36"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -196,8 +196,8 @@ function SliderModal({ setModalVisible }) {
           <path
             d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </div>

@@ -1,7 +1,40 @@
+import { useState } from 'react';
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 import HighlightSketch from './highlight-sketch';
+import { Connector } from '../web3/connect';
+import { mintSelected } from '../web3/contracts';
+import { useConnect, useProvider, useSigner } from 'wagmi';
 
+// TODO: I introduced a regression where the symbols now overflow at the bottom across the text.
 function HighlightModal({ setModalVisible, selectedText }) {
+  const [{ data, error }, connect] = useConnect()
+  const provider = useProvider()
+  const [{ data: signer }] = useSigner()
+
+  const [confirmed, isConfirmed] = useState(false)
+  const [url, updateUrl] = useState('')
+
+  const handleOnClickConnect = () => {
+    connect(data.connectors[Connector.INJECTED]).then((result) => {
+      if (!result.error) {
+        console.log(result)
+      }
+    })
+  }
+
+  const handleOnClickConfirmed = () => {
+    // upload the image to Arweave and await the url to be returned. Store this.
+    isConfirmed(true)
+    updateUrl('https://arweave.net/R5VjN9UOc1llzmvOYvymFmDexZmIxIkzz9n5CvyVAd8')
+  }
+
+  const handleOnClickMint = async () => {
+    // call signatureNft contract
+    await mintSelected(url, provider, signer)
+    // show some success message to the reader and close the modal
+    setModalVisible(false)
+  }
+
   return (
     <div className="flex justify-center md:p-8 w-full h-full md:h-auto md:w-min my-auto rounded-lg shadow-xl bg-white ">
       <div className="flex flex-col gap-y-8 items-center my-auto">
@@ -24,6 +57,7 @@ function HighlightModal({ setModalVisible, selectedText }) {
 
         <div className="flex flex-col font-redaction justify-between">
           <div className="flex flex-row w-full justify-end gap-x-4 text-center">
+            
             <div
               onClick={() => {
                 setModalVisible(false);
@@ -32,9 +66,32 @@ function HighlightModal({ setModalVisible, selectedText }) {
             >
               Cancel
             </div>
-            <div className="w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md">
-              Mint
-            </div>
+
+            {!data.connected && (
+              <div 
+                className="w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md"
+                onClick={handleOnClickConnect}>
+                {error && error.message && <div>Failed to connect</div>}
+                Connect
+              </div>
+            )}
+            
+            {data.connected && !confirmed && (
+              <div 
+                className="w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md"
+                onClick={handleOnClickConfirmed}>
+                Confirm
+              </div>
+            )}
+            
+            {data.connected && confirmed && (
+              <div 
+                className="w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md"
+                onClick={handleOnClickMint}>
+                Mint
+              </div>
+            )}
+
           </div>
         </div>
       </div>
