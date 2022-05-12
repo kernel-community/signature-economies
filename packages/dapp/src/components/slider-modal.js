@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import derrida from '../images/signature_derrida.png';
 
 import Front_1A from '../images/sealedNfts/1A-Front.png';
 import Back_1A from '../images/sealedNfts/1A-Back.png';
@@ -55,8 +54,7 @@ const sealedNFTS = [
   },
   {
     id: 6,
-    text: 'Signature - Derrida',
-    thumbUrl: derrida,
+    text: 'Real power has nothing to do with force, control, status, or money. Real power is the persistent courage to be at ease with the unsolved and the unfinished. To be able to recognise, in the scattered graffiti of your desires, the signature of the eternal.',
     imageA_Front: Front_6A,
     imageA_Back: Back_6A,
   },

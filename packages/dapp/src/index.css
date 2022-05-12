@@ -39,6 +39,10 @@
     max-height: 450px;
     background-repeat: no-repeat;
   }
+
+  iframe {
+    height: 180px !important;
+  }
 }
 
 /* This container is needed to position the front and back side */
@@ -73,4 +77,10 @@
 /* Style the back side */
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+iframe {
+  margin: 0 auto;
+  width: 90%;
+  height: 380px;
 }
