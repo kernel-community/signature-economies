@@ -28,7 +28,7 @@ describe("SignatureFund", function () {
         it("should accept donations and allocate correct metadata URIs based on amounts", async function () {
            const creatorBalance = await this.creator.getBalance();
            
-           const uri0 = "https://arweave.net/dmG--hCRlyIpfkWo99e1QkaFXDm5Lq-kK8trHcbLfso/0/one.png";
+           const uri0 = "https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/0/one.json";
            const value0 = ethers.utils.parseEther("0.5");
            // A critical learning from this test: only use _strings_, do not pass in numbers
            await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value0 }))
@@ -38,7 +38,7 @@ describe("SignatureFund", function () {
            const creatorBalance0 = await this.creator.getBalance();
            expect(creatorBalance0).to.equal(creatorBalance.add(value0));
 
-           const uri1 = "https://arweave.net/dmG--hCRlyIpfkWo99e1QkaFXDm5Lq-kK8trHcbLfso/1/one.png";
+           const uri1 = "https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/1/one.json";
            const value1 = ethers.utils.parseEther("1.5");
            await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value1 }))
             .to.emit(this.signatureFund, 'SignCreated')
@@ -47,7 +47,7 @@ describe("SignatureFund", function () {
            const creatorBalance1 = await this.creator.getBalance();
            expect(creatorBalance1).to.equal(creatorBalance0.add(value1));
 
-           const uri10 = "https://arweave.net/dmG--hCRlyIpfkWo99e1QkaFXDm5Lq-kK8trHcbLfso/10/one.png";
+           const uri10 = "https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/10/one.json";
            const value10 = ethers.utils.parseEther("15");
            await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value10 }))
             .to.emit(this.signatureFund, 'SignCreated')

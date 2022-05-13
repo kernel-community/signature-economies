@@ -2,6 +2,6 @@ signature_ethblock.png: https://ipfs.io/ipfs/QmRabxFzVNMVizH5iZybhFKbEtrynCqc479
 
 signature_derrida.png: https://ipfs.io/ipfs/Qmc1AM6pe8CEwdNfWdxCk5z1YtsrMjxfUAnwCesmoRErK9
 
-signature_fund.json: https://ipfs.io/ipfs/QmbK4zDQ73tqRqjhwJzzNCD8tAD2u5NemRVvJBYn7GssA9
+signature_fund.json: https://ipfs.io/ipfs/QmTe7AJrGv7SxfXPepMiMiZ4GVGS9xm94egmUBYPQ3i38a
 
-signature_nft.json: https://ipfs.io/ipfs/QmYa3vKtRNE4qyPNrqe3CxnizusU5T6ZjsuKefXpiyPDd3
+signature_nft.json: https://ipfs.io/ipfs/QmQDi9r8s51TWvqst3tPPAoPWGoTyj7TUS1FhzLUi7G93u

@@ -97,6 +97,7 @@ function SliderModal({ setModalVisible }) {
   const handleOnClickMint = async () => {
     // call signatureFund contract
     let value = ethers.utils.parseEther('0.1')
+    // TODO: the selectedNFT value we pass in here must be a string, not an integer (because Solidity things).
     await createSign(selectedNFT, value, provider, signer)
     // show some success message to the reader and close the modal
     setModalVisible(false)

@@ -2,7 +2,7 @@ const addresses = (chainId) => {
   switch (chainId) {
     case 4:
       return {
-        signatureFund: '0xB8EAe71B269E98E3Fe7069912CadAc90B4927636',
+        signatureFund: '0xCdE5DbEA69C686b2502A7F0978a43BBF92d12387',
         signatureNFT: '0x5104c86eaA9f0E07640A7F2D6497A8ba839C283c',
       }
     case 1337:

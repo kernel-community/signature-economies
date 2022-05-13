@@ -33,7 +33,7 @@ contract SignatureFund is ERC721Tradable {
      * @dev Link to Contract metadata https://docs.opensea.io/docs/contract-level-metadata
     */
     function contractURI() external pure returns (string memory) {
-        return "https://arweave.net/C5N5bxmmcXJoA5QO0lwnVHv0WRtAEfq49uVoWwJsrP8";
+        return "https://arweave.net/LGLdXi8f0bh5_GYsxN-Iq1m4oBvrAMutVUVjgut0Ilw";
     }
 
     /** @notice Set the royalties for the whole contract. Our intention is to set it to 10% in perpetuity.
@@ -57,20 +57,21 @@ contract SignatureFund is ERC721Tradable {
         // Here, we let the reader select which of the 8 available NFTs they wish to mint.
         // Each of these is already stored in Arweave, with 3 different versions.
         // Depending on the value of the message which mints the selected NFT, we assign
-        // the metadataURI used when minting the NFT. Final NFTs will be high-quality mp4s.
-        // https://arweave.net/dmG--hCRlyIpfkWo99e1QkaFXDm5Lq-kK8trHcbLfso/0/one.png or
-        // https://arweave.net/dmG--hCRlyIpfkWo99e1QkaFXDm5Lq-kK8trHcbLfso/1/two.png or
-        // https://arweave.net/dmG--hCRlyIpfkWo99e1QkaFXDm5Lq-kK8trHcbLfso/10/three.png
+        // the metadataURI used when minting the NFT. The url links to a json file with
+        // all the relevant information, especially the mp4 video of the signature seals.
+        // https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/0/one.json or
+        // https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/1/two.json or
+        // https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/10/three.json
 
         string memory uri;
-        string memory arweaveBase = 'https://arweave.net/dmG--hCRlyIpfkWo99e1QkaFXDm5Lq-kK8trHcbLfso/';
+        string memory arweaveBase = 'https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/';
         
         if(msg.value < 1 ether) {
-            uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".png"));
+            uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".json"));
         } else if(msg.value >= 1 ether && msg.value < 10 ether) {
-            uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".png"));
+            uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".json"));
         } else {
-            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".png"));
+            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".json"));
         }
 
         uint256 newTokenId = _tokenIdCounter.current();
