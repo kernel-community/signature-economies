@@ -15,15 +15,15 @@ export const mintSelected = async (url, provider, signer) => {
 }
 
 // 'selected' is the number of the static NFT, as a string (one - eight)
-export const createSign = async (selected, provider, signer) => {
+export const createSign = async (selected, value, provider, signer) => {
   const { chainId } = await provider.getNetwork()
 
   const signatureFundContract = new Contract(
-      addresses(chainId).signatureFundContract, 
-      abis.signatureFundContract, 
+      addresses(chainId).signatureFund, 
+      abis.signatureFund, 
       signer)
 
-  return await signatureFundContract.createSign(selected)
+  return await signatureFundContract.createSign(selected, {value: value, gasLimit: 200000})
 }
 
 

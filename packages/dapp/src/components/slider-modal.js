@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { Connector } from '../web3/connect';
+import { createSign } from '../web3/contracts';
+import { useConnect, useProvider, useSigner } from 'wagmi';
+import { ethers } from 'ethers';
 
 import Front_1A from '../images/sealedNfts/1A-Front.png';
 import Back_1A from '../images/sealedNfts/1A-Back.png';
@@ -77,6 +81,26 @@ const sealedNFTS = [
 function SliderModal({ setModalVisible }) {
   const [sliderValue, setSliderValue] = useState(0);
   const [selectedNFT, setSelectedNFT] = useState(1);
+
+  const [{ data, error }, connect] = useConnect()
+  const provider = useProvider()
+  const [{ data: signer }] = useSigner()
+
+  const handleOnClickConnect = () => {
+    connect(data.connectors[Connector.INJECTED]).then((result) => {
+      if (!result.error) {
+        console.log(result)
+      }
+    })
+  }
+
+  const handleOnClickMint = async () => {
+    // call signatureFund contract
+    let value = ethers.utils.parseEther('0.1')
+    await createSign(selectedNFT, value, provider, signer)
+    // show some success message to the reader and close the modal
+    setModalVisible(false)
+  }
 
   return (
     <div className="flex flex-col md:flex-row  relative my-auto w-full md:w-[1200px] h-screen md:h-[800px] rounded-lg shadow-xl bg-white ">
@@ -176,6 +200,23 @@ function SliderModal({ setModalVisible }) {
           <div className="text-xl md:text-3xl flex justify-center items-center font-redaction w-12">
             ${sliderValue}
           </div>
+
+          {!data.connected && (
+            <div 
+              className="w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md"
+              onClick={handleOnClickConnect}>
+              {error && error.message && <div>Failed to connect</div>}
+              Connect
+            </div>
+          )}
+
+          {data.connected && (
+            <div 
+              className="w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md"
+              onClick={handleOnClickMint}>
+              Mint
+            </div>
+          )}
         </div>
       </div>
 
