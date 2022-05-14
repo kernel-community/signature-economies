@@ -39,6 +39,7 @@ function HighlightModal({ setModalVisible, selectedText }) {
     <div className="flex justify-center md:p-8 w-full h-full md:h-auto md:w-min my-auto rounded-lg shadow-xl bg-white ">
       <div className="flex flex-col gap-y-8 items-center my-auto">
         <div className="relative rounded-lg shadow-lg w-auto h-auto">
+          <div id="highlight-NFT" className="select-none">
           <div className="absolute z-50 text-[#BBBBBB]/80 flex flex-col h-1/3 bottom-0 w-full font-syne text-sm text-left px-4">
             <div className="flex-grow w-full border-y border-[#BBB]/20 max-h-full flex text-justify items-center">
               {selectedText}
@@ -53,6 +54,7 @@ function HighlightModal({ setModalVisible, selectedText }) {
             sketch={HighlightSketch}
             selectedText={selectedText.toString()}
           />
+          </div>
         </div>
 
         <div className="flex flex-col font-redaction justify-between">

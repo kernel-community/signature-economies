@@ -187,6 +187,10 @@ function HighlightSketch(p5) {
     if (n < selectedText.length) {
       n+=2;
     }
+
+    if(n >= selectedText.length){
+      p5.noLoop();
+    }
   };
 }
 
