@@ -12,13 +12,18 @@ const reducer = (state, action) => {
       if (state.modal) return state;
       return {
         ...state,
-        text: window.getSelection().toString(),
-        modal: true
+        text: action.payload,
+        modal: true,
+        image: undefined
       }
     }
     case 'close': {
+      console.log('closing modal');
       if (!state.modal) return state;
-      return {...state, modal: false};
+      return {
+        ...state,
+        modal: false,
+      };
     }
     case 'ready': {
       return {...state, image: action.payload};
@@ -35,7 +40,7 @@ const reducer = (state, action) => {
 const initial = {
   text: "",
   modal: false,
-  image: "",
+  image: undefined,
   metadata: {}
 };
 export const HighlightProvider = ({children}) => {

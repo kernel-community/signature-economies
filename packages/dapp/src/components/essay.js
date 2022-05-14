@@ -38,7 +38,10 @@ function Essay () {
                 <div>
                     <span
                       className={itemClass}
-                      onClick={() => dispatch({ type:'highlight' })}
+                      onClick={() => dispatch({
+                        type:'highlight',
+                        payload: window.getSelection().toString()
+                      })}
                       >
                     🍀 Mint
                     </span>

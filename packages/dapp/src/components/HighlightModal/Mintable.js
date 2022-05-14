@@ -2,9 +2,9 @@ import { ReactP5Wrapper } from 'react-p5-wrapper';
 import HighlightSketch from '../highlight-sketch';
 import { HighlightContext } from '../../contexts/Highlight';
 import { useContext } from 'react';
+
 const Mintable = () => {
   const {state, dispatch} = useContext(HighlightContext);
-  const getReady = (img) => dispatch({ type: 'ready', payload: img });
   return (
     <div className="relative rounded-lg shadow-lg w-auto h-auto" id ="nft">
     <div className="absolute z-50 text-[#BBBBBB]/80 flex flex-col h-1/3 bottom-0 w-full font-syne text-sm text-left px-4">
@@ -17,13 +17,21 @@ const Mintable = () => {
       </div>
     </div>
     <div className="absolute w-full h-1/3 bottom-0 blur-sm bg-transparent backdrop-blur-sm"></div>
-    {!state.image && <ReactP5Wrapper
-      sketch={HighlightSketch}
-      selectedText={state.text}
-      handleFinishedDrawing={getReady}
-    />}
+    {/*
+      this is a hack since P5 canvas was rendering to blank on each state update
+      canvas will only be drawn each time state.image is undefined
+    */}
     {
-      state.image && <img src={state.image} alt="" style={{width: '500px', height: '750px', 'max-width': '500px'}}/>
+      !state.image &&
+        <ReactP5Wrapper
+          sketch={HighlightSketch}
+          selectedText={state.text}
+          handleFinishedDrawing={(img) => dispatch({ type: 'ready', payload: img })}
+        />
+    }
+    {
+      state.image &&
+        <img src={state.image} alt="" style={{ width: '500px', height: '750px', maxWidth: '500px' }} />
     }
     </div>
   )
