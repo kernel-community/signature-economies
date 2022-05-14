@@ -5,7 +5,6 @@ import Essay from '../components/essay';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HighlightProvider } from '../contexts/Highlight';
 
-// TODO: see if we can abstract the modal logic used by both sliderModal and highlightModal into one component.
 const Home = () => {
   const [sliderModalVisible, setSliderModalVisible] = useState(false);
 

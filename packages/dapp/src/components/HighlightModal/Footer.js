@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Connector } from "../../web3/connect"
+import { Connector } from "../../utils/connect"
 import { useConnect } from "wagmi"
 import { HighlightContext } from '../../contexts/Highlight';
 
