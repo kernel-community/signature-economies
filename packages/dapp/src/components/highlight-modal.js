@@ -63,7 +63,6 @@
 //     // updateUrl('https://arweave.net/R5VjN9UOc1llzmvOYvymFmDexZmIxIkzz9n5CvyVAd8')
 //   //   console.log("confirm here")
 //   // }
-
 //   const handleOnClickMint = async () => {
 //     // // call signatureNft contract
 //     // await mintSelected(url, provider, signer)
@@ -71,7 +70,6 @@
 //     // dispatch({type: 'close'});
 //     console.log("confirm & mint here")
 //   }
-
 
 // }
 
