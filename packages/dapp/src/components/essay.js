@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import HighlightPop from 'react-highlight-pop';
-import HighlightModal from './highlight-modal';
+import HighlightModal from './HighlightModal';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HighlightContext } from '../contexts/Highlight';
 
 function Essay () {
-    const [highlightModalVisible, setHighlightModalVisible] = useState(false);
-    const [selectedText, setSelectedText] = useState('Hello World');
+  const { state, dispatch } = useContext(HighlightContext);
 
     useEffect(() => {
-        if (highlightModalVisible) {
+        if (state.modal) {
           document.body.style.overflow = 'hidden';
           document.body.style.paddingRight = '0px';
         }
@@ -16,22 +16,19 @@ function Essay () {
           document.body.style.overflow = 'unset';
           document.body.style.paddingRight = '0px';
         };
-      }, [highlightModalVisible]);
+      }, [state.modal]);
 
     return (
         <div>
             <AnimatePresence>
-                  {highlightModalVisible && (
-                    <motion.div 
+                  {state.modal && (
+                    <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2, type: "tween" }}
                     className="flex justify-center z-[100] fixed top-0 left-0 bg-gray-500/30 backdrop-blur-md w-screen h-screen">
-                    <HighlightModal
-                        setModalVisible={setHighlightModalVisible}
-                        selectedText={selectedText}
-                    />
+                    <HighlightModal />
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -40,12 +37,9 @@ function Essay () {
                 popoverItems={(itemClass) => (
                 <div>
                     <span
-                    className={itemClass}
-                    onClick={() => {
-                        setSelectedText(window.getSelection().toString());
-                        setHighlightModalVisible(true);
-                    }}
-                    >
+                      className={itemClass}
+                      onClick={() => dispatch({ type:'highlight' })}
+                      >
                     🍀 Mint
                     </span>
                 </div>
@@ -440,7 +434,7 @@ function Essay () {
                         John O'Donohue
                     </a>
                     </div>
-                </div>  
+                </div>
 
                 <div>
                     ‘The Ownership Economy’ doesn’t describe the kind of world we want
@@ -511,7 +505,7 @@ function Essay () {
                 <br />
                 <br />
                 <div className="font-bold">- Chapter 51, Tao Te Ching</div>
-                </div>        
+                </div>
 
             </HighlightPop>
 

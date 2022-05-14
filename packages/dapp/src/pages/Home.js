@@ -3,6 +3,7 @@ import SliderModal from '../components/slider-modal';
 import FootNotes from '../components/footnotes';
 import Essay from '../components/essay';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HighlightProvider } from '../contexts/Highlight';
 
 // TODO: see if we can abstract the modal logic used by both sliderModal and highlightModal into one component.
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
   }, [sliderModalVisible]);
 
   return (
+    <HighlightProvider>
     <div className="mx-auto pb-32 bg-white selection:bg-green-300 selection:text-green-900">
       <AnimatePresence>
         {!sliderModalVisible && (
@@ -58,6 +60,7 @@ const Home = () => {
       <Essay />
       <FootNotes/>
     </div>
+    </HighlightProvider>
   );
 }
 

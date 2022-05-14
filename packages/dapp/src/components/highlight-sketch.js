@@ -1,3 +1,6 @@
+/**
+ * only p5 stuff
+ */
 import urlA from '../images/alphabets/A.png';
 import urlB from '../images/alphabets/B.png';
 import urlC from '../images/alphabets/C.png';
@@ -25,6 +28,7 @@ import urlX from '../images/alphabets/X.png';
 import urlY from '../images/alphabets/Y.png';
 import urlZ from '../images/alphabets/Z.png';
 import Empty from '../images/alphabets/Empty.png';
+let canvas;
 
 
 function HighlightSketch(p5) {
@@ -65,27 +69,31 @@ function HighlightSketch(p5) {
   };
 
   p5.setup = () => {
-    p5.createCanvas(800, 1200);
+    canvas = p5.createCanvas(800, 1200);
     p5.angleMode(p5.DEGREES);
     p5.colorMode(p5.HSB);
-    console.log(selectedText.length);
     c = p5.map(selectedText.length, 0, 300, 36, 20, true);
   };
+
+  let handleFinishedDrawing;
 
   p5.updateWithProps = (props) => {
     if (props.selectedText) {
       selectedText = props.selectedText;
       p5.setup();
     }
+    handleFinishedDrawing = props.handleFinishedDrawing;
   };
 
   p5.draw = () => {
+    if(n >= selectedText.length){
+      p5.noLoop();
+      const img = canvas?.elt?.toDataURL();
+      handleFinishedDrawing(img);
+    }
     p5.background(0);
     p5.translate(p5.width / 2, p5.height / 2);
-
     let offset = p5.floor(p5.map(selectedText.length, 0, 700, 2, 10));
-    console.log(offset);
-
     for (var i = offset; i <= n+offset; i++) {
       var a = i * 107.5;
       var r = c*1.2 * p5.sqrt(i);
@@ -93,12 +101,10 @@ function HighlightSketch(p5) {
       var y = r * p5.sin(a);
       p5.fill(150, 200, 55, 0.3);
       p5.noStroke();
-      
       let alphab = selectedText[i-offset];
-
       p5.push();
       p5.translate(0,-200);
-      switch (alphab.toUpperCase()) {
+      switch (alphab?.toUpperCase()) {
         case 'A':
           p5.image(imgA, x-c/2, y-c/2,c,c);
           break;
@@ -183,8 +189,7 @@ function HighlightSketch(p5) {
       }
       p5.pop();
     }
-
-    if (n < selectedText.length) {
+    if (n < selectedText.length && n<=200) {
       n+=2;
     }
   };
