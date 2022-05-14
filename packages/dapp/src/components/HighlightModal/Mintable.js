@@ -17,11 +17,14 @@ const Mintable = () => {
       </div>
     </div>
     <div className="absolute w-full h-1/3 bottom-0 blur-sm bg-transparent backdrop-blur-sm"></div>
-    <ReactP5Wrapper
+    {!state.image && <ReactP5Wrapper
       sketch={HighlightSketch}
       selectedText={state.text}
       handleFinishedDrawing={getReady}
-    />
+    />}
+    {
+      state.image && <img src={state.image} alt="" style={{width: '500px', height: '750px', 'max-width': '500px'}}/>
+    }
     </div>
   )
 }

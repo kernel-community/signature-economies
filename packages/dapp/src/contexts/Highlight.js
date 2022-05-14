@@ -21,24 +21,22 @@ const reducer = (state, action) => {
       return {...state, modal: false};
     }
     case 'ready': {
-      console.log(action.payload);
-      // upload image to arweave & mint
-      // return {...state, image: action.payload};
-      return state;
+      return {...state, image: action.payload};
     }
     case 'mint': {
-      // upload to
-      // mint nft here
+      // upload image to arweave
+      // generate metadata -> send metadata to arweave
+      // mint nft
       return state;
     }
     default: return state;
   }
 }
 const initial = {
-  bar: false,
   text: "",
   modal: false,
-  image: ""
+  image: "",
+  metadata: {}
 };
 export const HighlightProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initial);

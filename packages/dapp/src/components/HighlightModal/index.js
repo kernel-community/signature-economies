@@ -1,4 +1,3 @@
-// not context aware
 import Mintable from "./Mintable";
 // import Footer from "./Footer";
 
