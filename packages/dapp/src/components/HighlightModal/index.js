@@ -1,5 +1,5 @@
 import Mintable from "./Mintable";
-// import Footer from "./Footer";
+import Footer from "./Footer";
 
 const Modal = () => {
   return (
@@ -7,7 +7,7 @@ const Modal = () => {
       <div className="flex flex-col gap-y-8 items-center my-auto">
         <div className="flex flex-col font-redaction justify-between">
           <Mintable text="hello" handleFinishedDrawing={() => console.log('handle')} />
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </div>
