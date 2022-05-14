@@ -189,7 +189,7 @@ function HighlightSketch(p5) {
       }
       p5.pop();
     }
-    if (n < selectedText.length && n<=200) {
+    if (n < selectedText.length && n<=400) {
       n+=2;
     }
   };
