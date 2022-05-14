@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import {Provider} from 'wagmi';
 import {connectors, provider, connectorStorageKey} from './web3/connect';
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,9 @@ root.render(
       connectors={connectors}
       provider={provider}
       connectorStorageKey={connectorStorageKey}>
+      <BrowserRouter>
         <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
