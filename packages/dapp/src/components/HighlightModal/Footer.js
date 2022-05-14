@@ -2,7 +2,9 @@ import { useContext } from 'react';
 import { Connector } from "../../web3/connect"
 import { useConnect } from "wagmi"
 import { HighlightContext } from '../../contexts/Highlight';
-import { buttons } from "../../styles";
+
+const basicButtonStyle = `w-32 px-4 py-2 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-pointer`
+const greenButtonStyle = `w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-pointer`
 
 const Footer = () => {
   const { dispatch } = useContext(HighlightContext);
@@ -11,13 +13,13 @@ const Footer = () => {
     <div className="flex flex-row w-full justify-center gap-x-4 text-center my-5">
     <div
       onClick={() => dispatch({ type: 'close' })}
-      className={buttons.basic}
+      className={basicButtonStyle}
     >
       Cancel
     </div>
     {!data.connected && (
       <div
-        className={buttons.accent}
+        className={greenButtonStyle}
         onClick={connect(data.connectors[Connector.INJECTED])}>
         {error && error.message && <div>Failed to connect</div>}
         Connect
@@ -25,7 +27,7 @@ const Footer = () => {
     )}
     {data.connected && (
       <div
-        className={buttons.accent}
+        className={greenButtonStyle}
         onClick={() => dispatch({ type: 'mint' })}
       >
         Mint
