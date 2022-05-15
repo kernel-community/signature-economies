@@ -74,6 +74,7 @@ module.exports = {
     rinkeby: {
       url: `https://rinkeby.infura.io/v3/${INFURA_API_KEY}`,
       accounts: [RINKEBY_PRIVATE_KEY],
+      gasPrice: 10000000000,
     },
     mainnet: {
       url: `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
