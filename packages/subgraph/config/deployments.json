@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "SignatureFund": {
-          "address": "0xCdE5DbEA69C686b2502A7F0978a43BBF92d12387",
+          "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
           "abi": [
             {
               "inputs": [

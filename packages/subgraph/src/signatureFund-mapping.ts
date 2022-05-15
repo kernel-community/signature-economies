@@ -13,21 +13,21 @@ export function handleApproval(event: Approval): void {}
 export function handleApprovalForAll(event: ApprovalForAll): void {}
 
 export function handleSignCreated(event: SignCreated): void {
-  const donor = event.params.donor.toHexString();
+  const signer = event.params.signer.toHexString();
   const tokenId = event.params.tokenId.toString();
 
-  const donorAccount: Account = getOrCreateAccount(donor);
+  const signerAccount: Account = getOrCreateAccount(signer);
 
   let nft = SignatureFund.load(tokenId);
   if (nft == null) {
     nft = new SignatureFund(tokenId);
   }
-  nft.steward = donorAccount.id;
-  nft.donationAmount = event.params.amount;
+  nft.steward = signerAccount.id;
+  nft.signedAmount = event.params.amount;
   nft.uri = event.params.uri.toString();
   nft.save();
 
-  donorAccount.save();
+  signerAccount.save();
 }
 
 export function handleTransfer(event: Transfer): void {}
