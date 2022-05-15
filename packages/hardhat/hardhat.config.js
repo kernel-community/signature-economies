@@ -34,7 +34,7 @@ task("mint", "Mints a reader-generated SignatureNFT")
     await signatureNFT.mintSelected(taskArgs.tokenuri);
 });
 
-task("receiveDonation", "Mints a sepcific NFT based on the amount of the donation in ETH")
+task("createSign", "Mints a sepcific NFT based on the amount of the donation in ETH")
   .addParam("selectednft", "The number, written out in words, of the NFT they have selected to receive in return for their donation")
   .setAction(async (taskArgs) => {
     let addressData = require('./deployments/localhost/SignatureFund.json')
@@ -48,7 +48,7 @@ task("receiveDonation", "Mints a sepcific NFT based on the amount of the donatio
  */
 module.exports = {
   solidity: {
-    version: "0.8.11",
+    version: "0.8.7",
     settings: {
       optimizer: {
         enabled: true,

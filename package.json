@@ -32,7 +32,7 @@
     "hardhat:coverage": "yarn workspace hardhat coverage",
     "hardhat:deploylocal": "yarn workspace hardhat deploylocal",
     "hardhat:mintlocal": "yarn workspace hardhat mintlocal",
-    "hardhat:receivelocal": "yarn workspace hardhat receivelocal",
+    "hardhat:signlocal": "yarn workspace hardhat signlocal",
     "hardhat:deployrinkeby": "yarn workspace hardhat deployrinkeby",
     "hardhat:accounts": "yarn workspace hardhat accounts",
     "hardhat:check": "yarn workspace hardhat checksol",

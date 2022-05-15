@@ -29,7 +29,7 @@
     "checksol": "yarn hardhat check",
     "deploylocal": "yarn hardhat --network localhost deploy --export-all ../dapp/src/deployments.json,../subgraph/config/deployments.json",
     "mintlocal": "yarn hardhat --network localhost mint --tokenuri https://arweave.net/R5VjN9UOc1llzmvOYvymFmDexZmIxIkzz9n5CvyVAd8",
-    "receivelocal": "yarn hardhat --network localhost receiveDonation --selectednft three",
+    "signlocal": "yarn hardhat --network localhost createSign --selectednft three",
     "deployrinkeby": "yarn hardhat --network rinkeby deploy --export-all ../dapp/src/deployments.json,../subgraph/config/deployments.json"
   }
 }

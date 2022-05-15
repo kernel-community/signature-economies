@@ -12,7 +12,7 @@
 // MODIFICATIONS:
 // Consumes modified `ERC721` contract. See notes in `ERC721.sol`.
 
-pragma solidity ^0.8.11;
+pragma solidity 0.8.7;
 
 import "./ERC721.sol";
 

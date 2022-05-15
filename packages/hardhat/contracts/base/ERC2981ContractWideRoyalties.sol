@@ -7,7 +7,7 @@
 ///
 /// We have modified the pragma and the way imports are specified.
 
-pragma solidity ^0.8.11;
+pragma solidity 0.8.7;
 
 import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 
