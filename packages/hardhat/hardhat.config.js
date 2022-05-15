@@ -40,7 +40,7 @@ task("receiveDonation", "Mints a sepcific NFT based on the amount of the donatio
     let addressData = require('./deployments/localhost/SignatureFund.json')
     const address = addressData.address;
     const signatureFund = await ethers.getContractAt("SignatureFund", address);
-    await signatureFund.receiveDonation(taskArgs.selectednft, {value: ethers.utils.parseEther("5")});
+    await signatureFund.createSign(taskArgs.selectednft, {value: ethers.utils.parseEther("5")});
 });
 
 /**
