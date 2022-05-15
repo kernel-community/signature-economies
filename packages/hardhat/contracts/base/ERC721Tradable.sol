@@ -7,7 +7,7 @@
 /// Based on work done originally by Dynamic Culture
 /// https://github.com/Dynamiculture/neurapunks-contract/blob/d250e955453773566ba54e64fdea39ee221bc3d4/contracts/ERC721Tradable.sol
 
-pragma solidity ^0.8.11;
+pragma solidity 0.8.7;
 
 import { ERC721 } from "./ERC721.sol";
 import { ERC721URIStorage } from "./ERC721URIStorage.sol";

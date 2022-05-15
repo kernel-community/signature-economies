@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.11;
+pragma solidity 0.8.7;
 
 import { ERC721Tradable } from "./base/ERC721Tradable.sol";
 import { Counters } from "@openzeppelin/contracts/utils/Counters.sol";
@@ -23,9 +23,8 @@ contract SignatureNFT is ERC721Tradable {
     /**
      * @dev Link to Contract metadata https://docs.opensea.io/docs/contract-level-metadata
     */
-    function contractURI() public pure returns (string memory) {
-        //TODO: finish the json file is /assets and upload to Arweave.
-        return "https://arweave.net/";
+    function contractURI() external pure returns (string memory) {
+        return "https://arweave.net/Ljzre0Drnwhbx8DIoDIMQ0ufC1Ku_HtvRi9IIxNulMQ";
     }
 
     /** @notice Set the royalties for the whole contract. Our intention is to set it to 10% in perpetuity.
@@ -33,7 +32,7 @@ contract SignatureNFT is ERC721Tradable {
      *  @param value royalties value (between 0 and 10000)
     */
     function setRoyalties(address recipient, uint256 value) 
-        public
+        external
     {
         require(msg.sender == creator, "Only the creator of this contract can set and change royalites");
         _setRoyalties(recipient, value);
@@ -45,7 +44,7 @@ contract SignatureNFT is ERC721Tradable {
      * TODO: are there ways to protect this function while still ensuring readers pay gas fees and we don't use onlyOwner?
      */
     function mintSelected(string memory uri) 
-        public 
+        external 
     {
         uint256 newTokenId = _tokenIdCounter.current();
         _safeMint(creator, msg.sender, newTokenId);

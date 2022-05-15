@@ -1,0 +1,35 @@
+{
+    "name": "Seal 1.1 - Mercury",
+    "description": "Making money signficant one signature at a time. Sealed, always, with love. Hear, dear friends, another sign of our times: https://www.youtube.com/watch?v=QBpG1G8YIFM", 
+    "attributes": [
+        {
+            "trait_type": "Shape", 
+            "value": "Hexagon"
+        },
+        {
+            "trait_type": "Quote", 
+            "value": "Viktor Frankl"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Human"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Being"
+        },
+        {
+            "display_type": "boost_number", 
+            "trait_type": "Humour", 
+            "value": 21
+        }, 
+        {
+            "display_type": "boost_percentage", 
+            "trait_type": "Perseverance", 
+            "value": 7
+        }
+    ],
+    "external_url": "https://sign.kernel.community",
+    "animation_url": "ar://KDwobdmp6PGN0ttuhpkhYmptBTZ2iCNOOPVgcE1-ah4", 
+    "image": "ar://dDj2ppnvu07XkfH4obgbj946KPJlYbnIUnsPnlXguZ0"
+}

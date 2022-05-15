@@ -9,12 +9,14 @@
     "codegen:rinkeby": "graph codegen ./subgraph.rinkeby.yaml",
     "codegen:mainnet": "graph codegen ./subgraph.mainnet.yaml",
     "build": "graph build ./subgraph.localhost.yaml",
+    "build:rinkeby": "graph build ./subgraph.rinkeby.yaml",
     "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ sign-eco",
-    "deploy:rinkeby": "graph deploy --product hosted-service --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ sign-eco/sign-eco-subgraph-rinkeby ./subgraph.rinkeby.yaml --access-token",
-    "deploy:mainnet": "graph deploy --product hosted-service --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ sign-eco/sign-eco-subgraph-mainnet ./subgraph.mainnet.yaml --access-token",
+    "deploy:rinkeby": "yarn clean && yarn prepare-yaml && yarn codegen:rinkeby && graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sign-eco/sign-eco-subgraph-rinkeby ./subgraph.rinkeby.yaml",
+    "deploy:mainnet": "graph deploy --product hosted-service --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ sign-eco ./subgraph.mainnet.yaml --access-token",
     "create:local": "graph create --node http://localhost:8020/ sign-eco/sign-eco-subgraph-localhost",
     "remove:local": "graph remove --node http://localhost:8020/ sign-eco/sign-eco-subgraph-localhost",
-    "deploy:local": "yarn clean && yarn prepare-yaml && yarn codegen && graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sign-eco/sign-eco-subgraph-localhost ./subgraph.localhost.yaml"
+    "deploy:local": "yarn clean && yarn prepare-yaml && yarn codegen && graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sign-eco/sign-eco-subgraph-localhost ./subgraph.localhost.yaml",
+    "create:rinkeby": "graph create --node http://localhost:8020/ sign-eco/sign-eco-subgraph-rinkeby"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.29.0",
