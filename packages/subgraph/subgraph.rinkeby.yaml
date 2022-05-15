@@ -1,0 +1,48 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SignatureNFT
+    network: rinkeby
+    source:
+      address: "0x5104c86eaA9f0E07640A7F2D6497A8ba839C283c"
+      abi: SignatureNFT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - NFT
+        - Account
+      abis:
+        - name: SignatureNFT
+          file: ../../packages/hardhat/deployments/rinkeby/SignatureNFT.json
+      eventHandlers:
+        - event: NewSignature(address,indexed uint256,string)
+          handler: handleNewSignature
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/signatureNFT-mapping.ts
+  - kind: ethereum
+    name: SignatureFund
+    network: rinkeby
+    source:
+      address: "0xB8EAe71B269E98E3Fe7069912CadAc90B4927636"
+      abi: SignatureFund
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - NFT
+        - Account
+      abis:
+        - name: SignatureFund
+          file: ../../packages/hardhat/deployments/rinkeby/SignatureFund.json
+      eventHandlers:
+        - event: SignCreated(indexed address,uint256,indexed uint256,string)
+          handler: handleSignCreated
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/signatureFund-mapping.ts

@@ -1,7 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require('hardhat-deploy');
 require("@nomiclabs/hardhat-ethers");
-const fs = require("fs");
 
 if (process.env.PROD_ENV == null) {
   // only update env manually if not already updated (eg by netlify)

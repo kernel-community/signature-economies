@@ -1,0 +1,35 @@
+{
+    "name": "Seal 8.10 - Neptune",
+    "description": "Making money signficant one signature at a time. Sealed, always, with love. Hear, dear friends, another sign of our times: https://www.youtube.com/watch?v=hQ5SgpdcmIw", 
+    "attributes": [
+        {
+            "trait_type": "Shape", 
+            "value": "Circle"
+        },
+        {
+            "trait_type": "Quote", 
+            "value": "Tao Te Ching"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Cosmic"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Interdependence"
+        },
+        {
+            "display_type": "boost_number", 
+            "trait_type": "Responsibility", 
+            "value": 88
+        }, 
+        {
+            "display_type": "boost_percentage", 
+            "trait_type": "Honesty", 
+            "value": 42
+        }
+    ],
+    "external_url": "https://sign.kernel.community",
+    "animation_url": "ar://KDwobdmp6PGN0ttuhpkhYmptBTZ2iCNOOPVgcE1-ah4", 
+    "image": "ar://dDj2ppnvu07XkfH4obgbj946KPJlYbnIUnsPnlXguZ0"
+}

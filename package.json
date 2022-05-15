@@ -34,10 +34,14 @@
     "hardhat:mintlocal": "yarn workspace hardhat mintlocal",
     "hardhat:signlocal": "yarn workspace hardhat signlocal",
     "hardhat:deployrinkeby": "yarn workspace hardhat deployrinkeby",
+    "hardhat:mintrinkeby": "yarn workspace hardhat mintrinkeby",
+    "hardhat:signrinkeby": "yarn workspace hardhat signrinkeby",
     "hardhat:accounts": "yarn workspace hardhat accounts",
     "hardhat:check": "yarn workspace hardhat checksol",
     "hardhat:lint": "yarn workspace hardhat lint",
     "subgraph:createlocal": "yarn workspace subgraph create:local",
-    "subgraph:deploylocal": "yarn workspace subgraph deploy:local"
+    "subgraph:deploylocal": "yarn workspace subgraph deploy:local",
+    "subgraph:createrinkeby": "yarn workspace subgraph create:rinkeby",
+    "subgraph:deployrinkeby": "yarn workspace subgraph deploy:rinkeby"
   }
 }

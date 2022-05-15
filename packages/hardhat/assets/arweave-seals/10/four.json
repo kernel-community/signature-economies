@@ -1,0 +1,35 @@
+{
+    "name": "Seal 4.10 - Mars",
+    "description": "Making money signficant one signature at a time. Sealed, always, with love. Hear, dear friends, another sign of our times: https://www.youtube.com/watch?v=MetLIUdKon8", 
+    "attributes": [
+        {
+            "trait_type": "Shape", 
+            "value": "Circle"
+        },
+        {
+            "trait_type": "Quote", 
+            "value": "Mizuta Masahide"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Loving"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Heart"
+        },
+        {
+            "display_type": "boost_number", 
+            "trait_type": "Power", 
+            "value": 88
+        }, 
+        {
+            "display_type": "boost_percentage", 
+            "trait_type": "Care", 
+            "value": 42
+        }
+    ],
+    "external_url": "https://sign.kernel.community",
+    "animation_url": "ar://KDwobdmp6PGN0ttuhpkhYmptBTZ2iCNOOPVgcE1-ah4", 
+    "image": "ar://dDj2ppnvu07XkfH4obgbj946KPJlYbnIUnsPnlXguZ0"
+}
