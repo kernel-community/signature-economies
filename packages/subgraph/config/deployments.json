@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "SignatureFund": {
-          "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+          "address": "0xCdE5DbEA69C686b2502A7F0978a43BBF92d12387",
           "abi": [
             {
               "inputs": [
@@ -961,7 +961,7 @@
       "chainId": "1337",
       "contracts": {
         "SignatureFund": {
-          "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+          "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
           "abi": [
             {
               "inputs": [
@@ -1040,7 +1040,7 @@
                 {
                   "indexed": true,
                   "internalType": "address",
-                  "name": "donor",
+                  "name": "signer",
                   "type": "address"
                 },
                 {
