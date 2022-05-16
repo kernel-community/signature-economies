@@ -15,7 +15,7 @@
     "react-p5-wrapper": "^3.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "wagmi": "^0.2.25",
+    "wagmi": "^0.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Connector } from '../utils/connect';
-import { createSign } from '../utils/contracts';
+import { createSign } from '../utils/eth/contracts';
 import { useConnect, useProvider, useSigner } from 'wagmi';
 import { ethers } from 'ethers';
 
