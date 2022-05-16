@@ -8,20 +8,23 @@ import { Buffer } from 'buffer';
 const basicButtonStyle = `w-32 px-4 py-2 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-pointer`
 const greenButtonStyle = `w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-pointer`
 
+// @todo
+const greenButtonDisabledStyle = `w-32 px-4 py-2 bg-gray-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-wait`
+
 const Footer = () => {
   const { state, dispatch } = useContext(HighlightContext);
   const [{ data, error }, connect] = useConnect()
+  const isImage = !!state.image;
+
   const mint = async () => {
-    if (!state.image) {
+    if (!isImage) {
       // throw an error here or prompt the user to reload
       return;
     }
-    console.log(state.image);
     const image = Buffer.from(state.image.split(",")[1], "base64")
     const { id } = await upload({ data: image, contentType: 'image/png' });
-    // generate metadata here
-    console.log('id', id);
-    // dispatch({ type: 'mint' });
+    console.log('id', id); // url - https://arweave.net/${id} ; or localhost:1984/${id}
+    dispatch({ type: 'metadata', payload: id });
   }
   return (
     <div className="flex flex-row w-full justify-center gap-x-4 text-center my-5">
@@ -41,8 +44,9 @@ const Footer = () => {
     )}
     {data.connected && (
       <div
-        className={greenButtonStyle}
+        className={isImage ? greenButtonStyle : greenButtonDisabledStyle}
         onClick={mint}
+        disabled={!isImage}
       >
         Mint
       </div>

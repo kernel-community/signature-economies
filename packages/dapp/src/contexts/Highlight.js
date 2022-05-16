@@ -32,11 +32,17 @@ const reducer = (state, action) => {
         image: action.payload
       };
     }
-    case 'mint': {
-      // upload image to arweave
-      // generate metadata -> send metadata to arweave
-      // mint nft
-      return state;
+    case 'metadata': {
+      // generate metadata
+      // receives arweave transaction id in payload
+      if (!state.image) return state; // this should be an error
+      return {
+        ...state,
+        metadata: {
+          ...state.metadata,
+          image: state.image
+        }
+      };
     }
     default: return state;
   }

@@ -1,5 +1,5 @@
 import { ReactP5Wrapper } from 'react-p5-wrapper';
-import HighlightSketch from '../highlight-sketch';
+import Canvas from '../Canvas';
 import { HighlightContext } from '../../contexts/Highlight';
 import { useContext } from 'react';
 
@@ -24,7 +24,7 @@ const Mintable = () => {
     {
       !state.image &&
         <ReactP5Wrapper
-          sketch={HighlightSketch}
+          sketch={Canvas}
           selectedText={state.text}
           handleFinishedDrawing={(img) => dispatch({ type: 'ready', payload: img })}
         />
