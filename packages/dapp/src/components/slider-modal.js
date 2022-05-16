@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Connector } from '../web3/connect';
-import { createSign } from '../web3/contracts';
+import { Connector } from '../utils/connect';
+import { createSign } from '../utils/contracts';
 import { useConnect, useProvider, useSigner } from 'wagmi';
 import { ethers } from 'ethers';
 
@@ -203,7 +203,7 @@ function SliderModal({ setModalVisible }) {
           </div>
 
           {!data.connected && (
-            <div 
+            <div
               className="w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md"
               onClick={handleOnClickConnect}>
               {error && error.message && <div>Failed to connect</div>}
@@ -212,7 +212,7 @@ function SliderModal({ setModalVisible }) {
           )}
 
           {data.connected && (
-            <div 
+            <div
               className="w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md"
               onClick={handleOnClickMint}>
               Mint
