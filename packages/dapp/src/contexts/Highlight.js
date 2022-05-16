@@ -4,8 +4,8 @@
  */
 import { useReducer, createContext, useMemo } from "react";
 
-
 export const HighlightContext = createContext();
+
 const reducer = (state, action) => {
   // reducer will only cause a re-render if it returns a new / changed state
   switch(action.type) {
@@ -32,18 +32,6 @@ const reducer = (state, action) => {
         image: action.payload
       };
     }
-    case 'metadata': {
-      // generate metadata
-      // receives arweave transaction id in payload
-      if (!state.image) return state; // this should be an error
-      return {
-        ...state,
-        metadata: {
-          ...state.metadata,
-          image: state.image
-        }
-      };
-    }
     default: return state;
   }
 }
@@ -51,7 +39,6 @@ const initial = {
   text: "",
   modal: false,
   image: undefined,
-  metadata: {}
 };
 export const HighlightProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initial);
