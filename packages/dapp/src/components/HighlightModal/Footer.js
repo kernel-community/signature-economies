@@ -20,7 +20,7 @@ const Footer = () => {
     {!data.connected && (
       <div
         className={greenButtonStyle}
-        onClick={connect(data.connectors[Connector.INJECTED])}>
+        onClick={() => connect(data.connectors[Connector.INJECTED])}>
         {error && error.message && <div>Failed to connect</div>}
         Connect
       </div>
