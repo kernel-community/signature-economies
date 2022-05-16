@@ -13,7 +13,7 @@ dataSources:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - NFT
+        - SignatureNFT
         - Account
       abis:
         - name: SignatureNFT
@@ -28,14 +28,14 @@ dataSources:
     name: SignatureFund
     network: localhost
     source:
-      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F"
       abi: SignatureFund
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - NFT
+        - SignatureFund
         - Account
       abis:
         - name: SignatureFund

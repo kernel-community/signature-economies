@@ -18,7 +18,7 @@ contract SignatureFund is ERC721Tradable {
     // The address of the WETH contract
     address public weth;
 
-    event SignCreated(address indexed donor, uint256 amount, uint256 indexed tokenId, string uri);
+    event SignCreated(address indexed signer, uint256 amount, uint256 indexed tokenId, string uri);
 
     constructor(
         address _proxyRegistryAddress,

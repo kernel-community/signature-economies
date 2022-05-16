@@ -6,7 +6,7 @@ package-lock.json
 .openzeppelin
 
 # hardhat-deploy localhost results
-deloyments/localhost
+deployments/localhost/*
 
 # local env files
 .env.local
