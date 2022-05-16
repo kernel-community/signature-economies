@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "SignatureFund": {
-          "address": "0xCdE5DbEA69C686b2502A7F0978a43BBF92d12387",
+          "address": "0xAa5498C572de5502E3Ea2C0651C92cbbeB061463",
           "abi": [
             {
               "inputs": [
@@ -84,7 +84,7 @@
                 {
                   "indexed": true,
                   "internalType": "address",
-                  "name": "donor",
+                  "name": "signer",
                   "type": "address"
                 },
                 {
@@ -491,7 +491,7 @@
           ]
         },
         "SignatureNFT": {
-          "address": "0x5104c86eaA9f0E07640A7F2D6497A8ba839C283c",
+          "address": "0x4254054C6A6Fc3288f4c7C647EB07e9b16836c3c",
           "abi": [
             {
               "inputs": [
@@ -961,7 +961,7 @@
       "chainId": "1337",
       "contracts": {
         "SignatureFund": {
-          "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+          "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
           "abi": [
             {
               "inputs": [
@@ -1040,7 +1040,7 @@
                 {
                   "indexed": true,
                   "internalType": "address",
-                  "name": "donor",
+                  "name": "signer",
                   "type": "address"
                 },
                 {

@@ -126,7 +126,7 @@ query MyQuery {
   signatureFunds {
     id
     uri
-    donationAmount
+    signedAmount
     steward {
       id
     }

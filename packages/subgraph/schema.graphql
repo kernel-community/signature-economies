@@ -9,7 +9,7 @@ type SignatureFund @entity {
   uri: String!
 
   "The donation amount if it was a SignatureFund NFT"
-  donationAmount: BigInt!
+  signedAmount: BigInt!
 }
 
 type SignatureNFT @entity {
