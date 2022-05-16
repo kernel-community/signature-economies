@@ -4,6 +4,7 @@
  */
 import { useReducer, createContext, useMemo } from "react";
 
+
 export const HighlightContext = createContext();
 const reducer = (state, action) => {
   // reducer will only cause a re-render if it returns a new / changed state
@@ -26,7 +27,10 @@ const reducer = (state, action) => {
       };
     }
     case 'ready': {
-      return {...state, image: action.payload};
+      return {
+        ...state,
+        image: action.payload
+      };
     }
     case 'mint': {
       // upload image to arweave
