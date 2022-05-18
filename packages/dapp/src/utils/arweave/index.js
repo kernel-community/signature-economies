@@ -16,6 +16,8 @@ export const upload = async({data, contentType}) => {
     console.log(`${uploader.pctComplete}% complete, ${uploader.uploadedChunks}/${uploader.totalChunks}`);
   }
   return {
-    id: tx.id
+    id: tx.id,
+    arUrl: `ar://${tx.id}`,
+    httpsUrl: `https://arweave.net/${tx.id}`
   }
 }

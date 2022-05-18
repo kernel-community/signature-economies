@@ -6,7 +6,7 @@ import { Counters } from "@openzeppelin/contracts/utils/Counters.sol";
 
 contract SignatureNFT is ERC721Tradable {
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIdCounter;
+    Counters.Counter public tokenIdCounter;
 
     // A Kernel address for proper attribution
     address public creator;
@@ -31,7 +31,7 @@ contract SignatureNFT is ERC721Tradable {
      *  @param recipient the royalties recipient - will always be pr1s0nart, for regulatory reasons.
      *  @param value royalties value (between 0 and 10000)
     */
-    function setRoyalties(address recipient, uint256 value) 
+    function setRoyalties(address recipient, uint256 value)
         external
     {
         require(msg.sender == creator, "Only the creator of this contract can set and change royalites");
@@ -43,13 +43,13 @@ contract SignatureNFT is ERC721Tradable {
      * @param uri arweave url
      * TODO: are there ways to protect this function while still ensuring readers pay gas fees and we don't use onlyOwner?
      */
-    function mintSelected(string memory uri) 
-        external 
+    function mintSelected(string memory uri)
+        external
     {
-        uint256 newTokenId = _tokenIdCounter.current();
+        uint256 newTokenId = tokenIdCounter.current();
         _safeMint(creator, msg.sender, newTokenId);
         _setTokenURI(newTokenId, uri);
-        _tokenIdCounter.increment();
+        tokenIdCounter.increment();
 
         emit NewSignature(msg.sender, newTokenId, uri);
     }
