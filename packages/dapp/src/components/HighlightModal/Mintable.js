@@ -1,5 +1,5 @@
 import { ReactP5Wrapper } from 'react-p5-wrapper';
-import Canvas from '../Canvas';
+import Canvas from './Canvas';
 import { HighlightContext } from '../../contexts/Highlight';
 import { useContext } from 'react';
 
