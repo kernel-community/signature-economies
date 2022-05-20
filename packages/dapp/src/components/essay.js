@@ -156,23 +156,34 @@ function Essay () {
                     ownership and art in Ethereum
                     </a>{' '}
                     ends by pointing out that this network differs from traditional art
-                    markets because it is public, transparent and voluntary.
+                    markets because it is public, transparent, and voluntary.
                 </div>
                 <div>
-                    Perhaps all this work is not about the right to control, but
+                    Perhaps all this work is not about the right to control, but about cultivating
                     responsibility? Having no intermediaries creates certain benefits,
                     but it is - as always - a tradeoff: if you misplace your mnemonic,
                     it means no more magic internet money and there is no customer
-                    service to help you. This can be addressed by{' '}
+                    service to help you. However, this can be addressed by{' '}
                     <a target="_blank" rel="noreferrer" href="https://vitalik.ca/general/2021/01/11/recovery.html">
                     interdependent architectures
                     </a>{' '}
-                    and, in the context of responsibility not just for our own keys but
-                    the recovery of others, “Make meaningful economies” is a more crafty
+                    and “by {' '}
+                    <a target="_blank" rel="noreferrer" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763">
+                    embedding security in sociality
+                    </a> [such that we] can always regenerate keys through community recovery”. 
+                </div>
+                <div> 
+                    As the meaning of ‘ownership’ shifts, it drags other critical terms along with it, 
+                    like ‘social security’. This has a cascading effect, such that words 
+                    like ‘welfare’ may come to mean more than just financial stability secured by bureaucratic states, 
+                    signifying - in addition to the financial - our access to and participation in “authentic communication
+                    channels” through which we establish, by consensus, shared and open state.
+                    In this context, and keeping in mind our responsibility not just for our own keys but the recovery of others, 
+                    “Make meaningful economies” is a more crafty
                     <sup>2</sup> cultural signal than “Own your piece of the economy”.
                 </div>
                 <div>
-                    It’s also critical that our terms are plural. Our work must not be
+                    While our state is globally shared, it is critical that our terms are plural. Our work must not be
                     about replicating one dominant economic{' '}
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-7/no-paradigm/">
                     paradigm
@@ -183,7 +194,7 @@ function Essay () {
                     value to interface
                     </a>{' '}
                     with one another in creative ways which don’t aim for cancerous
-                    growth, but are self-sustaining, responsible and resilient.
+                    growth, but are self-sustaining, responsible, and resilient.
                 </div>
                 </div>
 
@@ -282,17 +293,23 @@ function Essay () {
                     <a target="_blank" rel="noreferrer" href="https://videomole.tv/wp-content/uploads/2018/04/JD1972.pdf">
                     Derrida’s words
                     </a>
-                    , it is at once singular and iterable. A wonderful phrase that
-                    carries the same kind of paradoxical structure is the isiZulu
-                    saying, “umuntu ngumuntu ngabantu”: a human being is only a human
-                    being through other human beings. We have here the possibility of
+                    , it is at once singular and iterable. Two wonderful phrases that
+                    carry the same kind of paradoxical structure are the isiZulu
+                    saying, “<i>umuntu ngumuntu ngabantu</i>”: a human being is only a human
+                    being through other human beings, and the{' '}
+                    <a target="_blank" rel="noreferrer" href="https://www.kernel.community/en/conversation/hospitality/deep-response/#commons--autonomy">
+                    Kanien'kehá:ka
+                    </a>{' '}
+                    phrase “<i>I’ionrhek thiia’tionha’ak nonen tion’kwatorohon</i>”: 
+                    we are individual but we discover ourselves within the collective. 
+                    Both sayings hold the possibility and promise of 
                     individuation: you can become a full human being; but you can only
                     do so in community. You can only do so through fulfilling your
                     responsibilities in relationship, not through asserting your rights.
                 </div>
                 <div>
                     Even the word ‘economies’ contains this same double-directedness. It
-                    comes from the Greek oikos, which means ‘house’. Sustainable
+                    comes from the Greek <i>oikos</i>, which means ‘house’. Sustainable
                     household management requires micro insights into each of our
                     habits, as well as macro perspectives of our shared habitations,
                     including the planet which{' '}
@@ -378,7 +395,7 @@ function Essay () {
 
                 <div className="mx-auto flex flex-col px-8 md:px-0 py-16 w-full md:w-[800px] gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center">
                 <div>
-                    The ‘coin’ your key controls comes from the Latin word cuneus, which
+                    The ‘coin’ your key controls comes from the Latin word ‘<i>cuneus</i>’, which
                     once meant ‘cornerstone’. In this single sign is the signal we can
                     use to understand the shifting meaning of ownership. Will your coins
                     be the{' '}
@@ -406,7 +423,7 @@ function Essay () {
                 <div>
                     There is also another connotation waiting for us in the word
                     ‘economy’: to use sparingly. The messages we sign as a means of
-                    managing our shared record cannot be censored by anyone, but they
+                    maintaining our shared record cannot be censored by anyone, but they
                     can be seen by everyone, so be careful what kinds of money you make
                     meaningful. With programmable power comes permanent accountability.
                     As another poet remembers, though:

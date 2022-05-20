@@ -82,8 +82,14 @@ const FootNotes = () => {
                     and that the only way to approach meaningful description in
                     natural language is through negation: “The dao that can be named
                     is not the eternal dao”. What signatures allow for, though, is not
-                    only negation, but the possibility of positive response in the
-                    sense Viktor Frankl meant in <i>Yes To Life</i>.
+                    only negation, but{' '}
+                    <a target="_blank" rel="noreferrer" href="https://andytudhope.africa/academy/communal-language/#beloved-and-positive-capability">
+                        positive capability
+                    </a>
+                    , a sensibility and capacity well represented by Viktor Frankl in a lesser-known work of his,{' '}
+                    <a target="_blank" rel="noreferrer" href="https://www.themarginalian.org/2020/07/17/viktor-frankl-yes-to-life-love-music/">
+                        <i>Yes To Life</i> 
+                    </a>.
                     </p>
 
                     <p>
