@@ -138,9 +138,7 @@ function Essay () {
                     <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=U7v63TjdutE&t=2999s">
                     opposite
                     </a>
-                    : “content can now be{' '}
-                    <a target="_blank" rel="noreferrer" href="https://www.studio1.wtf/">proliferated</a> instead of
-                    protected.”
+                    : “content can now beproliferated instead of protected.<sup>2</sup>”
                 </div>
                 <div>
                     The very first proto-NFTs hinted at this shift. “
@@ -180,7 +178,7 @@ function Essay () {
                     channels” through which we establish, by consensus, shared and open state.
                     In this context, and keeping in mind our responsibility not just for our own keys but the recovery of others, 
                     “Make meaningful economies” is a more crafty
-                    <sup>2</sup> cultural signal than “Own your piece of the economy”.
+                    <sup>3</sup> cultural signal than “Own your piece of the economy”.
                 </div>
                 <div>
                     While our state is globally shared, it is critical that our terms are plural. Our work must not be
@@ -210,7 +208,7 @@ function Essay () {
                     that managing your own keys is risky and hard. The user experience
                     of this is bad not because we lack great designers, but because
                     responsibility is an inherently difficult feature for which to
-                    design<sup>3</sup>. This is because response-ability is not about
+                    design<sup>4</sup>. This is because response-ability is not about
                     discrete, individual actions which release the most dopamine, but
                     our unique{' '}
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-4/self-enquiry">
@@ -228,7 +226,7 @@ function Essay () {
                     audience, and are subject to someone else’s story. However, signed
                     messages which change the state of a network no-one controls require
                     recurring participation as we commit individual transactions into a
-                    shared, relatable context<sup>4</sup>.{' '}
+                    shared, relatable context<sup>5</sup>.{' '}
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-7/the-gift/#anonymous-and-lively">
                     The gift
                     </a>{' '}
@@ -256,11 +254,11 @@ function Essay () {
                     <a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/Kaitiaki">kaitiaki</a>
                     </i>
                     : guardianship that is not about control, but relationship
-                    <sup>5</sup>.
+                    <sup>6</sup>.
                 </div>
                 <div>
                     Can we create a culture where I am wealthy by virtue of what I care
-                    for, rather than what I control<sup>6</sup>? Where wealth means “{' '}
+                    for, rather than what I control<sup>7</sup>? Where wealth means “{' '}
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/conversation/reciprocity/">
                     having enough to share
                     </a>
@@ -330,7 +328,7 @@ function Essay () {
                     <a target="_blank" rel="noreferrer" href="https://andytudhope.africa/academy/communal-language/#love-this-sound">
                     calls up a response
                     </a>
-                    , meaning is made more widely accessible<sup>7</sup>. When we cast
+                    , meaning is made more widely accessible<sup>8</sup>. When we cast
                     these new networks as economies of sign rather than of ownership,
                     then the game becomes one of{' '}
                     <a target="_blank" rel="noreferrer" href="https://youtu.be/uN4g0Sr3jhs?t=1918">
