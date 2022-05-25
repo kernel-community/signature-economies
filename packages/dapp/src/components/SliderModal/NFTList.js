@@ -9,20 +9,15 @@ const NFTList = () => {
     return (
       <div
         className={
-          `min-h-max w-full ${isSelected ? 'border-2' : 'border-transparent'} bg-white rounded-lg justify-center items-center flex cursor-pointer`
+          `min-h-max w-full ${isSelected ? 'border-2' : 'border-2 border-transparent'} bg-white rounded-lg hover:border-gray-200 transition-all justify-center items-center flex cursor-pointer`
         }
         onClick={ () => dispatch({ type: 'select', payload: index }) }
         key={index}
       >
-        <div className="text-slate-800 hidden h-32 p-2 w-full text-sm md:text-md text-left md:flex items-center font-serif overflow-scroll">
+        <div className={`${isSelected ? 'text-slate-800' : 'text-slate-400'} hidden h-32 p-2 w-full text-sm md:text-md text-left hover:text-slate-800 transition-all md:flex items-center font-serif overflow-scroll`}>
             {nft.text}
         </div>
-        <div className={
-          `${isSelected ? 'text-slate-800' : 'text-slate-400'}
-          md:hidden h-8 text-center text-sm flex justify-center items-center`
-        }>
-            {nft.id}
-        </div>
+        
       </div>
     );
   });
