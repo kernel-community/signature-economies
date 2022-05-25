@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "SignatureFund": {
-          "address": "0xAa5498C572de5502E3Ea2C0651C92cbbeB061463",
+          "address": "0x6E10CaDF8F623d90b36A88f8F42a4E02221F6BB9",
           "abi": [
             {
               "inputs": [
@@ -491,7 +491,7 @@
           ]
         },
         "SignatureNFT": {
-          "address": "0x4254054C6A6Fc3288f4c7C647EB07e9b16836c3c",
+          "address": "0x3488a78A9F5ac75486a1e179447682200DF4D637",
           "abi": [
             {
               "inputs": [
@@ -504,10 +504,25 @@
                   "internalType": "address",
                   "name": "_creator",
                   "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_signer",
+                  "type": "address"
                 }
               ],
               "stateMutability": "nonpayable",
               "type": "constructor"
+            },
+            {
+              "inputs": [],
+              "name": "NotAuthorized",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "WrongSignature",
+              "type": "error"
             },
             {
               "anonymous": false,
@@ -721,6 +736,16 @@
                   "internalType": "string",
                   "name": "uri",
                   "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "signature",
+                  "type": "bytes"
                 }
               ],
               "name": "mintSelected",
@@ -874,6 +899,32 @@
               "name": "setRoyalties",
               "outputs": [],
               "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newSigner",
+                  "type": "address"
+                }
+              ],
+              "name": "setSigner",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "signer",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
               "type": "function"
             },
             {
@@ -1447,7 +1498,7 @@
           ]
         },
         "SignatureNFT": {
-          "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+          "address": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
           "abi": [
             {
               "inputs": [
@@ -1859,6 +1910,19 @@
                   "internalType": "string",
                   "name": "",
                   "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "tokenIdCounter",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_value",
+                  "type": "uint256"
                 }
               ],
               "stateMutability": "view",
