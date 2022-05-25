@@ -8,6 +8,7 @@
   "dependencies": {},
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.4",
+    "@nomiclabs/hardhat-etherscan": "^3.0.3",
     "@nomiclabs/hardhat-waffle": "^2.0.2",
     "@openzeppelin/contracts": "^4.4.2",
     "chai": "^4.3.6",
@@ -16,7 +17,8 @@
     "ethers": "^5.5.3",
     "hardhat": "^2.8.3",
     "hardhat-deploy": "^0.11.4",
-    "hardhat-deploy-ethers": "^0.3.0-beta.13"
+    "hardhat-deploy-ethers": "^0.3.0-beta.13",
+    "hardhat-gas-reporter": "^1.0.8"
   },
   "scripts": {
     "clean": "yarn hardhat clean",
@@ -31,7 +33,7 @@
     "mintlocal": "yarn hardhat --network localhost mint --tokenuri https://arweave.net/R5VjN9UOc1llzmvOYvymFmDexZmIxIkzz9n5CvyVAd8",
     "signlocal": "yarn hardhat --network localhost createSign --selectednft three",
     "deployrinkeby": "yarn hardhat --network rinkeby deploy --export-all ../subgraph/config/deployments.json",
-    "mintrinkeby": "yarn hardhat --network rinkeby mint --tokenuri https://arweave.net/5TeDFn9GwtZD2UiXasR-xrs4pXJ1VMxdweLUTI8Mkx0",
+    "mintrinkeby": "yarn hardhat --network rinkeby mint --tokenuri https://arweave.net/jPgq6Y29R3D4rj7Bz4qeHvVBaUXD8236Ztt7JwCmgrE --tokenid 0",
     "signrinkeby": "yarn hardhat --network rinkeby createSign --selectednft one"
   }
 }

@@ -30,7 +30,7 @@ contract SignatureFund is ERC721Tradable {
     }
 
     /**
-     * @dev Link to Contract metadata https://docs.opensea.io/docs/contract-level-metadata
+     * @notice Link to contract metadata
     */
     function contractURI() external pure returns (string memory) {
         return "https://arweave.net/LGLdXi8f0bh5_GYsxN-Iq1m4oBvrAMutVUVjgut0Ilw";
@@ -59,12 +59,12 @@ contract SignatureFund is ERC721Tradable {
         // Depending on the value of the message which mints the selected NFT, we assign
         // the metadataURI used when minting the NFT. The url links to a json file with
         // all the relevant information, especially the mp4 video of the signature seals.
-        // https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/0/one.json or
-        // https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/1/two.json or
-        // https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/10/three.json
+        // https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/0/one.json or
+        // https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/1/two.json or
+        // https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/10/three.json
 
         string memory uri;
-        string memory arweaveBase = 'https://arweave.net/MyoQbukHYV49X_J2IjLELw5i03g5Pi3w8qzrzuhO-TY/';
+        string memory arweaveBase = 'https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/';
         
         if(msg.value < 1 ether) {
             uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".json"));

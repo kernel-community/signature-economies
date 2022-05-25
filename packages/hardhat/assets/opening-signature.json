@@ -1,0 +1,86 @@
+{
+    "name": "Opening Signature",
+    "description": "https://www.youtube.com/watch?v=zxOoEfZXQb4", 
+    "attributes": [
+        {
+            "trait_type": "Opening", 
+            "value": "888"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Play"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Trust"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Meaning"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Value"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "True Voice"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Better Questions"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Intention"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Freedom"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Govern"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Yourself"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Listen"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Clarity"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Learn"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Without Censorship"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Giving"
+        },
+        {
+            "trait_type": "Attribute", 
+            "value": "Scale-ability"
+        },
+        {
+            "display_type": "boost_number", 
+            "trait_type": "Humour", 
+            "value": 88
+        }, 
+        {
+            "display_type": "boost_percentage", 
+            "trait_type": "Patience", 
+            "value": 42
+        }
+    ],
+    "external_url": "https://sign.kernel.community",
+    "image": "ar://dDj2ppnvu07XkfH4obgbj946KPJlYbnIUnsPnlXguZ0"
+}

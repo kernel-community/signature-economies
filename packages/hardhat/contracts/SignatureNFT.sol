@@ -12,9 +12,7 @@ contract SignatureNFT is ERC721Tradable {
     // A Kernel address for proper attribution
     address public creator;
 
-    /**
-     * @notice account used to sign the mintings
-     */
+    // account used to sign the selectedNfts to ensure the collection remains as intended
     address public signer;
 
     event NewSignature(address signer, uint256 indexed tokenId, string uri);
@@ -34,7 +32,7 @@ contract SignatureNFT is ERC721Tradable {
     }
 
     /**
-     * @dev Link to Contract metadata https://docs.opensea.io/docs/contract-level-metadata
+     * @notice Link to contract metadata
      */
     function contractURI() external pure returns (string memory) {
         return
@@ -56,14 +54,10 @@ contract SignatureNFT is ERC721Tradable {
      * @dev mints a unique NFT from some user-selected piece of text (which we make into an image & store in Arweave)
      * @param uri arweave url
      * @param tokenId the tokenId to mint
-     * @param signature from `signer` to ensure no race condition on token ids
-     * TODO: are there ways to protect this function while still ensuring readers pay gas fees and we don't use onlyOwner?
+     * @param signature from `signer` to ensure no race condition on token ids and ensures this open collection is not unnecessarily vulnerable
      */
     function mintSelected(string memory uri, uint256 tokenId, bytes calldata signature) external {
-        // verifies tokenId has been signed / validated by signer
         _verifySignature(tokenId, uri, signature);
-        
-        // @TODO: verify in eip721 if minting shouldn't come from address(0)
         _safeMint(creator, msg.sender, tokenId);
         _setTokenURI(tokenId, uri);
 

@@ -3,7 +3,7 @@ module.exports = async ({getNamedAccounts, deployments}) => {
     var {deployer, creator} = await getNamedAccounts();
 
     var PROXY_REGISTRATION_ADDRESS = '0xa5409ec958c83c3f309868babaca7c86dcb077c1';
-    let SIGNER_ADDRESS = process.env.MAINNET_SIGNER_ADDRESS;
+    let SIGNER_ADDRESS = '0x1F4Cb07192f96e2316d07A8ee2DBd503a74eD8dF';
 
     const network = await hre.ethers.provider.getNetwork();
     console.log(`network: ${network.name}`);
@@ -11,7 +11,7 @@ module.exports = async ({getNamedAccounts, deployments}) => {
       console.log('Using Opensea registration address for Rinkeby');
       PROXY_REGISTRATION_ADDRESS = '0xf57b2c51ded3a29e6891aba85459d600256cf317';
       creator= '0x1D32F2aCB832AFc3D8c8ffB3BE20e8dC7Faac507';
-      SIGNER_ADDRESS = process.env.RINKEBY_SIGNER_ADDRESS;
+      SIGNER_ADDRESS = '0x1F4Cb07192f96e2316d07A8ee2DBd503a74eD8dF';
     }
     await deploy('SignatureNFT', {
       from: deployer,
