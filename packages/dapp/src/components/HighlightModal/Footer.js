@@ -1,16 +1,16 @@
 import { useContext } from 'react';
 import { useConnect, useSigner, useProvider } from "wagmi"
 import { HighlightContext } from '../../contexts/Highlight';
-import { upload } from "../../utils/arweave/index";
-import { Buffer } from 'buffer';
-import { generate } from '../../utils/eth/metadata';
+import { generate } from '../../utils/metadata';
 import ExecutionButton from '../common/ExecutionButton';
 import ConnectButton from '../common/ConnectButton';
-import { mintSelected, nextTokenId } from '../../utils/eth/contracts';
+import { mintSelected, ownerOf  } from '../../utils/contracts';
+import { upload, sign } from "../../utils/server";
+import { defaultAbiCoder, keccak256 } from 'ethers/lib/utils';
 
 const Footer = () => {
   const { state, dispatch } = useContext(HighlightContext);
-  const {activeConnector} = useConnect();
+  const { activeConnector } = useConnect();
   const { data: signer } = useSigner();
   const provider = useProvider();
   const isImage = !!state.image;
@@ -19,23 +19,35 @@ const Footer = () => {
       // throw an error here or prompt the user to reload
       return;
     }
+    const image = state.image.split(",")[1]
+    const { arUrl: imageUrl } = (await upload({
+        data: image,
+        contentType: 'image/png'
+      })).data;
 
-    // fetch and upload image
-    const image = Buffer.from(state.image.split(",")[1], "base64")
-    const { arUrl: imageUrl } = await upload({ data: image, contentType: 'image/png' });
+    const hash = keccak256(defaultAbiCoder.encode(['string'],[state.text]));
 
-    // fetch, generate and upload metadata
-    const tokenId = nextTokenId(provider);
-    const metadata = generate(tokenId, imageUrl, state.text.length);
-    const { arUrl: metadataUrl } = await upload({
-      data: JSON.stringify(metadata),
-      contentType: 'text/plain'
+    const metadata = generate(hash, imageUrl, state.text.length);
+
+    const { arUrl: metadataUrl } = (await upload({
+        data: JSON.stringify(metadata),
+        contentType: 'text/plain'
+      })).data;
+
+    const { signature, id } = (await sign({ arUrl: metadataUrl })).data;
+
+    await mintSelected({
+      url: metadataUrl,
+      provider,
+      signer,
+      id,
+      signature
     });
 
-    console.log(metadataUrl);
+    const owner = await ownerOf(provider, id);
 
-    // mint nft
-    await mintSelected(metadataUrl, provider, signer);
+    // @todo remove
+    console.log(`new owner of token id ${id}: ${owner}`);
   }
   return (
     <div className="flex flex-row w-full justify-center gap-x-4 text-center my-5">

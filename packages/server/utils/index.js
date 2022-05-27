@@ -1,11 +1,16 @@
-import Arweave from 'arweave';
-import Key from "./key.json";
-import Config from "./config.json";
-const key = Key.key;
+const Arweave = require('arweave');
+const Secrets = require("../secrets.json");
+const Config = require("../config.json");
 
-const arweave = Arweave.init(Config.gateway);
+const key = Secrets.arweave.key;
 
-export const upload = async({data, contentType}) => {
+const arweave = Arweave.init(Config.arweave.gateway);
+
+// upload to arweave
+exports.upload = async({data, contentType}) => {
+  if (contentType === 'image/png') {
+    data = Buffer.from(data, "base64");
+  }
   const tx = await arweave.createTransaction({ data }, key);
   tx.addTag('Content-Type', contentType);
   await arweave.transactions.sign(tx, key); // returns undefined

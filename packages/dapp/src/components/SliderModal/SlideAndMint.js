@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { createSign } from '../../utils/eth/contracts';
+import { createSign } from '../../utils/contracts';
 import { useConnect, useProvider, useSigner } from 'wagmi';
 import { SliderContext } from '../../contexts/Slider';
 import ExecutionButton from "../common/ExecutionButton";

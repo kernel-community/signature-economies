@@ -1,9 +1,11 @@
 /**
  * Balance of saved wallet
  */
-const {address} = require("../../key.json");
+const Secrets = require("../../../secrets.json");
 const init = require("../connect");
 const arweave = init();
+
+const address = Secrets.arweave.address;
 
 ;(async () => {
   const winston = await arweave.wallets.getBalance(address);

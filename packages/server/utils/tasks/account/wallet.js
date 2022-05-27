@@ -7,11 +7,13 @@ const fs = require('fs');
 const path = require('path');
 
 const arweave = init();
-const keyPath = path.join(__dirname,"..", "key.json");
+const keyPath = path.join(__dirname, ".." ,"..", "..", "secrets.json");
 
 ;(async () => {
   const key = await arweave.wallets.generate();
   const address = await arweave.wallets.jwkToAddress(key);
-  await fs.writeFileSync(keyPath, JSON.stringify({key, address}));
+  const secrets = JSON.parse(await fs.readFileSync(keyPath, "utf-8"));
+  Object.assign(secrets, {arweave: { key, address }});
+  await fs.writeFileSync(keyPath, JSON.stringify(secrets));
   console.log(address);
 })();

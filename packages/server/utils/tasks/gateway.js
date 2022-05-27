@@ -6,7 +6,10 @@
  */
 
 const axios = require('axios').default;
+const Config = require("../../config.json");
+
+const { host, port, protocol } = Config.arweave.gateway;
 
 exports.gateway = axios.create({
-  baseURL: "http://localhost:1984",
+  baseURL: `${protocol}://${host}:${port}`,
 });
