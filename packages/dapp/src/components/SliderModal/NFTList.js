@@ -17,7 +17,12 @@ const NFTList = () => {
         <div className={`${isSelected ? 'text-slate-800' : 'text-slate-400'} hidden h-32 p-2 w-full text-sm md:text-md text-left hover:text-slate-800 transition-all md:flex items-center font-serif overflow-scroll`}>
             {nft.text}
         </div>
-        
+        <div className={
+          `${isSelected ? 'text-slate-800' : 'text-slate-400'}
+          md:hidden h-8 text-center text-sm flex justify-center items-center`
+        }>
+            {nft.id}
+        </div>
       </div>
     );
   });

@@ -36,7 +36,7 @@ const SlideAndMint = () => {
         <div className="text-gray-300 text-sm font-redaction flex items-center justify-center">
           Hover on the image to see the back
         </div>
-        <div className='flex items-center'>
+        <div className='flex flex-col gap-y-12 md:flex-row items-center'>
           <SliderInput />
           {
             activeConnector ?
