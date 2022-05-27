@@ -16,8 +16,13 @@ const SlideAndMint = () => {
   const { data: signer } = useSigner();
 
   const handleOnClickMint = async () => {
-    await createSign(state.selected.toString(), provider, signer)
-    // show some success message to the reader and close the modal @todo
+    await createSign({
+      value: state.input.toString(),
+      token: state.selected.toString(),
+      provider,
+      signer
+    })
+    // @todo show some success message to the reader and close the modal 
     dispatch({ type: 'close' });
   }
 
