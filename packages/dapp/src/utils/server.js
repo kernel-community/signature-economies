@@ -9,8 +9,24 @@ const server = axios.create({
    }
  });
 
-export const upload = async ({data, contentType}) => server.post(`/upload`, { data, contentType });
+export const upload = async ({data, contentType}) => {
+  let uploadData;
+  try {
+    uploadData = server.post(`/upload`, { data, contentType });
+  } catch (err) {
+    console.log(err);
+    throw new Error ("There was an error");
+  }
+  return uploadData;
+}
 
-export const sign = async ({ arUrl }) => server.post(`/sign`, { arUrl });
-
-export const next = async() => server.get(`/next`);
+export const sign = async ({ arUrl }) => {
+  let signData;
+  try {
+    signData = server.post(`/sign`, { arUrl });
+  } catch (err) {
+    console.log(err);
+    throw new Error ("There was an error");
+  }
+  return signData;
+}
