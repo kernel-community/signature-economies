@@ -10,7 +10,7 @@ import { defaultAbiCoder, keccak256 } from 'ethers/lib/utils';
 
 const Footer = () => {
   const { state, dispatch } = useContext(HighlightContext);
-  const {activeConnector} = useConnect();
+  const { activeConnector } = useConnect();
   const { data: signer } = useSigner();
   const provider = useProvider();
   const isImage = !!state.image;
