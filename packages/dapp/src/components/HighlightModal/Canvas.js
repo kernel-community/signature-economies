@@ -84,12 +84,13 @@ function HighlightSketch(p5) {
     if (props.selectedText) {
       selectedText = props.selectedText;
       p5.setup();
+      console.log(selectedText.length);
     }
     handleFinishedDrawing = props.handleFinishedDrawing;
   };
 
   p5.draw = () => {
-    if(n >= selectedText.length){
+    if(n >= 400 || n >= selectedText.length) {
       p5.noLoop();
       const img = canvas?.elt?.toDataURL();
       handleFinishedDrawing(img);
@@ -220,8 +221,17 @@ function HighlightSketch(p5) {
     p5.textSize(28);
     p5.text("Signature Economies",493,1130,400,100);
 
-    if (n < selectedText.length) {
+    if (n < selectedText.length && n<=400) {
+      //animate the pattern
       n+=2;
+    }else{
+      //stop animation at 400 or selectedText.length, whichever is smaller
+      if(selectedText.length>400){
+        n = 400;
+      }
+      else{
+        n = selectedText.length;
+      }
     }
   };
 }
