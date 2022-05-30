@@ -145,7 +145,7 @@ function Essay () {
                     <a target="_blank" rel="noreferrer" href="https://cryptochainuni.com/wp-content/uploads/ascribe-whitepaper-Towards-An-Ownership-Layer.pdf">
                     Towards An Ownership Layer for the Internet
                     </a>
-                    ” speaks about tractable solutions to “make ownership actions of
+                    ” speaks about ways to “make ownership actions of
                     digital property universally accessible.” Only in{' '}
                     <a target="_blank" rel="noreferrer" href="https://youtu.be/whVnseOtElI?t=65">web3</a> can the words
                     ‘ownership’ and ‘universally accessible’ be found together sensibly.
@@ -159,7 +159,7 @@ function Essay () {
                 <div>
                     Perhaps all this work is not about the right to control, but about cultivating
                     responsibility? Having no intermediaries creates certain benefits,
-                    but it is - as always - a tradeoff: if you misplace your mnemonic,
+                    but it is—as always—a tradeoff: if you misplace your mnemonic,
                     it means no more magic internet money and there is no customer
                     service to help you. However, this can be addressed by{' '}
                     <a target="_blank" rel="noreferrer" href="https://vitalik.ca/general/2021/01/11/recovery.html">
@@ -174,7 +174,7 @@ function Essay () {
                     As the meaning of ‘ownership’ shifts, it drags other critical terms along with it, 
                     like ‘social security’. This has a cascading effect, such that words 
                     like ‘welfare’ may come to mean more than just financial stability secured by bureaucratic states, 
-                    signifying - in addition to the financial - our access to and participation in “authentic communication
+                    signifying—in addition to the financial—our access to and participation in “authentic communication
                     channels” through which we establish, by consensus, shared and open state.
                     In this context, and keeping in mind our responsibility not just for our own keys but the recovery of others, 
                     “Make meaningful economies” is a more crafty
@@ -210,19 +210,15 @@ function Essay () {
                     responsibility is an inherently difficult feature for which to
                     design<sup>4</sup>. This is because response-ability is not about
                     discrete, individual actions which release the most dopamine, but
-                    our unique{' '}
-                    <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-4/self-enquiry">
-                    relationships within a network
-                    </a>
-                    . Designing for{' '}
+                    our <strong>unique relationships within a network</strong>. Designing for{' '}
                     <a target="_blank" rel="noreferrer" href="https://youtu.be/uN4g0Sr3jhs?t=1620">
                     multiple, simultaneous use
                     </a>{' '}
                     is not a practice consumer culture values highly.
                 </div>
                 <div>
-                    Single sign-ons represent us as separate users and when - neatly
-                    categorized - we log in, we also hand over authority, become the
+                    Single sign-ons represent us as separate users and when—neatly
+                    categorized—we log in, we also hand over authority, become the
                     audience, and are subject to someone else’s story. However, signed
                     messages which change the state of a network no-one controls require
                     recurring participation as we commit individual transactions into a
@@ -253,7 +249,8 @@ function Essay () {
                     <i>
                     <a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/Kaitiaki">kaitiaki</a>
                     </i>
-                    : guardianship that is not about control, but relationship
+                    : guardianship that is about relationship, not control; about response-ability <i>to</i>, not
+                    responsibility <i>for</i>
                     <sup>6</sup>.
                 </div>
                 <div>
@@ -370,7 +367,7 @@ function Essay () {
                     , yet knowing this and still having the will and creativity to
                     iterate over incentive structures is what will continually imbue our
                     shared record with{' '}
-                    <a target="_blank" rel="noreferrer" href="injustice will always appear">true beauty</a>.
+                    <a target="_blank" rel="noreferrer" href="https://youtu.be/LwLP62fL83k?t=617">true beauty</a>.
                 </div>
                 </div>
 
@@ -424,7 +421,8 @@ function Essay () {
                     maintaining our shared record cannot be censored by anyone, but they
                     can be seen by everyone, so be careful what kinds of money you make
                     meaningful. With programmable power comes permanent accountability.
-                    As another poet remembers, though:
+                    To better understand the deeper meaning of 'power', though, we once 
+                    again turn to the poets:
                 </div>
 
                 <div className="mx-auto flex flex-col w-full md:w-[600px] gap-y-4 px-8 md:px-0 text-md md:text-2xl font-garamond text-center text-gray-800">
