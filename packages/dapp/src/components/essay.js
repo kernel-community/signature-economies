@@ -37,11 +37,14 @@ function Essay () {
             >
             <div className="flex flex-col w-screen h-screen items-center ">
                 <div className="flex md:text-8xl text-4xl flex-grow font-redaction text-gray-700 self-center">
-                    <div className=" my-auto mix-blend-color-multiply text-center">
-                    Signature
-                    <br />
-                    Economies
+                    <div className="my-auto mix-blend-color-multiply text-center">
+                        Signature
+                        <br />
+                        Economies
                     </div>
+                </div>
+                <div className='w-max mx-auto pt-16 pb-8 flex md:text-4xl text-2xl text-center font-redaction items-center self-center'>
+                    Make eternally beautiful signs
                 </div>
 
                 <div className="animate text-gray-700 pb-48">
@@ -86,11 +89,9 @@ function Essay () {
                 </div>
                 <div>
                     --
-                    <span className="font-bold underline">
-                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=dan5PntGO7E">
+                    <span className="font-bold">
                         {' '}
                         Kozan Ichikyo
-                    </a>
                     </span>
                 </div>
                 </div>
@@ -155,6 +156,19 @@ function Essay () {
                     </a>{' '}
                     ends by pointing out that this network differs from traditional art
                     markets because it is public, transparent, and voluntary.
+                </div>
+                <div className="w-max mx-auto pt-16 pb-8 mt-16 flex md:text-6xl text-4xl text-center font-redaction text-gray-800 items-center self-center">
+                    The Plural Good
+                </div>
+                <div>
+                    How does making a sign differ from exerting control or claiming possession? Once claimed, 
+                    possessed or controlled, the story is forced to a close, which is why the ‘ownership economy’ is singular. 
+                    Someone wins and everyone else loses. However, your signature is at once totally unique—there 
+                    is only one in the whole world—and yet it can be made many times over without losing meaning. 
+                    So it is that we can talk of Signature Economies in the plural, while still remembering that such plurality 
+                    is made meaningfully valuable by individual speech acts within and across a shared, public ledger.   
+                    To quote Wendell Berry, “Perhaps our most serious cultural loss in recent centuries is the knowledge 
+                    that some things, though limited, are inexhaustible.”
                 </div>
                 <div>
                     Perhaps all this work is not about the right to control, but about cultivating
