@@ -1,4 +1,4 @@
-import { abis } from "./abi";
-import { addresses } from "./addresses";
+const { abis } = require("./abi");
+const { addresses } = require("./addresses");
 
-export { addresses, abis }
+module.exports = { addresses, abis }
