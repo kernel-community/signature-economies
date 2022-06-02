@@ -14,9 +14,13 @@ const SlideAndMint = () => {
   const { activeConnector } = useConnect();
   const provider = useProvider();
   const { data: signer } = useSigner();
-
   const handleOnClickMint = async () => {
-    await createSign(state.selected.toString(), provider, signer)
+    await createSign({
+      value: state.input.toString(),
+      token: state.selected.toString(),
+      provider,
+      signer
+    })
     // show some success message to the reader and close the modal @todo
     dispatch({ type: 'close' });
   }
@@ -43,7 +47,6 @@ const SlideAndMint = () => {
             <ExecutionButton exec={handleOnClickMint} /> : <ConnectButton />
           }
         </div>
-
       </div>
       <CloseButton />
     </div>
