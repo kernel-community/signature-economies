@@ -37,6 +37,6 @@ export const generate = (hash, image, length) => {
       },
     ],
     external_url: "https://sign.kernel.community", // constant
-    image: "" // url
+    image: `${image}` // url
   }
 }
