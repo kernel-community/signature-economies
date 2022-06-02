@@ -12,8 +12,7 @@ const MintButton = () => {
       transition={{ duration: 0.2, type: "tween" }}
       onClick={() => dispatch({ type: 'open' })}
       className="
-        fixed bg-white select-none border-gray-600 z-50 bottom-8 w-max md:w-auto left-1/2 md:left-auto my-auto md:right-8 border-2 rounded-md p-2 md:p-4 px-12 hover:border-black font-redaction cursor-pointer
-      "
+        fixed bg-white select-none text-center bottom-8 border-gray-600 z-50 py-2 px-4 md:px-8 md:py-4 right-1/2 md:right-8 w-48 md:w-64 -mr-24 md:-mr-0 border-2 rounded-md hover:border-black font-redaction cursor-pointer"
       >
         Mint a Sealed NFT
     </motion.div>

@@ -1,24 +1,4 @@
-const addresses = (chainId) => {
-  switch (chainId) {
-    case 4:
-      return {
-        signatureFund: '0x6E10CaDF8F623d90b36A88f8F42a4E02221F6BB9',
-        signatureNFT: '0x3488a78A9F5ac75486a1e179447682200DF4D637',
-      }
-    case 1337:
-      return {
-        signatureFund: '0x0165878A594ca255338adfa4d48449f69242Eb8F',
-        signatureNFT: '0xa513E6E4b8f2a923D98304ec87F64353C4D5C853',
-      }
-    default:
-      return {
-        signatureFund: 'mainnet sigNFT address',
-        signatureNFT: 'mainnet sigFund address',
-      }
-  }
-}
-
-const abis = {
+exports.abis = {
   signatureNFT: `[
     {
       "inputs": [
@@ -31,10 +11,25 @@ const abis = {
           "internalType": "address",
           "name": "_creator",
           "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_signer",
+          "type": "address"
         }
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "NotAuthorized",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "WrongSignature",
+      "type": "error"
     },
     {
       "anonymous": false,
@@ -248,6 +243,16 @@ const abis = {
           "internalType": "string",
           "name": "uri",
           "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
         }
       ],
       "name": "mintSelected",
@@ -406,6 +411,32 @@ const abis = {
     {
       "inputs": [
         {
+          "internalType": "address",
+          "name": "newSigner",
+          "type": "address"
+        }
+      ],
+      "name": "setSigner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "signer",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "bytes4",
           "name": "interfaceId",
           "type": "bytes4"
@@ -430,19 +461,6 @@ const abis = {
           "internalType": "string",
           "name": "",
           "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "tokenIdCounter",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "_value",
-          "type": "uint256"
         }
       ],
       "stateMutability": "view",
@@ -975,5 +993,3 @@ const abis = {
     }
   ]`,
 }
-
-export { addresses, abis }

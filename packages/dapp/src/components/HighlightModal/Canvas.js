@@ -82,14 +82,17 @@ function HighlightSketch(p5) {
 
   p5.updateWithProps = (props) => {
     if (props.selectedText) {
-      selectedText = props.selectedText;
+      //adding a carraige return in front of text fixes the issue of text overlapping
+      //when it is selected with line breaks
+      //weird p5 issue, I don't know what causes it in the first place
+      selectedText = `\r\n${props.selectedText}`;
       p5.setup();
     }
     handleFinishedDrawing = props.handleFinishedDrawing;
   };
 
   p5.draw = () => {
-    if(n >= selectedText.length){
+    if(n >= 400 || n >= selectedText.length) {
       p5.noLoop();
       const img = canvas?.elt?.toDataURL();
       handleFinishedDrawing(img);
@@ -210,18 +213,27 @@ function HighlightSketch(p5) {
     p5.textFont(fontSyne);
     p5.textAlign(p5.CENTER);
     p5.text(selectedText,50,775,700,300);
-    
+
     p5.fill(360,0,100,0.4);
     p5.textAlign(p5.LEFT);
     p5.textSize(28);
     p5.text("Kernel Verses",50,1130,200,100);
-    
+
     p5.textAlign(p5.LEFT);
     p5.textSize(28);
     p5.text("Signature Economies",493,1130,400,100);
 
     if (n < selectedText.length && n<=400) {
+      //animate the pattern
       n+=2;
+    }else{
+      //stop animation at 400 or selectedText.length, whichever is smaller
+      if(selectedText.length>400){
+        n = 400;
+      }
+      else{
+        n = selectedText.length;
+      }
     }
   };
 }

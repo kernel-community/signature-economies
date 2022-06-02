@@ -1,8 +1,10 @@
 /**
  * Fund the saved wallet on arlocal
  */
-const {address} = require("../../key.json");
+const Secrets = require("../../../secrets.json");
 const {gateway} = require("../gateway");
+
+const address = Secrets.arweave.address;
 
 // 1 AR = 1000000000000 Winston (12 zeros)
 const amount = 1000000000000 * 100; // in winston

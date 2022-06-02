@@ -96,16 +96,16 @@ const FootNotes = () => {
                     </a>
                     , a sensibility and capacity well represented by Viktor Frankl in a lesser-known work of his,{' '}
                     <a target="_blank" rel="noreferrer" href="https://www.themarginalian.org/2020/07/17/viktor-frankl-yes-to-life-love-music/">
-                        <i>Yes To Life</i> 
+                        <i>Yes To Life</i>
                     </a>.
                     </p>
 
                     <p>
-                    <iframe 
-                        src="https://www.youtube-nocookie.com/embed/yfQVevK0eI0?start=5" 
-                        title="Signature Economies Junto" 
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    <iframe
+                        src={`https://www.youtube-nocookie.com/embed/yfQVevK0eI0?start=5&origin=${window.location.hostname}`}
+                        title="Signature Economies Junto"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen>
                     </iframe>
                     </p>
@@ -126,7 +126,7 @@ const FootNotes = () => {
             </div>
             <div>
                 The{' '}
-                <a 
+                <a
                 target="_blank" rel="noreferrer"
                 className="underline font-bold"
                 href="https://ethblock.art/create/1/910815"
@@ -146,10 +146,10 @@ const FootNotes = () => {
             </div>
             </div>
         </div>
-        
 
 
-        
+
+
     )
 }
 
