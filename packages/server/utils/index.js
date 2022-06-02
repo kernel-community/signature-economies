@@ -32,7 +32,8 @@ exports.upload = async({data, contentType}) => {
 }
 
 // check if a given tokenid exists on the contract
-exports.exists = async(id) => {
+// will return true if token id exists on contract
+exports.tokenIdContractCheck = async(id) => {
   const rpc = Secrets.provider[chain].rpc;
   const chainId = Secrets.provider[chain].chainId;
   const provider = new ethers.providers.JsonRpcProvider(rpc);
@@ -42,6 +43,6 @@ exports.exists = async(id) => {
   try {
     // this will either return or throw
     exists = !!(await contract.ownerOf(id))
-  } catch(err) {}
+  } catch(err) { /** ignore error here */ }
   return exists;
 }
