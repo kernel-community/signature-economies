@@ -27,7 +27,7 @@ const SlideAndMint = () => {
 
   return (
     <div className="flex flex-col md:flex-row  relative my-auto w-full md:w-[1200px] h-screen md:h-[800px] rounded-lg shadow-xl bg-white ">
-      <div className="md:flex flex-shrink-0 flex-col bg-transparent md:bg-slate-50 w-full md:w-1/3 rounded-l-lg md:h-full ">
+      <div className="md:flex flex-shrink-0 flex-col bg-transparent md:bg-gray-50 w-full md:w-1/3 rounded-l-lg md:h-full ">
         <div className="font-redaction pl-8 p-6 text-gray-400 text-2xl">
           Select Sealed NFT
         </div>
@@ -37,10 +37,13 @@ const SlideAndMint = () => {
       </div>
       <div className="flex flex-col md:flex-grow md:h-full p-8">
         <NFTShowcase />
-        <div className="text-gray-300 text-sm font-redaction flex items-center justify-center">
+        <div className="text-gray-300 hidden md:block text-sm md:pb-16 font-redaction mx-auto">
           Hover on the image to see the back
         </div>
-        <div className='flex flex-col gap-y-12 md:flex-row items-center'>
+        <div className="text-gray-300 text-sm block md:hidden md:pb-16 font-redaction mx-auto">
+          Tap on the image to see the back
+        </div>
+        <div className='flex flex-col gap-y-12 md:flex-row justify-center items-center'>
           <SliderInput />
           {
             activeConnector ?
