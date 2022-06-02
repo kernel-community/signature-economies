@@ -82,9 +82,11 @@ function HighlightSketch(p5) {
 
   p5.updateWithProps = (props) => {
     if (props.selectedText) {
-      selectedText = props.selectedText;
+      //adding a carraige return in front of text fixes the issue of text overlapping
+      //when it is selected with line breaks
+      //weird p5 issue, I don't know what causes it in the first place
+      selectedText = `\r\n${props.selectedText}`;
       p5.setup();
-      console.log(selectedText.length);
     }
     handleFinishedDrawing = props.handleFinishedDrawing;
   };

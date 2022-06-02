@@ -5,8 +5,8 @@ import LogSlider, {sliderCurve} from "./LogSlider";
 const SliderInput = () => {
   const { state, dispatch }  = useContext(SliderContext);
   return (
-    <div className="flex flex-row mt-12 md:mt-0 gap-x-12 md:flex-row md:ap-x-4 items-center">
-    <div className='w-[200px] md:w-3/4'>
+    <div className="flex flex-row mt-12 md:mt-0 gap-x-12 md:gap-x-4 md:flex-row md:ap-x-4 items-center">
+    <div className='w-[200px] md:w-[600px] md:max-w-[400px] pb-6'>
       <LogSlider 
       min={0.1}
       max={100}
