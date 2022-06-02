@@ -20,20 +20,25 @@ const Footer = () => {
       return;
     }
     const image = state.image.split(",")[1]
+    // call server to upload image
     const { arUrl: imageUrl } = (await upload({
         data: image,
         contentType: 'image/png'
       })).data;
 
+    // generate hash of selected text
     const hash = keccak256(defaultAbiCoder.encode(['string'],[state.text]));
 
+    // generate metadata with image + hash of text
     const metadata = generate(hash, imageUrl, state.text.length);
 
+    // call server to upload metadata
     const { arUrl: metadataUrl } = (await upload({
         data: JSON.stringify(metadata),
         contentType: 'text/plain'
       })).data;
 
+    // call server to sign on metadata's url
     const { signature, id } = (await sign({ arUrl: metadataUrl })).data;
 
     await mintSelected({
