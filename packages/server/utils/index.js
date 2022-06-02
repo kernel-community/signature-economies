@@ -1,6 +1,10 @@
 const Arweave = require('arweave');
 const Secrets = require("../secrets.json");
 const Config = require("../config.json");
+const {ethers} = require("ethers");
+const {abis, addresses} = require("../utils/constants");
+
+const chain = Secrets.chain;
 
 const key = Secrets.arweave.key;
 
@@ -25,4 +29,19 @@ exports.upload = async({data, contentType}) => {
     arUrl: `ar://${tx.id}`,
     httpsUrl: `https://arweave.net/${tx.id}`
   }
+}
+
+// check if a given tokenid exists on the contract
+exports.exists = async(id) => {
+  const rpc = Secrets.provider[chain].rpc;
+  const chainId = Secrets.provider[chain].chainId;
+  const provider = new ethers.providers.JsonRpcProvider(rpc);
+  const address = addresses(chainId).signatureNFT;
+  let exists = false;
+  const contract = new ethers.Contract(address,abis.signatureNFT, provider);
+  try {
+    // this will either return or throw
+    exists = !!(await contract.ownerOf(id))
+  } catch(err) {}
+  return exists;
 }

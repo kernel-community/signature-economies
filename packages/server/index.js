@@ -40,13 +40,13 @@ app.post('/upload', async (req, res, next) => {
 
 app.post('/sign', async (req, res, next) => {
   let signature, message;
-  const url = req.body.arUrl;
+  const url = req.body.arUrl; // metadata url
   const { id } = await getOrStoreRandomId(url);
   try {
     message = ethers.utils.keccak256(
       ethers.utils.defaultAbiCoder.encode(
           ['uint256', 'string'],
-          [id, url],
+          [id, url], // token id, metadata url
         ),
     );
     const wallet = new ethers.Wallet(Secrets.signer.key);
