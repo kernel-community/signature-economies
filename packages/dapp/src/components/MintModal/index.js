@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import Share from './Share';
 import Wait from './Wait';

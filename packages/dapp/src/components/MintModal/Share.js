@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import MockMinted from '../../images/mock_minted.png';
 
 const Share = () => {
@@ -6,7 +5,7 @@ const Share = () => {
   return (
    <div className='w-max p-12 flex flex-col items-center justify-evenly'>
      {/* This image can be either the highlight nft or the sealed nft */}
-     <img src={MockMinted} className='w-[350px] shadow-xl' />
+     <img alt="Minted NFT from Signature Economies" src={MockMinted} className='w-[350px] shadow-xl' />
 
      <div className='pt-4 text-center text-sm opacity-30'>
        Transaction Successful <br/>
