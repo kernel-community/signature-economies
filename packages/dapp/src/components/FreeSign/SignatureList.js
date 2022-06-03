@@ -1,3 +1,7 @@
+const Constants = require('../../utils/constants');
+
+const {protocol, host, port} = Constants.arweave.gateway;
+const arweaveUrl = protocol + "://" + host + ":" + port;
 
 const SignatureList = ({ list }) => {
   return (
@@ -9,11 +13,16 @@ const SignatureList = ({ list }) => {
               <p className="flex flex-grow">
                 {signature.name ?? "Anonymous"}
               </p>
-              <p className="text-ellipsis text-gray-300 hidden md:block  overflow-hidden w-32 grow">
-              {signature.id}
-              </p>
+              <a
+                className="text-ellipsis text-gray-300 hidden md:block  overflow-hidden w-32 grow font-thin no-underline"
+                href={arweaveUrl + `/` + signature.id}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {signature.id}
+              </a>
             </div>
-            <div className="justify-right">
+            <div className="justify-right w-28">
                 {signature.date?? 'pending'}
             </div>
           </div>

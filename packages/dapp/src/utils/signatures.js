@@ -48,7 +48,6 @@ const cleanResponse = (data) => {
       date: date ? date.toLocaleDateString(): undefined
     }
   });
-  console.log(response);
   return response;
 }
 
