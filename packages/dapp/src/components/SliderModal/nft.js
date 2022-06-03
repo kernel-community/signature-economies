@@ -35,7 +35,7 @@ export const sealedNFTS = [
   {
     id: 1,
     text:
-      'Everything depends on the individual human being, regardless of how small a number of like-minded people there are […] on each person...',
+      'The complementary opposite of scarcity is not abundance, it is reciprocity...',
     image_Front_0: Front_0_1,
     image_Front_1: Front_1_1,
     image_Front_10: Front_10_1,
@@ -44,7 +44,7 @@ export const sealedNFTS = [
   {
     id: 2,
     text:
-      'Poetry, well placed, can serve up a subversive education in potent signs, drawing out what is already within so we can wake the dream into reality.',
+      '"Quantum thought": being able to contemplate 0 and 1 simultaneously, as well as the spectrum of probability between...',
       image_Front_0: Front_0_2,
       image_Front_1: Front_1_2,
       image_Front_10: Front_10_2,
@@ -53,7 +53,7 @@ export const sealedNFTS = [
   {
     id: 3,
     text:
-      'To give birth, to nourish, to bear and not to own, to act and not lay claim, to lead and not to rule: this is mysterious power.',
+      'The insight this work offers is simple: we are really looking for a language of play and more playful languages...',
       image_Front_0: Front_0_3,
       image_Front_1: Front_1_3,
       image_Front_10: Front_10_3,
@@ -62,7 +62,7 @@ export const sealedNFTS = [
   {
     id: 4,
     text:
-      'My storehouse burned down - now nothing stands between me and the moon above.',
+      'It is only when we are comfortable with our own state of neediness that we can communicate it clearly and honestly to others without projecting...',
       image_Front_0: Front_0_4,
       image_Front_1: Front_1_4,
       image_Front_10: Front_10_4,
@@ -70,7 +70,7 @@ export const sealedNFTS = [
   },
   {
     id: 5,
-    text: 'Empty-handed I entered into this world, Barefoot I leave it.',
+    text: 'The act of giving does not create gifts: it is only when one is received in good faith that a gift truly exists...',
     image_Front_0: Front_0_5,
     image_Front_1: Front_1_5,
     image_Front_10: Front_10_5,
@@ -78,7 +78,7 @@ export const sealedNFTS = [
   },
   {
     id: 6,
-    text: 'Real power has nothing to do with force, control, status, or money. Real power is the persistent courage to be at ease with the unsolved and the unfinished. To be able to recognise, in the scattered graffiti of your desires, the signature of the eternal.',
+    text: 'Happily, the language of the good is also a language of self-imposed limits, which seeks perfect expression only as a means towards...',
     image_Front_0: Front_0_6,
     image_Front_1: Front_1_6,
     image_Front_10: Front_10_6,
@@ -87,7 +87,7 @@ export const sealedNFTS = [
   {
     id: 7,
     text:
-      'To have without possessing, do without claiming, lead without controlling: this is mysterious power.',
+      'Our ability to create value has always been tied to the ways in which we tell stories about, and with, our shared records...',
       image_Front_0: Front_0_7,
       image_Front_1: Front_1_7,
       image_Front_10: Front_10_7,
@@ -96,7 +96,7 @@ export const sealedNFTS = [
   {
     id: 8,
     text:
-      'To bear and not to own; to act and not lay claim; to do the work and let it go: for just letting it go is what makes it stay.',
+      'Infinite games are to finite games as a container to the contained, or a background to the stage, or a field to the players moving on it...',
       image_Front_0: Front_0_8,
       image_Front_1: Front_1_8,
       image_Front_10: Front_10_8,
