@@ -58,7 +58,7 @@ const FreeSign = () => {
 
   return (
   <>
-    <div className="mx-96 bg-white rounded-md flex flex-col px-8 md:px-0 py-16 w-4/5 md:w-2/3 gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center border-2 ">
+    <div id="free-sign" className="mx-96 bg-white rounded-md flex flex-col px-8 md:px-0 py-16 w-4/5 md:w-2/3 gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center border-2 ">
       <div className="px-2 md:px-16 text-center">
         {TEXT}
       </div>
