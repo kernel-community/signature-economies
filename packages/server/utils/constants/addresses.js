@@ -1,4 +1,4 @@
-export const addresses = (chainId) => {
+exports.addresses = (chainId) => {
   switch (chainId) {
     case 4:
       return {

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { createSign } from '../../utils/contracts';
+import { createSign } from '../../utils/nft';
 import { useConnect, useProvider, useSigner } from 'wagmi';
 import { SliderContext } from '../../contexts/Slider';
 import ExecutionButton from "../common/ExecutionButton";
@@ -14,7 +14,6 @@ const SlideAndMint = () => {
   const { activeConnector } = useConnect();
   const provider = useProvider();
   const { data: signer } = useSigner();
-
   const handleOnClickMint = async () => {
     await createSign({
       value: state.input.toString(),
@@ -22,7 +21,7 @@ const SlideAndMint = () => {
       provider,
       signer
     })
-    // @todo show some success message to the reader and close the modal 
+    // show some success message to the reader and close the modal @todo
     dispatch({ type: 'close' });
   }
 
@@ -51,7 +50,6 @@ const SlideAndMint = () => {
             <ExecutionButton exec={handleOnClickMint} /> : <ConnectButton />
           }
         </div>
-
       </div>
       <CloseButton />
     </div>
