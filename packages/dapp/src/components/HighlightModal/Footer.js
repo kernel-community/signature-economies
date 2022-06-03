@@ -4,7 +4,7 @@ import { HighlightContext } from '../../contexts/Highlight';
 import { generate } from '../../utils/metadata';
 import ExecutionButton from '../common/ExecutionButton';
 import ConnectButton from '../common/ConnectButton';
-import { mintSelected, ownerOf  } from '../../utils/contracts';
+import { mintSelected, ownerOf  } from '../../utils/nft';
 import { upload, sign } from "../../utils/server";
 import { defaultAbiCoder, keccak256 } from 'ethers/lib/utils';
 
