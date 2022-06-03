@@ -15,7 +15,7 @@ export const upload = async ({data, contentType, tags}) => {
   console.log(tags);
   let uploadData;
   try {
-    uploadData = server.post(`/upload`, { data, contentType, tags });
+    uploadData = await server.post(`/upload`, { data, contentType, tags });
   } catch (err) {
     console.log(err);
     throw new Error ("There was an error");
@@ -26,7 +26,7 @@ export const upload = async ({data, contentType, tags}) => {
 export const sign = async ({ arUrl }) => {
   let signData;
   try {
-    signData = server.post(`/sign`, { arUrl });
+    signData = await server.post(`/sign`, { arUrl });
   } catch (err) {
     console.log(err);
     throw new Error ("There was an error");
