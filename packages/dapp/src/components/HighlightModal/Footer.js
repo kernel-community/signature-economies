@@ -57,7 +57,7 @@ const Footer = () => {
   return (
     <div className="flex flex-row w-full justify-center gap-x-4 text-center my-5">
     <ExecutionButton
-      text='Cancel'
+      text='Close'
       exec={() => dispatch({ type: 'close' })}
       selectStyle='basic'
     />
