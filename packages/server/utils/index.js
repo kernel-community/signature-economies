@@ -11,12 +11,22 @@ const key = Secrets.arweave.key;
 const arweave = Arweave.init(Config.arweave.gateway);
 
 // upload to arweave
-exports.upload = async({data, contentType}) => {
+// tags = array of objects
+// {key: "", value: ""}
+exports.upload = async({ data, contentType, tags }) => {
   if (contentType === 'image/png') {
     data = Buffer.from(data, "base64");
   }
+
   const tx = await arweave.createTransaction({ data }, key);
   tx.addTag('Content-Type', contentType);
+
+  if (tags.length > 0) {
+    console.log("got tags");
+    console.log(tags);
+    tags.forEach((tag) => tx.addTag(tag.key, tag.value))
+  }
+
   await arweave.transactions.sign(tx, key); // returns undefined
   // upload to arweave in chunks (recommended method)
   let uploader = await arweave.transactions.getUploader(tx);

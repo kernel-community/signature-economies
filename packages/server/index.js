@@ -24,12 +24,15 @@ app.listen(port, () => {
 })
 
 app.post('/upload', async (req, res, next) => {
-  const { data, contentType } = req.body;
+  // tags = array of objects
+  // {key: "", value: ""}
+  const { data, contentType, tags } = req.body;
 
   if (!data || !contentType) return next(new Error ("Data or contentType missing"));
+  if (!tags) tags = [];
 
   try {
-    urls = await upload({data, contentType});
+    urls = await upload({ data, contentType, tags });
   } catch(err) {
     return next(err);
   }
