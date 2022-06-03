@@ -1,30 +1,41 @@
 import ExecutionButton from "../common/ExecutionButton";
 import SignatureList from "./SignatureList";
-import { useConnect, useSignMessage } from "wagmi"
+import { useConnect, useSigner } from "wagmi"
 import ConnectButton from "../common/ConnectButton";
 import signText from "../text";
+import { upload } from "../../utils/server";
+import { useState } from "react";
 
 const TEXT = `If you find this essay meaningful, you may mark our shared record by sending a signed message of the whole text. This can be done freely, as there are no costs to signing onchain messages. In addition, your signature will be stored on Arweave and become a permanent part of this document's history.`
 
 const FreeSign = () => {
   const { activeConnector } = useConnect();
-  const {
-    data,
-    isError,
-    isLoading,
-    isSuccess,
-    signMessage
-  } = useSignMessage({ message: signText });
-  console.log({
-    data, isError, isLoading, isSuccess
-  });
+  const { data: signer } = useSigner();
+  const [isSigning, setIsSigning] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+
   const sign = async () => {
+    if (isSigning || isUploading) return;
     // if signed, return
     // @todo need better check here ->
     // if sign already on arweave, return
-    if (isSuccess) return;
-    await signMessage();
+    setIsSigning(true);
+    const sig = await signer.signMessage(signText);
+    setIsSigning(false);
     // upload signature to arweave
+    setIsUploading(true);
+    const { arUrl: sigUrl } = (await upload({
+      data: sig,
+      contentType: 'text/plain',
+      tags: [
+        {
+          key: "App-Name",
+          value: "Kernel-Signature-Economies"
+        }
+      ]
+    })).data;
+    console.log(sigUrl);
+    setIsUploading(false);
   }
   return (
   <>
@@ -41,9 +52,9 @@ const FreeSign = () => {
             exec={sign}
             tween
             selectStyle="big"
-            text="Sign freely"
-            loading={isLoading}
-            disabled={isSuccess}
+            text={"Sign freely"}
+            loading={isSigning || isUploading}
+            disabled={isSigning || isUploading}
           />
       }
       <hr className="w-full"/>

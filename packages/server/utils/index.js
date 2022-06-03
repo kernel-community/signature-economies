@@ -22,8 +22,6 @@ exports.upload = async({ data, contentType, tags }) => {
   tx.addTag('Content-Type', contentType);
 
   if (tags.length > 0) {
-    console.log("got tags");
-    console.log(tags);
     tags.forEach((tag) => tx.addTag(tag.key, tag.value))
   }
 

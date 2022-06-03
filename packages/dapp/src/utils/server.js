@@ -9,10 +9,13 @@ const server = axios.create({
    }
  });
 
-export const upload = async ({data, contentType}) => {
+export const upload = async ({data, contentType, tags}) => {
+  if (!data) return;
+  if (!tags) tags = [];
+  console.log(tags);
   let uploadData;
   try {
-    uploadData = server.post(`/upload`, { data, contentType });
+    uploadData = server.post(`/upload`, { data, contentType, tags });
   } catch (err) {
     console.log(err);
     throw new Error ("There was an error");
