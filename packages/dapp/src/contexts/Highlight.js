@@ -37,7 +37,7 @@ const reducer = (state, action) => {
 }
 const initial = {
   text: "",
-  modal: false,
+  modal: true,
   image: undefined,
 };
 export const HighlightProvider = ({children}) => {
