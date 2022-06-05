@@ -66,7 +66,7 @@ contract SignatureNFT is ERC721Tradable {
         returns (string memory) 
     {
         return
-            "https://arweave.net/Ljzre0Drnwhbx8DIoDIMQ0ufC1Ku_HtvRi9IIxNulMQ";
+            "https://arweave.net/hh7ANFDf_LvzktqhwOzMkIaOlvdh_T2_WQRY1kQsc1Y";
     }
 
     /** @notice          Set the royalties for the whole contract. Our intention is to set it to 10% in perpetuity.

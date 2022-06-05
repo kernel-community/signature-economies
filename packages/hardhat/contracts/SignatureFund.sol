@@ -69,7 +69,7 @@ contract SignatureFund is ERC721Tradable {
         pure 
         returns (string memory) 
     {
-        return "https://arweave.net/LGLdXi8f0bh5_GYsxN-Iq1m4oBvrAMutVUVjgut0Ilw";
+        return "https://arweave.net/JB096wImG3pVLPLQVe0tmgiJHUjrNSCtWdi-ojxTETg";
     }
 
     /** @notice          Set the royalties for the whole contract. Our intention is to set it to 10% in perpetuity.
