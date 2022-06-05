@@ -1,6 +1,5 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
-const { signTokenId } = require("../utils/sign");
 
 const PROXY_REGISTRATION_ADDRESS = "0xf57b2c51ded3a29e6891aba85459d600256cf317";
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -8,12 +7,11 @@ const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 describe("SignatureNFT", function () {
   beforeEach(async function () {
     const SignatureNFT = await ethers.getContractFactory("SignatureNFT");
-    const [deployer, creator, alice, signer] = await ethers.getSigners();
+    const [deployer, creator, alice] = await ethers.getSigners();
     this.deployer = deployer;
     this.alice = alice;
     this.creator = creator;
-    this.signer = signer;
-    this.signatureNFT = await SignatureNFT.deploy(PROXY_REGISTRATION_ADDRESS, this.creator.address, signer.address);
+    this.signatureNFT = await SignatureNFT.deploy(PROXY_REGISTRATION_ADDRESS, this.creator.address);
   });
 
   describe("Sign", function () {
@@ -24,13 +22,9 @@ describe("SignatureNFT", function () {
 
     describe("minting", function () {
       it("the uri associated with the NFT should be what anyone passes in", async function () {
-        let {signature} = await signTokenId(this.signer, 0, "test1");
-        await this.signatureNFT.mintSelected("test1", 0, signature);
-        expect (await this.signatureNFT.tokenURI(0)).to.equal("test1");
-
-        ({signature} = await signTokenId(this.signer, 1, "xhdiwyannfof86mdjeifh"));
-        await this.signatureNFT.connect(this.alice).mintSelected("xhdiwyannfof86mdjeifh", 1, signature);
-        expect (await this.signatureNFT.tokenURI(1)).to.equal("xhdiwyannfof86mdjeifh");
+        await this.signatureNFT.mintSelected(0, 63);
+        // yes, I should base64 encode, but I have checked that it renders as expected in the browser 
+        expect (await this.signatureNFT.tokenURI(0)).to.equal("data:application/json;base64,eyJuYW1lIjoiU2lnbmF0dXJlIE5GVCIsImRlc2NyaXB0aW9uIjoiQSB1bmlxdWUgc2lnbiBvZiBvdXIgdGltZXMsIHNlbGVjdGVkIHRvIHJlcHJlc2VudCBpbmNyZWFzaW5nbHkgc2lnbmlmaWNhbnQgbW9uZXkgaW4gdGhpcyBpbmZpbml0ZSBnYW1lIHdlIGFyZSBwbGF5aW5nIHRvZ2V0aGVyLiBBcyB5b3UgY29uc2lkZXIgdGhlc2UgdW5pcXVlIHN5bWJvbHMsIHJlbWVtYmVyIHRoYXQgd2VhbHRoIHRydWx5IG1lYW5zIGhhdmluZyBlbm91Z2ggdG8gc2hhcmUuIiwiZXh0ZXJuYWxfdXJsIjoiaHR0cHM6Ly9zaWduLmtlcm5lbC5jb21tdW5pdHkvIiwiYW5pbWF0aW9uX3VybCI6Imh0dHBzOi8vaXBmcy5pby9pcGZzL1FtYzdUWVI4ejk1V1Y4bUJqSEFHYXNXMXJ2UDVFVXpiUWtBWFhta3kzaExaMWIvPzA/NjMifQ==");
       })
     });
 
@@ -41,9 +35,8 @@ describe("SignatureNFT", function () {
       const newRoyalty = ethers.BigNumber.from(500); // 5% with the two decimals places the contract is expecting
 
       it('has no royalties if not set', async function () {
-        let {signature} = await signTokenId(this.signer, 0, "arweaveUrl");
-        await this.signatureNFT.mintSelected("arweaveUrl", 0, signature);
-        expect (await this.signatureNFT.tokenURI(0)).to.equal("arweaveUrl");
+        await this.signatureNFT.mintSelected(0, 63);
+        expect (await this.signatureNFT.tokenURI(0)).to.equal("data:application/json;base64,eyJuYW1lIjoiU2lnbmF0dXJlIE5GVCIsImRlc2NyaXB0aW9uIjoiQSB1bmlxdWUgc2lnbiBvZiBvdXIgdGltZXMsIHNlbGVjdGVkIHRvIHJlcHJlc2VudCBpbmNyZWFzaW5nbHkgc2lnbmlmaWNhbnQgbW9uZXkgaW4gdGhpcyBpbmZpbml0ZSBnYW1lIHdlIGFyZSBwbGF5aW5nIHRvZ2V0aGVyLiBBcyB5b3UgY29uc2lkZXIgdGhlc2UgdW5pcXVlIHN5bWJvbHMsIHJlbWVtYmVyIHRoYXQgd2VhbHRoIHRydWx5IG1lYW5zIGhhdmluZyBlbm91Z2ggdG8gc2hhcmUuIiwiZXh0ZXJuYWxfdXJsIjoiaHR0cHM6Ly9zaWduLmtlcm5lbC5jb21tdW5pdHkvIiwiYW5pbWF0aW9uX3VybCI6Imh0dHBzOi8vaXBmcy5pby9pcGZzL1FtYzdUWVI4ejk1V1Y4bUJqSEFHYXNXMXJ2UDVFVXpiUWtBWFhta3kzaExaMWIvPzA/NjMifQ==");
 
         const info = await this.signatureNFT.royaltyInfo(0, salePrice);
         expect(info[1].toNumber()).to.be.equal(0);
@@ -64,8 +57,7 @@ describe("SignatureNFT", function () {
           royalty,
         );
 
-        let {signature} = await signTokenId(this.signer, 0, "arweaveUrl");
-        await this.signatureNFT.connect(this.deployer).mintSelected("arweaveUrl", 0, signature);
+        await this.signatureNFT.connect(this.deployer).mintSelected(0, 63);
 
         const info = await this.signatureNFT.royaltyInfo(1, salePrice);
         // We expect the royaltAmount to come back as the salePrice * royalty / 10000
@@ -83,9 +75,7 @@ describe("SignatureNFT", function () {
 
       it('can set address(0) as royalties recipient', async function () {
         await this.signatureNFT.connect(this.creator).setRoyalties(ZERO_ADDRESS, newRoyalty);
-
-        let {signature} = await signTokenId(this.signer, 0, "arweaveUrl");
-        await this.signatureNFT.connect(this.creator).mintSelected("arweaveUrl", 0, signature);
+        await this.signatureNFT.connect(this.creator).mintSelected(0, 63);
 
         const info = await this.signatureNFT.royaltyInfo(2, salePrice);
         expect(info[1].toNumber()).to.be.equal(5);
