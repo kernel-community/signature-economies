@@ -24,7 +24,7 @@ describe("SignatureNFT", function () {
       it("the uri associated with the NFT should be what anyone passes in", async function () {
         await this.signatureNFT.mintSelected(0, 63);
         // yes, I should base64 encode, but I have checked that it renders as expected in the browser 
-        expect (await this.signatureNFT.tokenURI(0)).to.equal("data:application/json;base64,eyJuYW1lIjoiU2lnbmF0dXJlIE5GVCIsImRlc2NyaXB0aW9uIjoiQSB1bmlxdWUgc2lnbiBvZiBvdXIgdGltZXMsIHNlbGVjdGVkIHRvIHJlcHJlc2VudCBpbmNyZWFzaW5nbHkgc2lnbmlmaWNhbnQgbW9uZXkgaW4gdGhpcyBpbmZpbml0ZSBnYW1lIHdlIGFyZSBwbGF5aW5nIHRvZ2V0aGVyLiBBcyB5b3UgY29uc2lkZXIgdGhlc2UgdW5pcXVlIHN5bWJvbHMsIHJlbWVtYmVyIHRoYXQgd2VhbHRoIHRydWx5IG1lYW5zIGhhdmluZyBlbm91Z2ggdG8gc2hhcmUuIiwiZXh0ZXJuYWxfdXJsIjoiaHR0cHM6Ly9zaWduLmtlcm5lbC5jb21tdW5pdHkvIiwiYW5pbWF0aW9uX3VybCI6Imh0dHBzOi8vaXBmcy5pby9pcGZzL1FtYzdUWVI4ejk1V1Y4bUJqSEFHYXNXMXJ2UDVFVXpiUWtBWFhta3kzaExaMWIvPzA/NjMifQ==");
+        expect (await this.signatureNFT.tokenURI(0)).to.equal("data:application/json;base64,eyJuYW1lIjoiU2lnbmF0dXJlIE5GVCAjMCIsImRlc2NyaXB0aW9uIjoiQSB1bmlxdWUgc2lnbiBvZiBvdXIgdGltZXMsIHNlbGVjdGVkIHRvIHJlcHJlc2VudCBpbmNyZWFzaW5nbHkgc2lnbmlmaWNhbnQgbW9uZXkgaW4gdGhpcyBpbmZpbml0ZSBnYW1lIHdlIGFyZSBwbGF5aW5nIHRvZ2V0aGVyLiBBcyB5b3UgY29uc2lkZXIgdGhlc2UgdW5pcXVlIHN5bWJvbHMsIHJlbWVtYmVyIHRoYXQgd2VhbHRoIHRydWx5IG1lYW5zIGhhdmluZyBlbm91Z2ggdG8gc2hhcmUuIiwiZXh0ZXJuYWxfdXJsIjoiaHR0cHM6Ly9zaWduLmtlcm5lbC5jb21tdW5pdHkvIiwiYW5pbWF0aW9uX3VybCI6Imh0dHBzOi8vaXBmcy5pby9pcGZzL1FtYzdUWVI4ejk1V1Y4bUJqSEFHYXNXMXJ2UDVFVXpiUWtBWFhta3kzaExaMWIvPzA/NjMifQ==");
       })
     });
 
@@ -36,7 +36,7 @@ describe("SignatureNFT", function () {
 
       it('has no royalties if not set', async function () {
         await this.signatureNFT.mintSelected(0, 63);
-        expect (await this.signatureNFT.tokenURI(0)).to.equal("data:application/json;base64,eyJuYW1lIjoiU2lnbmF0dXJlIE5GVCIsImRlc2NyaXB0aW9uIjoiQSB1bmlxdWUgc2lnbiBvZiBvdXIgdGltZXMsIHNlbGVjdGVkIHRvIHJlcHJlc2VudCBpbmNyZWFzaW5nbHkgc2lnbmlmaWNhbnQgbW9uZXkgaW4gdGhpcyBpbmZpbml0ZSBnYW1lIHdlIGFyZSBwbGF5aW5nIHRvZ2V0aGVyLiBBcyB5b3UgY29uc2lkZXIgdGhlc2UgdW5pcXVlIHN5bWJvbHMsIHJlbWVtYmVyIHRoYXQgd2VhbHRoIHRydWx5IG1lYW5zIGhhdmluZyBlbm91Z2ggdG8gc2hhcmUuIiwiZXh0ZXJuYWxfdXJsIjoiaHR0cHM6Ly9zaWduLmtlcm5lbC5jb21tdW5pdHkvIiwiYW5pbWF0aW9uX3VybCI6Imh0dHBzOi8vaXBmcy5pby9pcGZzL1FtYzdUWVI4ejk1V1Y4bUJqSEFHYXNXMXJ2UDVFVXpiUWtBWFhta3kzaExaMWIvPzA/NjMifQ==");
+        expect (await this.signatureNFT.tokenURI(0)).to.equal("data:application/json;base64,eyJuYW1lIjoiU2lnbmF0dXJlIE5GVCAjMCIsImRlc2NyaXB0aW9uIjoiQSB1bmlxdWUgc2lnbiBvZiBvdXIgdGltZXMsIHNlbGVjdGVkIHRvIHJlcHJlc2VudCBpbmNyZWFzaW5nbHkgc2lnbmlmaWNhbnQgbW9uZXkgaW4gdGhpcyBpbmZpbml0ZSBnYW1lIHdlIGFyZSBwbGF5aW5nIHRvZ2V0aGVyLiBBcyB5b3UgY29uc2lkZXIgdGhlc2UgdW5pcXVlIHN5bWJvbHMsIHJlbWVtYmVyIHRoYXQgd2VhbHRoIHRydWx5IG1lYW5zIGhhdmluZyBlbm91Z2ggdG8gc2hhcmUuIiwiZXh0ZXJuYWxfdXJsIjoiaHR0cHM6Ly9zaWduLmtlcm5lbC5jb21tdW5pdHkvIiwiYW5pbWF0aW9uX3VybCI6Imh0dHBzOi8vaXBmcy5pby9pcGZzL1FtYzdUWVI4ejk1V1Y4bUJqSEFHYXNXMXJ2UDVFVXpiUWtBWFhta3kzaExaMWIvPzA/NjMifQ==");
 
         const info = await this.signatureNFT.royaltyInfo(0, salePrice);
         expect(info[1].toNumber()).to.be.equal(0);

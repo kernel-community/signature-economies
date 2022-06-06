@@ -120,7 +120,7 @@ contract SignatureNFT is ERC721Tradable {
                 Base64.encode(
                     bytes(
                           abi.encodePacked(
-                              '{"name":"Signature NFT","description":"A unique sign of our times, selected to represent increasingly significant money in this infinite game we are playing together. As you consider these unique symbols, remember that wealth truly means having enough to share.","external_url":"https://sign.kernel.community/","animation_url":"',image,'"}'
+                              '{"name":"Signature NFT #',Strings.toString(id),'","description":"A unique sign of our times, selected to represent increasingly significant money in this infinite game we are playing together. As you consider these unique symbols, remember that wealth truly means having enough to share.","external_url":"https://sign.kernel.community/","animation_url":"',image,'"}'
                           )
                         )
                     )
