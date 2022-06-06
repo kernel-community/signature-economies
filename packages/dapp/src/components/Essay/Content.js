@@ -62,7 +62,7 @@ const Content = () => {
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/conversation/hospitality/#freeing-civilization">
                     possession
                     </a>{' '}
-                    to the ability to make meaning? If so, the change in signification
+                    to the ability to make collective meaning? If so, the change in signification
                     is a radical one, because ownership is traditionally about exclusive
                     rights, whereas meaning is made valuable by{' '}
                     <a target="_blank" rel="noreferrer" href="https://youtu.be/v2XqrFkyo68?t=1221">
@@ -76,7 +76,12 @@ const Content = () => {
                     <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=U7v63TjdutE&t=2999s">
                     opposite
                     </a>
-                    : “content can now beproliferated instead of protected.<sup>2</sup>”
+                    : “content can now beproliferated instead of protected<sup>2</sup>”. We may, 
+                    for the first time online, design primarily for{' ' }
+                    <a href="https://youtu.be/uN4g0Sr3jhs?t=1620">
+                    multiple, simultaneous use
+                    </a>
+                    , rather than individual consumption. 
                 </div>
                 <div>
                     The very first proto-NFTs hinted at this shift. “
@@ -107,8 +112,40 @@ const Content = () => {
                     To quote Wendell Berry, “Perhaps our most serious cultural loss in recent centuries is the knowledge
                     that some things, though limited, are inexhaustible.”
                 </div>
+                
                 <div>
-                    Perhaps all this work is not about the right to control, but about cultivating
+                    As the meaning of ‘ownership’ shifts, it drags other critical terms along with it,
+                    like ‘social security’. This has a cascading effect, such that words
+                    like ‘welfare’ may come to mean more than just financial stability secured by bureaucratic states,
+                    signifying—in addition to the financial—our access to and participation in “authentic communication
+                    channels” through which we establish, by consensus, shared and open state.
+                    In this context, and keeping in mind our responsibility not just for our own keys but the recovery of others,
+                    “Make meaningful economies” is a more crafty
+                    <sup>3</sup> cultural signal than “Own your piece of the economy”.
+                </div>
+                <div>
+                    While our state is globally shared, it is critical that we design economies, plural. Our work must not be
+                    about replicating one dominant economic{' '}
+                    <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-7/no-paradigm/">
+                    paradigm
+                    </a>
+                    , supposedly better than the last. It could instead be about
+                    cultivating the space for many different concepts of{' '}
+                    <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-4/self-enquiry/#signature-performances">
+                    value to interface
+                    </a>{' '}
+                    with one another in creative ways which don’t aim for cancerous
+                    growth, but are self-sustaining, resilient, and responsible.
+                </div>
+                </div>
+
+                <div className="w-max mx-auto pt-16 pb-8 mt-16 flex md:text-6xl text-4xl text-center font-redaction text-gray-800 items-center self-center">
+                Response-ability
+                </div>
+
+                <div className="mx-auto flex flex-col px-8 md:px-0 py-16 w-full md:w-[800px] gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center">
+                <div>
+                    Perhaps this work is not about the right to control, but about cultivating
                     responsibility? Having no intermediaries creates certain benefits,
                     but it is—as always—a tradeoff: if you misplace your mnemonic,
                     it means no more magic internet money and there is no customer
@@ -122,37 +159,6 @@ const Content = () => {
                     </a> [such that we] can always regenerate keys through community recovery”.
                 </div>
                 <div>
-                    As the meaning of ‘ownership’ shifts, it drags other critical terms along with it,
-                    like ‘social security’. This has a cascading effect, such that words
-                    like ‘welfare’ may come to mean more than just financial stability secured by bureaucratic states,
-                    signifying—in addition to the financial—our access to and participation in “authentic communication
-                    channels” through which we establish, by consensus, shared and open state.
-                    In this context, and keeping in mind our responsibility not just for our own keys but the recovery of others,
-                    “Make meaningful economies” is a more crafty
-                    <sup>3</sup> cultural signal than “Own your piece of the economy”.
-                </div>
-                <div>
-                    While our state is globally shared, it is critical that our terms are plural. Our work must not be
-                    about replicating one dominant economic{' '}
-                    <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-7/no-paradigm/">
-                    paradigm
-                    </a>
-                    , supposedly better than the last. It could instead be about
-                    cultivating the space for many different concepts of{' '}
-                    <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-4/self-enquiry/#signature-performances">
-                    value to interface
-                    </a>{' '}
-                    with one another in creative ways which don’t aim for cancerous
-                    growth, but are self-sustaining, responsible, and resilient.
-                </div>
-                </div>
-
-                <div className="w-max mx-auto pt-16 pb-8 mt-16 flex md:text-6xl text-4xl text-center font-redaction text-gray-800 items-center self-center">
-                Response-ability
-                </div>
-
-                <div className="mx-auto flex flex-col px-8 md:px-0 py-16 w-full md:w-[800px] gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center">
-                <div>
                     The phrase ‘not your keys, not your coins’ is often used to connote
                     sovereign rights. If you hold the keys, then you have an absolute
                     and unimpeachable right to sign as you please. It turns out, though,
@@ -161,11 +167,7 @@ const Content = () => {
                     responsibility is an inherently difficult feature for which to
                     design<sup>4</sup>. This is because response-ability is not about
                     discrete, individual actions which release the most dopamine, but
-                    our <strong>unique relationships within a network</strong>. Designing for{' '}
-                    <a target="_blank" rel="noreferrer" href="https://youtu.be/uN4g0Sr3jhs?t=1620">
-                    multiple, simultaneous use
-                    </a>{' '}
-                    is not a practice consumer culture values highly.
+                    our <strong>unique relationships within a network</strong>.
                 </div>
                 <div>
                     Single sign-ons represent us as separate users and when—neatly
@@ -254,7 +256,7 @@ const Content = () => {
                     responsibilities in relationship, not through asserting your rights.
                 </div>
                 <div>
-                    Even the word ‘economies’ contains this same double-directedness. It
+                    The word ‘economies’ contains this same double-directedness. It
                     comes from the Greek <i>oikos</i>, which means ‘house’. Sustainable
                     household management requires micro insights into each of our
                     habits, as well as macro perspectives of our shared habitations,
