@@ -37,7 +37,7 @@ contract SignatureNFT is ERC721Tradable {
     string public gateway = "https://ipfs.io/ipfs/";
 
     // stores hash of image generator app
-    string public imgHash = "Qmc7TYR8z95WV8mBjHAGasW1rvP5EUzbQkAXXmky3hLZ1b";
+    string public imgHash = "QmWZzAg52Xk5yxAjsL58X4HZDGKDWo67rqrDzArLm64LSA";
 
     // A Kernel address for proper attribution
     address public creator;
@@ -88,7 +88,8 @@ contract SignatureNFT is ERC721Tradable {
     function mintSelected(uint8 start, uint8 end) 
         external 
     {
-        // TODO: current p5.js implementation only seems to print ~63 words, may need a check in here for that.
+        require(start < end && start >= 0 && end <= 1988, "Invalid index");
+        // TODO: current p5.js implementation only seems to print ~63 words, we will need a check in here for that.
         uint256 newTokenId = _tokenIdCounter.current();
         selection[newTokenId] = Highlight(start, end);
         _safeMint(creator, msg.sender, newTokenId);
