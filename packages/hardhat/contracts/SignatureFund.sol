@@ -34,9 +34,6 @@ contract SignatureFund is ERC721Tradable {
     // An array of values used to determine what kind of image gets minted
     uint256[2] values = [1e18, 1e19];
 
-    // mapping tokenId to json
-    mapping(uint256 => string) jsonFile;
-
     // A Kernel address for proper attribution
     address public creator;
 
@@ -99,36 +96,23 @@ contract SignatureFund is ERC721Tradable {
         // the metadataURI used when minting the NFT. The url links to a json file with
         // all the relevant information, especially the mp4 video of the signature seals.
 
-        string memory json;
+        string memory uri;
         
         if(msg.value < values[0]) {
-            json = string(abi.encodePacked("0/",selectedNFT));
+            uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".json"));
         } else if(msg.value >= values[0] && msg.value < values[1]) {
-            json = string(abi.encodePacked("1/",selectedNFT));
+            uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".json"));
         } else {
-            json = string(abi.encodePacked("10/",selectedNFT));
+            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".json"));
         }
 
         uint256 newTokenId = _tokenIdCounter.current();
         _safeMint(creator, msg.sender, newTokenId);
-        jsonFile[newTokenId] = json;
+        _setTokenURI(newTokenId, uri);
         _tokenIdCounter.increment();
-        emit SignCreated(msg.sender, msg.value, newTokenId, string(abi.encodePacked(arweaveBase,json,".json")));
+        emit SignCreated(msg.sender, msg.value, newTokenId, uri);
 
         _safeTransferETHWithFallback(msg.value);
-    }
-
-    /**
-     * @notice overrides the usual tokenURI return in order to inject the arweaveBase, which we do here, in a view only function
-     *         in order to save gas when minting.
-     */
-    function tokenURI(uint256 id) 
-        public 
-        view 
-        override 
-        returns (string memory)
-    {
-        return string(abi.encodePacked(arweaveBase,jsonFile[id],".json"));
     }
 
         /**
