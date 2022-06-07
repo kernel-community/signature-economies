@@ -95,7 +95,7 @@ contract SignatureFund is ERC721Tradable {
         // Depending on the value of the message which mints the selected NFT, we assign
         // the metadataURI used when minting the NFT. The url links to a json file with
         // all the relevant information, especially the mp4 video of the signature seals.
-
+        
         string memory uri;
         
         if(msg.value < values[0]) {
@@ -103,19 +103,19 @@ contract SignatureFund is ERC721Tradable {
         } else if(msg.value >= values[0] && msg.value < values[1]) {
             uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".json"));
         } else {
-            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".json"));
+            json = string(abi.encodePacked("10/",selectedNFT));
         }
 
         uint256 newTokenId = _tokenIdCounter.current();
         _safeMint(creator, msg.sender, newTokenId);
-        _setTokenURI(newTokenId, uri);
+        jsonFile[newTokenId] = json;
         _tokenIdCounter.increment();
-        emit SignCreated(msg.sender, msg.value, newTokenId, uri);
+        emit SignCreated(msg.sender, msg.value, newTokenId, string(abi.encodePacked(arweaveBase,json,".json")));
 
         _safeTransferETHWithFallback(msg.value);
     }
 
-        /**
+   /**
      * @notice       allows the creator to update the arweave base url to change images that get minted from this point onwards
      * @param newUrl a new arweave url which hosts new metadata to keep things lively
      */
