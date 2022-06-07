@@ -7,10 +7,32 @@ import { SafeERC20 } from '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.s
 import { IWETH } from './interfaces/IWETH.sol';
 import { Counters } from "@openzeppelin/contracts/utils/Counters.sol";
 
+//           ,,_
+//        zd$$??=
+//      z$$P? F:`c,                _
+//     d$$, `c'we&&i           ,=caRe
+//    $$$$ sign,?888i       ,=P"2?us"
+//     $" " ?$$$,?888.    ,-''`>, bee
+//      $'joy,?$$,?888   ,h' "I$'J$e
+//       ... `?$$$,"88,`$$h  88love'd$"
+//     d$PP""?-,"?$$,?8h`$$,,88'$Q42"
+//     ?,,_`=4c,?=,"?ye$s`?E2$'? '
+//        `""?==""=-"" `""-`'_,,,,
+//            .eco?qualiJC,-,"=?
+//                      """=='?"
+
 contract SignatureFund is ERC721Tradable {
     using SafeERC20 for IERC20;
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
+
+    error NotAuthorized();
+
+    // the permaweb url where all the metadata is stored
+    string public arweaveBase = 'https://arweave.net/xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q/';
+
+    // An array of values used to determine what kind of image gets minted
+    uint256[2] values = [1e18, 1e19];
 
     // A Kernel address for proper attribution
     address public creator;
@@ -19,6 +41,13 @@ contract SignatureFund is ERC721Tradable {
     address public weth;
 
     event SignCreated(address indexed signer, uint256 amount, uint256 indexed tokenId, string uri);
+
+    modifier onlyCreator() {
+        if (msg.sender != creator) {
+            revert NotAuthorized();
+        }
+        _;
+    }
 
     constructor(
         address _proxyRegistryAddress,
@@ -32,26 +61,33 @@ contract SignatureFund is ERC721Tradable {
     /**
      * @notice Link to contract metadata
     */
-    function contractURI() external pure returns (string memory) {
-        return "https://arweave.net/LGLdXi8f0bh5_GYsxN-Iq1m4oBvrAMutVUVjgut0Ilw";
+    function contractURI() 
+        external 
+        pure 
+        returns (string memory) 
+    {
+        return "https://arweave.net/JB096wImG3pVLPLQVe0tmgiJHUjrNSCtWdi-ojxTETg";
     }
 
-    /** @notice Set the royalties for the whole contract. Our intention is to set it to 10% in perpetuity.
+    /** @notice          Set the royalties for the whole contract. Our intention is to set it to 10% in perpetuity.
      *  @param recipient the royalties recipient - will always be pr1s0nart, for regulatory reasons.
-     *  @param value royalties value (between 0 and 10000)
+     *  @param value     royalties value (between 0 and 10000)
     */
     function setRoyalties(address recipient, uint256 value) 
         external
+        onlyCreator
     {
-        require(msg.sender == creator, "Only the creator of this contract can set and change royalites");
         _setRoyalties(recipient, value);
     }
 
     /**
-     * @dev Receives donation and mints new NFT for donor
+     * @dev               Receives donation and mints new NFT for donor
      * @param selectedNFT a string that allows us to determine which NFT at which level to mint and return to the donor
      */
-    function createSign(string memory selectedNFT) external payable {
+    function createSign(string memory selectedNFT) 
+        external 
+        payable 
+    {
         require(msg.value >= 0.01 ether, "SignatureFund: Minimum donation is 0.01 ETH");
 
         // Here, we let the reader select which of the 8 available NFTs they wish to mint.
@@ -59,16 +95,12 @@ contract SignatureFund is ERC721Tradable {
         // Depending on the value of the message which mints the selected NFT, we assign
         // the metadataURI used when minting the NFT. The url links to a json file with
         // all the relevant information, especially the mp4 video of the signature seals.
-        // https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/0/one.json or
-        // https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/1/two.json or
-        // https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/10/three.json
 
         string memory uri;
-        string memory arweaveBase = 'https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/';
         
-        if(msg.value < 1 ether) {
+        if(msg.value < values[0]) {
             uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".json"));
-        } else if(msg.value >= 1 ether && msg.value < 10 ether) {
+        } else if(msg.value >= values[0] && msg.value < values[1]) {
             uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".json"));
         } else {
             uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".json"));
@@ -83,8 +115,35 @@ contract SignatureFund is ERC721Tradable {
         _safeTransferETHWithFallback(msg.value);
     }
 
+        /**
+     * @notice       allows the creator to update the arweave base url to change images that get minted from this point onwards
+     * @param newUrl a new arweave url which hosts new metadata to keep things lively
+     */
+    function setArweave(string memory newUrl) 
+        external 
+        onlyCreator
+    {
+        arweaveBase = newUrl;
+    }
+
     /**
-     * @notice Transfer ETH. If the ETH transfer fails, wrap the ETH and try send it as WETH.
+     * @notice          allows the creator to update the values which determine what kind of image gets minted
+     * @param newValues a new arrray of values to go along with new metadata in case we wish to change the game and keep things infinite
+     *                  "This idea of continued discourse, or play, can be found underneath everything we do at Kernel. 
+     *                  We do not spurn rules or convention; we just contextualise them appropriately. Rules are not followed 
+     *                  as a means of gaining control or power, and we do not care whose turn it is next. Rules exist in order 
+     *                  to continue playing increasingly principled games with one another, always in the light of the common knowledge 
+     *                  that any rule, any boundary, is just a convention, inviting ever more creative, dramatic kinds of play."
+     */
+    function setValues(uint256[2] memory newValues) 
+        external 
+        onlyCreator
+    {
+        values = newValues;
+    }
+
+    /**
+     * @notice       Transfer ETH. If the ETH transfer fails, wrap the ETH and try send it as WETH.
      * @param amount the total amount
      */
     function _safeTransferETHWithFallback(uint256 amount) internal {
