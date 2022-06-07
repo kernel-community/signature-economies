@@ -398,7 +398,7 @@ const Content = () => {
                     kind of web we want; it’s about how we see ourselves. Do we trust
                     ourselves enough to signal the kinds of economies we wish to engage
                     in, and do we have the{' '}
-                    <a target="_blank" rel="noreferrer" href="https://youtu.be/LwLP62fL83k?t=572">courage</a> to sign the{' '}
+                    <a target="_blank" rel="noreferrer" href="https://youtu.be/1ZlENaMK7MQ?t=2550">courage</a> to sign the{' '}
                     <a target="_blank" rel="noreferrer" href="https://pineapplefund.org/">sorts of transactions</a> which
                     will bring that about?
                 </div>
