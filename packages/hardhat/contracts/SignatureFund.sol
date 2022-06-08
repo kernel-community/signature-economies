@@ -103,14 +103,14 @@ contract SignatureFund is ERC721Tradable {
         } else if(msg.value >= values[0] && msg.value < values[1]) {
             uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".json"));
         } else {
-            json = string(abi.encodePacked("10/",selectedNFT));
+            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".json"));
         }
 
         uint256 newTokenId = _tokenIdCounter.current();
         _safeMint(creator, msg.sender, newTokenId);
-        jsonFile[newTokenId] = json;
+        _setTokenURI(newTokenId, uri);
         _tokenIdCounter.increment();
-        emit SignCreated(msg.sender, msg.value, newTokenId, string(abi.encodePacked(arweaveBase,json,".json")));
+        emit SignCreated(msg.sender, msg.value, newTokenId, uri);
 
         _safeTransferETHWithFallback(msg.value);
     }

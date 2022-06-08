@@ -7,8 +7,8 @@ export const addresses = (chainId) => {
       }
     case 1337:
       return {
-        signatureFund: '0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6',
-        signatureNFT: '0xa513E6E4b8f2a923D98304ec87F64353C4D5C853',
+        signatureFund: '0xcAb3Dc219b3F11dc8Bf27a08400E40Ca0F72096b',
+        signatureNFT: '0x3acDC166a6E2787570174DaAFe67e13a48B74DF9',
       }
     default:
       return {
