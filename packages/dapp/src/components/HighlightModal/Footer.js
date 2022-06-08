@@ -4,7 +4,7 @@ import { HighlightContext } from '../../contexts/Highlight';
 import { generate } from '../../utils/metadata';
 import ExecutionButton from '../common/ExecutionButton';
 import ConnectButton from '../common/ConnectButton';
-import { mintSelected, ownerOf  } from '../../utils/contracts';
+import { mintSelected, ownerOf  } from '../../utils/nft';
 import { upload, sign } from "../../utils/server";
 import { defaultAbiCoder, keccak256 } from 'ethers/lib/utils';
 
@@ -20,20 +20,25 @@ const Footer = () => {
       return;
     }
     const image = state.image.split(",")[1]
+    // call server to upload image
     const { arUrl: imageUrl } = (await upload({
         data: image,
         contentType: 'image/png'
       })).data;
 
+    // generate hash of selected text
     const hash = keccak256(defaultAbiCoder.encode(['string'],[state.text]));
 
+    // generate metadata with image + hash of text
     const metadata = generate(hash, imageUrl, state.text.length);
 
+    // call server to upload metadata
     const { arUrl: metadataUrl } = (await upload({
         data: JSON.stringify(metadata),
         contentType: 'text/plain'
       })).data;
 
+    // call server to sign on metadata's url
     const { signature, id } = (await sign({ arUrl: metadataUrl })).data;
 
     await mintSelected({
@@ -52,7 +57,7 @@ const Footer = () => {
   return (
     <div className="flex flex-row w-full justify-center gap-x-4 text-center my-5">
     <ExecutionButton
-      text='Cancel'
+      text='Close'
       exec={() => dispatch({ type: 'close' })}
       selectStyle='basic'
     />

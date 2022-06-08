@@ -28,7 +28,7 @@ describe("SignatureFund", function () {
         it("should accept donations and allocate correct metadata URIs based on amounts", async function () {
            const creatorBalance = await this.creator.getBalance();
            
-           const uri0 = "https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/0/one.json";
+           const uri0 = "https://arweave.net/xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q/0/one.json";
            const value0 = ethers.utils.parseEther("0.5");
            // A critical learning from this test: only use _strings_, do not pass in numbers
            await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value0 }))
@@ -38,7 +38,7 @@ describe("SignatureFund", function () {
            const creatorBalance0 = await this.creator.getBalance();
            expect(creatorBalance0).to.equal(creatorBalance.add(value0));
 
-           const uri1 = "https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/1/one.json";
+           const uri1 = "https://arweave.net/xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q/1/one.json";
            const value1 = ethers.utils.parseEther("1.5");
            await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value1 }))
             .to.emit(this.signatureFund, 'SignCreated')
@@ -47,7 +47,7 @@ describe("SignatureFund", function () {
            const creatorBalance1 = await this.creator.getBalance();
            expect(creatorBalance1).to.equal(creatorBalance0.add(value1));
 
-           const uri10 = "https://arweave.net/gXM-e_260R0FQ76e9cY194ffSNXhsHVr58XgF5PRcwk/10/one.json";
+           const uri10 = "https://arweave.net/xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q/10/one.json";
            const value10 = ethers.utils.parseEther("15");
            await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value10 }))
             .to.emit(this.signatureFund, 'SignCreated')
@@ -55,6 +55,46 @@ describe("SignatureFund", function () {
            expect (await this.signatureFund.tokenURI(2)).to.equal(uri10);
            const creatorBalance10 = await this.creator.getBalance();
            expect(creatorBalance10).to.equal(creatorBalance1.add(value10));
-        })
+        });
+        it("should allow the creator to update the arweaveBase and values", async function() {
+          const newValues = [ethers.utils.parseEther("5"), ethers.utils.parseEther("50")];
+          const newUrl = 'testymctestface/';
+          await this.signatureFund.connect(this.creator).setValues(newValues);
+          await this.signatureFund.connect(this.creator).setArweave(newUrl);
+          const creatorBalance = await this.creator.getBalance();
+
+          const uri0 = "testymctestface/0/one.json";
+          const value0 = ethers.utils.parseEther("2");
+          await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value0 }))
+          .to.emit(this.signatureFund, 'SignCreated')
+          .withArgs(this.alice.address, value0, 0, uri0);
+          expect (await this.signatureFund.tokenURI(0)).to.equal(uri0);
+          const creatorBalance0 = await this.creator.getBalance();
+          expect(creatorBalance0).to.equal(creatorBalance.add(value0));
+
+          const uri1 = "testymctestface/1/one.json";
+          const value1 = ethers.utils.parseEther("6");
+          await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value1 }))
+          .to.emit(this.signatureFund, 'SignCreated')
+          .withArgs(this.alice.address, value1, 1, uri1);
+          expect (await this.signatureFund.tokenURI(1)).to.equal(uri1);
+          const creatorBalance1 = await this.creator.getBalance();
+          expect(creatorBalance1).to.equal(creatorBalance0.add(value1));
+
+          const uri10 = "testymctestface/10/one.json";
+          const value10 = ethers.utils.parseEther("51");
+          await expect(this.signatureFund.connect(this.alice).createSign("one", { value: value10 }))
+          .to.emit(this.signatureFund, 'SignCreated')
+          .withArgs(this.alice.address, value10, 2, uri10);
+          expect (await this.signatureFund.tokenURI(2)).to.equal(uri10);
+          const creatorBalance10 = await this.creator.getBalance();
+          expect(creatorBalance10).to.equal(creatorBalance1.add(value10));
+        });
+        it("should revert if anyone other than creator tries to update arweave or values", async function() {
+          const tx = this.signatureFund.connect(this.alice).setValues([ethers.utils.parseEther("2"), ethers.utils.parseEther("5")]);
+          await expect(tx).to.be.revertedWith('NotAuthorized()');
+          const tx2 = this.signatureFund.connect(this.alice).setArweave('testy/');
+          await expect(tx2).to.be.revertedWith('NotAuthorized()');
+       });
     })
 });

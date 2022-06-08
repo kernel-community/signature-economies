@@ -1,68 +1,61 @@
-import Box from "./core/Box";
-import Checkmark from './core/icons/Checkmark';
-import React from "react";
-import {dedupe, fetchSignatures, sortSigs} from "../arweave";
+const axios = require('axios').default;
+const Constants = require('./constants');
 
-export default function Signatures({txId, sigs, setSigs}) {
-  const [cursor, setCursor] = React.useState("")
-  const [sortedSigs, setSortedSigs] = React.useState([])
-  const [reachedEnd, setReachedEnd] = React.useState(false)
+const {protocol, host, port} = Constants.arweave.gateway;
 
-  React.useEffect(() => {
-    setCursor(sigs[sigs.length-1] && sigs[sigs.length-1].CURSOR)
-    setSortedSigs(sortSigs(dedupe(sigs)))
-  }, [sigs])
+// arweave graphql endpoint
+const arweave = axios.create({
+   baseURL: protocol + "://" + host + ":" + port,
+   headers: {
+     'Content-type': 'Application/Json'
+   },
+});
 
-  const fetchMore = React.useCallback(async () => {
-    const newSigs = await fetchSignatures(txId, cursor)
-    if (newSigs.length === 0) {
-      setReachedEnd(true)
-    } else {
-      setSigs(oldSigs => [...oldSigs, ...newSigs])
+const QUERY = `
+  query getSignatures($appName: String!, $first: Int) {
+    transactions(tags:[
+      {
+        name:"App-Name",
+        values:[$appName],
+      },
+    ], sort:HEIGHT_DESC, first: $first) {
+      edges {
+        node {
+          id
+          block {
+            timestamp
+          }
+        }
+      }
     }
-  }, [cursor])
+  }
+`
+const VARS = {
+  appName: "Kernel-Signature-Economies",
+  first: 15
+}
 
-  // Instead of Twitter handles in the below, I would prefer to simply display either ENS names, or 0x... addresses. No social verification required.
+const cleanResponse = (data) => {
+  const { data: { transactions: { edges } } } = data;
+  const response = edges.map(edge => {
+    let date;
+    if (edge.node.block) {
+      const epoch = edge.node.block.timestamp * 1000;
+      date = new Date(epoch);
+    }
+    return {
+      id: edge.node.id,
+      date: date ? date.toLocaleDateString(): undefined
+    }
+  });
+  return response;
+}
 
-  return (
-    <Box
-      title={'Signatures'}
-      content={<>
-        {sortedSigs.map((sig, index) => <div className="font-mono w-full" key={sig.SIG_ADDR}>
-          <div
-            className={"space-x-0 flex py-4 sm:space-x-4 sm:py-2 w-auto sm:py-4 overflow-hidden" + ((index === sigs.length - 1 && reachedEnd) ? "" : " border-b border-gray-wash")}>
-            <h3 className="py-2 text-left">
-              {sig.SIG_HANDLE ?
-                <a target="_blank" className="hover:underline"
-                   href={`https://twitter.com/${sig.SIG_HANDLE}`}>{sig.SIG_NAME || 'Anonymous'}</a>
-                : sig.SIG_NAME}
-            </h3>
-            {sig.SIG_ID && <a
-              target="_blank"
-              className="hidden py-2 text-gray-detail hover:underline overflow-hidden sm:inline-block"
-              href={`https://arweave.net/tx/${sig.SIG_ID}`}>tx:{sig.SIG_ID.slice(0, 6)}</a>}
-
-            <div className="flex-1"/>
-
-            <a target="_blank" href={sig.SIG_HANDLE ? `https://twitter.com/${sig.SIG_HANDLE}` : null}
-               className="sm:hover:bg-gray-hover transition duration-250 ease-in-out flex row items-center text-sm px-1 rounded-full sm:px-4 sm:rounded-3xl text-gray-secondary sm:bg-gray-wash overflow-hidden">
-              {sig.SIG_ISVERIFIED && <div className="mr-2"><Checkmark filled/></div>}
-              <span className="md:flex">
-              {
-                sig.SIG_ISVERIFIED ?
-                  cleanHandle(sig.SIG_HANDLE, sig.SIG_ADDR, sig.SIG_ISVERIFIED) :
-                  sig.SIG_SIG.slice(0, 10)
-              }
-            </span>
-            </a>
-          </div>
-        </div>)}
-        {!reachedEnd && <div className="font-mono w-full cursor-pointer" key="load_more" onClick={fetchMore}>
-          <div className="space-x-0 flex py-4 md:space-x-4 sm:py-2 w-auto md:py-4 overflow-hidden">
-            <a className="text-center w-full">Load more signatures</a>
-          </div>
-        </div>}
-      </>}
-    />
-  );
+// returns an array of {id: arweave tx, signature}
+export const get = async () => {
+  const r = await arweave.post('/graphql', {
+    query: QUERY,
+    variables: VARS
+  })
+  return cleanResponse(r.data);
 }

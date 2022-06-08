@@ -1,6 +1,7 @@
 import React from 'react';
-import signature_ethblock from '../images/signature_ethblock.png';
-import signature_derrida from '../images/signature_derrida.png';
+import signature_ethblock from '../../images/signature_ethblock.png';
+import signature_derrida from '../../images/signature_derrida.png';
+import HorizontalRule from '../common/HorizontalRule';
 
 const FootNotes = () => {
     return (
@@ -113,9 +114,7 @@ const FootNotes = () => {
                 </div>
             </div>
 
-            <div className="pt-12 pb-16">
-            <hr className="w-2/3 mx-auto" />
-            </div>
+            <HorizontalRule />
 
             <div className="flex flex-col py-16 items-center justify-center">
             <div className="relative group z-40 ">

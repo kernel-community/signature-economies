@@ -6,6 +6,8 @@ const { upload } = require('./utils');
 const Config = require("./config.json");
 const Secrets = require("./secrets.json");
 
+const { getOrStoreRandomId } = require("./db");
+
 const port = Config.server.port;
 
 const app = express()
@@ -14,38 +16,40 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('API: Signature Economies')
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`API: Signature Economies listening on port ${port}`)
 })
 
-app.post('/upload', async (req, res) => {
-  const { data, contentType } = req.body;
-  if (!data || !contentType) return next(new Error ("Data or contentType missing"));
+app.post('/upload', async (req, res, next) => {
+  // tags = array of objects
+  // {key: "", value: ""}
+  const { data, contentType, tags } = req.body;
 
-  let arUrl;
+  if (!data || !contentType) return next(new Error ("Data or contentType missing"));
+  if (!tags) tags = [];
+
   try {
-    urls = await upload({data, contentType});
+    urls = await upload({ data, contentType, tags });
   } catch(err) {
     return next(err);
   }
 
-  // @todo remove
-  console.log({ contentType, arUrl });
+  console.debug({arUrl: urls.arUrl});
   res.send({ arUrl: urls.arUrl });
 });
 
-app.post('/sign', async (req,res) => {
-  let signature, message, url;
-  let id = "3";
+app.post('/sign', async (req, res, next) => {
+  let signature, message;
+  const url = req.body.arUrl; // metadata url
+  const { id } = await getOrStoreRandomId(url);
   try {
-    url = req.body.arUrl;
     message = ethers.utils.keccak256(
       ethers.utils.defaultAbiCoder.encode(
           ['uint256', 'string'],
-          [id, url],
+          [id, url], // token id, metadata url
         ),
     );
     const wallet = new ethers.Wallet(Secrets.signer.key);
@@ -53,12 +57,7 @@ app.post('/sign', async (req,res) => {
   } catch (err) {
     return next(err);
   }
-  // @todo remove
-  console.log({
-    signature, id,
-    url, message
-  });
-
+  console.debug({signature,message,id: id.toString(),url});
   res.send({
     signature,
     message,
