@@ -8,8 +8,8 @@
 export const generate = (hash, image, length) => {
   if (!hash || !length || !image) return; // invlaid
   return {
-    name: `Signature NFT`,
-    description: `A unique sign of the time, selected by 0xdeadbeef, to represent increasingly significant money in this infinite game we are playing together. As you consider these unique symbols, remember that wealth truly means having enough to share.`,
+    name: "Signature NFT",
+    description: "A unique sign of our times, selected to represent increasingly significant money in this infinite game we are playing together. As you consider these unique symbols, remember that wealth truly means having enough to share.",
     attributes: [
       {
         "trait_type": "Pattern",
@@ -37,6 +37,6 @@ export const generate = (hash, image, length) => {
       },
     ],
     external_url: "https://sign.kernel.community", // constant
-    image // url
+    image: `${image}` // url
   }
 }

@@ -1,68 +1,8 @@
-import { useEffect, useContext } from 'react';
-import HighlightPop from 'react-highlight-pop';
-import { HighlightContext } from '../contexts/Highlight';
-import AnimateHighlightModal from './HighlightModal/AnimateHighlightModal';
+const Content = () => {
+  return (
+    <div>
 
-function Essay () {
-  const { state, dispatch } = useContext(HighlightContext);
-
-    useEffect(() => {
-        if (state.modal) {
-          document.body.style.overflow = 'hidden';
-          document.body.style.paddingRight = '0px';
-        }
-        return () => {
-          document.body.style.overflow = 'unset';
-          document.body.style.paddingRight = '0px';
-        };
-      }, [state.modal]);
-
-    return (
-        <div>
-            <AnimateHighlightModal />
-            <HighlightPop
-                popoverItems={(itemClass) => (
-                <div>
-                    <span
-                      className={itemClass}
-                      onClick={() => dispatch({
-                        type:'highlight',
-                        payload: window.getSelection().toString()
-                      })}
-                      >
-                    🍀 Mint
-                    </span>
-                </div>
-                )}
-            >
-            <div className="flex flex-col w-screen h-screen items-center ">
-                <div className="flex md:text-8xl text-4xl flex-grow font-redaction text-gray-700 self-center">
-                    <div className=" my-auto mix-blend-color-multiply text-center">
-                    Signature
-                    <br />
-                    Economies
-                    </div>
-                </div>
-
-                <div className="animate text-gray-700 pb-48">
-                    <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 15 15"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    >
-                    <path
-                        d="M7.5 2C7.77614 2 8 2.22386 8 2.5L8 11.2929L11.1464 8.14645C11.3417 7.95118 11.6583 7.95118 11.8536 8.14645C12.0488 8.34171 12.0488 8.65829 11.8536 8.85355L7.85355 12.8536C7.75979 12.9473 7.63261 13 7.5 13C7.36739 13 7.24021 12.9473 7.14645 12.8536L3.14645 8.85355C2.95118 8.65829 2.95118 8.34171 3.14645 8.14645C3.34171 7.95118 3.65829 7.95118 3.85355 8.14645L7 11.2929L7 2.5C7 2.22386 7.22386 2 7.5 2Z"
-                        fill="currentColor"
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                    ></path>
-                    </svg>
-                </div>
-                </div>
-
-                <div className="flex flex-col pb-16 gap-y-12 text-md md:text-2xl font-garamond text-center items-center justify-center">
+      <div className="flex flex-col pb-16 gap-y-12 text-md md:text-2xl font-garamond text-center items-center justify-center">
                 <div>
                     To bear and not to own; <br /> to act and not lay claim;
                     <br /> to do the work and let it go:
@@ -86,11 +26,9 @@ function Essay () {
                 </div>
                 <div>
                     --
-                    <span className="font-bold underline">
-                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=dan5PntGO7E">
+                    <span className="font-bold">
                         {' '}
                         Kozan Ichikyo
-                    </a>
                     </span>
                 </div>
                 </div>
@@ -124,7 +62,7 @@ function Essay () {
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/conversation/hospitality/#freeing-civilization">
                     possession
                     </a>{' '}
-                    to the ability to make meaning? If so, the change in signification
+                    to the ability to make collective meaning? If so, the change in signification
                     is a radical one, because ownership is traditionally about exclusive
                     rights, whereas meaning is made valuable by{' '}
                     <a target="_blank" rel="noreferrer" href="https://youtu.be/v2XqrFkyo68?t=1221">
@@ -138,7 +76,12 @@ function Essay () {
                     <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=U7v63TjdutE&t=2999s">
                     opposite
                     </a>
-                    : “content can now beproliferated instead of protected.<sup>2</sup>”
+                    : “content can now beproliferated instead of protected<sup>2</sup>”. We may, 
+                    for the first time online, design primarily for{' ' }
+                    <a href="https://youtu.be/uN4g0Sr3jhs?t=1620">
+                    multiple, simultaneous use
+                    </a>
+                    , rather than individual consumption. 
                 </div>
                 <div>
                     The very first proto-NFTs hinted at this shift. “
@@ -156,32 +99,32 @@ function Essay () {
                     ends by pointing out that this network differs from traditional art
                     markets because it is public, transparent, and voluntary.
                 </div>
-                <div>
-                    Perhaps all this work is not about the right to control, but about cultivating
-                    responsibility? Having no intermediaries creates certain benefits,
-                    but it is—as always—a tradeoff: if you misplace your mnemonic,
-                    it means no more magic internet money and there is no customer
-                    service to help you. However, this can be addressed by{' '}
-                    <a target="_blank" rel="noreferrer" href="https://vitalik.ca/general/2021/01/11/recovery.html">
-                    interdependent architectures
-                    </a>{' '}
-                    and “by {' '}
-                    <a target="_blank" rel="noreferrer" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763">
-                    embedding security in sociality
-                    </a> [such that we] can always regenerate keys through community recovery”. 
+                <div className="w-max mx-auto pt-16 pb-8 mt-16 flex md:text-6xl text-4xl text-center font-redaction text-gray-800 items-center self-center">
+                    The Plural Good
                 </div>
-                <div> 
-                    As the meaning of ‘ownership’ shifts, it drags other critical terms along with it, 
-                    like ‘social security’. This has a cascading effect, such that words 
-                    like ‘welfare’ may come to mean more than just financial stability secured by bureaucratic states, 
+                <div>
+                    How does making a sign differ from exerting control or claiming possession? Once claimed,
+                    possessed or controlled, the story is forced to a close, which is why the ‘ownership economy’ is singular.
+                    Someone wins and everyone else loses. However, your signature is at once totally unique—there
+                    is only one in the whole world—and yet it can be made many times over without losing meaning.
+                    So it is that we can talk of Signature Economies in the plural, while still remembering that such plurality
+                    is made meaningfully valuable by individual speech acts within and across a shared, public ledger.
+                    To quote Wendell Berry, “Perhaps our most serious cultural loss in recent centuries is the knowledge
+                    that some things, though limited, are inexhaustible.”
+                </div>
+                
+                <div>
+                    As the meaning of ‘ownership’ shifts, it drags other critical terms along with it,
+                    like ‘social security’. This has a cascading effect, such that words
+                    like ‘welfare’ may come to mean more than just financial stability secured by bureaucratic states,
                     signifying—in addition to the financial—our access to and participation in “authentic communication
                     channels” through which we establish, by consensus, shared and open state.
-                    In this context, and keeping in mind our responsibility not just for our own keys but the recovery of others, 
+                    In this context, and keeping in mind our responsibility not just for our own keys but the recovery of others,
                     “Make meaningful economies” is a more crafty
                     <sup>3</sup> cultural signal than “Own your piece of the economy”.
                 </div>
                 <div>
-                    While our state is globally shared, it is critical that our terms are plural. Our work must not be
+                    While our state is globally shared, it is critical that we design economies, plural. Our work must not be
                     about replicating one dominant economic{' '}
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-7/no-paradigm/">
                     paradigm
@@ -192,7 +135,7 @@ function Essay () {
                     value to interface
                     </a>{' '}
                     with one another in creative ways which don’t aim for cancerous
-                    growth, but are self-sustaining, responsible, and resilient.
+                    growth, but are self-sustaining, resilient, and responsible.
                 </div>
                 </div>
 
@@ -202,6 +145,20 @@ function Essay () {
 
                 <div className="mx-auto flex flex-col px-8 md:px-0 py-16 w-full md:w-[800px] gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center">
                 <div>
+                    Perhaps this work is not about the right to control, but about cultivating
+                    responsibility? Having no intermediaries creates certain benefits,
+                    but it is—as always—a tradeoff: if you misplace your mnemonic,
+                    it means no more magic internet money and there is no customer
+                    service to help you. However, this can be addressed by{' '}
+                    <a target="_blank" rel="noreferrer" href="https://vitalik.ca/general/2021/01/11/recovery.html">
+                    interdependent architectures
+                    </a>{' '}
+                    and “by {' '}
+                    <a target="_blank" rel="noreferrer" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4105763">
+                    embedding security in sociality
+                    </a> [such that we] can always regenerate keys through community recovery”.
+                </div>
+                <div>
                     The phrase ‘not your keys, not your coins’ is often used to connote
                     sovereign rights. If you hold the keys, then you have an absolute
                     and unimpeachable right to sign as you please. It turns out, though,
@@ -210,11 +167,7 @@ function Essay () {
                     responsibility is an inherently difficult feature for which to
                     design<sup>4</sup>. This is because response-ability is not about
                     discrete, individual actions which release the most dopamine, but
-                    our <strong>unique relationships within a network</strong>. Designing for{' '}
-                    <a target="_blank" rel="noreferrer" href="https://youtu.be/uN4g0Sr3jhs?t=1620">
-                    multiple, simultaneous use
-                    </a>{' '}
-                    is not a practice consumer culture values highly.
+                    our <strong>unique relationships within a network</strong>.
                 </div>
                 <div>
                     Single sign-ons represent us as separate users and when—neatly
@@ -295,15 +248,15 @@ function Essay () {
                     <a target="_blank" rel="noreferrer" href="https://www.kernel.community/en/conversation/hospitality/deep-response/#commons--autonomy">
                     Kanien'kehá:ka
                     </a>{' '}
-                    phrase “<i>I’ionrhek thiia’tionha’ak nonen tion’kwatorohon</i>”: 
-                    we are individual but we discover ourselves within the collective. 
-                    Both sayings hold the possibility and promise of 
+                    phrase “<i>I’ionrhek thiia’tionha’ak nonen tion’kwatorohon</i>”:
+                    we are individual but we discover ourselves within the collective.
+                    Both sayings hold the possibility and promise of
                     individuation: you can become a full human being; but you can only
                     do so in community. You can only do so through fulfilling your
                     responsibilities in relationship, not through asserting your rights.
                 </div>
                 <div>
-                    Even the word ‘economies’ contains this same double-directedness. It
+                    The word ‘economies’ contains this same double-directedness. It
                     comes from the Greek <i>oikos</i>, which means ‘house’. Sustainable
                     household management requires micro insights into each of our
                     habits, as well as macro perspectives of our shared habitations,
@@ -421,7 +374,7 @@ function Essay () {
                     maintaining our shared record cannot be censored by anyone, but they
                     can be seen by everyone, so be careful what kinds of money you make
                     meaningful. With programmable power comes permanent accountability.
-                    To better understand the deeper meaning of 'power', though, we once 
+                    To better understand the deeper meaning of 'power', though, we once
                     again turn to the poets:
                 </div>
 
@@ -445,7 +398,7 @@ function Essay () {
                     kind of web we want; it’s about how we see ourselves. Do we trust
                     ourselves enough to signal the kinds of economies we wish to engage
                     in, and do we have the{' '}
-                    <a target="_blank" rel="noreferrer" href="https://youtu.be/LwLP62fL83k?t=572">courage</a> to sign the{' '}
+                    <a target="_blank" rel="noreferrer" href="https://youtu.be/1ZlENaMK7MQ?t=2550">courage</a> to sign the{' '}
                     <a target="_blank" rel="noreferrer" href="https://pineapplefund.org/">sorts of transactions</a> which
                     will bring that about?
                 </div>
@@ -509,54 +462,8 @@ function Essay () {
                 <br />
                 <div className="font-bold">- Chapter 51, Tao Te Ching</div>
                 </div>
-
-            </HighlightPop>
-
-                <div className="pt-12 pb-16">
-                <hr className="w-2/3 mx-auto" />
-                </div>
-
-                <div className="mx-auto flex flex-col py-16 w-full md:w-[800px] gap-y-12 px-8 md:px-0 text-md md:text-2xl font-garamond text-center items-center justify-center">
-                <div>
-                    Poetry, well placed, <br />
-                    can serve up <br />
-                    a subversive education <br />
-                    in potent signs, <br />
-                    drawing out what is <br />
-                    already within <br />
-                    so we can wake <br />
-                    the dream into reality. <br />
-                </div>
-                <div>
-                    Peer into this paradox <br />
-                    without possessing it. <br />
-                    Play the nebulous pattern <br />
-                    of you through all <br />
-                    the others who care, <br />
-                    key pairs sharing what comes, <br />
-                    meaning they make wealth <br />
-                    between the curves <br />
-                    of this created web <br />
-                    we now call home. <br />
-                </div>
-                <div>
-                    There is the courage <br />
-                    in each heart <br />
-                    to hear truth <br />
-                    and bear witness <br />
-                    and lay no claim. <br />
-                </div>
-                <div>
-                    Simply sign it on,
-                    <br /> my soul.
-                </div>
-                </div>
-
-                <div className="pt-12 pb-16">
-                <hr className="w-2/3 mx-auto" />
-                </div>
-        </div>
-    )
+    </div>
+  )
 }
 
-export default Essay;
+export default Content;
