@@ -37,11 +37,16 @@ const SlideAndMint = () => {
       </div>
       <div className="flex flex-col md:flex-grow md:h-full p-8">
         <NFTShowcase />
-        <div className="text-gray-300 hidden md:block text-sm md:pb-16 font-redaction mx-auto">
-          Hover on the image to see the back
-        </div>
-        <div className="text-gray-300 text-sm block md:hidden md:pb-16 font-redaction mx-auto">
-          Tap on the image to see the back
+        <div className="text-gray-600 text-center text-sm block md:pb-16 font-garamond mx-auto w-2/3">
+          <p className='pb-2'>
+            Each seal signifies a planet and is inscribed with one of the quotes found in this essay.
+          </p>
+          <p className='pb-2'>
+            There's more music of the spheres in the interplanetary metadata too...
+          </p>
+          <p className='pb-2'>
+            Click on the image to explore the guiding star for this unique symbol.
+          </p>
         </div>
         <div className='flex flex-col gap-y-12 md:flex-row justify-center items-center'>
           <SliderInput />

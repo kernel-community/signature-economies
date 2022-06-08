@@ -12,7 +12,7 @@ const MintPop = ({itemClass}) => {
           payload: window.getSelection().toString()
         })}
         >
-      🍀 Mint
+      🍀 Create Sign
       </span>
   </div>
   )
