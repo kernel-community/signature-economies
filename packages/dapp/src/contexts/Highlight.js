@@ -43,7 +43,8 @@ const reducer = (state, action) => {
       console.log("setting mint", action.payload);
       return {
         ...state,
-        mint: action.payload
+        mint: action.payload.success,
+        tx: action.payload.tx
       }
     }
     default: return state;
@@ -54,7 +55,8 @@ const initial = {
   modal: false,
   image: undefined,
   mint: false,
-  loading: false
+  loading: false,
+  tx: undefined
 };
 export const HighlightProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initial);

@@ -51,16 +51,16 @@ const Footer = () => {
     const { signature, id } = (await sign({ arUrl: metadataUrl })).data;
 
     //////////////////////// update
-    await mintSelected({
+    const tx = await mintSelected({
       url: metadataUrl,
       provider,
       signer,
       id,
       signature
     });
-
+    console.log(tx);
     dispatch({ type: 'loading', payload: false });
-    dispatch({ type: 'mint', payload: true });
+    dispatch({ type: 'mint', payload: {success: true, tx: tx.hash } });
     const owner = await ownerOf(provider, id);
 
     // @todo remove
