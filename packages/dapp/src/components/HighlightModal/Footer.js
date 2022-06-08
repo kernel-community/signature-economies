@@ -17,9 +17,15 @@ const Footer = () => {
   const mint = async () => {
     if (!isImage) {
       // throw an error here or prompt the user to reload
+      console.log("no image found. try reloading the page.");
       return;
     }
     const image = state.image.split(",")[1]
+
+    dispatch({ type: 'loading', payload: true });
+
+    ////////////////////////////////////// remove
+
     const { arUrl: imageUrl } = (await upload({
         data: image,
         contentType: 'image/png'
@@ -36,6 +42,7 @@ const Footer = () => {
 
     const { signature, id } = (await sign({ arUrl: metadataUrl })).data;
 
+    //////////////////////// update
     await mintSelected({
       url: metadataUrl,
       provider,
@@ -44,6 +51,8 @@ const Footer = () => {
       signature
     });
 
+    dispatch({ type: 'loading', payload: false });
+    dispatch({ type: 'mint', payload: true });
     const owner = await ownerOf(provider, id);
 
     // @todo remove
@@ -51,21 +60,21 @@ const Footer = () => {
   }
   return (
     <div className="flex flex-row w-full justify-center gap-x-4 text-center my-5">
-    <ExecutionButton
-      text='Cancel'
-      exec={() => dispatch({ type: 'close' })}
-      selectStyle='basic'
-    />
-    {
-      !activeConnector ?
-      <ConnectButton /> :
       <ExecutionButton
-        text='Mint'
-        exec={mint}
-        disabled={!isImage}
+        text='Cancel'
+        exec={() => dispatch({ type: 'close' })}
+        selectStyle='basic'
       />
-    }
-  </div>
+      {
+        !activeConnector ?
+        <ConnectButton /> :
+        <ExecutionButton
+          text='Mint'
+          exec={mint}
+          disabled={!isImage}
+        />
+      }
+    </div>
   )
 }
 

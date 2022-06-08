@@ -8,7 +8,7 @@ const Wait = () => {
        <motion.span
          className='animate-pulse block w-64 h-64 border-4 border-gray-300 border-t-[#07eb9f] rounded-full absolute border-box top-0 left-0'
          animate={{ rotate: 360 }}
-         transition={{ 
+         transition={{
            loop: Infinity,
            ease: "linear",
            duration: 1
@@ -16,7 +16,7 @@ const Wait = () => {
        >
        </motion.span>
        <div className=''>
-         <img className='w-32 h-32' src={KernelLogo} />
+         <img className='w-32 h-32' src={KernelLogo} alt="kernel logo" />
        </div>
      </div>
            <div className='pt-12 text-xl opacity-30 text-center tracking-tight'>

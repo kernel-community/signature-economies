@@ -32,13 +32,29 @@ const reducer = (state, action) => {
         image: action.payload
       };
     }
+    case 'loading': {
+      console.log('setting loading', action.payload);
+      return {
+        ...state,
+        loading: action.payload,
+      }
+    }
+    case 'mint': {
+      console.log("setting mint", action.payload);
+      return {
+        ...state,
+        mint: action.payload
+      }
+    }
     default: return state;
   }
 }
 const initial = {
   text: "",
-  modal: true,
+  modal: false,
   image: undefined,
+  mint: false,
+  loading: false
 };
 export const HighlightProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initial);
