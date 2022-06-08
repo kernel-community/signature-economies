@@ -27,8 +27,8 @@ contract SignatureNFT is ERC721Tradable {
     error NotAuthorized();
 
     struct Highlight {
-        uint8 start;
-        uint8 end;
+        uint16 start;
+        uint16 end;
     }
     // maps tokenId to the start and end of the highlighted text
     mapping(uint256 => Highlight) public selection;
@@ -37,7 +37,7 @@ contract SignatureNFT is ERC721Tradable {
     string public gateway = "https://ipfs.io/ipfs/";
 
     // stores hash of image generator app
-    string public imgHash = "QmWZzAg52Xk5yxAjsL58X4HZDGKDWo67rqrDzArLm64LSA";
+    string public imgHash = "QmaSN7PiDoBcJBdmpH4V2yQGzBYxCwNr5jb1tNt8widcuE";
 
     // A Kernel address for proper attribution
     address public creator;
@@ -85,11 +85,12 @@ contract SignatureNFT is ERC721Tradable {
      * @param start the word index the chosen highlight starts on
      * @param end   the word index where the chosen highlight ends
      */
-    function mintSelected(uint8 start, uint8 end) 
+    function mintSelected(uint16 start, uint16 end) 
         external 
     {
-        require(start < end && start >= 0 && end <= 1988, "Invalid index");
-        // TODO: current p5.js implementation only seems to print ~63 words, we will need a check in here for that.
+        // The 510 character limit here is an arbitrary limit of our p5.js rendering script. We have to draw the line somewhere,
+        // so long as you remember that this is merely a convention, waiting to be transcended.
+        require(start < end && start >= 0 && end <= 12463 && end - start <= 517, "Invalid index");
         uint256 newTokenId = _tokenIdCounter.current();
         selection[newTokenId] = Highlight(start, end);
         _safeMint(creator, msg.sender, newTokenId);

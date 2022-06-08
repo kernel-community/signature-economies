@@ -5,7 +5,7 @@
       "chainId": "4",
       "contracts": {
         "SignatureFund": {
-          "address": "0x6E10CaDF8F623d90b36A88f8F42a4E02221F6BB9",
+          "address": "0xcAb3Dc219b3F11dc8Bf27a08400E40Ca0F72096b",
           "abi": [
             {
               "inputs": [
@@ -27,6 +27,11 @@
               ],
               "stateMutability": "nonpayable",
               "type": "constructor"
+            },
+            {
+              "inputs": [],
+              "name": "NotAuthorized",
+              "type": "error"
             },
             {
               "anonymous": false,
@@ -150,6 +155,19 @@
               "name": "approve",
               "outputs": [],
               "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "arweaveBase",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
               "type": "function"
             },
             {
@@ -386,6 +404,19 @@
             {
               "inputs": [
                 {
+                  "internalType": "string",
+                  "name": "newUrl",
+                  "type": "string"
+                }
+              ],
+              "name": "setArweave",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "address",
                   "name": "recipient",
                   "type": "address"
@@ -397,6 +428,19 @@
                 }
               ],
               "name": "setRoyalties",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256[2]",
+                  "name": "newValues",
+                  "type": "uint256[2]"
+                }
+              ],
+              "name": "setValues",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -491,7 +535,7 @@
           ]
         },
         "SignatureNFT": {
-          "address": "0x3488a78A9F5ac75486a1e179447682200DF4D637",
+          "address": "0x3acDC166a6E2787570174DaAFe67e13a48B74DF9",
           "abi": [
             {
               "inputs": [
@@ -504,11 +548,6 @@
                   "internalType": "address",
                   "name": "_creator",
                   "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_signer",
-                  "type": "address"
                 }
               ],
               "stateMutability": "nonpayable",
@@ -517,11 +556,6 @@
             {
               "inputs": [],
               "name": "NotAuthorized",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "WrongSignature",
               "type": "error"
             },
             {
@@ -688,6 +722,19 @@
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "gateway",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -701,6 +748,19 @@
                   "internalType": "address",
                   "name": "",
                   "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "imgHash",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
                 }
               ],
               "stateMutability": "view",
@@ -733,19 +793,14 @@
             {
               "inputs": [
                 {
-                  "internalType": "string",
-                  "name": "uri",
-                  "type": "string"
+                  "internalType": "uint16",
+                  "name": "start",
+                  "type": "uint16"
                 },
                 {
-                  "internalType": "uint256",
-                  "name": "tokenId",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bytes",
-                  "name": "signature",
-                  "type": "bytes"
+                  "internalType": "uint16",
+                  "name": "end",
+                  "type": "uint16"
                 }
               ],
               "name": "mintSelected",
@@ -868,6 +923,30 @@
             {
               "inputs": [
                 {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "selection",
+              "outputs": [
+                {
+                  "internalType": "uint16",
+                  "name": "start",
+                  "type": "uint16"
+                },
+                {
+                  "internalType": "uint16",
+                  "name": "end",
+                  "type": "uint16"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "address",
                   "name": "operator",
                   "type": "address"
@@ -899,32 +978,6 @@
               "name": "setRoyalties",
               "outputs": [],
               "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "newSigner",
-                  "type": "address"
-                }
-              ],
-              "name": "setSigner",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "signer",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
               "type": "function"
             },
             {
@@ -963,7 +1016,7 @@
               "inputs": [
                 {
                   "internalType": "uint256",
-                  "name": "tokenId",
+                  "name": "id",
                   "type": "uint256"
                 }
               ],
@@ -997,6 +1050,19 @@
                 }
               ],
               "name": "transferFrom",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "newGateway",
+                  "type": "string"
+                }
+              ],
+              "name": "updateGateway",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"

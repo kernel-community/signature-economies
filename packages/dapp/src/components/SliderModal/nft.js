@@ -33,7 +33,8 @@ import Back_8 from '../../images/sealedNfts/back/8.png';
 
 export const sealedNFTS = [
   {
-    id: 1,
+    id: 0,
+    title: 'Mercury',
     text:
       'The complementary opposite of scarcity is not abundance, it is reciprocity...',
     image_Front_0: Front_0_1,
@@ -42,7 +43,8 @@ export const sealedNFTS = [
     image_Back: Back_1,
   },
   {
-    id: 2,
+    id: 1,
+    title: 'Venus',
     text:
       '"Quantum thought": being able to contemplate 0 and 1 simultaneously, as well as the spectrum of probability between...',
       image_Front_0: Front_0_2,
@@ -51,7 +53,8 @@ export const sealedNFTS = [
       image_Back: Back_2,
   },
   {
-    id: 3,
+    id: 2,
+    title: 'Earth',
     text:
       'The insight this work offers is simple: we are really looking for a language of play and more playful languages...',
       image_Front_0: Front_0_3,
@@ -60,7 +63,8 @@ export const sealedNFTS = [
       image_Back: Back_3,
   },
   {
-    id: 4,
+    id: 3,
+    title: 'Mars',
     text:
       'It is only when we are comfortable with our own state of neediness that we can communicate it clearly and honestly to others without projecting...',
       image_Front_0: Front_0_4,
@@ -69,7 +73,8 @@ export const sealedNFTS = [
       image_Back: Back_4,
   },
   {
-    id: 5,
+    id: 4,
+    title: 'Jupiter',
     text: 'The act of giving does not create gifts: it is only when one is received in good faith that a gift truly exists...',
     image_Front_0: Front_0_5,
     image_Front_1: Front_1_5,
@@ -77,7 +82,8 @@ export const sealedNFTS = [
     image_Back: Back_5,
   },
   {
-    id: 6,
+    id: 5,
+    title: 'Saturn',
     text: 'Happily, the language of the good is also a language of self-imposed limits, which seeks perfect expression only as a means towards...',
     image_Front_0: Front_0_6,
     image_Front_1: Front_1_6,
@@ -85,7 +91,8 @@ export const sealedNFTS = [
     image_Back: Back_6,
   },
   {
-    id: 7,
+    id: 6,
+    title: 'Uranus',
     text:
       'Our ability to create value has always been tied to the ways in which we tell stories about, and with, our shared records...',
       image_Front_0: Front_0_7,
@@ -94,7 +101,8 @@ export const sealedNFTS = [
       image_Back: Back_7,
   },
   {
-    id: 8,
+    id: 7,
+    title: 'Neptune',
     text:
       'Infinite games are to finite games as a container to the contained, or a background to the stage, or a field to the players moving on it...',
       image_Front_0: Front_0_8,
