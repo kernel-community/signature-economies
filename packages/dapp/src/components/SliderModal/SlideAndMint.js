@@ -47,13 +47,13 @@ const Minter = () => {
   const { data: signer } = useSigner();
   const handleOnClickMint = async () => {
     dispatch({ type: 'loading' });
-    await createSign({
+    const tx = await createSign({
       value: state.input.toString(),
       token: state.selected.toString(),
       provider,
       signer
     })
-    dispatch({ type: 'mint' });
+    dispatch({ type: 'mint', payload: { success: true, tx: tx.hash } });
   }
   return (
     <>

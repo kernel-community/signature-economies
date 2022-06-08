@@ -11,11 +11,6 @@ export const abis = {
           "internalType": "address",
           "name": "_creator",
           "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_signer",
-          "type": "address"
         }
       ],
       "stateMutability": "nonpayable",
@@ -24,11 +19,6 @@ export const abis = {
     {
       "inputs": [],
       "name": "NotAuthorized",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "WrongSignature",
       "type": "error"
     },
     {
@@ -195,6 +185,19 @@ export const abis = {
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "gateway",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "uint256",
@@ -208,6 +211,19 @@ export const abis = {
           "internalType": "address",
           "name": "",
           "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "imgHash",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
         }
       ],
       "stateMutability": "view",
@@ -240,19 +256,14 @@ export const abis = {
     {
       "inputs": [
         {
-          "internalType": "string",
-          "name": "uri",
-          "type": "string"
+          "internalType": "uint16",
+          "name": "start",
+          "type": "uint16"
         },
         {
-          "internalType": "uint256",
-          "name": "tokenId",
-          "type": "uint256"
-        },
-        {
-          "internalType": "bytes",
-          "name": "signature",
-          "type": "bytes"
+          "internalType": "uint16",
+          "name": "end",
+          "type": "uint16"
         }
       ],
       "name": "mintSelected",
@@ -375,6 +386,30 @@ export const abis = {
     {
       "inputs": [
         {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "selection",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "start",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint16",
+          "name": "end",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "address",
           "name": "operator",
           "type": "address"
@@ -406,32 +441,6 @@ export const abis = {
       "name": "setRoyalties",
       "outputs": [],
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "newSigner",
-          "type": "address"
-        }
-      ],
-      "name": "setSigner",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "signer",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -470,7 +479,7 @@ export const abis = {
       "inputs": [
         {
           "internalType": "uint256",
-          "name": "tokenId",
+          "name": "id",
           "type": "uint256"
         }
       ],
@@ -504,6 +513,19 @@ export const abis = {
         }
       ],
       "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "newGateway",
+          "type": "string"
+        }
+      ],
+      "name": "updateGateway",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

@@ -5,6 +5,9 @@
  import { useReducer, createContext, useMemo } from "react";
  import { sealedNFTS } from "../components/SliderModal/nft";
 
+ const ETHERSCAN_TX="https://etherscan.io/tx/"
+
+
  const getImg = (index, variation) => {
   if (variation >= 10) {
     return sealedNFTS[index].image_Front_10;
@@ -61,7 +64,8 @@
       return {
         ...state,
         loading: false,
-        mint: true
+        mint: action.payload.success,
+        tx: ETHERSCAN_TX + action.payload.tx
       }
     }
     default: return state;
@@ -74,7 +78,8 @@
    selected: 0,
    mint: false,
    loading: false,
-   image: undefined
+   image: undefined,
+   tx: undefined
  }
 
  export const SliderProvider = ({children}) => {
