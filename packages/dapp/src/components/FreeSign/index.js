@@ -42,7 +42,7 @@ const FreeSign = () => {
           value: "Kernel-Signature-Economies"
         }
       ]
-    })).data;
+    }));
     console.log(sigUrl);
     setIsUploading(false);
     setIsSuccess(true);

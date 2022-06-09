@@ -1,16 +1,11 @@
-const axios = require('axios').default;
+const Arweave = require('arweave').default;
 const Constants = require('./constants');
 const Secrets = require("./secrets.json");
 
 const key = Secrets.arweave.key;
-const {protocol, host, port} = Constants.arweave.gateway;
-// arweave graphql endpoint
-const arweave = axios.create({
-  baseURL: protocol + "://" + host + ":" + port,
-  headers: {
-    'Content-type': 'Application/Json'
-  },
-});
+
+const arweave = Arweave.init(Constants.arweave.gateway);
+
 export const upload = async ({data, contentType, tags}) => {
   if (!data) return;
   if (!tags) tags = [];
