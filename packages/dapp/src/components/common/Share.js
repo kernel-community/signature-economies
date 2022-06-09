@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { HighlightContext } from '../../contexts/Highlight';
 import { SliderContext } from '../../contexts/Slider';
+import { Link } from 'react-router-dom';
 
 const Share = () => {
   const { state: highlightState } = useContext(HighlightContext);
@@ -30,9 +31,11 @@ const Share = () => {
       </div>
     }
     </div>
-    <div className="mt-12 bg-white select-none text-center py-2 px-4 md:px-8 md:py-4 w-64 border-2 rounded-md border-black font-redaction cursor-pointer">
-      View Soul Sign
-    </div>
+    <Link to="/soulsigns">
+      <div className="mt-12 bg-white select-none text-center py-2 px-4 md:px-8 md:py-4 w-64 border-2 rounded-md border-black font-redaction cursor-pointer">
+        View Soul Sign
+      </div>
+    </Link>
    </div>
   )
 }
