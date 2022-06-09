@@ -1,12 +1,9 @@
 import { useContext } from 'react';
 import { useConnect, useSigner, useProvider } from "wagmi"
 import { HighlightContext } from '../../contexts/Highlight';
-import { generate } from '../../utils/metadata';
 import ExecutionButton from '../common/ExecutionButton';
 import ConnectButton from '../common/ConnectButton';
-import { mintSelected, ownerOf  } from '../../utils/contracts';
-import { upload, sign } from "../../utils/server";
-import { defaultAbiCoder, keccak256 } from 'ethers/lib/utils';
+import { mintSelected  } from '../../utils/nft';
 
 const Footer = () => {
   const { state, dispatch } = useContext(HighlightContext);
@@ -17,55 +14,37 @@ const Footer = () => {
   const mint = async () => {
     if (!isImage) {
       // throw an error here or prompt the user to reload
+      console.log("no image found. try reloading the page.");
       return;
     }
-    const image = state.image.split(",")[1]
-    const { arUrl: imageUrl } = (await upload({
-        data: image,
-        contentType: 'image/png'
-      })).data;
-
-    const hash = keccak256(defaultAbiCoder.encode(['string'],[state.text]));
-
-    const metadata = generate(hash, imageUrl, state.text.length);
-
-    const { arUrl: metadataUrl } = (await upload({
-        data: JSON.stringify(metadata),
-        contentType: 'text/plain'
-      })).data;
-
-    const { signature, id } = (await sign({ arUrl: metadataUrl })).data;
-
-    await mintSelected({
-      url: metadataUrl,
+    dispatch({ type: 'loading', payload: true });
+    const tx = await mintSelected({
       provider,
       signer,
-      id,
-      signature
+      start: state.start,
+      end: state.end
     });
-
-    const owner = await ownerOf(provider, id);
-
-    // @todo remove
-    console.log(`new owner of token id ${id}: ${owner}`);
+    console.log(tx);
+    dispatch({ type: 'loading', payload: false });
+    dispatch({ type: 'mint', payload: {success: true, tx: tx.hash } });
   }
   return (
     <div className="flex flex-row w-full justify-center gap-x-4 text-center my-5">
-    <ExecutionButton
-      text='Cancel'
-      exec={() => dispatch({ type: 'close' })}
-      selectStyle='basic'
-    />
-    {
-      !activeConnector ?
-      <ConnectButton /> :
       <ExecutionButton
-        text='Mint'
-        exec={mint}
-        disabled={!isImage}
+        text='Cancel'
+        exec={() => dispatch({ type: 'close' })}
+        selectStyle='basic'
       />
-    }
-  </div>
+      {
+        !activeConnector ?
+        <ConnectButton /> :
+        <ExecutionButton
+          text='Mint'
+          exec={mint}
+          disabled={!isImage}
+        />
+      }
+    </div>
   )
 }
 

@@ -33,7 +33,7 @@
     "mintlocal": "yarn hardhat --network localhost mint --tokenuri https://arweave.net/R5VjN9UOc1llzmvOYvymFmDexZmIxIkzz9n5CvyVAd8",
     "signlocal": "yarn hardhat --network localhost createSign --selectednft three",
     "deployrinkeby": "yarn hardhat --network rinkeby deploy --export-all ../subgraph/config/deployments.json",
-    "mintrinkeby": "yarn hardhat --network rinkeby mint --tokenuri https://arweave.net/jPgq6Y29R3D4rj7Bz4qeHvVBaUXD8236Ztt7JwCmgrE --tokenid 0",
+    "mintrinkeby": "yarn hardhat --network rinkeby mint --start 0 --end 517",
     "signrinkeby": "yarn hardhat --network rinkeby createSign --selectednft one"
   }
 }

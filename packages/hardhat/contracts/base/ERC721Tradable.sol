@@ -45,6 +45,7 @@ contract ERC721Tradable is
     function tokenURI(uint256 tokenId)
         public
         view
+        virtual
         override(ERC721URIStorage)
         returns (string memory)
     {
