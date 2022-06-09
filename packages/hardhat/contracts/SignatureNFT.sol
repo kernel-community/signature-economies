@@ -37,7 +37,7 @@ contract SignatureNFT is ERC721Tradable {
     string public gateway = "https://ipfs.io/ipfs/";
 
     // stores hash of image generator app
-    string public imgHash = "QmaSN7PiDoBcJBdmpH4V2yQGzBYxCwNr5jb1tNt8widcuE";
+    string public imgHash = "QmYZ7V7PdztrcPVu3b8zTURusEw3E39txVC7grFSvRF7JX";
 
     // A Kernel address for proper attribution
     address public creator;

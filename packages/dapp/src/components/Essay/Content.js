@@ -1,37 +1,6 @@
 const Content = () => {
   return (
     <div>
-             <div className="flex flex-col pb-16 gap-y-12 text-md md:text-2xl font-garamond text-center items-center justify-center">
-                <div>
-                    To bear and not to own; <br /> to act and not lay claim;
-                    <br /> to do the work and let it go:
-                    <br /> for just letting it go
-                    <br /> is what makes it stay.
-                </div>
-                <div>
-                    -- Chapter 2,{' '}
-                    <span className="font-bold underline">
-                    <a target="_blank" rel="noreferrer" href="http://www.sfhunyuan.com/images/TAO_TE_CHING_-_LE_GUIN_edition.pdf">
-                        Tao Te Ching
-                    </a>
-                    </span>
-                </div>
-                <div>
-                    Empty-handed <br />
-                    I entered into this world,
-                    <br />
-                    Barefoot I leave it.
-                    <br />
-                </div>
-                <div>
-                    --
-                    <span className="font-bold">
-                        {' '}
-                        Kozan Ichikyo
-                    </span>
-                </div>
-                </div>
-
                 <div className="mx-auto flex flex-col px-8 md:px-0 py-16 w-full md:w-[800px] gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center">
                 <div>
                     Public blockchains present a paradox of ownership. No-one controls
@@ -75,12 +44,12 @@ const Content = () => {
                     <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=U7v63TjdutE&t=2999s">
                     opposite
                     </a>
-                    : “content can now beproliferated instead of protected<sup>2</sup>”. We may, 
+                    : “content can now be proliferated instead of protected<sup>2</sup>”. We may,
                     for the first time online, design primarily for{' ' }
                     <a href="https://youtu.be/uN4g0Sr3jhs?t=1620">
                     multiple, simultaneous use
                     </a>
-                    , rather than individual consumption. 
+                    , rather than individual consumption.
                 </div>
                 <div>
                     The very first proto-NFTs hinted at this shift. “
@@ -111,7 +80,7 @@ const Content = () => {
                     To quote Wendell Berry, “Perhaps our most serious cultural loss in recent centuries is the knowledge
                     that some things, though limited, are inexhaustible.”
                 </div>
-                
+
                 <div>
                     As the meaning of ‘ownership’ shifts, it drags other critical terms along with it,
                     like ‘social security’. This has a cascading effect, such that words
@@ -424,43 +393,7 @@ const Content = () => {
                 </div>
                 </div>
 
-                <div className="mx-auto flex flex-col w-full md:w-[600px] pb-16 px-8 md:px-0 text-md md:text-2xl font-garamond text-center text-gray-800">
-                To give birth, to nourish,
-                <br />
-                to bear and not to own,
-                <br />
-                to act and not lay claim,
-                <br />
-                to lead and not to rule:
-                <br />
-                this is mysterious power.
-                <br />
-                <br />
-                <div className="font-bold">-- Chapter 10, Tao Te Ching</div>
-                </div>
 
-                <div className="mx-auto flex flex-col w-full md:w-[600px] pb-16 px-8 md:px-0 text-md md:text-2xl font-garamond text-center text-gray-800">
-                My storehouse burned down -<br />
-                now nothing stands between me
-                <br />
-                and the moon above.
-                <br />
-                <br />
-                <div className="font-bold">- Mizuta Masahide</div>
-                </div>
-
-                <div className="mx-auto flex flex-col w-full md:w-[600px] pb-16 px-8 md:px-0 text-md md:text-2xl font-garamond text-center text-gray-800">
-                To have without possessing,
-                <br />
-                do without claiming,
-                <br />
-                lead without controlling:
-                <br />
-                this is mysterious power.
-                <br />
-                <br />
-                <div className="font-bold">- Chapter 51, Tao Te Ching</div>
-                </div>
     </div>
   )
 }

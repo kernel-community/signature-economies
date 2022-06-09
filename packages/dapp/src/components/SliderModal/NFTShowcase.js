@@ -9,11 +9,7 @@ const NFTShowcase = () => {
     <div className="flip-card">
       <div className="flip-card-inner">
         <div className="flip-card-front">
-          {state.input >= 10? 
-            <img src={sealedNFTS[state.selected].image_Front_10} alt="Front" /> :
-          state.input >= 1? 
-            <img src={sealedNFTS[state.selected].image_Front_1} alt="Front" /> :
-            <img src={sealedNFTS[state.selected].image_Front_0} alt="Front" />} 
+          <img src={state.image} alt="Front" />
         </div>
         <div className="flip-card-back">
           <img src={sealedNFTS[state.selected].image_Back} alt="Back" />

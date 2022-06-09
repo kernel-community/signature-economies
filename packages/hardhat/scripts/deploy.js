@@ -32,7 +32,7 @@ async function main() {
 
   // First the NFT
   const SignatureNFT = await hre.ethers.getContractFactory("SignatureNFT");
-  const signatureNFT = await SignatureNFT.deploy(PROXY_REGISTRATION_ADDRESS, wallet, "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199");
+  const signatureNFT = await SignatureNFT.deploy(PROXY_REGISTRATION_ADDRESS, wallet);
   await signatureNFT.deployed();
   console.log("Signature NFT deployed to:", signatureNFT.address);
 

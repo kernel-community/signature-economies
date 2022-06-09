@@ -11,7 +11,7 @@ export const createSign = async ({value, token, provider, signer}) => {
 }
 
 export const mintSelected = async ({
-  url, provider, signer, id, signature
+  provider, signer, start, end
 }) => {
   const { chainId } = await provider.getNetwork()
   const signatureNFTContract = new Contract(
@@ -19,7 +19,7 @@ export const mintSelected = async ({
     abis.signatureNFT,
     signer
   );
-  return signatureNFTContract.mintSelected(url, id, signature)
+  return signatureNFTContract.mintSelected(start, end);
 }
 
 export const ownerOf = async(provider, id) => {
