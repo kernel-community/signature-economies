@@ -1,11 +1,8 @@
 
 import SoulSigns from '../components/SoulSigns/index';
+
 const SoulSignsPage = () => {
-  return (
-<div>
-    <SoulSigns />
-</div>
-  );
+  return <SoulSigns />
 }
 
 export default SoulSignsPage;

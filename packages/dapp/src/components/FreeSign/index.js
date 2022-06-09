@@ -3,7 +3,7 @@ import SignatureList from "./SignatureList";
 import { useConnect, useSigner } from "wagmi"
 import ConnectButton from "../common/ConnectButton";
 import signText from "../text";
-import { upload } from "../../utils/server";
+import { upload } from "../../utils/sign";
 import { useState, useEffect } from "react";
 import { get } from "../../utils/signatures";
 

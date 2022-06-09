@@ -65,4 +65,17 @@ export const signNfts = [
     },
 ]
 
+export const ownedNfts = [
+  {
+    id: 4,
+    image: MockSeal4,
+    ethAddress: '0x0',
+  },
+  {
+    id: 3,
+    image: Mock3,
+    ethAddress: '0x0',
+  },
+]
+
 export const userETHAddress = '0x1';
