@@ -19,8 +19,8 @@ const Wait = () => {
           <img className='w-32 h-32' src={KernelLogo} alt="kernel logo" />
         </div>
       </div>
-      <div className='pt-12 text-xl opacity-30 text-center tracking-tight'>
-        Waiting for transaction <br/> to be mined.
+      <div className='pt-12 text-xl opacity-30 text-center tracking-tight font-garamond'>
+        Please confirm transaction on wallet.
       </div>
     </div>
   )
