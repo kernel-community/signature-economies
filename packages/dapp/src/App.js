@@ -1,13 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import SoulSignsPage from "./pages/SoulSigns";
+import SignedOn from "./pages/SignedOn";
+import SoulSigns from "./pages/SoulSigns";
 
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/soulsigns" element={<SoulSignsPage />} />
+        <Route path="/signatures" element={<SoulSigns />} />
+        <Route path="/signed/:address" element={ <SignedOn /> } />
       </Routes>
     </div>
   );

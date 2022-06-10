@@ -47,12 +47,20 @@ const Minter = () => {
   const { data: signer } = useSigner();
   const handleOnClickMint = async () => {
     dispatch({ type: 'loading' });
-    const tx = await createSign({
-      value: state.input.toString(),
-      token: state.selected.toString(),
-      provider,
-      signer
-    })
+    let tx;
+    try {
+      tx = await createSign({
+        value: state.input.toString(),
+        token: state.selected.toString(),
+        provider,
+        signer
+      })
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: 'mint', payload: { success: false, tx: undefined } });
+      dispatch({ type:'close' });
+      return;
+    }
     dispatch({ type: 'mint', payload: { success: true, tx: tx.hash } });
   }
   return (

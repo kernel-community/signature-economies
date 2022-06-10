@@ -24,12 +24,7 @@
   switch(action.type) {
     case 'close': {
       if (!state.modal) return state;
-      return {
-        ...state,
-        modal: false,
-        input: 0,
-        selected: 0
-      }
+      return initial;
     }
     case 'open': {
       if (state.modal) return state;
@@ -61,6 +56,7 @@
       }
     }
     case 'mint': {
+      console.log(action.payload.tx)
       return {
         ...state,
         loading: false,
