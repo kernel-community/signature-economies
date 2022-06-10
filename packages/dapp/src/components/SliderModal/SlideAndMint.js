@@ -58,7 +58,7 @@ const Minter = () => {
     } catch (err) {
       console.log(err);
       dispatch({ type: 'mint', payload: { success: false, tx: undefined } });
-      dispatch({type:'close'});
+      dispatch({ type:'close' });
       return;
     }
     dispatch({ type: 'mint', payload: { success: true, tx: tx.hash } });

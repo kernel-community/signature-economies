@@ -24,12 +24,7 @@
   switch(action.type) {
     case 'close': {
       if (!state.modal) return state;
-      return {
-        ...state,
-        modal: false,
-        input: 0.1,
-        selected: 0
-      }
+      return initial;
     }
     case 'open': {
       if (state.modal) return state;
