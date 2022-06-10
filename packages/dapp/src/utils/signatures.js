@@ -1,8 +1,9 @@
-import { ethers } from 'ethers';
+const { ethers } = require('ethers');
 const axios = require('axios').default;
 const Constants = require('./constants');
 const Arweave = require('arweave').default;
 const {protocol, host, port} = Constants.arweave.gateway;
+const Secrets = require("./secrets.json");
 
 // arweave graphql endpoint
 const arweave = axios.create({
@@ -81,7 +82,7 @@ const lookupEnsNames = async (data) => {
   const withEns = data.map((sigObj, key) => {
     return {
       ...sigObj,
-      ens: ensNames[key]
+      ens: ensNames[key] === sigObj.data.account ? null: ensNames[key]
     }
   })
   console.log(withEns);
@@ -91,7 +92,7 @@ const lookupEnsNames = async (data) => {
 export const lookUpEns = async(account) => {
   console.log('[lookUpEns] looking up ens');
   if (!account) return account;
-  let provider = ethers.getDefaultProvider(); // defaults to homestead
+  let provider = new ethers.providers.InfuraProvider("homestead", Secrets.infura.id); // defaults to homestead
   const ens = await provider.lookupAddress(account);
   return ens ?? account;
 }
