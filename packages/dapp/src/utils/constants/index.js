@@ -1,5 +1,5 @@
-import { abis } from "./abi";
-import { addresses } from "./addresses";
-import { arweave } from "./arweave";
+const { abis } = require("./abi");
+const { addresses } = require("./addresses");
+const { arweave } = require("./arweave");
 
-export { addresses, abis, arweave }
+module.exports = { addresses, abis, arweave }
