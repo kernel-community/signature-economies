@@ -1,6 +1,6 @@
 import ExecutionButton from "../common/ExecutionButton";
 import SignatureList from "./SignatureList";
-import { useConnect, useSigner } from "wagmi"
+import { useConnect, useProvider, useSigner } from "wagmi"
 import ConnectButton from "../common/ConnectButton";
 import signText from "../text";
 import { upload } from "../../utils/sign";
@@ -12,13 +12,15 @@ const TEXT = `If you find this essay meaningful, you may mark our shared record 
 const FreeSign = () => {
   const { activeConnector } = useConnect();
   const { data: signer } = useSigner();
+  const provider = useProvider();
   const [isSigning, setIsSigning] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  // list: {id, date, data: {account, signature}}[]
   const [list, setList] = useState([]);
 
   const fetchSignatures = async () => {
-    const signatures = await get();
+    const signatures = await get(provider);
     setList(signatures);
   }
 
@@ -29,12 +31,23 @@ const FreeSign = () => {
     // @todo need better check here ->
     // if sign already on arweave, return
     setIsSigning(true);
-    const sig = await signer.signMessage(signText);
+    let signature;
+    try {
+      signature = await signer.signMessage(signText);
+    } catch (err) {
+      console.log(err);
+      setIsSigning(false);
+      return;
+    }
+    const account = await signer.getAddress();
     setIsSigning(false);
     // upload signature to arweave
     setIsUploading(true);
     const { arUrl: sigUrl } = (await upload({
-      data: sig,
+      data: JSON.stringify({
+        signature,
+        account
+      }),
       contentType: 'text/plain',
       tags: [
         {
@@ -48,10 +61,12 @@ const FreeSign = () => {
     setIsSuccess(true);
   }
 
+  // fetch signatures after a successful signature submit
   useEffect(() => {
     if (isSuccess) fetchSignatures();
   }, [isSuccess]);
 
+  // fetch signatures on mount
   useEffect(() => {
     fetchSignatures();
   }, []);
