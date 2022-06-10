@@ -8,7 +8,16 @@ import Text from "../components/text";
 const ETHERSCAN_TX="https://etherscan.io/tx/"
 
 export const HighlightContext = createContext();
-
+const initial = {
+  text: "",
+  modal: false,
+  image: undefined,
+  mint: false,
+  loading: false,
+  tx: undefined,
+  start: undefined,
+  end: undefined
+};
 const reducer = (state, action) => {
   // reducer will only cause a re-render if it returns a new / changed state
   switch(action.type) {
@@ -27,12 +36,8 @@ const reducer = (state, action) => {
       }
     }
     case 'close': {
-      console.log('closing modal');
       if (!state.modal) return state;
-      return {
-        ...state,
-        modal: false,
-      };
+      return initial;
     }
     case 'ready': {
       return {
@@ -41,14 +46,12 @@ const reducer = (state, action) => {
       };
     }
     case 'loading': {
-      console.log('setting loading', action.payload);
       return {
         ...state,
         loading: action.payload,
       }
     }
     case 'mint': {
-      console.log("setting mint", action.payload);
       return {
         ...state,
         mint: action.payload.success,
@@ -58,16 +61,7 @@ const reducer = (state, action) => {
     default: return state;
   }
 }
-const initial = {
-  text: "",
-  modal: false,
-  image: undefined,
-  mint: false,
-  loading: false,
-  tx: undefined,
-  start: undefined,
-  end: undefined
-};
+
 export const HighlightProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initial);
   const value = useMemo(() => {
