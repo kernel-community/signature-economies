@@ -6,9 +6,9 @@ dataSources:
     name: SignatureNFT
     network: rinkeby
     source:
-      address: "0x3488a78A9F5ac75486a1e179447682200DF4D637"
+      address: "0x3acDC166a6E2787570174DaAFe67e13a48B74DF9"
       abi: SignatureNFT
-      startBlock: 10737064
+      startBlock: 10816320
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -29,9 +29,9 @@ dataSources:
     name: SignatureFund
     network: rinkeby
     source:
-      address: "0x6E10CaDF8F623d90b36A88f8F42a4E02221F6BB9"
+      address: "0xcAb3Dc219b3F11dc8Bf27a08400E40Ca0F72096b"
       abi: SignatureFund
-      startBlock: 10737064
+      startBlock: 10816190
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
