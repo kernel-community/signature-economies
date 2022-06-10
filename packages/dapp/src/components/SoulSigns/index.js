@@ -10,8 +10,8 @@ const AllSignatureNfts = () => {
     Signature NFTs
  </div>
  <div className='flex flex-row overflow-scroll gap-6'>
-    {signNfts.map(nft => (
-    <Card image={nft.image} ethAddress={nft.ethAddress} />
+    {signNfts.map((nft, k) => (
+    <Card image={nft.image} ethAddress={nft.ethAddress} key={k} />
     ))}
  </div>
  </>
@@ -25,8 +25,8 @@ const AllSealedNfts = () => {
       Sealed NFTs
     </div>
     <div className='flex flex-row overflow-scroll gap-6'>
-      {sealedNfts.map(nft => (
-      <Card image={nft.image} ethAddress={nft.ethAddress} />
+      {sealedNfts.map((nft, k) => (
+      <Card image={nft.image} ethAddress={nft.ethAddress} key={k}/>
       ))}
     </div>
     </>
@@ -35,17 +35,17 @@ const AllSealedNfts = () => {
 
 const AllOwnedNfts = () => {
   // query for currently connected address' nfts
-  const {data} = useAccount();
+  // const {data} = useAccount();
   // don't return anything if data.address not found
   return (
     <>
     <div className='text-xl  font-redaction'>
       Your Signs
     </div>
-    <div>{data.address}</div>
+    {/* <div>{data?.address}</div> */}
     <div className='flex flex-row overflow-scroll gap-6 items-center'>
-      {ownedNfts.map(nft => (
-      <Card image={nft.image} ethAddress={nft.ethAddress} />
+      {ownedNfts.map((nft, k) => (
+      <Card image={nft.image} ethAddress={nft.ethAddress} key={k} />
       ))}
     </div>
     </>
