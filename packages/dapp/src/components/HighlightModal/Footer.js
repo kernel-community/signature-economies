@@ -18,12 +18,20 @@ const Footer = () => {
       return;
     }
     dispatch({ type: 'loading', payload: true });
-    const tx = await mintSelected({
-      provider,
-      signer,
-      start: state.start,
-      end: state.end
-    });
+    let tx;
+    try {
+      tx = await mintSelected({
+        provider,
+        signer,
+        start: state.start,
+        end: state.end
+      });
+    } catch(err) {
+      console.log("there was an error");
+      dispatch({ type: 'loading', payload: false });
+      dispatch({ type: 'mint', payload: {success: false, tx: undefined } });
+      return;
+    }
     console.log(tx);
     dispatch({ type: 'loading', payload: false });
     dispatch({ type: 'mint', payload: {success: true, tx: tx.hash } });
