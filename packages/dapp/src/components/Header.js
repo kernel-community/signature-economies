@@ -19,14 +19,14 @@ const Header = () => {
     <div className="flex flex-row text-gray-800 w-full pt-6 text-sm font-redaction justify-between">
       {
         pathname === "/" &&
-        <Link to="/soulsigns" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
+        <Link to="/signatures" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
           <div>
             signatures
           </div>
         </Link>
       }
       {
-        pathname === "/soulsigns" &&
+        pathname !== "/" &&
         <Link to="/" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
           <div >
             sign

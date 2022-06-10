@@ -1,3 +1,4 @@
+import { ethers } from 'ethers';
 const axios = require('axios').default;
 const Constants = require('./constants');
 const Arweave = require('arweave').default;
@@ -64,23 +65,18 @@ const cleanResponse = async (data) => {
 }
 
 // returns an array of {id: arweave tx, signature}
-export const get = async (provider) => {
+export const get = async () => {
   const r = await arweave.post('/graphql', {
     query: QUERY,
     variables: VARS
   })
   let responses = await cleanResponse(r.data);
-  return lookupEnsNames(responses, provider);
+  return lookupEnsNames(responses);
 }
 
-const lookupEnsNames = async (data, provider) => {
+const lookupEnsNames = async (data) => {
   console.log('[lookupEnsNames] looking up ens');
-  const { chainId } = await provider.getNetwork()
-  if (chainId !== 1) {
-    console.log("[lookupEnsNames] Not connected to chain id 1");
-    return data.map(d => {return {...d, ens: null}});
-  }
-  const ensNamePromises = data.map((sigObj) => provider.lookupAddress(sigObj.data.account))
+  const ensNamePromises = data.map((sigObj) => lookUpEns(sigObj.data.account))
   const ensNames = await Promise.all(ensNamePromises);
   const withEns = data.map((sigObj, key) => {
     return {
@@ -92,14 +88,10 @@ const lookupEnsNames = async (data, provider) => {
   return withEns;
 }
 
-export const lookUpEns = async(account, provider) => {
-  const { chainId } = await provider.getNetwork()
-  if (chainId !== 1) {
-    console.log("[lookUpEns] Not connected to chain id 1");
-    return account;
-  }
-  if (!account || !provider) return account;
-  const ens = await provider.lookupAddress(account)
-  if (ens) return ens;
-  return account;
+export const lookUpEns = async(account) => {
+  console.log('[lookUpEns] looking up ens');
+  if (!account) return account;
+  let provider = ethers.getDefaultProvider(); // defaults to homestead
+  const ens = await provider.lookupAddress(account);
+  return ens ?? account;
 }

@@ -65,7 +65,7 @@ export const signNfts = [
     },
 ]
 
-export const ownedNfts = [
+export const signedOn = [
   {
     id: 4,
     image: MockSeal4,

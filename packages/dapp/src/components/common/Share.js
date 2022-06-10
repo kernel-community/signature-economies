@@ -45,7 +45,7 @@ const Share = () => {
       </div>
     }
     </div>
-    <Link to="/soulsigns" className='no-underline pt-4'>
+    <Link to="/signatures" className='no-underline pt-4'>
       <ExecutionButton
         exec={() => {}}
         selectStyle="big"
