@@ -1,5 +1,4 @@
 const Constants = require('../../utils/constants');
-const { useEnsName } = require('wagmi');
 
 const {protocol, host, port} = Constants.arweave.gateway;
 const arweaveUrl = protocol + "://" + host + ":" + port;
