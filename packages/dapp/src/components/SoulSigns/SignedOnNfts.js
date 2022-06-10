@@ -3,6 +3,7 @@ import Card from "../common/NftCard";
 import { useEffect, useState } from "react";
 import { useAccount, useProvider } from "wagmi";
 import { lookUpEns } from "../../utils/signatures";
+import { Link } from "react-router-dom";
 
 const SignedOnNfts = ({ account }) => {
   const {data: connectedAccount} = useAccount();
@@ -29,12 +30,11 @@ const SignedOnNfts = ({ account }) => {
 
   return (
     <>
+    <Link to={`/signed/${toFetchFor}`} className="no-underline text-gray-600 hover:text-black">
       <div className='text-xl font-redaction'>
-        Signed by&nbsp;
-        <span className="text-gray-600 hover:text-black">
-          {toDisplay}
-        </span>
+        Signed by&nbsp;{toDisplay}
       </div>
+      </Link>
       <div className='flex flex-row overflow-scroll gap-6 items-center'>
         {signedOn.map((nft, k) => (
         <Card image={nft.image} ethAddress={nft.ethAddress} key={k} />

@@ -10,7 +10,9 @@ const Header = () => {
   const [toDisplay, setToDisplay] = useState();
   useEffect(() => {
     const fetch = async () => {
-      setToDisplay(await lookUpEns(data?.address, provider));
+      let lookup = await lookUpEns(data?.address, provider)
+      if (lookup.length > 15) lookup = lookup.substring(0,8) + "...";
+      setToDisplay(lookup);
     }
     fetch();
   }, [data?.address, provider]);
