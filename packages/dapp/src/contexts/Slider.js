@@ -27,7 +27,7 @@
       return {
         ...state,
         modal: false,
-        input: 0,
+        input: 0.1,
         selected: 0
       }
     }
@@ -61,6 +61,7 @@
       }
     }
     case 'mint': {
+      console.log(action.payload.tx)
       return {
         ...state,
         loading: false,
