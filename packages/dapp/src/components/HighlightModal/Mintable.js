@@ -13,7 +13,7 @@ const Mintable = () => {
       canvas will only be drawn each time state.image is undefined
     */}
     {
-      !state.image &&
+      (!state.image && state.text.length > 0) &&
         <ReactP5Wrapper
           sketch={Canvas}
           selectedText={state.text}
