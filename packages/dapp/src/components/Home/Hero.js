@@ -11,7 +11,7 @@ const Hero = () => {
         </div>
       </div>
       <div className='w-max mx-auto pt-16 pb-8 flex md:text-4xl text-2xl text-center font-redaction items-center self-center'>
-        Make eternally beautiful signs
+        Make eternally beautiful marks
       </div>
       <ArrowDownwards />
     </div>

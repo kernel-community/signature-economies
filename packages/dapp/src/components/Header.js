@@ -18,9 +18,17 @@ const Header = () => {
   }, [data?.address, provider]);
   if (isError) { console.log("there was an error in fetching accounts") }
   return (
-    <div className="flex flex-row text-gray-800 w-full pt-6 text-sm font-redaction justify-between">
+    <div className="flex flex-row text-gray-800 w-full pt-6 text-lg font-redaction justify-between">
       {
         pathname === "/" &&
+        <Link to="/essay" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
+          <div>
+            essay
+          </div>
+        </Link>
+      }
+      {
+        pathname === "/essay" &&
         <Link to="/signatures" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
           <div>
             signatures
@@ -28,8 +36,8 @@ const Header = () => {
         </Link>
       }
       {
-        pathname !== "/" &&
-        <Link to="/" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
+        pathname === "/signatures" &&
+        <Link to="/essay" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
           <div >
             sign
           </div>
