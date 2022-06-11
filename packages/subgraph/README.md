@@ -117,7 +117,8 @@ You can navigate to http://localhost:8000/subgraphs/name/sign-eco/sign-eco-subgr
 query MyQuery {
   signatureNFTs {
     id
-    uri
+    start
+    end
     createdAtTimestamp
     steward {
       id
@@ -126,6 +127,7 @@ query MyQuery {
   signatureFunds {
     id
     uri
+    selectMeta
     signedAmount
     steward {
       id

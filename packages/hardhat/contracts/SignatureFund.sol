@@ -40,7 +40,7 @@ contract SignatureFund is ERC721Tradable {
     // The address of the WETH contract
     address public weth;
 
-    event SignCreated(address indexed signer, uint256 amount, uint256 indexed tokenId, string uri);
+    event SignCreated(address indexed signer, uint256 amount, uint256 indexed tokenId, string uri, string selectMeta);
 
     modifier onlyCreator() {
         if (msg.sender != creator) {
@@ -96,21 +96,23 @@ contract SignatureFund is ERC721Tradable {
         // the metadataURI used when minting the NFT. The url links to a json file with
         // all the relevant information, especially the mp4 video of the signature seals.
         
-        string memory uri;
+        string memory selectMeta;
         
         if(msg.value < values[0]) {
-            uri = string(abi.encodePacked(arweaveBase,"0/",selectedNFT,".json"));
+            selectMeta = string(abi.encodePacked("0/",selectedNFT));
         } else if(msg.value >= values[0] && msg.value < values[1]) {
-            uri = string(abi.encodePacked(arweaveBase,"1/",selectedNFT,".json"));
+            selectMeta = string(abi.encodePacked("1/",selectedNFT));
         } else {
-            uri = string(abi.encodePacked(arweaveBase,"10/",selectedNFT,".json"));
+            selectMeta = string(abi.encodePacked("10/",selectedNFT));
         }
+
+        string memory uri = string(abi.encodePacked(arweaveBase,selectMeta,".json"));
 
         uint256 newTokenId = _tokenIdCounter.current();
         _safeMint(creator, msg.sender, newTokenId);
         _setTokenURI(newTokenId, uri);
         _tokenIdCounter.increment();
-        emit SignCreated(msg.sender, msg.value, newTokenId, uri);
+        emit SignCreated(msg.sender, msg.value, newTokenId, uri, selectMeta);
 
         _safeTransferETHWithFallback(msg.value);
     }
