@@ -82,9 +82,3 @@ a {
 .flip-card-back {
   transform: rotateY(180deg);
 }
-
-iframe {
-  margin: 0 auto;
-  width: 90%;
-  height: 380px;
-}
