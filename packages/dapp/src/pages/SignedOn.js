@@ -8,7 +8,7 @@ const SignedOn = () => {
 
   return (
     <Main>
-      <div>
+      <div className="flex flex-col gap-y-4 w-screen p-8">
         <SignedOnNfts account={params.address}/>
       </div>
     </Main>

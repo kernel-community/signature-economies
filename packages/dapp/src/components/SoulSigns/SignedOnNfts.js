@@ -1,15 +1,15 @@
-import { signedOn } from "./mockData";
 import Card from "../common/NftCard";
 import { useEffect, useState } from "react";
-import { useAccount, useProvider } from "wagmi";
+import { useAccount } from "wagmi";
 import { lookUpEns } from "../../utils/signatures";
 import { Link } from "react-router-dom";
+import { stewardNfts } from "../../utils/fetchNfts";
 
 const SignedOnNfts = ({ account }) => {
   const {data: connectedAccount} = useAccount();
-  const provider = useProvider();
   const [toFetchFor, setToFetchFor] = useState(account);
   const [toDisplay, setToDisplay] = useState(toFetchFor);
+  const [nfts, setNfts] = useState([]);
 
   useEffect(() => {
     if (!account) {
@@ -18,15 +18,21 @@ const SignedOnNfts = ({ account }) => {
   }, [connectedAccount, account]);
 
   useEffect(() => {
-    const fetch = async () => {
-      let lookup = await lookUpEns(toFetchFor, provider)
+    const fetchAddress = async () => {
+      let lookup = await lookUpEns(toFetchFor)
       if (lookup.length > 15) lookup = lookup.substring(0,8) + "...";
       setToDisplay(lookup);
     }
-    fetch();
-  }, [toFetchFor, provider])
+    const fetchNfts = async () => {
+      setNfts(await stewardNfts(toFetchFor));
+    }
+    if (toFetchFor) {
+      fetchAddress();
+      fetchNfts();
+    }
+  }, [toFetchFor])
 
-  console.log(toFetchFor);
+  console.log(nfts);
 
   return (
     <>
@@ -36,8 +42,8 @@ const SignedOnNfts = ({ account }) => {
       </div>
       </Link>
       <div className='flex flex-row overflow-scroll gap-6 items-center'>
-        {signedOn.map((nft, k) => (
-        <Card image={nft.image} ethAddress={nft.ethAddress} key={k} />
+        {nfts.map((nft, k) => (
+        <Card uri={nft.uri} ethAddress={nft.steward} key={k} />
         ))}
       </div>
     </>
