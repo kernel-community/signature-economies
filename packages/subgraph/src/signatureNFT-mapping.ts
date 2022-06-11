@@ -23,8 +23,9 @@ export function handleNewSignature(event: NewSignature): void {
     nft = new SignatureNFT(tokenId);
   }
   nft.steward = signerAccount.id;
-  nft.uri = event.params.uri.toString();
   nft.createdAtTimestamp = event.block.timestamp;
+  nft.start = event.params.start;
+  nft.end = event.params.end;
   nft.save();
 
   signerAccount.save();

@@ -8,6 +8,9 @@ type SignatureFund @entity {
   "The uri of the token, stored always in Arweave for both types"
   uri: String!
 
+  "The selected metadata for quick display on the web"
+  selectMeta: String!
+
   "The donation amount if it was a SignatureFund NFT"
   signedAmount: BigInt!
 }
@@ -22,8 +25,11 @@ type SignatureNFT @entity {
   "The steward of the NFT"
   steward: Account!
 
-  "The uri of the token, stored always in Arweave for both types"
-  uri: String!
+  "The start index of the selected highlight"
+  start: Int!
+
+  "The end index of the selected highlight"
+  end: Int!
 }
 
 type Account @entity {
