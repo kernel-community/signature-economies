@@ -17,7 +17,7 @@ const Content = () => {
                 <div>
                     In Bitcoin, I can sign over an unspent transaction output to another
                     address. In Ethereum and other account-based models, I can sign a
-                    message which changes a value stored in shared state<sup>1</sup>. In
+                    message which changes a value stored in shared state.<sup>1</sup> In
                     each case, I am not the sole possessor or controller, I am a
                     signatory on an event shared with everyone who participates in the
                     network.
@@ -44,7 +44,7 @@ const Content = () => {
                     <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=U7v63TjdutE&t=2999s">
                     opposite
                     </a>
-                    : “content can now be proliferated instead of protected<sup>2</sup>”. We may,
+                    : “content can now be proliferated instead of protected”.<sup>2</sup> We may,
                     for the first time online, design primarily for{' ' }
                     <a href="https://youtu.be/uN4g0Sr3jhs?t=1620">
                     multiple, simultaneous use
@@ -85,11 +85,8 @@ const Content = () => {
                     As the meaning of ‘ownership’ shifts, it drags other critical terms along with it,
                     like ‘social security’. This has a cascading effect, such that words
                     like ‘welfare’ may come to mean more than just financial stability secured by bureaucratic states,
-                    signifying—in addition to the financial—our access to and participation in “authentic communication
-                    channels” through which we establish, by consensus, shared and open state.
-                    In this context, and keeping in mind our responsibility not just for our own keys but the recovery of others,
-                    “Make meaningful economies” is a more crafty
-                    <sup>3</sup> cultural signal than “Own your piece of the economy”.
+                    signifying—in addition to the financial—our access to and participation in authentic communication
+                    channels through which we establish, by consensus, shared and open state.
                 </div>
                 <div>
                     While our state is globally shared, it is critical that we design economies, plural. Our work must not be
@@ -133,7 +130,7 @@ const Content = () => {
                     that managing your own keys is risky and hard. The user experience
                     of this is bad not because we lack great designers, but because
                     responsibility is an inherently difficult feature for which to
-                    design<sup>4</sup>. This is because response-ability is not about
+                    design.<sup>3</sup> This is because response-ability is not about
                     discrete, individual actions which release the most dopamine, but
                     our <strong>unique relationships within a network</strong>.
                 </div>
@@ -143,7 +140,7 @@ const Content = () => {
                     audience, and are subject to someone else’s story. However, signed
                     messages which change the state of a network no-one controls require
                     recurring participation as we commit individual transactions into a
-                    shared, relatable context<sup>5</sup>.{' '}
+                    shared, relatable context.<sup>4</sup>{' '}
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-7/the-gift/#anonymous-and-lively">
                     The gift
                     </a>{' '}
@@ -172,15 +169,11 @@ const Content = () => {
                     </i>
                     : guardianship that is about relationship, not control; about response-ability <i>to</i>, not
                     responsibility <i>for</i>
-                    <sup>6</sup>.
+                    .<sup>5</sup>
                 </div>
                 <div>
                     Can we create a culture where I am wealthy by virtue of what I care
-                    for, rather than what I control<sup>7</sup>? Where wealth means “{' '}
-                    <a target="_blank" rel="noreferrer" href="https://kernel.community/en/conversation/reciprocity/">
-                    having enough to share
-                    </a>
-                    ” because who you are is already enough. Can we create environments
+                    for, rather than what I control?<sup>6</sup> Can we create environments
                     where what I hold is made valuable because of the community to which
                     it binds me? This is what good mechanism design crafts: incentive
                     structures which create the context required for people to sign a{' '}
@@ -192,7 +185,11 @@ const Content = () => {
                     <a target="_blank" rel="noreferrer" href="https://kernel.community/en/learn/module-1/value">
                     lasting value
                     </a>
-                    .
+                    . Realising all this requires one, simple recognition: wealth means{' '}“
+                    <a target="_blank" rel="noreferrer" href="https://kernel.community/en/conversation/reciprocity/">
+                    having enough to share
+                    </a>
+                    ” because who you are is already enough.
                 </div>
                 </div>
 
@@ -246,7 +243,7 @@ const Content = () => {
                     <a target="_blank" rel="noreferrer" href="https://andytudhope.africa/academy/communal-language/#love-this-sound">
                     calls up a response
                     </a>
-                    , meaning is made more widely accessible<sup>8</sup>. When we cast
+                    , meaning is made more widely accessible.<sup>7</sup> When we cast
                     these new networks as economies of sign rather than of ownership,
                     then the game becomes one of{' '}
                     <a target="_blank" rel="noreferrer" href="https://youtu.be/uN4g0Sr3jhs?t=1918">
@@ -384,7 +381,7 @@ const Content = () => {
                     love and gratitude are already their own reward, then such signed
                     symbols can guide us all home, across time. This is what I
                     understand{' '}
-                    <a target="_blank" rel="noreferrer" href="https://dyeing.thebluebook.co.za/?stackedPages=%2Fsigned&stackedPages=%2Fnow">
+                    <a target="_blank" rel="noreferrer" href="https://dyeing.thebluebook.co.za/?stackedPages=%2Fsigned&stackedPages=%2Fnow&stackedPages=%2Fvictory">
                     courageous signatures
                     </a>{' '}
                     to mean: not just the set which shifts markets and remakes the

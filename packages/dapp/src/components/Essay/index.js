@@ -1,16 +1,14 @@
 import HighlightPop from 'react-highlight-pop';
 import Content from './Content';
-import Hero from './Hero';
 import AnimateHighlightModal from '../HighlightModal/AnimateHighlightModal';
 import MintPop from './MintPop';
 import HeaderPoem from "./HeaderPoem";
 import FooterQuotes from "./FooterQuotes";
 
-const Essay = () => {
+const EssayContent = () => {
     return (
       <div>
         <AnimateHighlightModal />
-          <Hero />
           <HeaderPoem />
           <HighlightPop popoverItems={(itemClass) => <MintPop itemClass={itemClass} />}>
             <span className='selection:bg-green-300 selection:text-green-900'>
@@ -22,4 +20,4 @@ const Essay = () => {
     )
 }
 
-export default Essay;
+export default EssayContent;
