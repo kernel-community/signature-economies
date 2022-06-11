@@ -1,6 +1,6 @@
 const HorizontalRule = () => {
   return (
-    <div className="pt-12 pb-16">
+    <div className="pt-6 pb-16">
       <hr className="w-2/3 mx-auto" />
     </div>
   )

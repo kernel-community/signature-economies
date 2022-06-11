@@ -25,6 +25,7 @@ export function handleSignCreated(event: SignCreated): void {
   nft.steward = signerAccount.id;
   nft.signedAmount = event.params.amount;
   nft.uri = event.params.uri.toString();
+  nft.selectMeta = event.params.selectMeta.toString();
   nft.save();
 
   signerAccount.save();

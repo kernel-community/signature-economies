@@ -37,12 +37,15 @@ contract SignatureNFT is ERC721Tradable {
     string public gateway = "https://ipfs.io/ipfs/";
 
     // stores hash of image generator app
-    string public imgHash = "QmYZ7V7PdztrcPVu3b8zTURusEw3E39txVC7grFSvRF7JX";
+    string public imgHash = "QmSARmomkA7Ri1yuunZ4dyQzZDhQzDsEe5SijLm7dF5k9M";
+
+    // stores an arweave backup of the image generator for the external url metadata
+    string public backup = "https://arweave.net/ur3cmQhEmIYAb-SYYR1vL-OTK4luTOshk7WptJ2VAZU";
 
     // A Kernel address for proper attribution
     address public creator;
 
-    event NewSignature(address signer, uint256 indexed tokenId, string uri);
+    event NewSignature(address signer, uint256 indexed tokenId, uint16 start, uint16 end);
 
     modifier onlyCreator() {
         if (msg.sender != creator) {
@@ -96,7 +99,7 @@ contract SignatureNFT is ERC721Tradable {
         _safeMint(creator, msg.sender, newTokenId);
         _tokenIdCounter.increment();
 
-        emit NewSignature(msg.sender, newTokenId, string(abi.encodePacked(gateway,imgHash,'/?',Strings.toString(start),'?',Strings.toString(end))));
+        emit NewSignature(msg.sender, newTokenId, start, end);
     }
 
     /**
@@ -113,7 +116,8 @@ contract SignatureNFT is ERC721Tradable {
     {
       require(_exists(id), "not exist");
       Highlight memory highlight = selection[id];
-      string memory image = string(abi.encodePacked(gateway,imgHash,'/?',Strings.toString(highlight.start),'?',Strings.toString(highlight.end)));
+      string memory image = string(abi.encodePacked(gateway,imgHash,'/#',Strings.toString(highlight.start),'-',Strings.toString(highlight.end)));
+      string memory url = string(abi.encodePacked(backup,'/#',Strings.toString(highlight.start),'-',Strings.toString(highlight.end)));
 
       return
           string(
@@ -122,7 +126,7 @@ contract SignatureNFT is ERC721Tradable {
                 Base64.encode(
                     bytes(
                           abi.encodePacked(
-                              '{"name":"Signature NFT #',Strings.toString(id),'","description":"A unique sign of our times, selected to represent increasingly significant money in this infinite game we are playing together. As you consider these unique symbols, remember that wealth truly means having enough to share.","external_url":"https://sign.kernel.community/","animation_url":"',image,'"}'
+                              '{"name":"Signature NFT #',Strings.toString(id),'","description":"A unique sign of our times, selected to represent increasingly significant money in this infinite game we are playing together. As you consider these unique symbols, remember that wealth truly means having enough to share.","external_url":"',url,'","animation_url":"',image,'"}'
                           )
                         )
                     )

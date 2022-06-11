@@ -27,15 +27,7 @@ const FootNotes = () => {
                     , which represents an open source brand we take some inpiration from.
                     </p>
                     <p>
-                    <sup> 3 </sup>
-                    The word ‘technology’ comes to us from the Greek{' '}
-                    <a target="_blank" rel="noreferrer" href="https://ethblock.art/editorial/art-in-formation">
-                        tekhne
-                    </a>
-                    , meaning ‘craft’.
-                    </p>
-                    <p>
-                    <sup> 4 </sup>{' '}
+                    <sup> 3 </sup>{' '}
                     <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=ndEWof-8xTY&t=91s">
                         Tolkien’s description
                     </a>{' '}
@@ -53,7 +45,7 @@ const FootNotes = () => {
                     imagination of what it might actually mean to connect the world.
                     </p>
                     <p>
-                    <sup>5</sup> The{' '}
+                    <sup> 4 </sup> The{' '}
                     <a target="_blank" rel="noreferrer" href="https://otherinter.net/research/positive-sum-worlds/">
                         otherinter.net
                     </a>{' '}
@@ -61,14 +53,14 @@ const FootNotes = () => {
                     governance of public systems as a part of daily life.”
                     </p>
                     <p>
-                    <sup> 6 </sup> As Scott Moore reminded me, responsibility is{' '}
+                    <sup> 5 </sup> As Scott Moore reminded us, responsibility is{' '}
                     <a target="_blank" rel="noreferrer" href="https://www.thecrimson.com/article/2017/5/25/desai-commencement-ed/">
                         not about optionality
                     </a>
                     ; it is about care.
                     </p>
                     <p>
-                    <sup> 7 </sup> Daanish Shabbir writes, “The wealth that is earned
+                    <sup> 6 </sup> Daanish Shabbir writes, “The wealth that is earned
                     through control confers control. That control in turn forecloses
                     the possibilities for my flourishing. The wealth that care
                     confers, confers care in return.” As Robin Wall Kimmerer writes,
@@ -76,7 +68,7 @@ const FootNotes = () => {
                     </p>
 
                     <p>
-                    <sup> 8 </sup>
+                    <sup> 7 </sup>
                     The meaning of any word can be described with three interrelated
                     concepts: the signifier, the signified, and the sign. Consider the
                     word ‘dog’. The actual word, d-o-g, written on your screen is the

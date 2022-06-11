@@ -6,9 +6,9 @@ dataSources:
     name: SignatureNFT
     network: rinkeby
     source:
-      address: "0x3488a78A9F5ac75486a1e179447682200DF4D637"
+      address: "0xBcfaC48303B4a91a7B9AaE1Bc9A7F561563d625b"
       abi: SignatureNFT
-      startBlock: 10737064
+      startBlock: 10833465
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -20,7 +20,7 @@ dataSources:
         - name: SignatureNFT
           file: ../../packages/hardhat/deployments/rinkeby/SignatureNFT.json
       eventHandlers:
-        - event: NewSignature(address,indexed uint256,string)
+        - event: NewSignature(address,indexed uint256,uint16,uint16)
           handler: handleNewSignature
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
@@ -29,9 +29,9 @@ dataSources:
     name: SignatureFund
     network: rinkeby
     source:
-      address: "0x6E10CaDF8F623d90b36A88f8F42a4E02221F6BB9"
+      address: "0x2927AD93DABd45256A5Be108BeDd0a85E5A3B7E5"
       abi: SignatureFund
-      startBlock: 10737064
+      startBlock: 10833465
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -43,7 +43,7 @@ dataSources:
         - name: SignatureFund
           file: ../../packages/hardhat/deployments/rinkeby/SignatureFund.json
       eventHandlers:
-        - event: SignCreated(indexed address,uint256,indexed uint256,string)
+        - event: SignCreated(indexed address,uint256,indexed uint256,string,string)
           handler: handleSignCreated
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
