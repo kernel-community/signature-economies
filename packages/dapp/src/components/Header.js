@@ -19,30 +19,32 @@ const Header = () => {
   if (isError) { console.log("there was an error in fetching accounts") }
   return (
     <div className="flex flex-row text-gray-800 w-full pt-6 text-lg font-redaction justify-between">
-      {
-        pathname === "/" &&
-        <Link to="/essay" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
+      <div className="pl-6 flex flex-row">
+        <Link to="/"
+          className={`cursor-pointer hover:text-black no-underline ${pathname === '/' ? 'text-black' : 'text-gray-400'}`}>
           <div>
-            essay
+            start
           </div>
         </Link>
-      }
-      {
-        pathname === "/essay" &&
-        <Link to="/signatures" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
+        <div>
+          &nbsp;|&nbsp;
+        </div>
+        <Link to="/essay"
+          className={`cursor-pointer hover:text-black no-underline ${pathname === '/essay' ? 'text-black' : 'text-gray-400'}`}>
           <div>
-            signatures
-          </div>
-        </Link>
-      }
-      {
-        pathname === "/signatures" &&
-        <Link to="/essay" className="cursor-pointer no-underline hover:text-black text-gray-500 pl-6">
-          <div >
             sign
           </div>
         </Link>
-      }
+        <div className="">
+          &nbsp;|&nbsp;
+        </div>
+        <Link to="/signatures"
+          className={`cursor-pointer hover:text-black no-underline ${pathname === '/signatures' ? 'text-black' : 'text-gray-400'}`}>
+          <div>
+            explore
+          </div>
+        </Link>
+      </div>
       <div className="pr-6">
         {toDisplay && "signing as " + toDisplay}
       </div>
