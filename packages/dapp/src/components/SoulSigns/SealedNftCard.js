@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { lookUpEns } from "../../utils/signatures";
-import TweetIcon from "../common/TweetIcon";
 import { sealedNFTS } from "../SliderModal/nft";
+import Card from "../../layouts/Card";
+import { useProvider } from "wagmi";
+import { addresses } from "../../utils/constants";
+import opensea from "../../utils/constants/opensea";
 
 const numberToIndex = (i) => {
   switch(i) {
@@ -26,10 +29,12 @@ const getImageSrc = (selectMeta) => {
   const image = `image_Front_` + shape;
   return sealedNFTS[numberToIndex(planet)][image];
 }
-const SealedNftCard = ({ selectMeta, ethAddress }) => {
+
+const SealedNftCard = ({ selectMeta, ethAddress, id }) => {
+  const provider = useProvider();
   const [toDisplay, setToDisplay] = useState(ethAddress);
   const [imgSrc, setImageSrc] = useState()
-
+  const [url, setUrl] = useState();
   useEffect(() => {
     const fetch = async () => {
       let lookup = await lookUpEns(ethAddress)
@@ -42,24 +47,23 @@ const SealedNftCard = ({ selectMeta, ethAddress }) => {
   useEffect(() => {
     setImageSrc(getImageSrc(selectMeta));
   }, [selectMeta]);
+
+  useEffect(() => {
+    const f = async () => {
+      const {chainId} = await provider.getNetwork();
+      const {signatureFund} = addresses(chainId);
+      const chainName = opensea.chainIdToName(chainId);
+      if (signatureFund) {
+        setUrl(`${opensea.base}/${chainName}/${signatureFund}/${id}`)
+      }
+    }
+    f();
+  }, [id, provider]);
+
   return(
-    <>
-    {/*
-      this is a hack
-      height is +50px from canvas (defined in App.css) & width is same as canvas
-    */}
-    <div className='flex flex-col shadow-lg h-[250px] w-[200px] signatures'>
+    <Card toDisplay={toDisplay} url={url}>
       <img src={imgSrc} alt="Front" height={"200px"} />
-      <div className='flex flex-row w-full justify-between items-center h-12 p-2 border-t-0 shadow-xl border-2'>
-        <div className='text-black/60 font-redaction'>
-        {toDisplay}
-        </div>
-        <div>
-        <TweetIcon />
-        </div>
-      </div>
-    </div>
-    </>
+    </Card>
   );
 }
 

@@ -17,7 +17,7 @@ const AllSealedNfts = () => {
     </div>
     <div className='flex flex-row overflow-scroll gap-6'>
       {sealNfts.map((nft, k) => (
-        <Card selectMeta={nft.selectMeta} ethAddress={nft.steward} key={k}/>
+        <Card selectMeta={nft.selectMeta} ethAddress={nft.steward} key={k} id={nft.id}/>
       ))}
     </div>
     </>

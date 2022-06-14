@@ -45,10 +45,10 @@ const SignedOnNfts = ({ account }) => {
       </Link>
       <div className='flex flex-row overflow-scroll gap-6 items-center'>
         {sealedNfts.map((nft, k) => (
-          <SealedNftCard selectMeta={nft.selectMeta} ethAddress={nft.steward} key={k} />
+          <SealedNftCard selectMeta={nft.selectMeta} ethAddress={nft.steward} key={k} id={nft.id} />
         ))}
         {signatureNfts.map((nft, k) => (
-          <SignatureNftCard start={nft.start} end={nft.end} ethAddress={nft.steward} key={k} />
+          <SignatureNftCard start={nft.start} end={nft.end} ethAddress={nft.steward} key={k} id={nft.id} />
         ))}
       </div>
     </>

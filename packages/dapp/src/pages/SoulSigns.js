@@ -1,4 +1,4 @@
-import HorizontalRule from "../components/common/HorizontalRule";
+import HorizontalSpace from "../components/common/HorizontalSpace";
 import { useConnect } from "wagmi";
 import Main from "../layouts/Main";
 import SignedOnNfts from "../components/SoulSigns/SignedOnNfts";
@@ -8,26 +8,26 @@ import AllSignatureNfts from "../components/SoulSigns/AllSignatureNfts";
 
 const SoulSigns = () => {
   const {activeConnector} = useConnect();
-    return (
-      <Main>
-        <div className="flex flex-col gap-y-4 w-screen p-8">
-         <div className='text-5xl font-redaction text-left'>
-            Soul Signs
-         </div>
-         {
-           activeConnector && (
-             <>
-              <SignedOnNfts />
-              <HorizontalRule />
-            </>
-           )
-         }
-         <AllSignatureNfts />
-         <HorizontalRule />
-         <AllSealedNfts />
+  return (
+    <Main>
+      <div className="flex flex-col gap-y-4 w-screen p-8">
+        <div className='text-5xl font-redaction text-left'>
+          Soul Signs
         </div>
-      </Main>
-    );
+        {
+          activeConnector && (
+            <>
+            <SignedOnNfts />
+            <HorizontalSpace />
+          </>
+          )
+        }
+        <AllSignatureNfts />
+        <HorizontalSpace/>
+        <AllSealedNfts />
+      </div>
+    </Main>
+  );
   }
 
   export default SoulSigns;
