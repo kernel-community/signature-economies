@@ -41,7 +41,6 @@ export const get = async () => {
 }
 
 const lookupEnsNames = async (data) => {
-  console.log('[lookupEnsNames] looking up ens');
   const ensNamePromises = data.map((sigObj) => lookUpEns(sigObj.data.account))
   const ensNames = await Promise.all(ensNamePromises);
   const withEns = data.map((sigObj, key) => {
@@ -50,12 +49,10 @@ const lookupEnsNames = async (data) => {
       ens: ensNames[key] === sigObj.data.account ? null: ensNames[key]
     }
   })
-  console.log(withEns);
   return withEns;
 }
 
 export const lookUpEns = async(account) => {
-  console.log('[lookUpEns] looking up ens');
   if (!account) return account;
   let provider = new ethers.providers.InfuraProvider("homestead", Secrets.infura.id); // defaults to homestead
   const ens = await provider.lookupAddress(account);
