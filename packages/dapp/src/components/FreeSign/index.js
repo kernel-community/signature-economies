@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { get } from "../../utils/signatures";
 import { uploadToArweave } from "../../utils/arweave";
 
-const TEXT = `If you find this essay meaningful, you may mark our shared record by sending a signed message of the whole text. This can be done freely, as there are no costs to signing onchain messages. In addition, your signature will be stored on Arweave and become a permanent part of this document's history.`
+const TEXT = `If you find this essay meaningful, you may sign a message crafted from the entire text. This can be done freely: signed messages are just unique data which can be verified in many different ways. Your singular, iterable mark will be stored on Arweave and become a permanent part of this document's history.`
 
 const FreeSign = () => {
   const { activeConnector } = useConnect();
