@@ -32,7 +32,6 @@ const Footer = () => {
       dispatch({ type: 'mint', payload: {success: false, tx: undefined } });
       return;
     }
-    console.log(tx);
     dispatch({ type: 'loading', payload: false });
     dispatch({ type: 'mint', payload: {success: true, tx: tx.hash } });
   }

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import ExecutionButton from './ExecutionButton';
 
 const Message = ({ url }) => {
-  console.log("url", url);
   return (
     <div className='pt-4 text-center opacity-30 font-garamond'>
       Transaction Submitted
@@ -22,10 +21,6 @@ const Message = ({ url }) => {
 const Share = () => {
   const { state: highlightState } = useContext(HighlightContext);
   const { state: sliderState } = useContext(SliderContext);
-
-  console.log({
-    highlightState, sliderState, image: highlightState.image
-  })
 
   return (
    <div className='w-max p-12 flex flex-col items-center justify-center my-auto bg-white rounded-lg shadow-xl'>

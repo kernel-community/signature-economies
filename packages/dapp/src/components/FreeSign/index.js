@@ -55,7 +55,6 @@ const FreeSign = () => {
         }
       ]
     }));
-    console.log(sigUrl);
     setIsUploading(false);
     setIsSuccess(true);
   }
