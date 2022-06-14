@@ -1,4 +1,5 @@
-import Card from "../common/NftCard";
+import SealedNftCard from "./SealedNftCard";
+import SignatureNftCard from "./SignatureNftCard";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { lookUpEns } from "../../utils/signatures";
@@ -9,7 +10,8 @@ const SignedOnNfts = ({ account }) => {
   const {data: connectedAccount} = useAccount();
   const [toFetchFor, setToFetchFor] = useState(account);
   const [toDisplay, setToDisplay] = useState(toFetchFor);
-  const [nfts, setNfts] = useState([]);
+  const [sealedNfts, setSealedNfts] = useState([]);
+  const [signatureNfts, setSignatureNfts] = useState([]);
 
   useEffect(() => {
     if (!account) {
@@ -24,15 +26,15 @@ const SignedOnNfts = ({ account }) => {
       setToDisplay(lookup);
     }
     const fetchNfts = async () => {
-      setNfts(await stewardNfts(toFetchFor));
+      const [seals, signatures] = await stewardNfts(toFetchFor);
+      setSealedNfts(seals);
+      setSignatureNfts(signatures);
     }
     if (toFetchFor) {
       fetchAddress();
       fetchNfts();
     }
   }, [toFetchFor])
-
-  console.log(nfts);
 
   return (
     <>
@@ -42,8 +44,11 @@ const SignedOnNfts = ({ account }) => {
       </div>
       </Link>
       <div className='flex flex-row overflow-scroll gap-6 items-center'>
-        {nfts.map((nft, k) => (
-        <Card uri={nft.uri} ethAddress={nft.steward} key={k} />
+        {sealedNfts.map((nft, k) => (
+          <SealedNftCard selectMeta={nft.selectMeta} ethAddress={nft.steward} key={k} />
+        ))}
+        {signatureNfts.map((nft, k) => (
+          <SignatureNftCard start={nft.start} end={nft.end} ethAddress={nft.steward} key={k} />
         ))}
       </div>
     </>

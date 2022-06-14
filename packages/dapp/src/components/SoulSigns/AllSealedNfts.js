@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { sealedNfts } from "../../utils/fetchNfts";
-import Card from "../common/NftCard";
+import Card from "./SealedNftCard";
 
 const AllSealedNfts = () => {
   const [sealNfts, setSealNfts] = useState([]);
@@ -17,7 +17,7 @@ const AllSealedNfts = () => {
     </div>
     <div className='flex flex-row overflow-scroll gap-6'>
       {sealNfts.map((nft, k) => (
-      <Card uri={nft.uri} ethAddress={nft.steward} key={k}/>
+        <Card selectMeta={nft.selectMeta} ethAddress={nft.steward} key={k}/>
       ))}
     </div>
     </>

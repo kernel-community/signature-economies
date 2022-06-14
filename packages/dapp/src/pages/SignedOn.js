@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 const SignedOn = () => {
   const params = useParams();
-  console.log(params);
 
   return (
     <Main>

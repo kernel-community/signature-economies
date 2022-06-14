@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { highlightNfts } from "../../utils/fetchNfts";
-import Card from "../common/NftCard";
+import Card from "./SignatureNftCard";
 
 const AllSignatureNfts = () => {
   const [signNfts, setSignNfts] = useState([]);
@@ -17,7 +17,7 @@ const AllSignatureNfts = () => {
       </div>
       <div className='flex flex-row overflow-scroll gap-6'>
         {signNfts.map((nft, k) => (
-        <Card uri={nft.uri} ethAddress={nft.steward} key={k} />
+          <Card start={nft.start} end={nft.end} ethAddress={nft.steward} key={k} />
         ))}
       </div>
     </>

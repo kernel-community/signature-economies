@@ -1,8 +1,5 @@
-const { getTransactionData } = require("./arweave");
 const { getAllHighlightNfts, getAllSealedNfts, getAllStewardNfts } = require("./graph");
-const Constants = require("./constants");
 
-const SEALS = Constants.seals;
 
 const highlightNfts = async () => {
   const r = await getAllHighlightNfts();
@@ -16,60 +13,41 @@ const sealedNfts = async () => {
 
 const stewardNfts = async (address) => {
   const r = await getAllStewardNfts(address);
-  console.log(r);
   return cleanStewardNfts(r);
 }
 
 const cleanStewardNfts = async (data) => {
-  const allSeals = await cleanSealedNfts(data.signatureFunds.map(d => {
+  const allSeals =  cleanSealedNfts(data?.signatureFunds.map(d => {
     return {
+      ...d,
       steward: data.id,
-      uri: d.uri
     }
   }));
-  const allHighlights = data.signatureNft.map(d => {
+  const allHighlights = cleanHighlightNfts(data?.signatureNft.map(d => {
     return {
+      ...d,
       steward: data.id,
-      uri: d.uri
     }
-  });
-  return [...allSeals, ...allHighlights];
+  }));
+  return [allSeals, allHighlights];
 }
 
-const cleanSealedNfts = async (data) => {
-  console.log("[cleanSealedNfts]", data);
-  const allSeals = JSON.parse(await getTransactionData(SEALS));
-
-  const withPath = data.map(d => {
-    const [,...path] = d.uri.replace("https://arweave.net/", "").split("/");
+const cleanSealedNfts = (data) => {
+  if (!data) return [];
+  return data.map((d,k) => {
     return {
       ...d,
       steward: d.steward.id ?? d.steward,
-      metadata: allSeals.paths[path.join("/")]?.id ?? allSeals.paths["0/one.json"].id
     }
   })
-
-  const uriPromises = withPath.map(d => getTransactionData(d.metadata))
-
-  let uris = await Promise.all(uriPromises);
-
-  uris = uris.map(u => JSON.parse(u).image.replace("ar://", "https://arweave.net/"));
-
-  const withUris = withPath.map((d,k) => {
-    return {
-      ...d,
-      uri: uris[k]
-    }
-  })
-  return withUris;
 }
 
 const cleanHighlightNfts = (data) => {
+  if (!data) return[];
   return data.map(d => {
     return {
       ...d,
-      steward: d.steward.id,
-      uri: d.uri.replace("https://ipfs.io", "https://opensea.mypinata.cloud")
+      steward: d.steward.id ?? d.steward,
     }
   })
 }

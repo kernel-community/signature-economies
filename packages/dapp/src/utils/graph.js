@@ -1,17 +1,18 @@
 const axios = require('axios').default;
-
+const Constants = require("./constants");
 
 const GET_STEWARD_NFTS = `
   query getStewardNfts($steward: String, $first: Int) {
     account(id: $steward) {
       id
       signatureFunds(first: $first) {
-        uri
+        selectMeta
         id
       }
       signatureNft(first: $first) {
         id
-        uri
+        start
+        end
       }
     }
   }
@@ -25,8 +26,8 @@ const GET_ALL_SEALED_NFTS = `
   query getAllSealedNfts($first: Int) {
     signatureFunds(first: $first) {
       id
-      uri
       signedAmount
+      selectMeta
       steward {
         id
       }
@@ -38,7 +39,8 @@ const GET_ALL_HIGHLIGHT_NFTS = `
   query getAllHighlightNfts($first: Int) {
     signatureNFTs(first: $first) {
       id
-      uri
+      start
+      end
       createdAtTimestamp
       steward {
         id
@@ -63,7 +65,7 @@ const Queries = {
 }
 
 const graphQuery = axios.create({
-  baseURL: "https://api.studio.thegraph.com/query/25032/test-s-e/v0.0.1",
+  baseURL: Constants.graph.baseURL,
   headers: {
     'Content-type': 'Application/Json'
   }
