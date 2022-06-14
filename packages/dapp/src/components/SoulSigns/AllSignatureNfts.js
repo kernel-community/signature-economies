@@ -17,7 +17,7 @@ const AllSignatureNfts = () => {
       </div>
       <div className='flex flex-row overflow-scroll gap-6'>
         {signNfts.map((nft, k) => (
-          <Card start={nft.start} end={nft.end} ethAddress={nft.steward} key={k} />
+          <Card start={nft.start} end={nft.end} ethAddress={nft.steward} id={nft.id} key={k} />
         ))}
       </div>
     </>
