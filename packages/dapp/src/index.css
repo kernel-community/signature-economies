@@ -11,6 +11,13 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+html::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
 
 a {
@@ -85,4 +92,10 @@ a {
 /* Style the back side */
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+iframe {
+  margin: 40px auto 0 auto;
+  width: 90%;
+  height: 380px;
 }
