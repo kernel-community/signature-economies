@@ -3,6 +3,7 @@ const { addresses, seals } = require("./addresses");
 const { arweave } = require("./arweave");
 const { graph } = require("./graph");
 const {opensea} = require("./opensea");
+const {twitter} = require("./twitter");
 
 module.exports = {
   addresses,
@@ -10,5 +11,6 @@ module.exports = {
   abis,
   arweave,
   graph,
-  opensea
+  opensea,
+  twitter
 }

@@ -1,6 +1,13 @@
 import TweetIcon from "../components/common/TweetIcon";
 
-const Card = ({children, toDisplay, height = '200px', width = '200px', url}) => {
+const Card = ({
+  children,
+  toDisplay,
+  height = '200px',
+  width = '200px',
+  url,
+  showTweetLink = false
+}) => {
   const openseaLink = () => window.open(url, '_blank');
   return (
     <>
@@ -25,7 +32,7 @@ const Card = ({children, toDisplay, height = '200px', width = '200px', url}) => 
         {toDisplay}
         </div>
         <div>
-        <TweetIcon />
+        {showTweetLink && <TweetIcon />}
         </div>
       </div>
     </div>

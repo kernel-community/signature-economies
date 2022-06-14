@@ -5,6 +5,8 @@ import { useAccount } from "wagmi";
 import { lookUpEns } from "../../utils/signatures";
 import { Link } from "react-router-dom";
 import { stewardNfts } from "../../utils/fetchNfts";
+import TweetIcon from "../common/TweetIcon";
+import twitter from "../../utils/constants/twitter";
 
 const SignedOnNfts = ({ account }) => {
   const {data: connectedAccount} = useAccount();
@@ -34,13 +36,25 @@ const SignedOnNfts = ({ account }) => {
       fetchAddress();
       fetchNfts();
     }
-  }, [toFetchFor])
+  }, [toFetchFor]);
+
+  const shareTweet = () => window.open(
+    `
+    ${twitter.shareIntent}
+    ${encodeURIComponent(
+      twitter.shareContent.replace("<COLLECTION_LINK>", 'https://'+window.location.hostname + `/signed/` + toFetchFor)
+    )}
+    `
+  );
 
   return (
     <>
     <Link to={`/signed/${toFetchFor}`} className="no-underline text-gray-600 hover:text-black">
-      <div className='text-xl font-redaction'>
+      <div className='text-xl font-redaction flex flex-row items-center gap-2'>
         Signed by&nbsp;{toDisplay}
+        <span onClick={shareTweet}>
+        <TweetIcon/>
+        </span>
       </div>
       </Link>
       <div className='flex flex-row overflow-scroll gap-6 items-center'>
