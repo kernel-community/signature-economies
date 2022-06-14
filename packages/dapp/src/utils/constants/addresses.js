@@ -17,3 +17,4 @@ exports.addresses = (chainId) => {
       }
   }
 }
+exports.seals = 'xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q' // arweave.net content hash of the root of all seal nfts

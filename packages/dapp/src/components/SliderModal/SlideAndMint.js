@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { createSign } from '../../utils/nft';
+import { createSign } from '../../utils/contracts';
 import { useConnect, useProvider, useSigner } from 'wagmi';
 import { SliderContext } from '../../contexts/Slider';
 import ExecutionButton from "../common/ExecutionButton";
@@ -40,6 +40,20 @@ const Description = () => {
   )
 }
 
+const indexToNumber = (i) => {
+  switch (i) {
+    case 1: return "one";
+    case 2: return "two";
+    case 3: return "three";
+    case 4: return "four";
+    case 5: return "five";
+    case 6: return "six";
+    case 7: return "seven";
+    case 8: return "eight";
+    default: throw new Error("invalid number");
+  }
+}
+
 const Minter = () => {
   const { state, dispatch }  = useContext(SliderContext);
   const { activeConnector } = useConnect();
@@ -51,7 +65,7 @@ const Minter = () => {
     try {
       tx = await createSign({
         value: state.input.toString(),
-        token: state.selected.toString(),
+        token: indexToNumber(state.selected + 1),
         provider,
         signer
       })

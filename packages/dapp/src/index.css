@@ -20,10 +20,14 @@ a {
 }
 
 .p5Canvas {
-  max-width: 500px;
-  max-height: 750px;
+  max-width: 370px;
+  max-height: 550px;
 }
 
+.signatures > div > .p5Canvas {
+  max-width: 200px;
+  max-height: 280px;
+}
 
 .flip-card {
   background-color: transparent;
@@ -81,10 +85,4 @@ a {
 /* Style the back side */
 .flip-card-back {
   transform: rotateY(180deg);
-}
-
-iframe {
-  margin: 0 auto;
-  width: 90%;
-  height: 380px;
 }

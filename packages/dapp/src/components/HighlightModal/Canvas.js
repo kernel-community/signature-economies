@@ -88,14 +88,18 @@ function HighlightSketch(p5) {
       selectedText = `\r\n${props.selectedText}`;
       p5.setup();
     }
-    handleFinishedDrawing = props.handleFinishedDrawing;
+    if (props.handleFinishedDrawing) {
+      handleFinishedDrawing = props.handleFinishedDrawing;
+    }
   };
 
   p5.draw = () => {
     if(n >= 400 || n >= selectedText.length) {
       p5.noLoop();
       const img = canvas?.elt?.toDataURL();
-      handleFinishedDrawing(img);
+      if (handleFinishedDrawing) {
+        handleFinishedDrawing(img);        
+      }
     }
     p5.background(0);
 
@@ -207,7 +211,7 @@ function HighlightSketch(p5) {
     p5.fill(360,0,100,0.3);
     p5.rect(50,1100,700,2);
 
-    
+
     p5.noStroke();
     p5.fill(360,0,100);
     p5.textFont(fontGaramond);

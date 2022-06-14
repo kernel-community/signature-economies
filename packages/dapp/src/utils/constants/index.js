@@ -1,5 +1,16 @@
 const { abis } = require("./abi");
-const { addresses } = require("./addresses");
+const { addresses, seals } = require("./addresses");
 const { arweave } = require("./arweave");
+const { graph } = require("./graph");
+const {opensea} = require("./opensea");
+const {twitter} = require("./twitter");
 
-module.exports = { addresses, abis, arweave }
+module.exports = {
+  addresses,
+  seals,
+  abis,
+  arweave,
+  graph,
+  opensea,
+  twitter
+}

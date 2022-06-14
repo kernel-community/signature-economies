@@ -22,7 +22,7 @@ const Mintable = () => {
     }
     {
       state.image &&
-        <img src={state.image} alt="" style={{ width: '500px', height: '750px', maxWidth: '500px' }} />
+        <img src={state.image} alt="" style={{ maxHeight: '550px', maxWidth: '370px' }} />
     }
     </div>
   )

@@ -13,7 +13,7 @@ const Modal = () => {
   } else if (state.mint) {
     return <Share />
   } else return (
-    <div className="flex justify-center md:p-8 w-full h-full md:h-auto md:w-min my-auto rounded-lg shadow-xl bg-white ">
+    <div className="flex justify-center md:p-8 w-full h-min-content md:w-min my-auto rounded-lg shadow-xl bg-white">
       <div className="flex flex-col gap-y-8 items-center my-auto">
         <div className="flex flex-col font-redaction justify-between">
           <Mintable />

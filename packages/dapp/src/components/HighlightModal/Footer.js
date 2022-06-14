@@ -3,7 +3,7 @@ import { useConnect, useSigner, useProvider } from "wagmi"
 import { HighlightContext } from '../../contexts/Highlight';
 import ExecutionButton from '../common/ExecutionButton';
 import ConnectButton from '../common/ConnectButton';
-import { mintSelected  } from '../../utils/nft';
+import { mintSelected  } from '../../utils/contracts';
 
 const Footer = () => {
   const { state, dispatch } = useContext(HighlightContext);
@@ -32,7 +32,6 @@ const Footer = () => {
       dispatch({ type: 'mint', payload: {success: false, tx: undefined } });
       return;
     }
-    console.log(tx);
     dispatch({ type: 'loading', payload: false });
     dispatch({ type: 'mint', payload: {success: true, tx: tx.hash } });
   }

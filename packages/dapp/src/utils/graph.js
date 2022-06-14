@@ -1,0 +1,92 @@
+const axios = require('axios').default;
+const Constants = require("./constants");
+
+const GET_STEWARD_NFTS = `
+  query getStewardNfts($steward: String, $first: Int) {
+    account(id: $steward) {
+      id
+      signatureFunds(first: $first) {
+        selectMeta
+        id
+      }
+      signatureNft(first: $first) {
+        id
+        start
+        end
+      }
+    }
+  }
+`
+
+const GET_STEWARD_NFTS_VARS = (address) => {
+  return { steward: address.toLowerCase(), first: 3 }
+}
+
+const GET_ALL_SEALED_NFTS = `
+  query getAllSealedNfts($first: Int) {
+    signatureFunds(first: $first) {
+      id
+      signedAmount
+      selectMeta
+      steward {
+        id
+      }
+    }
+  }
+`
+
+const GET_ALL_HIGHLIGHT_NFTS = `
+  query getAllHighlightNfts($first: Int) {
+    signatureNFTs(first: $first) {
+      id
+      start
+      end
+      createdAtTimestamp
+      steward {
+        id
+      }
+    }
+  }
+`
+
+const Queries = {
+  getAllHighlightNfts: {
+    query: GET_ALL_HIGHLIGHT_NFTS,
+    variables: {first: 4}
+  },
+  getAllSealedNfts: {
+    query: GET_ALL_SEALED_NFTS,
+    variables: {first: 4}
+  },
+  getStewardNfts: {
+    query: GET_STEWARD_NFTS,
+    variables: GET_STEWARD_NFTS_VARS
+  }
+}
+
+const graphQuery = axios.create({
+  baseURL: Constants.graph.baseURL,
+  headers: {
+    'Content-type': 'Application/Json'
+  }
+})
+
+exports.getAllHighlightNfts = async () => {
+  return (await graphQuery.post('/', {
+    ...Queries.getAllHighlightNfts
+  })).data.data.signatureNFTs;
+}
+
+exports.getAllSealedNfts = async () => {
+  return (await graphQuery.post('/', {
+    ...Queries.getAllSealedNfts
+  })).data.data.signatureFunds;
+}
+
+exports.getAllStewardNfts = async(address) => {
+  return (await graphQuery.post("/", {
+    query: Queries.getStewardNfts.query,
+    variables: Queries.getStewardNfts.variables(address)
+  })).data.data.account;
+}
+
