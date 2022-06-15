@@ -4,12 +4,13 @@ A simply immutable image generator for The Signature Economies.
 
 ## Get Started
 
+From the root directory, once you have run `yarn` to install all the packages, simply run:
+
 ```
-git clone https://github.com/andytudhope/meta-sign.git
-cd meta-sign
-npm i
-npm run start
+yarn mettasign:start
 ```
+
+This branch is different from the main branch, which stores the image generator as it was built for IPFS. We added a few more details to the Arweave backup page, because rendering them there wouldn't interfere with displaying the image, and only the image, on OpenSea and other secondary NFT marketplaces.
 
 ## Notes
 
