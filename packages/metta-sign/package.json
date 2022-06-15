@@ -9,6 +9,10 @@
     "react-p5-wrapper": "^3.3.0",
     "react-scripts": "5.0.1"
   },
+  "devDependencies": {
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.24"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
