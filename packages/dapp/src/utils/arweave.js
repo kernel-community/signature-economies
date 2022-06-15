@@ -2,12 +2,10 @@ const axios = require('axios').default;
 const Constants = require('./constants');
 const Arweave = require('arweave').default;
 const {protocol, host, port} = Constants.arweave.gateway;
-const Secrets = require("./secrets.json");
-const key = Secrets.arweave.key;
 
 // arweave graphql endpoint
 const arweaveQuery = axios.create({
-  baseURL: protocol + "://" + host,
+  baseURL: protocol + "://" + host + ":" + port,
   headers: {
     'Content-type': 'Application/Json'
   },
@@ -16,33 +14,31 @@ const arweaveQuery = axios.create({
 // arweave client sdk
 const arweaveClient = Arweave.init(Constants.arweave.gateway);
 
+// to upload singatures to arweave
+const weaver = axios.create({
+  baseURL: Constants.weaver,
+  headers: {
+    'Content-type': 'Application/Json'
+  },
+})
+
 // upload to arweave
 // tags = array of objects
 // {key: "", value: ""}
 export const uploadToArweave = async({ data, contentType, tags }) => {
-  if (contentType === 'image/png') {
-    data = Buffer.from(data, "base64");
-  }
+  const {arUrl}  = (await weaver.post('/upload', {
+    data, contentType, tags
+  })).data;
+  return { arUrl };
+}
 
-  const tx = await arweaveClient.createTransaction({ data }, key);
-  tx.addTag('Content-Type', contentType);
+export const saveSig = async({signer, signature}) => await weaver.post('/save', {
+  signer, signature
+})
 
-  if (tags.length > 0) {
-    tags.forEach((tag) => tx.addTag(tag.key, tag.value))
-  }
-
-  await arweaveClient.transactions.sign(tx, key); // returns undefined
-  // upload to arweave in chunks (recommended method)
-  let uploader = await arweaveClient.transactions.getUploader(tx);
-  while (!uploader.isComplete) {
-    await uploader.uploadChunk();
-    console.log(`${uploader.pctComplete}% complete, ${uploader.uploadedChunks}/${uploader.totalChunks}`);
-  }
-  return {
-    id: tx.id,
-    arUrl: `ar://${tx.id}`,
-    httpsUrl: `https://arweave.net/${tx.id}`
-  }
+export const sigCheck = async ({signer}) => {
+  const {found} = (await weaver.post('/check', {signer})).data;
+  return {found};
 }
 
 export const getAllSignatures = () => {
