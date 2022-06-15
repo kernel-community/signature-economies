@@ -29,7 +29,7 @@ contract SignatureFund is ERC721Tradable {
     error NotAuthorized();
 
     // the permaweb url where all the metadata is stored
-    string public arweaveBase = 'https://arweave.net/xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q/';
+    string public arweaveBase = 'https://arweave.net/SuPXgNnLyr_X4FR-a9M3jTloVH9wZnN334g9ToxyNZU/';
 
     // An array of values used to determine what kind of image gets minted
     uint256[2] values = [1e18, 1e19];

@@ -30,7 +30,9 @@
         }
     ],
     "external_url": "https://sign.kernel.community",
-    "image": "ar://nEHDdZ7S4ciskGy8vHoDtIINL4_UVv1sA9LtODX-9rI",
+    "image": "ar://IQV-ayPR7GBQ0PKp5fkTeDelIsx_nkin7HSPAyA0DdA",
+    "seal": "ar://wVVkZfIXub5fVbOzoKsWISRq0oQRxbh-uu4CUNsslw8",
+    "text": "ar://vujmwu3DymTWYQ46won3Dtlmg1aH2e6vuFicubzxQ4A",
     "front": "/images/sealedNfts/10/3.png",
     "back": "/images/sealedNfts/back/3.png"
 }
