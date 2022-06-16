@@ -71,19 +71,19 @@ const graphQuery = axios.create({
   }
 })
 
-exports.getAllHighlightNfts = async () => {
+export const getAllHighlightNfts = async () => {
   return (await graphQuery.post('/', {
     ...Queries.getAllHighlightNfts
   })).data.data.signatureNFTs;
 }
 
-exports.getAllSealedNfts = async () => {
+export const getAllSealedNfts = async () => {
   return (await graphQuery.post('/', {
     ...Queries.getAllSealedNfts
   })).data.data.signatureFunds;
 }
 
-exports.getAllStewardNfts = async(address) => {
+export const getAllStewardNfts = async(address) => {
   return (await graphQuery.post("/", {
     query: Queries.getStewardNfts.query,
     variables: Queries.getStewardNfts.variables(address)
