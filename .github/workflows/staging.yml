@@ -5,7 +5,7 @@ name: Staging CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ r2d ]
 
 jobs:
   build:
