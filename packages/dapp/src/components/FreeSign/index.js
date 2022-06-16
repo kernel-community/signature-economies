@@ -1,6 +1,6 @@
 import ExecutionButton from "../common/ExecutionButton";
 import SignatureList from "./SignatureList";
-import { useConnect, useSigner, useAccount } from "wagmi"
+import { useConnect, useSigner } from "wagmi"
 import ConnectButton from "../common/ConnectButton";
 import signText from "../text";
 import { useState, useEffect } from "react";

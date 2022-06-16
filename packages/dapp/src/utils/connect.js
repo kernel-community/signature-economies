@@ -5,10 +5,13 @@ import { providers } from 'ethers'
 
 const infuraId = process.env.INFURA_ID
 
+// only rinkeby
+const chains = allChains.filter(c => c.id === 4);
+
 export const connectors = () => [
-  new InjectedConnector({ allChains }),
+  new InjectedConnector({ chains }),
   new WalletConnectConnector({
-    chains: allChains,
+    chains,
     options: {
       infuraId,
       qrcode: true,
