@@ -40,6 +40,9 @@ const SwitchNetworkModal = () => {
               }
             </button>
           ))}
+          <div>
+            If the button doesn't work, try switching the provider manually in your wallet.
+          </div>
           </div>
         </div>
       </motion.div>
