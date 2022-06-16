@@ -21,7 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "BUILD_PATH='./dist/build' react-scripts build",
+    "deploy:staging": "gcloud app deploy dist/app.yaml --project kernel-signature-staging",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

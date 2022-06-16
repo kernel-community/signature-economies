@@ -52,7 +52,7 @@ const cleanHighlightNfts = (data) => {
   })
 }
 
-module.exports = {
+export {
   highlightNfts,
   sealedNfts,
   stewardNfts

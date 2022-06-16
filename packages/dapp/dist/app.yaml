@@ -1,0 +1,42 @@
+# Copyright (c) Kernel
+
+runtime: nodejs16
+instance_class: F1
+automatic_scaling:
+  max_instances: 1
+
+handlers:
+- url: /static/(.+)
+  static_files: build/static/\1
+  upload: build/static/(.*)
+
+- url: /(manifest.json)
+  static_files: build/\1
+  upload: build/(.*)
+
+- url: /(asset-manifest.json)
+  static_files: build/\1
+  upload: build/(.*)
+
+- url: /(robots.txt)
+  static_files: build/\1
+  upload: build/(.*)
+
+- url: /(icon-192x192.png)
+  static_files: build/\1
+  upload: build/(.*)
+
+- url: /(icon-512x512.png)
+  static_files: build/\1
+  upload: build/(.*)
+
+- url: /health
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
+
+- url: /(.*)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: build/index.html
+  upload: build/index.html
