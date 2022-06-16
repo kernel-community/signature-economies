@@ -30,6 +30,7 @@
       if (state.modal) return state;
       return {
         ...state,
+        error: false,
         modal: true,
         image: getImg(state.selected, state.input)
       }
@@ -37,6 +38,7 @@
     case 'slide': {
       return {
         ...state,
+        error: false,
         input: action.payload,
         image: getImg(state.selected, action.payload)
       }
@@ -44,6 +46,7 @@
     case 'select': {
       return {
         ...state,
+        error: false,
         selected: action.payload,
         image: getImg(action.payload, state.input)
       }
@@ -51,6 +54,7 @@
     case 'loading': {
       return {
         ...state,
+        error: false,
         loading: true,
         mint: false
       }
@@ -59,10 +63,14 @@
       console.log(action.payload.tx)
       return {
         ...state,
+        error: false,
         loading: false,
         mint: action.payload.success,
         tx: ETHERSCAN_TX + action.payload.tx
       }
+    }
+    case 'error': {
+      return {...state, error: action.payload}
     }
     default: return state;
   }
@@ -75,7 +83,8 @@
    mint: false,
    loading: false,
    image: undefined,
-   tx: undefined
+   tx: undefined,
+   error: false
  }
 
  export const SliderProvider = ({children}) => {

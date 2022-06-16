@@ -72,7 +72,7 @@ const Minter = () => {
     } catch (err) {
       console.log(err);
       dispatch({ type: 'mint', payload: { success: false, tx: undefined } });
-      dispatch({ type:'close' });
+      dispatch({ type: 'error', payload: true })
       return;
     }
     dispatch({ type: 'mint', payload: { success: true, tx: tx.hash } });
@@ -87,7 +87,7 @@ const Minter = () => {
         <SliderInput />
         {
           activeConnector ?
-          <ExecutionButton exec={handleOnClickMint} /> : <ConnectButton />
+          <ExecutionButton exec={handleOnClickMint} isError={state.error} /> : <ConnectButton />
         }
       </div>
     </div>

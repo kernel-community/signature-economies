@@ -16,7 +16,8 @@ const initial = {
   loading: false,
   tx: undefined,
   start: undefined,
-  end: undefined
+  end: undefined,
+  error: false,
 };
 const reducer = (state, action) => {
   // reducer will only cause a re-render if it returns a new / changed state
@@ -28,11 +29,12 @@ const reducer = (state, action) => {
       if (state.modal) return state;
       return {
         ...state,
+        error: false,
         text: action.payload,
         modal: true,
         image: undefined,
         start,
-        end
+        end,
       }
     }
     case 'close': {
@@ -42,12 +44,14 @@ const reducer = (state, action) => {
     case 'ready': {
       return {
         ...state,
+        error: false,
         image: action.payload
       };
     }
     case 'loading': {
       return {
         ...state,
+        error: false,
         loading: action.payload,
       }
     }
@@ -56,6 +60,12 @@ const reducer = (state, action) => {
         ...state,
         mint: action.payload.success,
         tx: ETHERSCAN_TX + action.payload.tx
+      }
+    }
+    case 'error': {
+      return {
+        ...state,
+        error: action.payload
       }
     }
     default: return state;
