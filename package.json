@@ -3,7 +3,7 @@
   "version": "0.0.9",
   "description": "Meaningful economies of sign",
   "private": true,
-  "workspaces": ["packages/dapp", "packages/hardhat", "packages/metta-sign", "packages/subgraph"],
+  "workspaces": ["packages/dapp", "packages/hardhat", "packages/metta-sign", "packages/subgraph", "packages/weaving"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kernel-community/signature-economies.git"
@@ -13,7 +13,7 @@
     "meaning",
     "stewardship"
   ],
-  "author": "andytudhope, malayvasa, danishabbir, noskovvkirill",
+  "author": "andytudhope, angelagilhotra, malayvasa, danishabbir, noskovvkirill",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kernel-community/signature-economies/issues"
@@ -44,6 +44,7 @@
     "subgraph:createlocal": "yarn workspace subgraph create:local",
     "subgraph:deploylocal": "yarn workspace subgraph deploy:local",
     "subgraph:createrinkeby": "yarn workspace subgraph create:rinkeby",
-    "subgraph:deployrinkeby": "yarn workspace subgraph deploy:rinkeby"
+    "subgraph:deployrinkeby": "yarn workspace subgraph deploy:rinkeby",
+    "weaving:start": "yarn workspace weaving node weaver.js"
   }
 }

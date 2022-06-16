@@ -1,18 +1,23 @@
+import { useNetwork } from "wagmi";
+
 const Constants = require('../../utils/constants');
 
 const {protocol, host, port} = Constants.arweave.gateway;
 const arweaveUrl = protocol + "://" + host + ":" + port;
 
-const trimAddress = (address) => address.substring(0,8).concat("...");
-const ETHERSCAN_ACCOUNT = "https://etherscan.com/address";
+const trimAddress = (address) => address.substring(0,8).concat("..."); 
 
 const AccountAddress = ({ account, ens }) => {
   const toDisplay = ens ? ens : account ? trimAddress(account) : "Anonymous";
+  const Etherscan = () => {
+    const { activeChain } = useNetwork();
+    return `https://${activeChain.name}etherscan.com/address`;
+  }
 
   return (
       account ? (
         <a
-          href={ETHERSCAN_ACCOUNT + '/' + account}
+          href={Etherscan + '/' + account}
           target="_blank" rel='noreferrer'
           className='no-underline text-gray-500 hover:text-black'
         >
