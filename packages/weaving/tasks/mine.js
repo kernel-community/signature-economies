@@ -2,5 +2,5 @@
 /**
  * mine a block on arlocal
  */
- const {gateway} = require("./gateway");
- ;(() => gateway.get(`/mine`))()
+const { gateway } = require('./gateway')
+;(() => gateway.get('/mine'))()

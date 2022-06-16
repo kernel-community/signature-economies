@@ -1013,5 +1013,5 @@ exports.abis = {
       "stateMutability": "view",
       "type": "function"
     }
-  ]`,
+  ]`
 }

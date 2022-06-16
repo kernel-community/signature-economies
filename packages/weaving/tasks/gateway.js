@@ -6,10 +6,10 @@
  * /mint/<address>/<balance>
  */
 
-const axios = require('axios').default;
-const Constants = require("../constants");
-const { host, port, protocol } = Constants.arweave.gateway;
+const axios = require('axios').default
+const Constants = require('../constants')
+const { host, port, protocol } = Constants.arweave.gateway
 
 exports.gateway = axios.create({
-  baseURL: `${protocol}://${host}:${port}`,
-});
+  baseURL: `${protocol}://${host}:${port}`
+})
