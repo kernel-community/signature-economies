@@ -1,6 +1,6 @@
 import React from 'react'
-import signature_ethblock from '../../images/signature_ethblock.png'
-import signature_derrida from '../../images/signature_derrida.png'
+import signatureEthblock from '../../images/signature_ethblock.png'
+import signatureDerrida from '../../images/signature_derrida.png'
 import HorizontalRule from '../common/HorizontalRule'
 
 const FootNotes = () => {
@@ -46,7 +46,7 @@ const FootNotes = () => {
       <div className='flex flex-col py-16 items-center justify-center'>
         <div className='relative group z-40 '>
           <img
-            src={signature_ethblock}
+            src={signatureEthblock}
             alt='logo'
           />
         </div>
@@ -66,7 +66,7 @@ const FootNotes = () => {
       <div className='flex flex-col py-16 items-center justify-center'>
         <div className='relative group z-40 '>
           <img
-            src={signature_derrida}
+            src={signatureDerrida}
             alt='Signature_Derrida'
           />
         </div>
