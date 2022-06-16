@@ -1,12 +1,12 @@
 exports.arweave = {
   main: {
-    host: "arweave.net",
+    host: 'arweave.net',
     port: '443',
-    protocol: "https"
+    protocol: 'https'
   },
   gateway: {
-    host: "127.0.0.1",
+    host: '127.0.0.1',
     port: 1984,
-    protocol: "http"
+    protocol: 'http'
   }
 }

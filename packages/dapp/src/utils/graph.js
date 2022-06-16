@@ -1,5 +1,5 @@
-const axios = require('axios').default;
-const Constants = require("./constants");
+const axios = require('axios').default
+const Constants = require('./constants')
 
 const GET_STEWARD_NFTS = `
   query getStewardNfts($steward: String, $first: Int) {
@@ -52,11 +52,11 @@ const GET_ALL_HIGHLIGHT_NFTS = `
 const Queries = {
   getAllHighlightNfts: {
     query: GET_ALL_HIGHLIGHT_NFTS,
-    variables: {first: 4}
+    variables: { first: 4 }
   },
   getAllSealedNfts: {
     query: GET_ALL_SEALED_NFTS,
-    variables: {first: 4}
+    variables: { first: 4 }
   },
   getStewardNfts: {
     query: GET_STEWARD_NFTS,
@@ -74,19 +74,18 @@ const graphQuery = axios.create({
 export const getAllHighlightNfts = async () => {
   return (await graphQuery.post('/', {
     ...Queries.getAllHighlightNfts
-  })).data.data.signatureNFTs;
+  })).data.data.signatureNFTs
 }
 
 export const getAllSealedNfts = async () => {
   return (await graphQuery.post('/', {
     ...Queries.getAllSealedNfts
-  })).data.data.signatureFunds;
+  })).data.data.signatureFunds
 }
 
-export const getAllStewardNfts = async(address) => {
-  return (await graphQuery.post("/", {
+export const getAllStewardNfts = async (address) => {
+  return (await graphQuery.post('/', {
     query: Queries.getStewardNfts.query,
     variables: Queries.getStewardNfts.variables(address)
-  })).data.data.account;
+  })).data.data.account
 }
-

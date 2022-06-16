@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import KernelLogo from '../../images/kernel_logo.png';
+import { motion } from 'framer-motion'
+import KernelLogo from '../../images/kernel_logo.png'
 
 const Wait = () => {
   return (
@@ -10,13 +10,12 @@ const Wait = () => {
           animate={{ rotate: 360 }}
           transition={{
             loop: Infinity,
-            ease: "linear",
+            ease: 'linear',
             duration: 1
           }}
-        >
-        </motion.span>
+        />
         <div className=''>
-          <img className='w-32 h-32' src={KernelLogo} alt="kernel logo" />
+          <img className='w-32 h-32' src={KernelLogo} alt='kernel logo' />
         </div>
       </div>
       <div className='pt-12 text-xl opacity-30 text-center tracking-tight font-garamond'>
@@ -25,4 +24,4 @@ const Wait = () => {
     </div>
   )
 }
-export default Wait;
+export default Wait

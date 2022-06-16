@@ -1,10 +1,10 @@
-import ArrowDownwards from "../common/ArrowDownwards";
+import ArrowDownwards from '../common/ArrowDownwards'
 
 const Hero = () => {
   return (
-    <div className="flex flex-col w-screen h-screen items-center ">
-      <div className="flex md:text-8xl text-4xl flex-grow font-redaction text-gray-700 self-center">
-        <div className="my-auto mix-blend-color-multiply text-center">
+    <div className='flex flex-col w-screen h-screen items-center '>
+      <div className='flex md:text-8xl text-4xl flex-grow font-redaction text-gray-700 self-center'>
+        <div className='my-auto mix-blend-color-multiply text-center'>
           Signature
           <br />
           Economies
@@ -18,4 +18,4 @@ const Hero = () => {
   )
 }
 
-export default Hero;
+export default Hero

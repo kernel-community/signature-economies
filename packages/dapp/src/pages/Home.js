@@ -1,6 +1,6 @@
-import Hero from '../components/Home/Hero';
-import Content from '../components/Home/Content';
-import Main from '../layouts/Main';
+import Hero from '../components/Home/Hero'
+import Content from '../components/Home/Content'
+import Main from '../layouts/Main'
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
       <Hero />
       <Content />
     </Main>
-  );
+  )
 }
 
-export default Home;
+export default Home

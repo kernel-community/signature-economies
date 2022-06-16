@@ -1,8 +1,7 @@
 const HorizontalSpace = () => {
   return (
-    <div className="pt-6 pb-16">
-    </div>
+    <div className='pt-6 pb-16' />
   )
 }
 
-export default HorizontalSpace;
+export default HorizontalSpace

@@ -1,21 +1,21 @@
-import { useContext } from 'react';
-import { HighlightContext } from '../../contexts/Highlight';
+import { useContext } from 'react'
+import { HighlightContext } from '../../contexts/Highlight'
 
-const MintPop = ({itemClass}) => {
-  const { dispatch } = useContext(HighlightContext);
+const MintPop = ({ itemClass }) => {
+  const { dispatch } = useContext(HighlightContext)
   return (
     <div>
       <span
         className={itemClass}
         onClick={() => dispatch({
-          type:'highlight',
+          type: 'highlight',
           payload: window.getSelection().toString()
         })}
-        >
-      🍀 Create Sign
+      >
+        🍀 Create Sign
       </span>
-  </div>
+    </div>
   )
 }
 
-export default MintPop;
+export default MintPop
