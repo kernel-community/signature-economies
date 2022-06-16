@@ -35,10 +35,10 @@ const SignatureNftCard = ({ start, end, ethAddress, id }) => {
   useEffect(() => {
     const f = async () => {
       const {chainId} = await provider.getNetwork();
-      const {signatureFund} = addresses(chainId);
+      const {signatureNFT} = addresses(chainId);
       const chainName = opensea.chainIdToName(chainId);
-      if (signatureFund) {
-        setUrl(`${opensea.base}/${chainName}/${signatureFund}/${id}`)
+      if (signatureNFT) {
+        setUrl(chainName === 'rinkeby' ? `https://testnets.opensea.io/assets/${chainName}/${signatureNFT}/${id}` : `${opensea.base}/${chainName}/${signatureNFT}/${id}`)
       }
     }
     f();

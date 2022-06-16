@@ -1,8 +1,7 @@
-// forgive me for horrible choice of variable names :(
-
 import { getAllSignatures, getTransactionData } from './arweave';
 const { ethers } = require('ethers');
-const Secrets = require("./secrets.json");
+
+const infuraId = process.env.INFURA_ID
 
 const cleanResponse = async(data) => {
   const { data: { transactions: { edges } } } = data;
@@ -54,7 +53,7 @@ const lookupEnsNames = async (data) => {
 
 export const lookUpEns = async(account) => {
   if (!account) return account;
-  let provider = new ethers.providers.InfuraProvider("homestead", Secrets.infura.id); // defaults to homestead
+  let provider = new ethers.providers.InfuraProvider("homestead", infuraId); // defaults to homestead
   const ens = await provider.lookupAddress(account);
   return ens ?? account;
 }
