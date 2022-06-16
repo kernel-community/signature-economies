@@ -4,6 +4,7 @@ const { arweave } = require("./arweave");
 const { graph } = require("./graph");
 const {opensea} = require("./opensea");
 const {twitter} = require("./twitter");
+const {weaver} = require("./weaver");
 
 module.exports = {
   addresses,
@@ -12,5 +13,6 @@ module.exports = {
   arweave,
   graph,
   opensea,
-  twitter
+  twitter,
+  weaver
 }

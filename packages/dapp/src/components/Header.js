@@ -1,22 +1,9 @@
-import { useAccount, useProvider } from "wagmi";
-import { lookUpEns } from "../utils/signatures";
-import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
+import { useDisplayableAddress } from "../hooks/useDisplayableAddress";
 
 const Header = () => {
   const { pathname } = useLocation();
-  const { data, isError } = useAccount();
-  const provider = useProvider();
-  const [toDisplay, setToDisplay] = useState();
-  useEffect(() => {
-    const fetch = async () => {
-      let lookup = await lookUpEns(data?.address, provider)
-      if (lookup.length > 15) lookup = lookup.substring(0,8) + "...";
-      setToDisplay(lookup);
-    }
-    fetch();
-  }, [data?.address, provider]);
-  if (isError) { console.log("there was an error in fetching accounts") }
+  const toDisplay = useDisplayableAddress();
   return (
     <div className="flex flex-row text-gray-800 w-full pt-6 text-lg font-redaction justify-between">
       <div className="pl-6 flex flex-row">
