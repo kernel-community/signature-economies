@@ -31,7 +31,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - run: yarn install --frozen-lockfile
-    - run: yarn workspace dapp build --if-present
+    - run: CI=false yarn workspace dapp build --if-present
     - id: 'auth'
       uses: 'google-github-actions/auth@v0'
       with:
