@@ -10,7 +10,7 @@ export const useDisplayableAddress = () => {
   useEffect(() => {
     const fetch = async () => {
       let lookup = await lookUpEns(data?.address, provider)
-      if (lookup.length > 15) lookup = lookup.substring(0,8) + "...";
+      if (lookup?.length > 15) lookup = lookup.substring(0,8) + "...";
       setToDisplay(lookup);
     }
     fetch();

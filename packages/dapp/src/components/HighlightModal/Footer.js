@@ -30,6 +30,7 @@ const Footer = () => {
       console.log("there was an error");
       dispatch({ type: 'loading', payload: false });
       dispatch({ type: 'mint', payload: {success: false, tx: undefined } });
+      dispatch({ type: 'error', payload: true });
       return;
     }
     dispatch({ type: 'loading', payload: false });
@@ -49,6 +50,7 @@ const Footer = () => {
           text='Mint'
           exec={mint}
           disabled={!isImage}
+          isError={state.error}
         />
       }
     </div>

@@ -7,7 +7,7 @@ import AllSignatureNfts from "../components/SoulSigns/AllSignatureNfts";
 
 
 const SoulSigns = () => {
-  const {activeConnector} = useConnect();
+  const { activeConnector } = useConnect();
   return (
     <Main>
       <div className="flex flex-col gap-y-4 w-screen p-8">

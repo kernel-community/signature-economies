@@ -11,14 +11,17 @@ const ConnectButton = ({disabled = false}) => {
     error,
   } = useConnect();
   return (
-  <>
-  <div
-    className={disabled ? greenButtonDisabledStyle : greenButtonStyle}
-    onClick={() => connect(connectors[Connector.INJECTED])}>
-    Connect
+  <div className="flex flex-col gap-1">
+    <div
+      className={disabled ? greenButtonDisabledStyle : greenButtonStyle}
+      onClick={() => connect(connectors[Connector.INJECTED])}>
+      Connect
+    </div>
+    {
+      error && error.message &&
+        <div className="text-red-400">Failed to connect</div>
+    }
   </div>
-  {error && error.message && <div className="text-red-400">Failed to connect</div>}
-  </>
   )
 }
 export default ConnectButton;

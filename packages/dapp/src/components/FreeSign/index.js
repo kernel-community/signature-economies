@@ -1,6 +1,6 @@
 import ExecutionButton from "../common/ExecutionButton";
 import SignatureList from "./SignatureList";
-import { useConnect, useSigner, useAccount } from "wagmi"
+import { useConnect, useSigner } from "wagmi"
 import ConnectButton from "../common/ConnectButton";
 import signText from "../text";
 import { useState, useEffect } from "react";
@@ -29,10 +29,17 @@ const FreeSign = () => {
   }
 
   const sign = async () => {
-    const signerAddress = await signer.getAddress();
+    setIsUploading(false);
+    setIsSigning(false);
     setIsSuccess(false);
+    setIsError(false);
+    setAlreadySigned(false);
+    
+    const signerAddress = await signer.getAddress();
     if (isSigning || isUploading) return;
+
     setIsSigning(true);
+
     const {found: alreadySigned} = await sigCheck({signer: signerAddress});
     if (alreadySigned) {
       setIsSigning(false);
@@ -72,6 +79,7 @@ const FreeSign = () => {
       console.log(err);
       setIsError(true);
       setIsSigning(false);
+      setIsUploading(false);
       return;
     }
     // save signature to weaver
@@ -82,6 +90,7 @@ const FreeSign = () => {
       console.log(err);
       setIsError(true);
       setIsSigning(false);
+      setIsUploading(false);
     }
     setIsUploading(false);
     setIsSigning(false);

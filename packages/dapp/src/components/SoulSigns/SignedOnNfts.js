@@ -47,13 +47,15 @@ const SignedOnNfts = ({ account }) => {
     `
   );
 
+  if (sealedNfts.length === 0 && signatureNfts.length === 0) return <></>;
+
   return (
     <>
     <Link to={`/signed/${toFetchFor}`} className="no-underline text-gray-600 hover:text-black">
       <div className='text-xl font-redaction flex flex-row items-center gap-2'>
         Signed by&nbsp;{toDisplay}
         <span onClick={shareTweet}>
-        <TweetIcon/>
+          <TweetIcon/>
         </span>
       </div>
       </Link>

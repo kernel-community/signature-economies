@@ -43,16 +43,20 @@ const ExecutionButton = ({
   tween = false,
   fixed = false,
   bringToFront = false,
-  loading = false
+  loading = false,
+  isError = false
 }) => {
   if (!tween) {
     return (
+      <div>
       <div
         className = {getClassNames({ selectStyle, fixed, disabled, bringToFront })}
         onClick={exec}
       >
         {loading ? <Spinner />: ``}
         {text}
+      </div>
+      {isError ? <span className='text-red-600 font-garamond text-lg'>there was an error</span>: <></>}
       </div>
     )
   } else if (tween) {

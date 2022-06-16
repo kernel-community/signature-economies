@@ -15,7 +15,7 @@ const AnimateHighlightModal = () => {
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2, type: "tween" }}
       className="flex justify-center z-[100] fixed top-0 left-0 bg-gray-500/30 backdrop-blur-md w-screen h-screen">
-      <HighlightModal />
+        <HighlightModal />
       </motion.div>
   )}
   </AnimatePresence>
