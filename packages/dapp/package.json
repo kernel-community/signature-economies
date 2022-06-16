@@ -24,7 +24,19 @@
     "build": "BUILD_PATH='./dist/build' react-scripts build",
     "deploy:staging": "gcloud app deploy dist/app.yaml --project kernel-signature-staging",
     "test": "react-scripts test",
+    "lint": "npx standard",
+    "format": "npx standard --fix",
     "eject": "react-scripts eject"
+  },
+  "standard": {
+    "ignore": [
+      "dist/*"
+    ],
+    "env": [
+      "jest",
+      "es6",
+      "browser"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +62,7 @@
     "@testing-library/user-event": "^13.5.0",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
+    "standard": "^17.0.0",
     "tailwindcss": "^3.0.24",
     "yargs": "^17.5.1"
   }

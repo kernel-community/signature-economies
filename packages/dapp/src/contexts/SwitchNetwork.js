@@ -1,37 +1,37 @@
-import { useReducer, createContext, useMemo, useEffect } from "react";
-import { useNetwork } from "wagmi";
+import { useReducer, createContext, useMemo, useEffect } from 'react'
+import { useNetwork } from 'wagmi'
 
-export const SwitchNetworkContext = createContext();
+export const SwitchNetworkContext = createContext()
 
 const initial = { modal: false }
 
 const reducer = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'modal': {
       return { ...state, modal: action.payload }
     }
-    default: return initial;
+    default: return initial
   }
 }
-export const SwitchNetworkProvider = ({children}) => {
-  const [state, dispatch] = useReducer(reducer, initial);
-  const { activeChain, chains } = useNetwork();
+export const SwitchNetworkProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initial)
+  const { activeChain, chains } = useNetwork()
 
   const value = useMemo(() => {
     return {
       state, dispatch
-    };
-  }, [state, dispatch]);
+    }
+  }, [state, dispatch])
 
   useEffect(() => {
     const trigger = () => {
       if (chains.find((c) => c.id === activeChain.id)) {
-        dispatch({ type: 'modal', payload: false });
+        dispatch({ type: 'modal', payload: false })
       } else {
-        dispatch({ type: 'modal', payload: true });
+        dispatch({ type: 'modal', payload: true })
       }
     }
-    if (activeChain) trigger();
+    if (activeChain) trigger()
   }, [activeChain, chains, dispatch])
 
   return (

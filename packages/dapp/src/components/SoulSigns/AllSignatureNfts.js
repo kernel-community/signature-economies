@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import { highlightNfts } from "../../utils/fetchNfts";
-import Card from "./SignatureNftCard";
+import { useEffect, useState } from 'react'
+import { highlightNfts } from '../../utils/fetchNfts'
+import Card from './SignatureNftCard'
 
 const AllSignatureNfts = () => {
-  const [signNfts, setSignNfts] = useState([]);
+  const [signNfts, setSignNfts] = useState([])
   useEffect(() => {
     const f = async () => {
-      setSignNfts(await highlightNfts());
+      setSignNfts(await highlightNfts())
     }
-    f();
-  }, []);
+    f()
+  }, [])
   return (
     <>
       <div className='text-xl font-redaction'>
-      Signature NFTs
+        Signature NFTs
       </div>
       <div className='flex flex-row overflow-scroll gap-6'>
         {signNfts.map((nft, k) => (
@@ -24,4 +24,4 @@ const AllSignatureNfts = () => {
   )
 }
 
-export default AllSignatureNfts;
+export default AllSignatureNfts

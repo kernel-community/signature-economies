@@ -2,32 +2,31 @@
  * All logic for the modal that pops up on clicking the "mint sealed nft" button
  * click -> open modal -> mint
  */
- import { useReducer, createContext, useMemo } from "react";
- import { sealedNFTS } from "../components/SliderModal/nft";
+import { useReducer, createContext, useMemo } from 'react'
+import { sealedNFTS } from '../components/SliderModal/nft'
 
- const ETHERSCAN_TX="https://etherscan.io/tx/"
+const ETHERSCAN_TX = 'https://etherscan.io/tx/'
 
-
- const getImg = (index, variation) => {
+const getImg = (index, variation) => {
   if (variation >= 10) {
-    return sealedNFTS[index].image_Front_10;
+    return sealedNFTS[index].image_Front_10
   } else if (variation >= 1) {
-    return sealedNFTS[index].image_Front_1;
+    return sealedNFTS[index].image_Front_1
   } else {
-    return sealedNFTS[index].image_Front_0;
+    return sealedNFTS[index].image_Front_0
   }
- }
+}
 
- export const SliderContext = createContext();
+export const SliderContext = createContext()
 
- const reducer = (state, action) => {
-  switch(action.type) {
+const reducer = (state, action) => {
+  switch (action.type) {
     case 'close': {
-      if (!state.modal) return state;
-      return initial;
+      if (!state.modal) return state
+      return initial
     }
     case 'open': {
-      if (state.modal) return state;
+      if (state.modal) return state
       return {
         ...state,
         error: false,
@@ -70,31 +69,31 @@
       }
     }
     case 'error': {
-      return {...state, error: action.payload}
+      return { ...state, error: action.payload }
     }
-    default: return state;
+    default: return state
   }
- }
+}
 
- const initial = {
-   modal: false,
-   input: 0.1,
-   selected: 0,
-   mint: false,
-   loading: false,
-   image: undefined,
-   tx: undefined,
-   error: false
- }
+const initial = {
+  modal: false,
+  input: 0.1,
+  selected: 0,
+  mint: false,
+  loading: false,
+  image: undefined,
+  tx: undefined,
+  error: false
+}
 
- export const SliderProvider = ({children}) => {
-   const [state, dispatch] = useReducer(reducer, initial);
-   const value = useMemo(() => {
-     return {state, dispatch}
-   }, [state, dispatch]);
-   return (
-     <SliderContext.Provider value={value}>
-       {children}
-     </SliderContext.Provider>
-   )
- }
+export const SliderProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initial)
+  const value = useMemo(() => {
+    return { state, dispatch }
+  }, [state, dispatch])
+  return (
+    <SliderContext.Provider value={value}>
+      {children}
+    </SliderContext.Provider>
+  )
+}
