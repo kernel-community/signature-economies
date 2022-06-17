@@ -40,7 +40,7 @@ contract SignatureNFT is ERC721Tradable {
     string public imgHash = "QmYHGGTbqwFtfLFhhAKojVbmJwkVMNyqrniG9HLL1PYpyD";
 
     // stores an arweave backup of the image generator for the external url metadata
-    string public backup = "https://arweave.net/xCAQvetmPzPIv7Ro3qwdutcfoHdUwJP5fmjU57tC0SY";
+    string public backup = "https://arweave.net/0b5HtyTwPgtWY72OENfI3Jz7ugkCzYDKcnRkpgLCx64";
 
     //stores a reference to the final essay text
     string public essay = "https://arweave.net/wmn665qjC5J58QyFvaSJNEUpCmss1rfF-1b6xbTsxp4";
