@@ -29,9 +29,9 @@ import urlY from '../../images/alphabets/Y.png'
 import urlZ from '../../images/alphabets/Z.png'
 import Empty from '../../images/alphabets/Empty.png'
 import Garamond from '../../fonts/Garamond.ttf'
-let canvas
 
 function HighlightSketch (p5) {
+  let canvas
   let selectedText = ''
   let fontGaramond
   let n = 0
@@ -214,7 +214,7 @@ function HighlightSketch (p5) {
     p5.fill(360, 0, 100)
     p5.textFont(fontGaramond)
     p5.textAlign(p5.CENTER)
-    if (len > 300) {
+    if (selectedText.length > 300) {
       p5.textSize(28)
     } else {
       p5.textSize(32)
