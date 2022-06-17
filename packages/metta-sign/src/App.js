@@ -6,9 +6,22 @@ import text from './utils/Text'
 function App() {
   const essay = text.split('')
   const [x, y] = window.location.hash.slice(1).split('-').map((e) => parseInt(e))
+  if (y-x > 463) {
+    return (
+      <div className="flex flex-col w-screen h-screen items-center ">
+        <div className="ont-redaction text-gray-700">
+          <div className="my-10 mix-blend-color-multiply text-center">
+            You have highlighted too many characters for us to fit into your NFT. Please try again:
+            <div className='p-10'>
+              <a className="bg-white select-none text-center border-gray-600 py-2 px-4 md:px-8 w-48 md:w-64 border-2 rounded-md hover:border-black font-redaction cursor-pointer" href="https://sign.kernel.community" target="_blank" rel="noreferrer">Signature Economies</a>
+            </div> 
+          </div>
+        </div>
+      </div>
+    )
+  }
   let selected = essay.splice(x, (y-x))
   let highlighted = selected.join('')
-  
   if (highlighted === null || highlighted === '') {
     return (
       <p>Loading...</p>
