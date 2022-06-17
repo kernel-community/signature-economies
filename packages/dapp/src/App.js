@@ -4,12 +4,12 @@ import Essay from './pages/Essay'
 import SignedOn from './pages/SignedOn'
 import SoulSigns from './pages/SoulSigns'
 import SwitchNetworkModal from './components/SwitchNetwork'
+import PauseForLoadingModal from './components/PauseForLoadingModal'
+import Slider from './components/SliderModal'
 import { SwitchNetworkProvider } from './contexts/SwitchNetwork'
 import { PauseForLoadingProvider } from './contexts/PauseForLoading'
-import PauseForLoadingModal from './components/PauseForLoadingModal'
 import { HighlightProvider } from './contexts/Highlight'
 import { SliderProvider } from './contexts/Slider'
-import Slider from './components/SliderModal'
 
 const App = () => {
   return (
