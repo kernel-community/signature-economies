@@ -2,10 +2,9 @@ import { AnimatePresence } from 'framer-motion'
 import { useContext, useEffect } from 'react'
 import { SliderContext } from '../../contexts/Slider'
 import AnimateSlideAndMint from './AnimateSlideAndMint'
-import ExecutionButton from '../common/ExecutionButton'
 
 const Slider = () => {
-  const { state, dispatch } = useContext(SliderContext)
+  const { state } = useContext(SliderContext)
 
   useEffect(() => {
     if (state.modal) {
@@ -18,20 +17,11 @@ const Slider = () => {
     }
   }, [state.modal])
 
+  if (!state.modal) return;
+
   return (
     <AnimatePresence>
-      {
-        state.modal
-          ? <AnimateSlideAndMint />
-          : <ExecutionButton
-              exec={() => dispatch({ type: 'open' })}
-              tween
-              selectStyle='big'
-              text='Mint a Sealed NFT'
-              fixed='bottom-8 md:right-8 right-1/2 -mr-24 md:-mr-0'
-              bringToFront
-            />
-      }
+      <AnimateSlideAndMint />
     </AnimatePresence>
   )
 }
