@@ -10,7 +10,7 @@ const styles = {
     disabled: 'w-32 px-4 py-2 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-wait flex justify-center'
   },
   big: {
-    main: 'bg-white select-none text-center border-gray-600 py-2 px-4 md:px-8 md:py-4 w-48 md:w-64 border-2 rounded-md hover:border-black font-redaction cursor-pointer',
+    main: 'select-none text-center border-gray-600 sm:px-4 py-2 px-2 sm:w-64 border-2 rounded-md hover:border-black font-redaction cursor-pointer text-sm sm:text-base',
     disabled: 'bg-gray-300 select-none text-center border-gray-600 py-2 px-4 md:px-8 md:py-4 w-48 md:w-64 border-2 rounded-md hover:border-black font-redaction'
   }
 }
@@ -43,7 +43,7 @@ const ExecutionButton = ({
   fixed = false,
   bringToFront = false,
   loading = false,
-  isError = false
+  isError = false,
 }) => {
   if (!tween) {
     return (

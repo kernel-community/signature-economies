@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Essay from './pages/Essay'
@@ -8,21 +7,29 @@ import SwitchNetworkModal from './components/SwitchNetwork'
 import { SwitchNetworkProvider } from './contexts/SwitchNetwork'
 import { PauseForLoadingProvider } from './contexts/PauseForLoading'
 import PauseForLoadingModal from './components/PauseForLoadingModal'
+import { HighlightProvider } from './contexts/Highlight'
+import { SliderProvider } from './contexts/Slider'
+import Slider from './components/SliderModal'
 
 const App = () => {
   return (
     <SwitchNetworkProvider>
       <PauseForLoadingProvider>
-        <div>
-          <SwitchNetworkModal />
-          <PauseForLoadingModal />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/essay' element={<Essay />} />
-            <Route path='/signatures' element={ <SoulSigns /> } />
-            <Route path='/signed/:address' element={<SignedOn />} />
-          </Routes>
-        </div>
+        <HighlightProvider>
+          <SliderProvider>
+            <div>
+              <SwitchNetworkModal />
+              <PauseForLoadingModal />
+              <Slider />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/essay' element={<Essay />} />
+                <Route path='/signatures' element={ <SoulSigns /> } />
+                <Route path='/signed/:address' element={<SignedOn />} />
+              </Routes>
+            </div>
+          </SliderProvider>
+        </HighlightProvider>
       </PauseForLoadingProvider>
     </SwitchNetworkProvider>
   )

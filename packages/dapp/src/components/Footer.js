@@ -1,24 +1,48 @@
+import { SliderContext } from "../contexts/Slider"
+import { useContext } from "react"
+
 const Footer = () => {
+  const slider = useContext(SliderContext);
   return (
     <>
-      {/* DESKTOP FOOTER */}
-      <div className='sm:flex flex flex-row text-gray-800 w-full justify-center py-6 mx-3 text-sm font-thin font-garamond hidden'>
-        Built at KERNEL. Website design by&nbsp;<a href='https://twitter.com/MalayVasa/' target='_blank' rel='noreferrer'>@malayvasa</a>. NFT seals by&nbsp;<a href='https://twitter.com/noskovvkirill' target='_blank' rel='noreferrer'>@noskovvkirill</a>.
-      </div>
-      {/* MOBILE FOOTER */}
-      <div className='sm:hidden flex flex-col font-garamond text-xs w-full text-center pb-6'>
-        <div className='pb-2'>
-          Built at KERNEL
-        </div>
-        <div className='pb-2'>
-          Website design by&nbsp;<a href='https://twitter.com/MalayVasa/' target='_blank' rel='noreferrer'>@malayvasa</a>.
-        </div>
-        <div>
-          NFT seals by&nbsp;<a href='https://twitter.com/noskovvkirill' target='_blank' rel='noreferrer'>@noskovvkirill</a>.
+      <div className='
+        flex
+        flex-col
+        text-gray-800
+        w-full
+        justify-center
+        sm:py-6
+        py-6
+        text-base
+        sm:text-3xl
+        font-garamond
+        fixed bottom-0
+        bg-white
+        items-center
+        gap-2 shadow-2xl shadow-black z-10
+      '>
+        <div
+          className="flex flex-row gap-2 items-center"
+        >
+          <div
+            className="cursor-pointer border-b-2"
+            onClick={() => window.open("/essay#free-sign", "_self")}
+          >
+            sign freely
+          </div>
+          <div>
+            /
+          </div>
+          <div
+            className="cursor-pointer border-b-2"
+            onClick={() => slider.dispatch({ type: 'open' })}
+          >
+            mint a seal
+          </div>
         </div>
       </div>
     </>
-    
+
   )
 }
 
