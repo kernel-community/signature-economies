@@ -28,7 +28,7 @@ const Slider = () => {
               tween
               selectStyle='big'
               text='Mint a Sealed NFT'
-              fixed
+              fixed='bottom-8 md:right-8 right-1/2 -mr-24 md:-mr-0'
               bringToFront
             />
       }

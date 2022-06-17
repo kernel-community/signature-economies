@@ -4,7 +4,7 @@ import { HighlightProvider } from '../contexts/Highlight'
 import { SliderProvider } from '../contexts/Slider'
 import Slider from '../components/SliderModal'
 import FreeSign from '../components/FreeSign'
-import AnchorButton from '../components/common/AnchorButton'
+import ExecutionButton from '../components/common/ExecutionButton'
 import HorizontalRule from '../components/common/HorizontalRule'
 import Poem from '../components/Poem'
 import Main from '../layouts/Main'
@@ -21,7 +21,13 @@ const Essay = () => {
           >
             {/* only the Essay component is highlight-mintable */}
             <EssayContent />
-            <AnchorButton />
+            <ExecutionButton
+              exec={() => window.open("#free-sign", "_self")}
+              tween
+              selectStyle='big'
+              text='Sign freely'
+              fixed='bottom-28 md:right-8 right-1/2 -mr-24 md:-mr-0'
+            />
             <HorizontalRule />
             <Poem />
             <FreeSign />

@@ -120,7 +120,6 @@ const FreeSign = () => {
           ? <ConnectButton />
           : <ExecutionButton
               exec={sign}
-              tween
               selectStyle='big'
               text='Sign freely'
               loading={isSigning || isUploading}
