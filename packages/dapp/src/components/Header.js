@@ -48,6 +48,9 @@ const Header = () => {
       <div className='flex flex-col'>
         <div>Signature</div><div>Economies</div>
       </div>
+      <div>
+        <Items />
+      </div>
       {
           toDisplay &&
             (
@@ -63,9 +66,6 @@ const Header = () => {
             <ConnectButton />
           )
       }
-    </div>
-    <div className='self-center'>
-      <Items />
     </div>
     </div>
     </>
