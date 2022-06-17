@@ -52,9 +52,9 @@ const SealedNftCard = ({ selectMeta, ethAddress, id }) => {
     const f = async () => {
       const { chainId } = await provider.getNetwork()
       const { signatureFund } = addresses(chainId)
-      const chainName = opensea.chainIdToName(chainId)
+      const openseaUrl = opensea.chainIdToUrl(chainId)
       if (signatureFund) {
-        setUrl(`${opensea.base}/${chainName}/${signatureFund}/${id}`)
+        setUrl(`${openseaUrl}/${signatureFund}/${id}`)
       }
     }
     f()

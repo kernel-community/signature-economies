@@ -1,6 +1,6 @@
 const Content = () => {
   return (
-    <div>
+    <div className="selection:bg-green-300 selection:text-green-900">
       <div className='mx-auto flex flex-col px-8 md:px-0 py-16 w-full md:w-[800px] gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center'>
         <div>
           Public blockchains present a paradox of ownership. No-one controls them and anyone can use them, given a connection and an ability to speak the common tongue. The network is ownerless, yet anyone who creates a key ‘owns’ any coins associated with it, so everyone is an owner. This confusion reveals how ‘ownership’ is shifting and highlights the opportunity we have to augment our understanding of ‘the ownership economy’ by reimagining what being an owner means.

@@ -2,14 +2,11 @@ import Mintable from './Mintable'
 import Footer from './Footer'
 import { HighlightContext } from '../../contexts/Highlight'
 import { useContext } from 'react'
-import Wait from '../common/Wait'
 import Share from '../common/Share'
 
 const Modal = () => {
   const { state } = useContext(HighlightContext)
-  if (state.loading) {
-    return <Wait />
-  } else if (state.mint) {
+  if (state.tx) {
     return <Share />
   } else {
     return (

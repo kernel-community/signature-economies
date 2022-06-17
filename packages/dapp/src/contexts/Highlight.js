@@ -5,28 +5,24 @@
 import { useReducer, createContext, useMemo } from 'react'
 import Text from '../components/text'
 
-const ETHERSCAN_TX = 'https://etherscan.io/tx/'
-
 export const HighlightContext = createContext()
+
 const initial = {
   text: '',
   modal: false,
   image: undefined,
-  mint: false,
-  loading: false,
   tx: undefined,
   start: undefined,
   end: undefined,
   error: false
 }
+
 const reducer = (state, action) => {
-  // reducer will only cause a re-render if it returns a new / changed state
   switch (action.type) {
     case 'highlight': {
       const start = Text.indexOf(action.payload)
       const length = action.payload.length
       const end = start + length
-      if (state.modal) return state
       return {
         ...state,
         error: false,
@@ -37,38 +33,8 @@ const reducer = (state, action) => {
         end
       }
     }
-    case 'close': {
-      if (!state.modal) return state
-      return initial
-    }
-    case 'ready': {
-      return {
-        ...state,
-        error: false,
-        image: action.payload
-      }
-    }
-    case 'loading': {
-      return {
-        ...state,
-        error: false,
-        loading: action.payload
-      }
-    }
-    case 'mint': {
-      return {
-        ...state,
-        mint: action.payload.success,
-        tx: ETHERSCAN_TX + action.payload.tx
-      }
-    }
-    case 'error': {
-      return {
-        ...state,
-        error: action.payload
-      }
-    }
-    default: return state
+    case 'close': return initial
+    default: return {...state, ...action}
   }
 }
 
