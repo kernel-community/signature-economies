@@ -25,6 +25,7 @@
     "dapp:test": "yarn workspace dapp test",
     "dapp:format": "yarn workspace dapp format",
     "dapp:lint": "yarn workspace dapp lint",
+    "dapp:analyze": "yarn workspace dapp analyze",
     "hardhat:clean": "yarn workspace hardhat clean",
     "hardhat:compile": "yarn workspace hardhat compile",
     "hardhat:watch": "yarn workspace hardhat watch",
