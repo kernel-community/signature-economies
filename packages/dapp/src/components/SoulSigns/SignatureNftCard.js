@@ -10,7 +10,7 @@ import opensea from '../../utils/constants/opensea'
 
 const SignatureNftCard = ({ start, end, ethAddress, id }) => {
   const provider = useProvider()
-  const [toDisplay, setToDisplay] = useState(ethAddress)
+  const [toDisplay, setToDisplay] = useState(ethAddress.substring(0, 8) + '...')
   const [text, setText] = useState('')
   const [url, setUrl] = useState()
 

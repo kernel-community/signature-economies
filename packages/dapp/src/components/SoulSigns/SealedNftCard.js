@@ -32,7 +32,7 @@ const getImageSrc = (selectMeta) => {
 
 const SealedNftCard = ({ selectMeta, ethAddress, id }) => {
   const provider = useProvider()
-  const [toDisplay, setToDisplay] = useState(ethAddress)
+  const [toDisplay, setToDisplay] = useState(ethAddress.substring(0, 8) + '...')
   const [imgSrc, setImageSrc] = useState()
   const [url, setUrl] = useState()
   useEffect(() => {
