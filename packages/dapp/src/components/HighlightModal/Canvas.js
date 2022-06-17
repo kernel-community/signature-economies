@@ -214,17 +214,21 @@ function HighlightSketch (p5) {
     p5.fill(360, 0, 100)
     p5.textFont(fontGaramond)
     p5.textAlign(p5.CENTER)
-    p5.textSize(32)
-    p5.text(selectedText, 50, 775, 700, 300)
+    if (len > 300) {
+      p5.textSize(28)
+    } else {
+      p5.textSize(32)
+    }
+    p5.text(selectedText, 50, 775, 700, 350)
 
     p5.fill(360, 0, 100, 0.4)
     p5.textAlign(p5.LEFT)
     p5.textSize(36)
-    p5.text('Kernel Verses', 50, 1110, 200, 100)
+    p5.text('Kernel Verses', 47, 1110, 200, 100)
 
     p5.textAlign(p5.LEFT)
     p5.textSize(36)
-    p5.text('Signature Economies', 458, 1110, 400, 100)
+    p5.text('Signature Economies', 459, 1110, 400, 100)
 
     if (n < selectedText.length && n <= 400) {
       // animate the pattern
