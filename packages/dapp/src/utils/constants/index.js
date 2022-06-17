@@ -5,6 +5,7 @@ const { graph } = require('./graph')
 const { opensea } = require('./opensea')
 const { twitter } = require('./twitter')
 const { weaver } = require('./weaver')
+const { etherscan } = require('./etherscan')
 
 module.exports = {
   addresses,
@@ -14,5 +15,6 @@ module.exports = {
   graph,
   opensea,
   twitter,
-  weaver
+  weaver,
+  etherscan
 }

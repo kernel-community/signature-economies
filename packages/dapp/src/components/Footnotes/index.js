@@ -35,7 +35,7 @@ const FootNotes = () => {
 
             <p>
               <sup> * </sup>
-              Please enjoy a conversation exploration of the text by clicking <a href='https://youtu.be/yfQVevK0eI0' target='_blank' rel='noreferrer'>here</a>.
+              Please enjoy a conversational exploration of the text by clicking <a href='https://youtu.be/yfQVevK0eI0' target='_blank' rel='noreferrer'>here</a>.
             </p>
           </div>
         </div>

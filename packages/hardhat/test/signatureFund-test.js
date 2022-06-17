@@ -28,30 +28,30 @@ describe('SignatureFund', function () {
     it('should accept donations and allocate correct metadata URIs based on amounts', async function () {
       const creatorBalance = await this.creator.getBalance()
 
-      const uri0 = 'https://arweave.net/xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q/0/one.json'
+      const uri0 = 'https://arweave.net/SuPXgNnLyr_X4FR-a9M3jTloVH9wZnN334g9ToxyNZU/0/one.json'
       const value0 = ethers.utils.parseEther('0.5')
       // A critical learning from this test: only use _strings_, do not pass in numbers
       await expect(this.signatureFund.connect(this.alice).createSign('one', { value: value0 }))
         .to.emit(this.signatureFund, 'SignCreated')
-        .withArgs(this.alice.address, ethers.utils.parseEther('0.5'), 0, uri0)
+        .withArgs(this.alice.address, ethers.utils.parseEther('0.5'), 0, uri0, '0/one')
       expect(await this.signatureFund.tokenURI(0)).to.equal(uri0)
       const creatorBalance0 = await this.creator.getBalance()
       expect(creatorBalance0).to.equal(creatorBalance.add(value0))
 
-      const uri1 = 'https://arweave.net/xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q/1/one.json'
+      const uri1 = 'https://arweave.net/SuPXgNnLyr_X4FR-a9M3jTloVH9wZnN334g9ToxyNZU/1/one.json'
       const value1 = ethers.utils.parseEther('1.5')
       await expect(this.signatureFund.connect(this.alice).createSign('one', { value: value1 }))
         .to.emit(this.signatureFund, 'SignCreated')
-        .withArgs(this.alice.address, ethers.utils.parseEther('1.5'), 1, uri1)
+        .withArgs(this.alice.address, ethers.utils.parseEther('1.5'), 1, uri1, '1/one')
       expect(await this.signatureFund.tokenURI(1)).to.equal(uri1)
       const creatorBalance1 = await this.creator.getBalance()
       expect(creatorBalance1).to.equal(creatorBalance0.add(value1))
 
-      const uri10 = 'https://arweave.net/xh7IjbEgRvcMdd_4Q8bukYkQDm5ZQsQt7Mx5-0TxB1Q/10/one.json'
+      const uri10 = 'https://arweave.net/SuPXgNnLyr_X4FR-a9M3jTloVH9wZnN334g9ToxyNZU/10/one.json'
       const value10 = ethers.utils.parseEther('15')
       await expect(this.signatureFund.connect(this.alice).createSign('one', { value: value10 }))
         .to.emit(this.signatureFund, 'SignCreated')
-        .withArgs(this.alice.address, ethers.utils.parseEther('15'), 2, uri10)
+        .withArgs(this.alice.address, ethers.utils.parseEther('15'), 2, uri10, '10/one')
       expect(await this.signatureFund.tokenURI(2)).to.equal(uri10)
       const creatorBalance10 = await this.creator.getBalance()
       expect(creatorBalance10).to.equal(creatorBalance1.add(value10))
@@ -67,7 +67,7 @@ describe('SignatureFund', function () {
       const value0 = ethers.utils.parseEther('2')
       await expect(this.signatureFund.connect(this.alice).createSign('one', { value: value0 }))
         .to.emit(this.signatureFund, 'SignCreated')
-        .withArgs(this.alice.address, value0, 0, uri0)
+        .withArgs(this.alice.address, value0, 0, uri0, '0/one')
       expect(await this.signatureFund.tokenURI(0)).to.equal(uri0)
       const creatorBalance0 = await this.creator.getBalance()
       expect(creatorBalance0).to.equal(creatorBalance.add(value0))
@@ -76,7 +76,7 @@ describe('SignatureFund', function () {
       const value1 = ethers.utils.parseEther('6')
       await expect(this.signatureFund.connect(this.alice).createSign('one', { value: value1 }))
         .to.emit(this.signatureFund, 'SignCreated')
-        .withArgs(this.alice.address, value1, 1, uri1)
+        .withArgs(this.alice.address, value1, 1, uri1, '1/one')
       expect(await this.signatureFund.tokenURI(1)).to.equal(uri1)
       const creatorBalance1 = await this.creator.getBalance()
       expect(creatorBalance1).to.equal(creatorBalance0.add(value1))
@@ -85,7 +85,7 @@ describe('SignatureFund', function () {
       const value10 = ethers.utils.parseEther('51')
       await expect(this.signatureFund.connect(this.alice).createSign('one', { value: value10 }))
         .to.emit(this.signatureFund, 'SignCreated')
-        .withArgs(this.alice.address, value10, 2, uri10)
+        .withArgs(this.alice.address, value10, 2, uri10, '10/one')
       expect(await this.signatureFund.tokenURI(2)).to.equal(uri10)
       const creatorBalance10 = await this.creator.getBalance()
       expect(creatorBalance10).to.equal(creatorBalance1.add(value10))

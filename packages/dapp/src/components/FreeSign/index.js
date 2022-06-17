@@ -86,7 +86,7 @@ const FreeSign = () => {
     try {
       await saveSig({ signer: signerAddress, signature: arUrl })
     } catch (err) {
-      console.log('weaver: error in saving signature')
+      console.log('WEAVER: error in saving signature')
       console.log(err)
       setIsError(true)
       setIsSigning(false)
@@ -120,7 +120,6 @@ const FreeSign = () => {
           ? <ConnectButton />
           : <ExecutionButton
               exec={sign}
-              tween
               selectStyle='big'
               text='Sign freely'
               loading={isSigning || isUploading}

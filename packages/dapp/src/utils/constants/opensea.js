@@ -1,10 +1,9 @@
 module.exports = {
-  base: 'https://opensea.io/assets',
-  chainIdToName: (id) => {
+  chainIdToUrl: (id) => {
     switch (id) {
-      case 4: return 'rinkeby'
-      case 1: return 'ethereum'
-      default: return 'ethereum'
+      case 4: return 'https://testnets.opensea.io/assets'
+      case 1: return 'https://opensea.io/assets/ethereum'
+      default: return 'https://opensea.io/assets/ethereum'
     }
   }
 }

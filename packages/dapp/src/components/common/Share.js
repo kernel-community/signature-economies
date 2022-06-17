@@ -10,7 +10,7 @@ const Message = ({ url }) => {
       Transaction Submitted
       <div>
         View on&nbsp;
-        <a href={url} className='text-lg no-underline cursor-pointer font-redaction hover:text-black' target='_blank' rel='noreferrer'>
+        <a href={url} className='text-lg no-underline cursor-pointer hover:text-black' target='_blank' rel='noreferrer'>
           Etherscan
         </a>
       </div>
@@ -26,12 +26,12 @@ const Share = () => {
     <div className='w-max p-12 flex flex-col items-center justify-center my-auto bg-white rounded-lg shadow-xl'>
       <div className='flex flex-row gap-2'>
         {
-      highlightState.image &&
+        highlightState.image &&
         <div>
           <img src={highlightState.image} alt='' style={{ width: '320px', height: '500px', maxWidth: '500px' }} />
           <Message url={highlightState.tx} />
         </div>
-    }
+        }
         {
       sliderState.image &&
         <div>

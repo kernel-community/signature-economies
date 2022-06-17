@@ -11,7 +11,7 @@ import twitter from '../../utils/constants/twitter'
 const SignedOnNfts = ({ account }) => {
   const { data: connectedAccount } = useAccount()
   const [toFetchFor, setToFetchFor] = useState(account)
-  const [toDisplay, setToDisplay] = useState(toFetchFor)
+  const [toDisplay, setToDisplay] = useState(toFetchFor?.substring(0, 8) + '...')
   const [sealedNfts, setSealedNfts] = useState([])
   const [signatureNfts, setSignatureNfts] = useState([])
 

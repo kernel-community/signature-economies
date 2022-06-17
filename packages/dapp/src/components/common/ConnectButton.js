@@ -1,8 +1,30 @@
 import { useConnect } from 'wagmi'
 import { Connector } from '../../utils/connect'
 
-const greenButtonStyle = 'w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 text-center hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-pointer'
-const greenButtonDisabledStyle = 'w-32 px-4 py-2 bg-gray-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 text-center hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-wait'
+const base = `
+  w-24
+  text-center
+  text-green-300
+  border-2
+  border-transparent
+  rounded-md
+  py-1
+
+  sm:px-4 sm:py-2
+  sm:shadow sm:shadow-green-300
+  sm:transition-all
+
+  hover:shadow-md
+  hover:shadow-green-500
+  hover:text-green-50
+`
+
+const greenButtonStyle = `
+  ${base} bg-green-600 cursor-pointer
+`
+const greenButtonDisabledStyle = `
+  ${base} bg-gray-600  cursor-wait
+`
 
 const ConnectButton = ({ disabled = false }) => {
   const {
@@ -20,7 +42,7 @@ const ConnectButton = ({ disabled = false }) => {
       </div>
       {
       error && error.message &&
-        <div className='text-red-400'>Failed to connect</div>
+        <div className='text-red-400 text-sm sm:text-base'>Failed to connect</div>
     }
     </div>
   )

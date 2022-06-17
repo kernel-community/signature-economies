@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import Spinner from './Spinner'
-
 const styles = {
   green: {
     main: 'w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-pointer flex justify-center',
@@ -11,8 +10,8 @@ const styles = {
     disabled: 'w-32 px-4 py-2 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-wait flex justify-center'
   },
   big: {
-    main: 'bg-white select-none text-center bottom-8 border-gray-600 py-2 px-4 md:px-8 md:py-4 right-1/2 md:right-8 w-48 md:w-64 -mr-24 md:-mr-0 border-2 rounded-md hover:border-black font-redaction cursor-pointer',
-    disabled: 'bg-gray-300 select-none text-center bottom-8 border-gray-600 py-2 px-4 md:px-8 md:py-4 right-1/2 md:right-8 w-48 md:w-64 -mr-24 md:-mr-0 border-2 rounded-md hover:border-black font-redaction'
+    main: 'bg-white select-none text-center border-gray-600 py-2 px-4 md:px-8 md:py-4 w-48 md:w-64 border-2 rounded-md hover:border-black font-redaction cursor-pointer',
+    disabled: 'bg-gray-300 select-none text-center border-gray-600 py-2 px-4 md:px-8 md:py-4 w-48 md:w-64 border-2 rounded-md hover:border-black font-redaction'
   }
 }
 
@@ -27,7 +26,7 @@ const getClassNames = ({
     c = styles[selectStyle].disabled
   }
   if (fixed) {
-    c += ' fixed'
+    c += ` fixed ${fixed}`
   }
   if (bringToFront) {
     c += ' z-50'
@@ -48,7 +47,7 @@ const ExecutionButton = ({
 }) => {
   if (!tween) {
     return (
-      <div>
+      <>
         <div
           className={getClassNames({ selectStyle, fixed, disabled, bringToFront })}
           onClick={exec}
@@ -57,7 +56,7 @@ const ExecutionButton = ({
           {text}
         </div>
         {isError ? <span className='text-red-600 font-garamond text-lg'>there was an error</span> : <></>}
-      </div>
+      </>
     )
   } else if (tween) {
     return (

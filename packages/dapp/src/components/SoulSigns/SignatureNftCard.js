@@ -10,7 +10,7 @@ import opensea from '../../utils/constants/opensea'
 
 const SignatureNftCard = ({ start, end, ethAddress, id }) => {
   const provider = useProvider()
-  const [toDisplay, setToDisplay] = useState(ethAddress)
+  const [toDisplay, setToDisplay] = useState(ethAddress.substring(0, 8) + '...')
   const [text, setText] = useState('')
   const [url, setUrl] = useState()
 
@@ -34,9 +34,9 @@ const SignatureNftCard = ({ start, end, ethAddress, id }) => {
     const f = async () => {
       const { chainId } = await provider.getNetwork()
       const { signatureNFT } = addresses(chainId)
-      const chainName = opensea.chainIdToName(chainId)
+      const openseaUrl = opensea.chainIdToUrl(chainId)
       if (signatureNFT) {
-        setUrl(chainName === 'rinkeby' ? `https://testnets.opensea.io/assets/${chainName}/${signatureNFT}/${id}` : `${opensea.base}/${chainName}/${signatureNFT}/${id}`)
+        setUrl(`${openseaUrl}/${signatureNFT}/${id}`)
       }
     }
     f()

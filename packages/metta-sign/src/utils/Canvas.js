@@ -29,6 +29,7 @@ import urlY from '../alphabets/Y.png'
 import urlZ from '../alphabets/Z.png'
 import Empty from '../alphabets/Empty.png'
 import Garamond from '../fonts/Garamond.ttf'
+let canvas
 
 function HighlightSketch (p5) {
   let selectedText = ''
@@ -202,8 +203,12 @@ function HighlightSketch (p5) {
     p5.fill(360, 0, 100)
     p5.textFont(fontGaramond)
     p5.textAlign(p5.CENTER)
-    p5.textSize(32)
-    p5.text(selectedText, 50, 775, 700, 300)
+    if (len > 300) {
+      p5.textSize(28)
+    } else {
+      p5.textSize(32)
+    }
+    p5.text(selectedText, 50, 775, 700, 350)
 
     p5.fill(360, 0, 100, 0.4)
     p5.textAlign(p5.LEFT)

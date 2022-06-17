@@ -8,8 +8,9 @@ import NFTShowcase from './NFTShowcase'
 import NFTList from './NFTList'
 import SliderInput from './SliderInput'
 import CloseButton from './CloseButton'
-import Wait from '../common/Wait'
 import Share from '../common/Share'
+import { PauseForLoadingContext } from '../../contexts/PauseForLoading'
+import etherscan from '../../utils/constants/etherscan'
 
 const Left = () => {
   return (
@@ -55,27 +56,35 @@ const indexToNumber = (i) => {
 }
 
 const Minter = () => {
-  const { state, dispatch } = useContext(SliderContext)
+  const slider = useContext(SliderContext)
   const { activeConnector } = useConnect()
   const provider = useProvider()
   const { data: signer } = useSigner()
+  const loading = useContext(PauseForLoadingContext);
+
   const handleOnClickMint = async () => {
-    dispatch({ type: 'loading' })
+    slider.dispatch({ error: false })
+    loading.dispatch({ modal: true, text: 'Please confirm on your wallet' })
     let tx
     try {
       tx = await createSign({
-        value: state.input.toString(),
-        token: indexToNumber(state.selected + 1),
+        value: slider.state.input.toString(),
+        token: indexToNumber(slider.state.selected + 1),
         provider,
         signer
       })
     } catch (err) {
       console.log(err)
-      dispatch({ type: 'mint', payload: { success: false, tx: undefined } })
-      dispatch({ type: 'error', payload: true })
+      loading.dispatch({ modal: false })
+      slider.dispatch({ tx: undefined, error: true })
       return
     }
-    dispatch({ type: 'mint', payload: { success: true, tx: tx.hash } })
+    loading.dispatch({ modal: true, text: 'Waiting for transaction to be confirmed' })
+    await tx.wait(1)
+    loading.dispatch({ modal: false })
+    slider.dispatch({
+      tx: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx.hash}`
+    })
   }
   return (
     <>
@@ -87,7 +96,7 @@ const Minter = () => {
           <SliderInput />
           {
           activeConnector
-            ? <ExecutionButton exec={handleOnClickMint} isError={state.error} />
+            ? <ExecutionButton exec={handleOnClickMint} isError={slider.state.error} />
             : <ConnectButton />
         }
         </div>
@@ -98,9 +107,7 @@ const Minter = () => {
 
 const SlideAndMint = () => {
   const { state } = useContext(SliderContext)
-  if (state.loading) {
-    return <Wait />
-  } else if (state.mint) {
+  if (state.tx) {
     return <Share />
   } else {
     return (

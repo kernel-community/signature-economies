@@ -37,13 +37,13 @@ contract SignatureNFT is ERC721Tradable {
     string public gateway = "https://ipfs.io/ipfs/";
 
     // stores hash of image generator app
-    string public imgHash = "QmRsEKAZTCTJjrFMcM7PvDiPHw6A1R2Gjp2kcr6g8WpB7A";
+    string public imgHash = "QmYHGGTbqwFtfLFhhAKojVbmJwkVMNyqrniG9HLL1PYpyD";
 
     // stores an arweave backup of the image generator for the external url metadata
-    string public backup = "https://arweave.net/xCAQvetmPzPIv7Ro3qwdutcfoHdUwJP5fmjU57tC0SY";
+    string public backup = "https://arweave.net/0b5HtyTwPgtWY72OENfI3Jz7ugkCzYDKcnRkpgLCx64";
 
     //stores a reference to the final essay text
-    string public essay = "https://arweave.net/TvWFw6Xc9y3fhKrDOKAg_XB57UQTaBI-tf0_wv-9HSI";
+    string public essay = "https://arweave.net/wmn665qjC5J58QyFvaSJNEUpCmss1rfF-1b6xbTsxp4";
 
     // A Kernel address for proper attribution
     address public creator;
@@ -96,7 +96,7 @@ contract SignatureNFT is ERC721Tradable {
     {
         // The 510 character limit here is an arbitrary limit of our p5.js rendering script. We have to draw the line somewhere,
         // so long as you remember that this is merely a convention, waiting to be transcended.
-        require(start < end && start >= 0 && end <= 13097 && end - start <= 517, "Invalid index");
+        require(start < end && start >= 0 && end <= 13083 && end - start <= 463, "Invalid index");
         uint256 newTokenId = _tokenIdCounter.current();
         selection[newTokenId] = Highlight(start, end);
         _safeMint(creator, msg.sender, newTokenId);
