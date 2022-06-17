@@ -17,6 +17,7 @@ const Main = ({ children }) => {
         </div>
         {pathname !== '/' && <Footer />}
       </div>
+    </>
   )
 }
 
