@@ -39,9 +39,7 @@ const SignedOnNfts = ({ account }) => {
   }, [toFetchFor])
 
   const shareTweet = () => window.open(
-    `
-    ${twitter.shareIntent}
-    ${encodeURIComponent(
+    `${twitter.shareIntent}${encodeURIComponent(
       twitter.shareContent.replace('<COLLECTION_LINK>', 'https://' + window.location.hostname + '/signed/' + toFetchFor)
     )}
     `
