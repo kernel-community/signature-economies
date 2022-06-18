@@ -5,8 +5,8 @@ import LogSlider, { sliderCurve } from './LogSlider'
 const SliderInput = () => {
   const { state, dispatch } = useContext(SliderContext)
   return (
-    <div className='flex flex-row mt-12 md:mt-0 gap-x-12 md:flex-row md:ap-x-4 items-center grow'>
-      <div className='w-[200px] md:w-3/4'>
+    <div className='flex flex-row items-center grow sm:gap-6 gap-4 w-full justify-between'>
+      <div className='grow'>
         <LogSlider
           min={0.1}
           max={100}
@@ -15,7 +15,7 @@ const SliderInput = () => {
           onChange={(value) => dispatch({ type: 'slide', payload: sliderCurve(value).toFixed(1) })}
         />
       </div>
-      <div className='text-xl md:text-3xl flex justify-center items-center font-redaction w-8 md:w-32'>
+      <div className='text-2xl flex sm:justify-center sm:items-center font-redaction sm:w-[100px] w-[60px]'>
         Ξ{state.input}
       </div>
     </div>

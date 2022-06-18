@@ -2,13 +2,13 @@ import { useConnect } from 'wagmi'
 import { Connector } from '../../utils/connect'
 
 const base = `
-  w-24
   text-center
   text-green-300
   border-2
   border-transparent
   rounded-md
   py-1
+  px-4
 
   sm:px-4 sm:py-2
   sm:shadow sm:shadow-green-300

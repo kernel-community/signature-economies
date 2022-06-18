@@ -11,8 +11,8 @@ const AnimateModal = () => {
         transition={{ duration: 0.2, type: 'tween' }}
         className='
           flex justify-center z-50
-          fixed top-0 left-0 bg-gray-500/30
-          backdrop-blur-lg w-screen h-screen
+          fixed top-0  bg-gray-500/30
+          backdrop-blur-lg w-full h-full
         '
       >
         <SlideAndMint />
