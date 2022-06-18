@@ -11,7 +11,7 @@ const styles = {
   },
   big: {
     main: 'select-none text-center border-gray-600 sm:px-4 py-2 px-2 sm:w-64 border-2 rounded-md hover:border-black font-redaction cursor-pointer text-sm sm:text-base',
-    disabled: 'bg-gray-300 select-none text-center border-gray-600 py-2 px-4 md:px-8 md:py-4 w-48 md:w-64 border-2 rounded-md hover:border-black font-redaction'
+    disabled: 'bg-gray-300 select-none text-center border-gray-600 sm:px-4 py-2 px-2 sm:w-64 border-2 rounded-md hover:border-black font-redaction cursor-wait text-sm sm:text-base'
   }
 }
 
