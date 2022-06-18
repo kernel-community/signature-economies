@@ -2,16 +2,16 @@ import { motion } from 'framer-motion'
 import Spinner from './Spinner'
 const styles = {
   green: {
-    main: 'w-32 px-4 py-2 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-pointer flex justify-center',
-    disabled: 'w-32 px-4 py-2 bg-gray-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-wait flex justify-center'
+    main: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-pointer flex justify-center',
+    disabled: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 bg-gray-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-wait flex justify-center'
   },
   basic: {
-    main: 'w-32 px-4 py-2 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-pointer flex justify-center',
-    disabled: 'w-32 px-4 py-2 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-wait flex justify-center'
+    main: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-pointer flex justify-center',
+    disabled: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-wait flex justify-center'
   },
   big: {
     main: 'select-none text-center border-gray-600 sm:px-4 py-2 px-2 sm:w-64 border-2 rounded-md hover:border-black font-redaction cursor-pointer text-sm sm:text-base',
-    disabled: 'bg-gray-300 select-none text-center border-gray-600 py-2 px-4 md:px-8 md:py-4 w-48 md:w-64 border-2 rounded-md hover:border-black font-redaction'
+    disabled: 'bg-gray-300 select-none text-center border-gray-600 sm:px-4 py-2 px-2 sm:w-64 border-2 rounded-md hover:border-black font-redaction cursor-wait text-sm sm:text-base'
   }
 }
 

@@ -7,27 +7,33 @@ const NFTList = () => {
   const elements = sealedNFTS.map((nft, index) => {
     const isSelected = state.selected === index
     return (
-      <div
-        className={
-          `min-h-max w-full ${isSelected ? 'border-2' : 'border-2 border-transparent'} bg-white rounded-lg hover:border-gray-200 transition-all  cursor-pointer`
-        }
-        onClick={() => dispatch({ type: 'select', payload: index })}
-        key={index}
-      >
-        <h1 className={`${isSelected ? 'text-slate-800' : 'text-slate-400'} hidden p-2 text-md md:text-lg text-left hover:text-slate-800 transition-all md:flex items-center font-garamond`}>
-          {nft.title}
-        </h1>
-        <p className={`${isSelected ? 'text-slate-800' : 'text-slate-400'} hidden p-2 text-sm md:text-md text-left hover:text-slate-800 transition-all md:flex items-center font-garamond`}>
-          {nft.text}
-        </p>
-        <p className={
-          `${isSelected ? 'text-slate-800' : 'text-slate-400'}
-          md:hidden text-center text-sm flex justify-center items-center`
-        }
+        <div
+          className={
+            `
+              h-min
+              ${isSelected ? 'border-2' : 'border-2 border-transparent'} bg-white rounded-lg hover:border-gray-200 transition-all  cursor-pointer p-1.5
+            `
+          }
+          onClick={() => dispatch({ type: 'select', payload: index })}
+          key={index}
         >
-          {nft.id}
-        </p>
-      </div>
+          <div className={
+            `
+              ${isSelected ? 'text-slate-800' : 'text-slate-400'} text-md hover:text-slate-800 transition-all flex items-center font-garamond
+            `
+          }>
+            {nft.title}
+          </div>
+          <div className={
+            `
+              hidden sm:block
+              ${isSelected ? 'text-slate-800' : 'text-slate-400'}
+              text-sm hover:text-slate-800 transition-all flex items-center font-garamond
+            `
+          }>
+            {nft.text}
+          </div>
+        </div>
     )
   })
   return elements

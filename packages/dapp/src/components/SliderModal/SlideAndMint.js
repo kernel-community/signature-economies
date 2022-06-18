@@ -12,31 +12,16 @@ import Share from '../common/Share'
 import { PauseForLoadingContext } from '../../contexts/PauseForLoading'
 import etherscan from '../../utils/constants/etherscan'
 
-const Left = () => {
-  return (
-    <div className='md:flex flex-shrink-0 flex-col bg-transparent md:bg-gray-50 w-full md:w-1/3 rounded-l-lg md:h-full '>
-      <div className='font-redaction pl-8 p-6 text-gray-400 text-2xl'>
-        Select Sealed NFT
-      </div>
-      <div className='flex flex-row gap-x-2 md:gap-x-0 md:flex-col md:pb-8 px-8 pr-8 md:gap-y-4 overflow-scroll'>
-        <NFTList />
-      </div>
-    </div>
-  )
-}
 
 const Description = () => {
   return (
-    <div className='text-gray-600 text-center text-sm block md:pb-16 font-garamond mx-auto w-2/3'>
-      <p className='pb-2'>
-        Each seal signifies a planet and is inscribed with one of the quotes found in this essay.
-      </p>
-      <p className='pb-2'>
-        There's more music of the spheres in the interplanetary metadata too...
-      </p>
-      <p className='pb-2'>
+    <div className='text-gray-600 text-left text-sm font-garamond py-4 overflow-scroll sm:overflow-visible sm:text-base'>
+      <div>
+        Each seal signifies a planet and is inscribed with one of the quotes found in this essay, with more music in the interplanetary metadata too...
+      </div>
+      <div>
         Click on the image to explore the guiding star for this unique symbol.
-      </p>
+      </div>
     </div>
   )
 }
@@ -88,19 +73,98 @@ const Minter = () => {
   }
   return (
     <>
-      <Left />
-      <div className='flex flex-col md:flex-grow md:h-full p-8'>
-        <NFTShowcase />
-        <Description />
-        <div className='flex flex-col gap-y-12 md:flex-row justify-center items-center'>
-          <SliderInput />
-          {
-          activeConnector
-            ? <ExecutionButton exec={handleOnClickMint} isError={slider.state.error} />
-            : <ConnectButton />
-        }
+    {/* DESKTOP */}
+    <div className='
+      hidden
+      sm:flex
+
+      flex-row
+      gap-0
+      bg-white
+      h-[40rem]
+      my-auto
+      justify-between
+      w-[52rem]
+      p-4
+      rounded-lg
+    '>
+      <div className='
+        flex
+        flex-col
+        w-[18rem]
+        p-2
+        gap-2
+      '>
+        <div className='font-redaction text-gray-400 text-xl'>
+          Select a Seal
+        </div>
+        <div className='overflow-scroll flex flex-col gap-2'>
+          <NFTList />
         </div>
       </div>
+      <div className='
+        grow sm:p-2 w-[22rem]
+        flex flex-col gap-4 items-center justify-between
+      '>
+        <div className='self-end'>
+          <CloseButton />
+        </div>
+        <NFTShowcase />
+        <Description />
+        <div className='flex flex-row items-center w-full gap-2 justify-between'>
+          <SliderInput />
+          <div className='max-w-[128px]'>
+            {
+            activeConnector
+              ? <ExecutionButton
+                  exec={handleOnClickMint}
+                  isError={slider.state.error}
+                />
+              : <ConnectButton />
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* MOBILE */}
+    <div className='
+      sm:hidden
+      bg-white
+      overflow-scroll
+      w-[20rem]
+      p-4
+      flex flex-col gap-4
+    '>
+      <div className='flex flex-row justify-between items-center'>
+        <div className='font-redaction text-gray-400 text-xl'>
+          Select a Seal
+        </div>
+        <CloseButton />
+      </div>
+      <div className='flex'>
+        <div className='
+          flex flex-row gap-1 overflow-scroll
+        '>
+          <NFTList />
+        </div>
+      </div>
+        <NFTShowcase />
+        <Description />
+        <div className='flex flex-col gap-4 items-center w-full  justify-between'>
+          <SliderInput />
+          <div className='max-w-[128px]'>
+            {
+            activeConnector
+              ? <ExecutionButton
+                  exec={handleOnClickMint}
+                  isError={slider.state.error}
+                />
+              : <ConnectButton />
+            }
+          </div>
+        </div>
+    </div>
     </>
   )
 }
@@ -111,10 +175,7 @@ const SlideAndMint = () => {
     return <Share />
   } else {
     return (
-      <div className='flex flex-col md:flex-row  relative my-auto w-full md:w-[1200px] h-screen md:h-[800px] rounded-lg shadow-xl bg-white '>
-        <Minter />
-        <CloseButton />
-      </div>
+      <Minter />
     )
   }
 }

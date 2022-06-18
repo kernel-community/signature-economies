@@ -6,11 +6,11 @@ const CloseButton = () => {
   return (
     <div
       onClick={() => dispatch({ type: 'close' })}
-      className='absolute top-0 right-0 m-6 text-gray-300 hover:text-gray-800 transition-all cursor-pointer'
+      className='text-gray-300 hover:text-gray-800 transition-all cursor-pointer'
     >
       <svg
-        width='36'
-        height='36'
+        width='26'
+        height='26'
         strokeWidth='1.5'
         viewBox='0 0 24 24'
         fill='none'

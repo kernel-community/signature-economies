@@ -38,15 +38,15 @@ a {
 
 .flip-card {
   background-color: transparent;
-  width: 500px;
-  height: 500px;
+  width: 24rem;
+  height: 24rem;
   perspective: 2500px; /* Remove this if you don't want the 3D effect */
 }
 
 @media screen and (max-width: 600px) {
   .flip-card {
-    width: 350px;
-    height: 350px;
+    width: 15rem;
+    height: 15rem;
   }
 
   .p5Canvas {

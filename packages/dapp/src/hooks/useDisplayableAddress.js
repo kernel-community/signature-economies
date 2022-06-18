@@ -3,9 +3,10 @@ import { useAccount, useProvider } from 'wagmi'
 import { lookUpEns } from '../utils/signatures'
 
 export const useDisplayableAddress = () => {
-  const [toDisplay, setToDisplay] = useState()
-  const provider = useProvider()
   const { data, isError } = useAccount()
+
+  const [toDisplay, setToDisplay] = useState(data?.address?.substring(0,8) + '...')
+  const provider = useProvider()
 
   useEffect(() => {
     const fetch = async () => {
@@ -13,6 +14,7 @@ export const useDisplayableAddress = () => {
       if (lookup?.length > 15) lookup = lookup.substring(0, 8) + '...'
       setToDisplay(lookup)
     }
+
     fetch()
   }, [data?.address, provider])
 
