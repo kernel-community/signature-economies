@@ -3,7 +3,7 @@
   "version": "0.0.9",
   "description": "Meaningful economies of sign",
   "private": true,
-  "workspaces": ["packages/dapp", "packages/hardhat", "packages/metta-sign", "packages/subgraph", "packages/weaving"],
+  "workspaces": ["packages/*"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kernel-community/signature-economies.git"
