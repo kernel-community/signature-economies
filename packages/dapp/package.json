@@ -2,6 +2,7 @@
   "name": "dapp",
   "version": "0.1.1",
   "private": true,
+  "homepage": "https://staging.sign.kernel.community",
   "dependencies": {
     "arweave": "^1.10.23",
     "axios": "^0.27.2",
@@ -12,7 +13,6 @@
     "rc-slider": "^10.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-helmet": "^6.1.0",
     "react-highlight-pop": "^1.0.2",
     "react-p5-wrapper": "^3.3.0",
     "react-router-dom": "^6.3.0",
