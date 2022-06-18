@@ -50,7 +50,7 @@ const start = async () => {
     const arweaveSecret = await secretService.access({
       secretId: ARWEAVE_JWK_SECRET_ID, crc32c: ARWEAVE_JWK_SECRET_CRC32C
     })
-    arweaveJwk = JSON.parse(arweaveSecret.payload.data.toString())
+    const arweaveJwk = JSON.parse(arweaveSecret.payload.data.toString())
 
     const listenFns = await Promise.all([
 			rpcTask.register(server, TASK_RPC_PATH, TASKS_PATH, {
