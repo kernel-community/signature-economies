@@ -13,6 +13,8 @@ import arweave from 'arweave'
 
 const now = () => Date.now()
 
+const ARWEAVE_APP_NAME = process.env.ARWEAVE_APP_NAME
+
 const gateway = {
   host: 'arweave.net',
   port: 443,
@@ -25,7 +27,7 @@ const tags = [
   },
   {
     key: 'App-Name',
-    value: 'Kernel-Signature-Economies'
+    value: ARWEAVE_APP_NAME
   }
 ]
 
@@ -36,7 +38,7 @@ const build = async ({ projectId, arweaveJwk }) => {
   const key = arweaveJwk
 
   const sign = async ({ signature, account }) => {
-    console.log('sign', signature, account)
+    console.log('signing', signature, account)
     const data = JSON.stringify({ signature, account })
     const transaction = await client.createTransaction({ data }, key)
     tags.forEach((tag) => transaction.addTag(tag.key, tag.value))

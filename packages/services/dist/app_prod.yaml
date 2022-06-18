@@ -5,6 +5,7 @@ instance_class: F1
 env_variables:
   ARWEAVE_JWK_SECRET_ID: "arweaveJwk"
   ARWEAVE_JWK_SECRET_CRC32C: ""
+  ARWEAVE_APP_NAME: "Kernel-Signature-Economies"
   BUCKET: "kernel-signature-prod.appspot.com"
   ENV: "PROD"
   PROJECT_ID: "kernel-signature-prod"
