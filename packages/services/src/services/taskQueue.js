@@ -41,7 +41,8 @@ const build = async ({ projectId, arweaveJwk }) => {
     console.log('signing', signature, account)
     const data = JSON.stringify({ signature, account })
     const transaction = await client.createTransaction({ data }, key)
-    tags.forEach((tag) => transaction.addTag(tag.key, tag.value))
+    tags.concat([{ key: 'Signer', value: account }])
+      .forEach((tag) => transaction.addTag(tag.key, tag.value))
     await client.transactions.sign(transaction, key)
     const uploader = await client.transactions.getUploader(transaction)
     while (!uploader.isComplete) {
