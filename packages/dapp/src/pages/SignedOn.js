@@ -7,8 +7,10 @@ const SignedOn = () => {
 
   return (
     <Main>
-      <div className='flex flex-col gap-y-4 w-screen p-8'>
-        <SignedOnNfts account={params.address} />
+      <div className='flex flex-col gap-y-4 p-8'>
+        <div className=' place-self-center'>
+          <SignedOnNfts account={params.address} />
+        </div>
       </div>
     </Main>
   )
