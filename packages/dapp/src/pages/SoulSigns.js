@@ -35,15 +35,15 @@ const SoulSigns = () => {
           Soul Signs
         </div>
         <div className='text-lg font-garamond'>
-          Limited number of NFTs displayed on this page. View on Opensea (or any other NFT aggregator) to view the entire collection.
+          We display only a selection of signs here. Follow the links to view them all.
         </div>
         {
           activeConnector && (
             <>
               <SignedOnNfts />
-              <ViewMore
+              <PersonalView
                 url={"https://opensea.io/account"}
-                text="View all on opensea"
+                text="Your NFTs"
               />
               <HorizontalSpace />
             </>
@@ -95,6 +95,18 @@ const SoulSigns = () => {
         </div>
       </div>
     </Main>
+  )
+}
+
+const PersonalView = ({url, text}) => {
+  return (
+    <a className='
+      text-center no-underline font-garamond font-normal border-gray-600 py-2 px-2 sm:w-48 border-2 rounded-md hover:border-black ease-in-out duration-200 flex flex-row items-center cursor-pointer text-xl
+    ' href={url} target="_blank" rel='noreferrer'>
+      <div className='mx-10'>
+        {text}
+      </div>
+    </a>
   )
 }
 
