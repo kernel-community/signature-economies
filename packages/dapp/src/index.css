@@ -32,8 +32,8 @@ a {
 }
 
 .signatures > div > .p5Canvas {
-  max-width: 200px;
-  max-height: 280px;
+  max-width: 14rem;
+  max-height: 330px;
 }
 
 .flip-card {

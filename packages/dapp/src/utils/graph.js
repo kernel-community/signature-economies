@@ -19,7 +19,7 @@ const GET_STEWARD_NFTS = `
 `
 
 const GET_STEWARD_NFTS_VARS = (address) => {
-  return { steward: address.toLowerCase(), first: 3 }
+  return { steward: address.toLowerCase(), first: 4 }
 }
 
 const GET_ALL_SEALED_NFTS = `
