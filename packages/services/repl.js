@@ -8,9 +8,20 @@ Promise.all([
   console.log('done')
   return (async () => {
     try {
-      var secretClient = async (projectId) => secretService.build({ projectId })
-      var projectId = 'kernel-signature-staging'
-      global.client = await secretClient(projectId)
+      global.secretClient = async (projectId) => secretService.build({ projectId })
+      global.addArweaveSecret = async (filename) => {
+        if (!filename) {
+          console.log('missing filename')
+          return
+        }
+        const data = fs.readFileSync(filename)
+        const projectId = 'kernel-signature-prod'
+        const client = await secretClient(projectId)
+        const secretId = 'arweaveJwk'
+        //const result = await client.list()
+        const result = await client.add({ secretId, data })
+        return result
+      }
       //var secret = await client.access({secretId: 'arweaveJwk'})
     } catch (error) {
       console.log(error)
