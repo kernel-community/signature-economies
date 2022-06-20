@@ -1,17 +1,14 @@
 import { useContext } from 'react'
-import { createSign } from '../../utils/contracts'
-import { useConnect, useProvider, useSigner } from 'wagmi'
+import { useConnect } from 'wagmi'
 import { SliderContext } from '../../contexts/Slider'
 import ExecutionButton from '../common/ExecutionButton'
 import ConnectButton from '../common/ConnectButton'
 import NFTShowcase from './NFTShowcase'
 import NFTList from './NFTList'
 import SliderInput from './SliderInput'
-import CloseButton from './CloseButton'
+import CloseButton from '../common/CloseButton'
 import Share from '../common/Share'
-import { PauseForLoadingContext } from '../../contexts/PauseForLoading'
-import etherscan from '../../utils/constants/etherscan'
-
+import useCreateSeal from '../../hooks/useCreateSeal'
 
 const Description = () => {
   return (
@@ -26,51 +23,12 @@ const Description = () => {
   )
 }
 
-const indexToNumber = (i) => {
-  switch (i) {
-    case 1: return 'one'
-    case 2: return 'two'
-    case 3: return 'three'
-    case 4: return 'four'
-    case 5: return 'five'
-    case 6: return 'six'
-    case 7: return 'seven'
-    case 8: return 'eight'
-    default: throw new Error('invalid number')
-  }
-}
 
 const Minter = () => {
-  const slider = useContext(SliderContext)
   const { activeConnector } = useConnect()
-  const provider = useProvider()
-  const { data: signer } = useSigner()
-  const loading = useContext(PauseForLoadingContext);
+  const { mint } = useCreateSeal()
+  const { dispatch } = useContext(SliderContext)
 
-  const handleOnClickMint = async () => {
-    slider.dispatch({ error: false })
-    loading.dispatch({ modal: true, text: 'Please confirm on your wallet' })
-    let tx
-    try {
-      tx = await createSign({
-        value: slider.state.input.toString(),
-        token: indexToNumber(slider.state.selected + 1),
-        provider,
-        signer
-      })
-    } catch (err) {
-      console.log(err)
-      loading.dispatch({ modal: false })
-      slider.dispatch({ tx: undefined, error: true })
-      return
-    }
-    loading.dispatch({ modal: true, text: 'Waiting for transaction to be confirmed' })
-    await tx.wait(1)
-    loading.dispatch({ modal: false })
-    slider.dispatch({
-      tx: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx.hash}`
-    })
-  }
   return (
     <>
     {/* DESKTOP */}
@@ -107,7 +65,7 @@ const Minter = () => {
         flex flex-col gap-4 items-center justify-between
       '>
         <div className='self-end'>
-          <CloseButton />
+          <CloseButton exec={() => dispatch({type: 'close'})} />
         </div>
         <NFTShowcase />
         <Description />
@@ -117,8 +75,7 @@ const Minter = () => {
             {
             activeConnector
               ? <ExecutionButton
-                  exec={handleOnClickMint}
-                  isError={slider.state.error}
+                  exec={mint}
                 />
               : <ConnectButton />
             }
@@ -140,7 +97,7 @@ const Minter = () => {
         <div className='font-redaction text-gray-400 text-xl'>
           Select a Seal
         </div>
-        <CloseButton />
+        <CloseButton exec={() => dispatch({type:'close'})}/>
       </div>
       <div className='flex'>
         <div className='
@@ -157,8 +114,7 @@ const Minter = () => {
             {
             activeConnector
               ? <ExecutionButton
-                  exec={handleOnClickMint}
-                  isError={slider.state.error}
+                  exec={mint}
                 />
               : <ConnectButton />
             }

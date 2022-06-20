@@ -1,12 +1,8 @@
-import { SliderContext } from '../../contexts/Slider'
-import { useContext } from 'react'
-
-const CloseButton = () => {
-  const { dispatch } = useContext(SliderContext)
+const CloseButton = ({exec, className}) => {
   return (
     <div
-      onClick={() => dispatch({ type: 'close' })}
-      className='text-gray-300 hover:text-gray-800 transition-all cursor-pointer'
+      onClick={exec}
+      className={`text-gray-300 hover:text-gray-800 transition-all cursor-pointer ${className}`}
     >
       <svg
         width='26'
