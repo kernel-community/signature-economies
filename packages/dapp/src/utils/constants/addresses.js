@@ -2,8 +2,8 @@ exports.addresses = (chainId) => {
   switch (chainId) {
     case 4:
       return {
-        signatureFund: '0x2927AD93DABd45256A5Be108BeDd0a85E5A3B7E5',
-        signatureNFT: '0xBcfaC48303B4a91a7B9AaE1Bc9A7F561563d625b'
+        signatureFund: '0xd96644cBaD732D4021A60d82710BDC6AA50F7A81',
+        signatureNFT: '0x495AB49F0a79B212f02F1183200B21d9C0F3AA36'
       }
     case 1337:
       return {
