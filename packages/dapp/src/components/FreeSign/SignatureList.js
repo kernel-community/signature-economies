@@ -1,10 +1,8 @@
 import { useNetwork } from 'wagmi'
 import etherscan from '../../utils/constants/etherscan'
 
-const Constants = require('../../utils/constants')
-
-const { protocol, host, port } = Constants.arweave.gateway
-const arweaveUrl = protocol + '://' + host + ':' + port
+// TODO: fix this
+const arweaveUrl = 'https://arweave.net:443'
 
 const trimAddress = (address) => address.substring(0, 8).concat('...')
 

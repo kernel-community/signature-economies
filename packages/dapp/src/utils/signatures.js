@@ -1,7 +1,10 @@
-import { getAllSignatures, getTransactionData } from './arweave'
-const { ethers } = require('ethers')
+import { getAllSignatures } from './arweave'
+import { ethers } from 'ethers'
 
 const infuraId = process.env.INFURA_ID
+
+// TODO: this whole file needs to be rewritten and simplified greatly
+// I would actually just move everything from arweave.js into here.
 
 const cleanResponse = async (data) => {
   const { data: { transactions: { edges } } } = data

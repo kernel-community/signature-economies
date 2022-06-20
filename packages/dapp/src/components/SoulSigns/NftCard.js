@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import { sealedNFTS } from '../SliderModal/nft'
-import Card from '../../layouts/Card'
 import { useProvider } from 'wagmi'
-import { addresses } from '../../utils/constants'
-import opensea from '../../utils/constants/opensea'
-import { useDisplayableAddress } from '../../hooks/useDisplayableAddress'
 import { ReactP5Wrapper } from 'react-p5-wrapper'
+import { sealedNFTS } from '../SliderModal/nft'
+import { useDisplayableAddress } from '../../hooks/useDisplayableAddress'
+import { addresses } from '../../utils/constants/addresses'
+import Card from '../../layouts/Card'
+import opensea from '../../utils/constants/opensea'
 import Canvas from "../HighlightModal/Canvas"
 import Text from "../text"
 

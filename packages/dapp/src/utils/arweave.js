@@ -1,56 +1,25 @@
-const axios = require('axios').default
-const Constants = require('./constants')
-const Arweave = require('arweave').default
-const { protocol, host, port } = Constants.arweave.gateway
+import { useNetwork } from 'wagmi'
 
-// arweave graphql endpoint
-const arweaveQuery = axios.create({
-  baseURL: protocol + '://' + host + ':' + port,
-  headers: {
-    'Content-type': 'Application/Json'
+const getEndpoint = () => {
+  const { activeChain } = useNetwork()
+  if (activeChain === 1) {
+    return '/rpc/sign'
+  } else {
+    return 'https://staging.sign.kernel.community/rpc/sign'
   }
-})
-
-// arweave client sdk
-const arweaveClient = Arweave.init(Constants.arweave.gateway)
-
-// to upload singatures to arweave
-const weaver = axios.create({
-  baseURL: Constants.weaver,
-  headers: {
-    'Content-type': 'Application/Json'
-  }
-})
-
-// upload to arweave
-// tags = array of objects
-// {key: "", value: ""}
-export const uploadToArweave = async ({ data, contentType, tags }) => {
-  const { arUrl } = (await weaver.post('/upload', {
-    data, contentType, tags
-  })).data
-  return { arUrl }
 }
 
-export const saveSig = async ({ signer, signature }) => await weaver.post('/save', {
-  signer, signature
-})
-
-export const sigCheck = async ({ signer }) => {
-  const { found } = (await weaver.post('/check', { signer })).data
-  return { found }
+export const saveSignature = (signature, account) => {
+  let url = getEndpoint()
+  return fetch(url, {method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ signature, account })})
 }
 
 export const getAllSignatures = () => {
-  return arweaveQuery.post('/graphql', {
-    ...Queries.getSignatures
-  })
+  return fetch('https://arweave.net/graphql', {method: 'POST', headers: { 'Content-Type': 'application/json' }, body: Queries.getSignatures})
 }
 
-export const getTransactionData = async (tx, opts = { decode: true, string: true }) => {
-  return arweaveClient.transactions.getData(tx, { ...opts })
-}
-
+// TODO: change this to include the other tag Simon made:
+// { key: 'Signatory', value: account }
 const GET_SIGNATURE_QUERY = `
   query getSignatures($appName: String!, $first: Int) {
     transactions(tags:[
@@ -70,6 +39,8 @@ const GET_SIGNATURE_QUERY = `
     }
   }
 `
+//TODO: update this to change depending on env, i.e. 
+// ARWEAVE_APP_NAME: "Kernel-Signature-Economies-Staging" for dev + local
 const VARS = {
   appName: 'Kernel-Signature-Economies',
   first: 15

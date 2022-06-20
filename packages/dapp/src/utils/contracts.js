@@ -1,5 +1,6 @@
-import { addresses, abis } from './constants'
 import { ethers, Contract } from 'ethers'
+import { addresses } from './constants/addresses'
+import { abis } from './constants/abi'
 
 export const createSign = async ({ value, token, provider, signer }) => {
   const { chainId } = await provider.getNetwork()
@@ -20,13 +21,4 @@ export const mintSelected = async ({
     signer
   )
   return signatureNFTContract.mintSelected(start, end)
-}
-
-export const ownerOf = async (provider, id) => {
-  const { chainId } = await provider.getNetwork()
-  const signatureNFTContract = new Contract(
-    addresses(chainId).signatureNFT,
-    abis.signatureNFT,
-    provider)
-  return signatureNFTContract.ownerOf(id)
 }
