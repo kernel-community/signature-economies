@@ -29,7 +29,7 @@ const Footer = () => {
 
     loading.dispatch({
       modal: true,
-      text: 'Please confirm on your wallet'
+      text: 'Please sign this transaction'
     })
 
     let tx
@@ -53,7 +53,7 @@ const Footer = () => {
       })
       return
     }
-    loading.dispatch({ modal: true, text: 'Waiting for transaction to be confirmed' })
+    loading.dispatch({ modal: true, text: 'Waiting for your sign to appear in our shared record' })
     await tx.wait(1)
     loading.dispatch({ modal: false })
     highlight.dispatch({

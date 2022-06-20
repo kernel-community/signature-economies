@@ -19,7 +19,7 @@ const Wait = () => {
         </div>
       </div>
       <div className='pt-12 text-xl opacity-30 text-center tracking-tight font-garamond'>
-        Please confirm transaction on wallet.
+        Please sign this transaction.
       </div>
     </div>
   )

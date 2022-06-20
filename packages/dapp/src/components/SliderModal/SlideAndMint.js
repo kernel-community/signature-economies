@@ -49,7 +49,7 @@ const Minter = () => {
 
   const handleOnClickMint = async () => {
     slider.dispatch({ error: false })
-    loading.dispatch({ modal: true, text: 'Please confirm on your wallet' })
+    loading.dispatch({ modal: true, text: 'Please sign this transaction' })
     let tx
     try {
       tx = await createSign({
@@ -64,7 +64,7 @@ const Minter = () => {
       slider.dispatch({ tx: undefined, error: true })
       return
     }
-    loading.dispatch({ modal: true, text: 'Waiting for transaction to be confirmed' })
+    loading.dispatch({ modal: true, text: 'Waiting for your sign to appear in our shared record' })
     await tx.wait(1)
     loading.dispatch({ modal: false })
     slider.dispatch({
