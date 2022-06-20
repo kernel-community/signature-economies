@@ -71,7 +71,7 @@ const GET_SIGNATURE_QUERY = `
   }
 `
 const VARS = {
-  appName: 'Kernel-Signature-Economies',
+  appName: Constants.arweave.appName,
   first: 15
 }
 

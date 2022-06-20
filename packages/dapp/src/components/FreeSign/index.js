@@ -5,7 +5,7 @@ import ConnectButton from '../common/ConnectButton'
 import signText from '../text'
 import { useState, useEffect } from 'react'
 import { get } from '../../utils/signatures'
-import { saveSig, sigCheck, uploadToArweave } from '../../utils/arweave'
+// import { saveSig, sigCheck, uploadToArweave } from '../../utils/arweave'
 import { useDisplayableAddress } from '../../hooks/useDisplayableAddress'
 
 const TEXT = 'If you find this essay meaningful, you may sign a message crafted from the entire text. This can be done freely: signed messages are just unique data which can be verified in many different ways. Your singular, iterable mark will be stored on Arweave and become a permanent part of this document\'s history.'
@@ -40,7 +40,7 @@ const FreeSign = () => {
 
     setIsSigning(true)
 
-    const { found: alreadySigned } = await sigCheck({ signer: signerAddress })
+    // const { found: alreadySigned } = await sigCheck({ signer: signerAddress })
     if (alreadySigned) {
       setIsSigning(false)
       setAlreadySigned(true)
@@ -56,42 +56,45 @@ const FreeSign = () => {
       return
     }
     const account = await signer.getAddress()
-    setIsSigning(false)
+    console.log({
+      signature, account
+    })
+    // setIsSigning(false)
     // upload signature to arweave
-    setIsUploading(true)
-    let arUrl
-    try {
-      ({ arUrl } = (await uploadToArweave({
-        data: JSON.stringify({
-          signature,
-          account
-        }),
-        contentType: 'text/plain',
-        tags: [
-          {
-            key: 'App-Name',
-            value: 'Kernel-Signature-Economies'
-          }
-        ]
-      })))
-    } catch (err) {
-      console.log('WEAVER: error in uploading to arweave')
-      console.log(err)
-      setIsError(true)
-      setIsSigning(false)
-      setIsUploading(false)
-      return
-    }
+    // setIsUploading(true)
+    // let arUrl
+    // try {
+    //   ({ arUrl } = (await uploadToArweave({
+    //     data: JSON.stringify({
+    //       signature,
+    //       account
+    //     }),
+    //     contentType: 'text/plain',
+    //     tags: [
+    //       {
+    //         key: 'App-Name',
+    //         value: 'Kernel-Signature-Economies'
+    //       }
+    //     ]
+    //   })))
+    // } catch (err) {
+    //   console.log('WEAVER: error in uploading to arweave')
+    //   console.log(err)
+    //   setIsError(true)
+    //   setIsSigning(false)
+    //   setIsUploading(false)
+    //   return
+    // }
     // save signature to weaver
-    try {
-      await saveSig({ signer: signerAddress, signature: arUrl })
-    } catch (err) {
-      console.log('WEAVER: error in saving signature')
-      console.log(err)
-      setIsError(true)
-      setIsSigning(false)
-      setIsUploading(false)
-    }
+    // try {
+    //   await saveSig({ signer: signerAddress, signature: arUrl })
+    // } catch (err) {
+    //   console.log('WEAVER: error in saving signature')
+    //   console.log(err)
+    //   setIsError(true)
+    //   setIsSigning(false)
+    //   setIsUploading(false)
+    // }
     setIsUploading(false)
     setIsSigning(false)
     setIsSuccess(true)
@@ -125,7 +128,7 @@ const FreeSign = () => {
               loading={isSigning || isUploading}
               disabled={isSigning || isUploading}
             />
-      }
+        }
         {
         alreadySigned &&
           <div>
