@@ -20,7 +20,7 @@ export const provider = ({ chainId }) => {
   if (chainId === 1337) {
     return new providers.JsonRpcProvider('http://localhost:8545')
   }
-  return new providers.InfuraProvider(chainId, infuraId)
+  return new providers.CloudflareProvider()
 }
 
 export const connectorStorageKey = 'sign.kernel.community'
