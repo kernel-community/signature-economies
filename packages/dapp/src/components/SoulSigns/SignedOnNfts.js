@@ -35,8 +35,8 @@ const SignedOnNfts = ({ account }) => {
   if (sealedNfts.length === 0 && signatureNfts.length === 0) return <></>
 
   return (
-    <>
-      <div className='bg-gray-100 rounded-2xl p-8 sm:w-min w-full'>
+    <div>
+      <div className='bg-gray-100 rounded-2xl p-8 sm:w-min w-full mb-2'>
         <Link to={`/signed/${toFetchFor}`} className='no-underline text-gray-600 hover:text-black'>
           <div className='text-xl font-redaction flex flex-row items-center gap-2 pb-4'>
             Signed by&nbsp;{toDisplay}
@@ -77,7 +77,7 @@ const SignedOnNfts = ({ account }) => {
         url='https://opensea.io/account'
         text='Your NFTs'
       />
-    </>
+    </div>
   )
 }
 
@@ -85,8 +85,8 @@ const PersonalView = ({ url, text }) => {
   return (
     <a
       className='
-    py-2 px-6 rounded-lg hover:border-slate-300 flex flex-row items-center gap-2 border-2 border-slate-200 no-underline font-garamond font-normal w-32
-    ' href={url} target='_blank' rel='noreferrer'
+        py-2 px-6 rounded-lg hover:border-slate-300 flex flex-row items-center gap-2 border-2 border-slate-200 no-underline font-garamond font-normal w-32
+        ' href={url} target='_blank' rel='noreferrer'
     >
       {text}
     </a>
