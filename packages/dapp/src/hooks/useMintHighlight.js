@@ -71,10 +71,10 @@ const useMintHighlight = () => {
 
     closeLoading()
 
-    openShare(
-      `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx?.hash}`,
-      highlight.state.image
-    )
+    openShare({
+      url: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx?.hash}`,
+      img: highlight.state.image
+    })
     highlight.dispatch({ type: 'close' })
   }
 
