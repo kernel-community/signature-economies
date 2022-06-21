@@ -39,7 +39,7 @@ export const etherscan = {
   }
 }
 export const graph = {
-  baseURL: 'https://api.studio.thegraph.com/query/24825/signature-economies/0.0.1'
+  baseURL: isDev ? 'https://api.studio.thegraph.com/query/24825/sign-eco/0.0.7': 'https://api.studio.thegraph.com/query/24825/signature-economies/0.0.1'
 }
 export const opensea = {
   chainIdToUrl: (id) => {
