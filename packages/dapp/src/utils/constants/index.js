@@ -69,4 +69,3 @@ export const twitter = {
 export const weaver = {
   endpoint: 'https://staging.sign.kernel.community'
 }
-export const INFURA_ID = 'f3ffe28620114fd2bd00c5a3ebe55558'
