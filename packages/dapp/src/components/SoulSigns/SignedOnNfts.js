@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 import { useAccount } from 'wagmi'
 import { Link } from 'react-router-dom'
 import { stewardNfts } from '../../utils/fetchNfts'
-import { twitter } from '../../utils/constants/twitter'
 import TweetIcon from '../common/TweetIcon'
 import { useDisplayableAddress } from '../../hooks/useDisplayableAddress'
+import shareTweet from '../../utils/twitter'
 
 const SignedOnNfts = ({ account }) => {
   const { data: connectedAccount } = useAccount()
@@ -32,12 +32,6 @@ const SignedOnNfts = ({ account }) => {
     }
   }, [toFetchFor])
 
-  const shareTweet = () => window.open(
-    `${twitter.shareIntent}${encodeURIComponent(
-      twitter.shareContent.replace('<COLLECTION_LINK>', 'https://' + window.location.hostname + '/signed/' + toFetchFor)
-    )}`
-  )
-
   if (sealedNfts.length === 0 && signatureNfts.length === 0) return <></>
 
   return (
@@ -46,7 +40,7 @@ const SignedOnNfts = ({ account }) => {
         <Link to={`/signed/${toFetchFor}`} className='no-underline text-gray-600 hover:text-black'>
           <div className='text-xl font-redaction flex flex-row items-center gap-2 pb-4'>
             Signed by&nbsp;{toDisplay}
-            <span onClick={shareTweet}>
+            <span onClick={() => shareTweet(toFetchFor)}>
               <TweetIcon />
             </span>
           </div>
