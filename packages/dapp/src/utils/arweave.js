@@ -1,6 +1,5 @@
 import  axios from 'axios'
 import { arweave } from './constants'
-import { weaver } from './constants'
 
 // arweave graphql endpoint
 const arweaveQuery = axios.create({
