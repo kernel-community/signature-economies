@@ -23,7 +23,7 @@ const Header = () => {
       '
         >
           {
-          toDisplay &&
+          (toDisplay && activeChain) &&
             (
               <>
                 <span>signing as</span>
