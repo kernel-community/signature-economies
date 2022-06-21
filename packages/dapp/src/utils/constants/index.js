@@ -64,8 +64,11 @@ export const opensea = {
 }
 export const twitter = {
   shareIntent: 'https://twitter.com/intent/tweet?text=',
-  shareContent: 'Make money significant with me. This new kind of essay on ownership from @KERNEL0x helps to expand our minds from control to care, possession to reciprocity. Make your own beautiful mark from the 24th of June...'
+  shareContent: `This new kind of essay on signatures from @KERNEL0x suggests ownership may be moving from control to care, from possession to reciprocity.
+
+See my signs & make your own beautiful, eternal mark with me from the 24th of June...`
 }
 export const weaver = {
   endpoint: 'https://staging.sign.kernel.community'
 }
+export const INFURA_ID = 'f3ffe28620114fd2bd00c5a3ebe55558'
