@@ -4,7 +4,7 @@ import { providers } from 'ethers'
 import { INFURA_ID as infuraId } from './constants'
 
 // only rinkeby
-const chains = allChains.filter(c => c.id === 4)
+const chains = allChains.filter(c => c.id === 1)
 
 export const connectors = () => [
   new InjectedConnector({ chains })
