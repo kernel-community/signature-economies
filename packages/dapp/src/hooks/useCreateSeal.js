@@ -2,7 +2,7 @@ import { useConnect, useSigner } from 'wagmi'
 import { createSeal, estimateCreateSeal } from '../utils/contracts'
 import { SliderContext } from '../contexts/Slider'
 import { useState, useContext } from 'react'
-import { etherscan } from '../utils/constants/etherscan'
+import { etherscan } from '../utils/constants'
 import useLoading from './useLoading'
 import useError from './useError'
 import useShare from './useShare'
@@ -77,10 +77,10 @@ const useCreateSeal = () => {
 
     closeLoading()
 
-    openShare(
-      `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${'tx.hash'}`,
-      slider.state.image
-    )
+    openShare({
+      url: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${'tx.hash'}`,
+      img: slider.state.image
+    })
     slider.dispatch({ type: 'close' })
   }
 

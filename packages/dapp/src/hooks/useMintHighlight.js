@@ -4,7 +4,7 @@ import { HighlightContext } from '../contexts/Highlight'
 import { estimateHighlightMint, highlightMint } from '../utils/contracts'
 import useError from './useError'
 import useLoading from './useLoading'
-import etherscan from '../utils/constants/etherscan'
+import {etherscan} from '../utils/constants'
 import useShare from './useShare'
 
 const useMintHighlight = () => {
@@ -71,10 +71,10 @@ const useMintHighlight = () => {
 
     closeLoading()
 
-    openShare(
-      `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx?.hash}`,
-      highlight.state.image
-    )
+    openShare({
+      url: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx?.hash}`,
+      img: highlight.state.image
+    })
     highlight.dispatch({ type: 'close' })
   }
 
