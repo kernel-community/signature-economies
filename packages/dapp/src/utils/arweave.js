@@ -1,5 +1,7 @@
 import  axios from 'axios'
 import { arweave } from './constants'
+import { weaver } from './constants'
+import { isDev } from './constants'
 
 // arweave graphql endpoint
 const arweaveQuery = axios.create({
@@ -11,7 +13,8 @@ const arweaveQuery = axios.create({
 
 // upload to arweave
 export const uploadToArweave = async ({ signature, account }) => {
-  await axios.post('/rpc/sign', JSON.stringify({ signature, account }), {
+  const url = isDev ? weaver : '/rpc/sign'
+  await axios.post(url, JSON.stringify({ signature, account }), {
     headers: {
       'content-type': 'application/json'
     }

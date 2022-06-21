@@ -1,4 +1,7 @@
 import { abis } from "./abi"
+
+export const env = process.env.REACT_APP_DEPLOY_TARGET === 'STAGING' || 'PROD'
+export const isDev = env !== 'PROD'
 export const addresses =  {
   chainIdToContractAddresses: (chainId) => {
     switch (chainId) {
@@ -69,5 +72,5 @@ export const twitter = {
 See my signs & make your own beautiful, eternal mark with me from the 24th of June...`
 }
 export const weaver = {
-  endpoint: 'https://staging.sign.kernel.community'
+  endpoint: 'https://staging.sign.kernel.community/rpc/sign'
 }
