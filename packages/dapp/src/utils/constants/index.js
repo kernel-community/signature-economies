@@ -1,4 +1,7 @@
 import { abis } from "./abi"
+
+export const env = process.env.REACT_APP_DEPLOY_TARGET === 'STAGING' || 'PROD'
+export const isDev = env !== 'PROD'
 export const addresses =  {
   chainIdToContractAddresses: (chainId) => {
     switch (chainId) {
@@ -67,5 +70,5 @@ export const twitter = {
   shareContent: 'Make money significant with me. This new kind of essay on ownership from @KERNEL0x helps to expand our minds from control to care, possession to reciprocity. Make your own beautiful mark from the 24th of June...'
 }
 export const weaver = {
-  endpoint: 'https://staging.sign.kernel.community'
+  endpoint: 'https://staging.sign.kernel.community/rpc/sign'
 }

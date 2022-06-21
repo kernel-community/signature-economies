@@ -1,9 +1,11 @@
 import { allChains } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { providers } from 'ethers'
+import { isDev } from './constants'
 
-// only rinkeby
-const chains = allChains.filter(c => c.id === 4)
+const chainId = isDev ? 1 : 4
+
+const chains = allChains.filter(c => c.id === chainId)
 
 export const connectors = () => [
   new InjectedConnector({ chains })
