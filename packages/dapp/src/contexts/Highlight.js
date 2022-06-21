@@ -11,7 +11,6 @@ const initial = {
   text: '',
   modal: false,
   image: undefined,
-  tx: undefined,
   start: undefined,
   end: undefined,
   error: false

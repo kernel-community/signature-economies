@@ -8,7 +8,7 @@ import useMintHighlight from '../../hooks/useMintHighlight'
 const Footer = () => {
   const highlight = useContext(HighlightContext)
   const { activeConnector } = useConnect()
-  const {mint} = useMintHighlight()
+  const { mint } = useMintHighlight()
 
   const isImage = !!highlight.state.image
 

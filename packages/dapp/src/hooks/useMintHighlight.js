@@ -5,6 +5,7 @@ import { estimateHighlightMint, highlightMint } from "../utils/contracts"
 import useError from "./useError"
 import useLoading from "./useLoading"
 import etherscan from "../utils/constants/etherscan"
+import useShare from "./useShare"
 
 const useMintHighlight = () => {
   const highlight = useContext(HighlightContext)
@@ -19,6 +20,10 @@ const useMintHighlight = () => {
   const {
     open: openError
   } = useError()
+  const {
+    open: openShare
+  } = useShare()
+
   const isImage = !!highlight.state.image
 
   const mint = async() => {
@@ -66,9 +71,11 @@ const useMintHighlight = () => {
 
     closeLoading()
 
-    highlight.dispatch({
-      tx: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx?.hash}`
-    })
+    openShare(
+      `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx?.hash}`,
+      highlight.state.image
+    )
+    highlight.dispatch({type: 'close'})
   }
 
   return {

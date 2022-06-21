@@ -5,6 +5,7 @@ import { useState, useContext } from "react";
 import useLoading from "./useLoading";
 import etherscan from "../utils/constants/etherscan";
 import useError from "./useError";
+import useShare from "./useShare";
 
 const indexToNumber = (i) => {
   switch (i) {
@@ -29,6 +30,9 @@ const useCreateSeal = () => {
   const {
     open: openError
   } = useError()
+  const {
+    open: openShare
+  } = useShare()
 
   const slider = useContext(SliderContext)
   const {data: signer} = useSigner()
@@ -73,9 +77,11 @@ const useCreateSeal = () => {
 
     closeLoading()
 
-    slider.dispatch({
-      tx: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx.hash}`
-    })
+    openShare(
+      `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${'tx.hash'}`,
+      slider.state.image
+    )
+    slider.dispatch({ type: 'close' })
   }
 
   return {

@@ -1,7 +1,7 @@
 import { useState, createContext, useMemo, useContext } from 'react'
-import PauseForLoadingModal from '../components/common/LoadingModal'
+import LoadingModal from '../components/common/LoadingModal'
 
-export const PauseForLoadingContext = createContext({
+export const LoadingContext = createContext({
   text: '',
   isOpen: false,
   set: () => {},
@@ -12,10 +12,10 @@ export const PauseForLoadingContext = createContext({
 })
 
 export default function useLoading() {
-  return useContext(PauseForLoadingContext)
+  return useContext(LoadingContext)
 }
 
-export const PauseForLoadingProvider = ({ children }) => {
+export const LoadingProvider = ({ children }) => {
   const [text, setText] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const close = () => setIsOpen(false)
@@ -33,13 +33,13 @@ export const PauseForLoadingProvider = ({ children }) => {
   }, [setText, setIsOpen, isOpen])
 
   return (
-    <PauseForLoadingContext.Provider value={value}>
+    <LoadingContext.Provider value={value}>
       <>
         { isOpen &&
-          <PauseForLoadingModal text={text}/>
+          <LoadingModal text={text}/>
         }
         { children }
       </>
-    </PauseForLoadingContext.Provider>
+    </LoadingContext.Provider>
   )
 }
