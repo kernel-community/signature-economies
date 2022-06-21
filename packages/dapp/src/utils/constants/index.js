@@ -27,7 +27,7 @@ export const addresses =  {
 }
 export {abis}
 export const arweave = {
-  appName: "Kernel-Signature-Economies"
+  appName: isDev ? "Kernel-Signature-Economies-Staging": "Kernel-Signature-Economies"
 }
 export const etherscan = {
   chainIdToUrl: (id) => {
@@ -60,8 +60,8 @@ export const opensea = {
         sig: 'https://opensea.io/collection/signature-nfts-v2'
       }
       default: return {
-        seals: 'https://testnets.opensea.io/collection/signature-fund-2uiw9cnuki',
-        sig: 'https://testnets.opensea.io/collection/signature-nfts-zcv8rnfntv'
+        seals: 'https://opensea.io/collection/signature-fund',
+        sig: 'https://opensea.io/collection/signature-nfts-v2'
       }
     }
   }
