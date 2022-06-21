@@ -2,8 +2,6 @@ import { allChains } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { providers } from 'ethers'
 
-const infuraId = process.env.INFURA_ID
-
 const chains = allChains.filter(c => c.id === 1)
 
 export const connectors = () => [
@@ -19,7 +17,7 @@ export const provider = ({ chainId }) => {
   if (chainId === 1337) {
     return new providers.JsonRpcProvider('http://localhost:8545')
   }
-  return new providers.InfuraProvider(chainId, infuraId)
+  return new providers.CloudflareProvider()
 }
 
 export const connectorStorageKey = 'sign.kernel.community'
