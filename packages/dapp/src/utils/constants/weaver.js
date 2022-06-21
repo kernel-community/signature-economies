@@ -1,3 +1,3 @@
 module.exports = {
-  weaver: 'http://localhost:8080'
+  weaver: 'https://staging.sign.kernel.community'
 }

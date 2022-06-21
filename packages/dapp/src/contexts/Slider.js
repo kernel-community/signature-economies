@@ -56,7 +56,6 @@ const initial = {
   mint: false,
   loading: false,
   image: undefined,
-  tx: undefined,
   error: false
 }
 
