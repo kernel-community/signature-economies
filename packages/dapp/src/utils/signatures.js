@@ -1,8 +1,6 @@
 import { getAllSignatures, getUserSignature, getSignaturesCount } from './arweave'
 import { ethers } from 'ethers'
 
-const infuraId = process.env.INFURA_ID
-
 const cleanResponse = (data) => {
   const { data: { transactions: { edges } } } = data
   return edges.map(edge => {
