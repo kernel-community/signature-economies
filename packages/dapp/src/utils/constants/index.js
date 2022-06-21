@@ -48,8 +48,8 @@ export const opensea = {
   chainIdToCollectionSlug: (id) => {
     switch (id) {
       case 4: return {
-        seals: 'https://testnets.opensea.io/collection/signature-fund-qtvtcxcndr',
-        sig: 'https://testnets.opensea.io/collection/signature-nfts-pur5qvcsa0'
+        seals: 'https://testnets.opensea.io/collection/signature-fund-2uiw9cnuki',
+        sig: 'https://testnets.opensea.io/collection/signature-nfts-zcv8rnfntv'
       }
       case 1: return {
         seals: 'https://opensea.io/collection/signature-fund',
