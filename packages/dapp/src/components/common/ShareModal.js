@@ -34,7 +34,7 @@ const Share = ({ url, onClose, image, message, shareOnTwitter }) => {
             <div className='text-center'>
             {message}
             <div className='pt-4'>
-              Thank you. your signature in uniquely valuable in this shared context.
+              Thank you. Your signature is uniquely valuable in this shared context.
             </div>
             </div>
           }
