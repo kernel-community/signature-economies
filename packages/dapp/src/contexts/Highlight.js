@@ -33,7 +33,7 @@ const reducer = (state, action) => {
       }
     }
     case 'close': return initial
-    default: return {...state, ...action}
+    default: return { ...state, ...action }
   }
 }
 

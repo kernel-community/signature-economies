@@ -12,30 +12,32 @@ import Modal from '../../layouts/Modal'
 
 const Description = () => {
   return (
-    <div className='text-gray-600 text-left text-sm font-garamond py-4 overflow-scroll sm:overflow-visible sm:text-base'>
+    <div className='text-gray-600 text-center text-sm font-garamond py-4 overflow-scroll sm:overflow-visible sm:text-base'>
       <div>
-        Each seal signifies a planet and is inscribed with one of the quotes found in this essay, with more music in the interplanetary metadata too...
+        Each seal signifies a planet. Look closely for the inscription.
       </div>
       <div>
-        Click on the image to explore the guiding star for this unique symbol.
+        Click on the image to read the meaning behind each sign.
+      </div>
+      <div>
+        Check the metadata for more music of the spheres.
       </div>
     </div>
   )
 }
 
-
 const Minter = () => {
   const { activeConnector } = useConnect()
   const { mint } = useCreateSeal()
   const { state, dispatch } = useContext(SliderContext)
-  if (!state.modal) return;
+  if (!state.modal) return
   return (
     <Modal>
       {/* DESKTOP */}
       <div className='
         hidden
         sm:flex
-
+        overflow-scroll
         flex-row
         gap-0
         bg-white
@@ -45,14 +47,16 @@ const Minter = () => {
         w-[52rem]
         p-4
         rounded-lg
-      '>
+      '
+      >
         <div className='
           flex
           flex-col
           w-[18rem]
           p-2
           gap-2
-        '>
+        '
+        >
           <div className='font-redaction text-gray-400 text-xl'>
             Select a Seal
           </div>
@@ -63,9 +67,10 @@ const Minter = () => {
         <div className='
           grow sm:p-2 w-[22rem]
           flex flex-col gap-4 items-center justify-between
-        '>
+        '
+        >
           <div className='self-end'>
-            <CloseButton exec={() => dispatch({type: 'close'})} />
+            <CloseButton exec={() => dispatch({ type: 'close' })} />
           </div>
           <NFTShowcase />
           <Description />
@@ -92,38 +97,39 @@ const Minter = () => {
         w-[20rem]
         p-4
         flex flex-col gap-4
-      '>
+      '
+      >
         <div className='flex flex-row justify-between items-center'>
           <div className='font-redaction text-gray-400 text-xl'>
             Select a Seal
           </div>
-          <CloseButton exec={() => dispatch({type:'close'})}/>
+          <CloseButton exec={() => dispatch({ type: 'close' })} />
         </div>
         <div className='flex'>
           <div className='
             flex flex-row gap-1 overflow-scroll
-          '>
+          '
+          >
             <NFTList />
           </div>
         </div>
-          <NFTShowcase />
-          <Description />
-          <div className='flex flex-col gap-4 items-center w-full  justify-between'>
-            <SliderInput />
-            <div className='max-w-[128px]'>
-              {
+        <NFTShowcase />
+        <Description />
+        <div className='flex flex-col gap-4 items-center w-full  justify-between'>
+          <SliderInput />
+          <div className='max-w-[128px]'>
+            {
               activeConnector
                 ? <ExecutionButton
                     exec={mint}
                   />
                 : <ConnectButton />
               }
-            </div>
           </div>
+        </div>
       </div>
     </Modal>
   )
 }
-
 
 export default Minter

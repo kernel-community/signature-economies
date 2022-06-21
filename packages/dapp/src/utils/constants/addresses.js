@@ -1,4 +1,4 @@
-exports.addresses = (chainId) => {
+export const addresses = (chainId) => {
   switch (chainId) {
     case 4:
       return {
@@ -17,4 +17,4 @@ exports.addresses = (chainId) => {
       }
   }
 }
-exports.seals = 'SuPXgNnLyr_X4FR-a9M3jTloVH9wZnN334g9ToxyNZU' // arweave.net content hash of the root of all seal nfts
+export const seals = 'SuPXgNnLyr_X4FR-a9M3jTloVH9wZnN334g9ToxyNZU' // arweave.net content hash of the root of all seal nfts

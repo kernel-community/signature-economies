@@ -1,4 +1,4 @@
-const { getAllHighlightNfts, getAllSealedNfts, getAllStewardNfts } = require('./graph')
+import { getAllHighlightNfts, getAllSealedNfts, getAllStewardNfts } from './graph'
 
 const highlightNfts = async () => {
   const r = await getAllHighlightNfts()

@@ -11,7 +11,7 @@ export const LoadingContext = createContext({
   setText: () => {}
 })
 
-export default function useLoading() {
+export default function useLoading () {
   return useContext(LoadingContext)
 }
 
@@ -35,10 +35,9 @@ export const LoadingProvider = ({ children }) => {
   return (
     <LoadingContext.Provider value={value}>
       <>
-        { isOpen &&
-          <LoadingModal text={text}/>
-        }
-        { children }
+        {isOpen &&
+          <LoadingModal text={text} />}
+        {children}
       </>
     </LoadingContext.Provider>
   )

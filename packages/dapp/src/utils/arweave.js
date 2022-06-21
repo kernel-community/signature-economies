@@ -1,24 +1,20 @@
-const axios = require('axios').default
-const Constants = require('./constants')
-const Arweave = require('arweave').default
-const { protocol, host, port } = Constants.arweave.gateway
+import  axios from 'axios'
+import { arweave } from './constants/arweave'
+import { weaver } from './constants/weaver'
 
 // arweave graphql endpoint
 const arweaveQuery = axios.create({
-  baseURL: protocol + '://' + host + ':' + port,
+  baseURL: 'https://arweave.net:443',
   headers: {
     'Content-type': 'Application/Json'
   }
 })
 
-// arweave client sdk
-const arweaveClient = Arweave.init(Constants.arweave.gateway)
-
 // upload to arweave
 export const uploadToArweave = async ({ signature, account }) => {
-  await axios.post(Constants.weaver + '/rpc/sign', JSON.stringify({signature, account}), {
+  await axios.post(weaver.endpoint + '/rpc/sign', JSON.stringify({ signature, account }), {
     headers: {
-      "content-type": "application/json"
+      'content-type': 'application/json'
     }
   })
 }
@@ -35,11 +31,7 @@ export const getAllSignatures = () => {
   })
 }
 
-export const getTransactionData = async (tx, opts = { decode: true, string: true }) => {
-  return arweaveClient.transactions.getData(tx, { ...opts })
-}
-
-export const getSignaturesCount = async(cursor) => {
+export const getSignaturesCount = async (cursor) => {
   return arweaveQuery.post('/graphql', {
     ...Queries.getSignatureCount(cursor)
   })
@@ -118,7 +110,7 @@ const GET_SIGNATURE_COUNT = `
 `
 
 const GET_SIGNATURE_QUERY_VARS = {
-  appName: Constants.arweave.appName,
+  appName: arweave.appName,
   first: 15
 }
 
@@ -131,7 +123,7 @@ const Queries = {
     return {
       query: GET_USER_SIGNATURE_QUERY,
       variables: {
-        appName: Constants.arweave.appName,
+        appName: arweave.appName,
         first: 1,
         signatory
       }
@@ -141,7 +133,7 @@ const Queries = {
     return {
       query: GET_SIGNATURE_COUNT,
       variables: {
-        appName: Constants.arweave.appName,
+        appName: arweave.appName,
         first: 100,
         after: cursor
       }

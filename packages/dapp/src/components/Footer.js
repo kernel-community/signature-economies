@@ -1,8 +1,8 @@
-import { SliderContext } from "../contexts/Slider"
-import { useContext } from "react"
+import { SliderContext } from '../contexts/Slider'
+import { useContext } from 'react'
 
 const Footer = () => {
-  const slider = useContext(SliderContext);
+  const slider = useContext(SliderContext)
   return (
     <>
       <div className='
@@ -20,13 +20,14 @@ const Footer = () => {
         bg-white
         items-center
         gap-2 shadow-2xl shadow-black z-10
-      '>
+      '
+      >
         <div
-          className="flex flex-row gap-2 items-center"
+          className='flex flex-row gap-2 items-center'
         >
           <div
-            className="cursor-pointer border-b-2"
-            onClick={() => window.open("/essay#free-sign", "_self")}
+            className='cursor-pointer border-b-2'
+            onClick={() => window.open('/essay#free-sign', '_self')}
           >
             sign freely
           </div>
@@ -34,7 +35,7 @@ const Footer = () => {
             /
           </div>
           <div
-            className="cursor-pointer border-b-2"
+            className='cursor-pointer border-b-2'
             onClick={() => slider.dispatch({ type: 'open' })}
           >
             mint a seal

@@ -6,7 +6,7 @@ import Modal from '../../layouts/Modal'
 
 const HighlightModal = () => {
   const { state } = useContext(HighlightContext)
-  if (!state.modal) return;
+  if (!state.modal) return
   return (
     <Modal>
       <div className='flex justify-center md:p-8 w-full h-min-content md:w-min my-auto rounded-lg shadow-xl bg-white'>

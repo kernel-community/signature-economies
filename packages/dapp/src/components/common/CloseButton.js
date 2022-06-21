@@ -1,4 +1,4 @@
-const CloseButton = ({exec, className}) => {
+const CloseButton = ({ exec, className }) => {
   return (
     <div
       onClick={exec}

@@ -45,7 +45,6 @@
     "subgraph:createlocal": "yarn workspace subgraph create:local",
     "subgraph:deploylocal": "yarn workspace subgraph deploy:local",
     "subgraph:createrinkeby": "yarn workspace subgraph create:rinkeby",
-    "subgraph:deployrinkeby": "yarn workspace subgraph deploy:rinkeby",
-    "weaving:start": "yarn workspace weaving node weaver.js"
+    "subgraph:deployrinkeby": "yarn workspace subgraph deploy:rinkeby"
   }
 }

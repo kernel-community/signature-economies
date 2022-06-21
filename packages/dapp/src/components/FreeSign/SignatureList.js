@@ -1,13 +1,6 @@
-import { useNetwork } from 'wagmi'
-import etherscan from '../../utils/constants/etherscan'
-import {useDisplayableAddress} from "../../hooks/useDisplayableAddress"
+import { useDisplayableAddress } from '../../hooks/useDisplayableAddress'
 
-const Constants = require('../../utils/constants')
-
-const { protocol, host, port } = Constants.arweave.gateway
-const arweaveUrl = protocol + '://' + host + ':' + port
-
-
+const arweaveUrl = 'http://arweave.net'
 
 const AccountAddress = ({ account }) => {
   const toDisplay = useDisplayableAddress(account)

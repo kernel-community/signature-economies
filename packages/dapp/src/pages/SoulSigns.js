@@ -7,22 +7,21 @@ import { useEffect, useState } from 'react'
 import { highlightNfts, sealedNfts } from '../utils/fetchNfts'
 import opensea from '../utils/constants/opensea'
 
-
 const SoulSigns = () => {
   const { activeConnector } = useConnect()
   const [signatures, setSignatures] = useState([])
   const [seals, setSeals] = useState([])
-  const [chainId, setChainId] = useState();
+  const [chainId, setChainId] = useState()
 
   useEffect(() => {
     const f = async () => {
       setChainId(await activeConnector.getChainId())
     }
-    if(activeConnector) f();
+    if (activeConnector) f()
   }, [activeConnector])
 
   useEffect(() => {
-    const f = async() => {
+    const f = async () => {
       setSignatures(await highlightNfts())
       setSeals(await sealedNfts())
     }
@@ -64,7 +63,7 @@ const SoulSigns = () => {
           }
           <ViewMore
             url={opensea.chainIdToCollectionSlug(chainId).sig}
-            text="View collection on Opensea"
+            text='View collection on Opensea'
           />
         </div>
         <HorizontalSpace />
@@ -76,17 +75,17 @@ const SoulSigns = () => {
           {
             seals.map((nft, k) => (
               <NftCard
-                selectMeta = {nft.selectMeta}
-                ethAddress = {nft.steward}
-                key = {k}
-                id = {nft.id}
+                selectMeta={nft.selectMeta}
+                ethAddress={nft.steward}
+                key={k}
+                id={nft.id}
                 isSeal
               />
             ))
           }
           <ViewMore
             url={opensea.chainIdToCollectionSlug(chainId).seals}
-            text="View collection on Opensea"
+            text='View collection on Opensea'
           />
         </div>
       </div>
@@ -94,12 +93,13 @@ const SoulSigns = () => {
   )
 }
 
-
-const ViewMore = ({url, text}) => {
+const ViewMore = ({ url, text }) => {
   return (
-    <a className='
+    <a
+      className='
       text-center no-underline font-garamond font-normal bg-gray-100 rounded-lg min-w-[14rem] max-w-[14rem] scale-95 hover:scale-100 ease-in-out duration-200 flex flex-row items-center cursor-pointer text-xl
-    ' href={url} target="_blank" rel='noreferrer'>
+    ' href={url} target='_blank' rel='noreferrer'
+    >
       <div className='mx-10'>
         {text}
       </div>

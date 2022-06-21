@@ -1,4 +1,4 @@
-exports.abis = {
+export const abis = {
   signatureNFT: `[
     {
       "inputs": [

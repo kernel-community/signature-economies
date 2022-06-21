@@ -24,16 +24,15 @@ const Card = ({
         {children}
         {(showAddress || showTweetLink) && (
           <div className='flex flex-row w-full justify-between items-center h-12 p-2 border-t-0 border-2'>
-          {showAddress &&
+            {showAddress &&
             (
               <div className='text-black/60 font-redaction'>
                 {toDisplay}
               </div>
-            )
-          }
-          <div>
-            {showTweetLink && <TweetIcon />}
-          </div>
+            )}
+            <div>
+              {showTweetLink && <TweetIcon />}
+            </div>
           </div>
         )}
       </div>

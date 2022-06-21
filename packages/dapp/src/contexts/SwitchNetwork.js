@@ -27,7 +27,7 @@ export const SwitchNetworkProvider = ({ children }) => {
   useEffect(() => {
     const trigger = () => {
       if (chains.find((c) => c.id === activeChain.id)) {
-      dispatch({ type: 'modal', payload: false })
+        dispatch({ type: 'modal', payload: false })
       } else {
         dispatch({ type: 'modal', payload: true })
       }
@@ -36,9 +36,9 @@ export const SwitchNetworkProvider = ({ children }) => {
   }, [activeChain, chains, dispatch])
 
   return (
-    <SwitchNetworkContext.Provider value={ value }>
-      { state.modal && <SwitchNetworkModal /> }
-      { children }
+    <SwitchNetworkContext.Provider value={value}>
+      {state.modal && <SwitchNetworkModal />}
+      {children}
     </SwitchNetworkContext.Provider>
   )
 }

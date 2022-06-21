@@ -1,11 +1,11 @@
-import { useConnect, useSigner } from "wagmi";
-import { createSeal, estimateCreateSeal } from "../utils/contracts";
-import { SliderContext } from "../contexts/Slider";
-import { useState, useContext } from "react";
-import useLoading from "./useLoading";
-import etherscan from "../utils/constants/etherscan";
-import useError from "./useError";
-import useShare from "./useShare";
+import { useConnect, useSigner } from 'wagmi'
+import { createSeal, estimateCreateSeal } from '../utils/contracts'
+import { SliderContext } from '../contexts/Slider'
+import { useState, useContext } from 'react'
+import { etherscan } from '../utils/constants/etherscan'
+import useLoading from './useLoading'
+import useError from './useError'
+import useShare from './useShare'
 
 const indexToNumber = (i) => {
   switch (i) {
@@ -22,7 +22,7 @@ const indexToNumber = (i) => {
 }
 const useCreateSeal = () => {
   const [error, setError] = useState(null)
-  const {activeConnector} = useConnect()
+  const { activeConnector } = useConnect()
 
   const {
     open: openLoading, close: closeLoading
@@ -35,9 +35,9 @@ const useCreateSeal = () => {
   } = useShare()
 
   const slider = useContext(SliderContext)
-  const {data: signer} = useSigner()
+  const { data: signer } = useSigner()
 
-  const mint = async() => {
+  const mint = async () => {
     const chainId = await activeConnector.getChainId()
 
     openLoading('Estimating gas costs')
@@ -50,28 +50,28 @@ const useCreateSeal = () => {
     }
     try {
       await estimateCreateSeal(txData)
-    } catch(err) {
-      openError("There was an error in estimating gas. It could be due to various reasons, one of them being insufficient funds. Please double-check if you have atleast ~0.5 ETH in your wallet.")
+    } catch (err) {
+      openError('There was an error in estimating gas. This can occur for various reasons, one of them being insufficient funds. Please double-check that you have ~0.5 ETH.')
       console.log(err)
       closeLoading()
-      setError("Error in estimating gas")
+      setError('Error estimating gas')
       return
     }
 
-    openLoading('Please sign transaction on your wallet')
+    openLoading('Please sign this transaction')
 
-    let tx;
+    let tx
     try {
       tx = await createSeal(txData)
-    } catch(err) {
-      openError("Error in transaction")
+    } catch (err) {
+      openError('Error in transaction')
       console.log(err)
       closeLoading()
-      setError("Error in transaction")
+      setError('Error in transaction')
       return
     }
 
-    openLoading('Waiting for transaction to be confirmed')
+    openLoading('Waiting for your sign to appear in our shared record')
 
     await tx.wait(1)
 

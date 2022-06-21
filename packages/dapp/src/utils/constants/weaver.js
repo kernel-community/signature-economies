@@ -1,3 +1,3 @@
-module.exports = {
-  weaver: 'https://staging.sign.kernel.community'
+export const weaver = {
+  endpoint: 'https://staging.sign.kernel.community'
 }

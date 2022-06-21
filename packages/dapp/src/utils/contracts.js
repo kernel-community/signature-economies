@@ -1,4 +1,5 @@
-import { addresses, abis } from './constants'
+import { addresses } from './constants/addresses'
+import { abis } from './constants/abi'
 import { ethers, Contract } from 'ethers'
 
 export const estimateCreateSeal = ({

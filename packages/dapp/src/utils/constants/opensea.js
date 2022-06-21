@@ -7,18 +7,18 @@ module.exports = {
     }
   },
   chainIdToCollectionSlug: (id) => {
-    switch(id) {
+    switch (id) {
       case 4: return {
-        seals: "https://testnets.opensea.io/collection/signature-fund-qtvtcxcndr",
-        sig: "https://testnets.opensea.io/collection/signature-nfts-pur5qvcsa0"
+        seals: 'https://testnets.opensea.io/collection/signature-fund-qtvtcxcndr',
+        sig: 'https://testnets.opensea.io/collection/signature-nfts-pur5qvcsa0'
       }
       case 1: return {
-        seals: "",
-        sig: ""
+        seals: '',
+        sig: ''
       }
       default: return {
-        seals: "",
-        sig: ""
+        seals: '',
+        sig: ''
       }
     }
   }

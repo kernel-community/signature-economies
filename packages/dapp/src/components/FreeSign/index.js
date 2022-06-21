@@ -43,7 +43,7 @@ const FreeSign = () => {
   }, [signer])
 
   const sign = async () => {
-    if (isAlreadySigned) return;
+    if (isAlreadySigned) return
     setIsUploading(false)
     setIsSigning(false)
     setIsSuccess(false)
@@ -91,7 +91,7 @@ const FreeSign = () => {
     <>
       <div id='free-sign' className='mx-96 bg-white rounded-md flex flex-col px-8 md:px-0 py-16 w-4/5 md:w-2/3 gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center border-2 '>
         <div className='px-2 md:px-16 text-center'>
-          If you find this essay meaningful, you may join {sigCount > 15 && <span className='font-bold'>{sigCount}</span>} others to sign a message crafted from the entire text. This can be done freely: signed messages are just unique data which can be verified in many different ways. Your singular, iterable mark will be stored on Arweave and become a permanent part of this document's history.
+          If you find this essay meaningful, you may join {sigCount > 0 && <span className='font-bold'>{sigCount}</span>} others to sign a message crafted from the entire text. This can be done freely: signed messages are just unique data which can be verified in many different ways. Your singular, iterable mark will be stored on Arweave and become a permanent part of this document's history.
         </div>
         {
         !activeConnector
@@ -107,13 +107,13 @@ const FreeSign = () => {
         {
         isAlreadySigned &&
           <div>
-            signature for {toDisplay} already submitted.
+            {toDisplay} has already signed the text.
           </div>
         }
         {
         isError &&
           <div>
-            there was an error, please reload and try again.
+            There was an error. Please reload and try again.
           </div>
       }
         <hr className='w-full' />

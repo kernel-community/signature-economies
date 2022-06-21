@@ -11,7 +11,7 @@ export const ShareContext = createContext({
   setText: () => {}
 })
 
-export default function useShare() {
+export default function useShare () {
   return useContext(ShareContext)
 }
 
@@ -37,10 +37,9 @@ export const ShareProvider = ({ children }) => {
   return (
     <ShareContext.Provider value={value}>
       <>
-        { isOpen &&
-          <ShareModal url={url} onClose={close} image={image} />
-        }
-        { children }
+        {isOpen &&
+          <ShareModal url={url} onClose={close} image={image} />}
+        {children}
       </>
     </ShareContext.Provider>
   )

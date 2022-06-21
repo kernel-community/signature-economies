@@ -9,18 +9,20 @@ const Header = () => {
 
   return (
     <>
-    {/* DESKTOP NAVBAR */}
-    <div className='
+      {/* DESKTOP NAVBAR */}
+      <div className='
         sm:flex flex-row text-gray-800 w-full pt-6 text-lg font-redaction justify-between
         pl-6 gap-2 mx-auto
         hidden
-      '>
-       <Items />
-      <div className='
+      '
+      >
+        <Items />
+        <div className='
         text-gray-400
         pr-6 flex flex-row gap-1 items-center
-      '>
-        {
+      '
+        >
+          {
           toDisplay &&
             (
               <>
@@ -31,27 +33,28 @@ const Header = () => {
               </>
             )
         }
-        {
+          {
           !activeChain &&
           (
             <ConnectButton />
           )
         }
+        </div>
       </div>
-    </div>
 
-    {/* MOBILE NAVBAR */}
-    <div className='sm:hidden flex flex-col font-redaction text-xs w-full'>
-    <div className='
+      {/* MOBILE NAVBAR */}
+      <div className='sm:hidden flex flex-col font-redaction text-xs w-full'>
+        <div className='
       flex flex-row justify-between font-redaction pt-6 w-full px-4
-    '>
-      <div className='flex flex-col'>
-        <div>Signature</div><div>Economies</div>
-      </div>
-      <div>
-        <Items />
-      </div>
-      {
+    '
+        >
+          <div className='flex flex-col'>
+            <div>Signature</div><div>Economies</div>
+          </div>
+          <div>
+            <Items />
+          </div>
+          {
           toDisplay &&
             (
               <div className='flex flex-col'>
@@ -60,14 +63,14 @@ const Header = () => {
               </div>
             )
       }
-      {
+          {
           !activeChain &&
           (
             <ConnectButton />
           )
       }
-    </div>
-    </div>
+        </div>
+      </div>
     </>
   )
 }
@@ -77,36 +80,36 @@ const Items = () => {
 
   return (
     <div className='flex flex-row gap-2'>
-        <Link
-          to='/'
-          className={`cursor-pointer hover:text-black no-underline ${pathname === '/' ? 'text-black' : 'text-gray-400'}`}
-        >
-          <div>
-            start
-          </div>
-        </Link>
+      <Link
+        to='/'
+        className={`cursor-pointer hover:text-black no-underline ${pathname === '/' ? 'text-black' : 'text-gray-400'}`}
+      >
         <div>
-          |
+          start
         </div>
-        <Link
-          to='/essay'
-          className={`cursor-pointer hover:text-black no-underline ${pathname === '/essay' ? 'text-black' : 'text-gray-400'}`}
-        >
-          <div>
-            sign
-          </div>
-        </Link>
-        <div className=''>
-          |
+      </Link>
+      <div>
+        |
+      </div>
+      <Link
+        to='/essay'
+        className={`cursor-pointer hover:text-black no-underline ${pathname === '/essay' ? 'text-black' : 'text-gray-400'}`}
+      >
+        <div>
+          sign
         </div>
-        <Link
-          to='/signatures'
-          className={`cursor-pointer hover:text-black no-underline ${pathname === '/signatures' ? 'text-black' : 'text-gray-400'}`}
-        >
-          <div>
-            explore
-          </div>
-        </Link>
+      </Link>
+      <div className=''>
+        |
+      </div>
+      <Link
+        to='/signatures'
+        className={`cursor-pointer hover:text-black no-underline ${pathname === '/signatures' ? 'text-black' : 'text-gray-400'}`}
+      >
+        <div>
+          explore
+        </div>
+      </Link>
     </div>
   )
 }

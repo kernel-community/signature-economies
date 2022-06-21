@@ -11,7 +11,7 @@ export const ErrorContext = createContext({
   setText: () => {}
 })
 
-export default function useError() {
+export default function useError () {
   return useContext(ErrorContext)
 }
 
@@ -37,13 +37,12 @@ export const ErrorProvider = ({ children }) => {
   return (
     <ErrorContext.Provider value={value}>
       <>
-        { isOpen &&
+        {isOpen &&
           <ErrorModal
             text={text}
             onClose={close}
-          />
-        }
-        { children }
+          />}
+        {children}
       </>
     </ErrorContext.Provider>
   )

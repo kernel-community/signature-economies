@@ -7,33 +7,35 @@ const NFTList = () => {
   const elements = sealedNFTS.map((nft, index) => {
     const isSelected = state.selected === index
     return (
-        <div
-          className={
+      <div
+        className={
             `
               h-min
               ${isSelected ? 'border-2' : 'border-2 border-transparent'} bg-white rounded-lg hover:border-gray-200 transition-all  cursor-pointer p-1.5
             `
           }
-          onClick={() => dispatch({ type: 'select', payload: index })}
-          key={index}
-        >
-          <div className={
+        onClick={() => dispatch({ type: 'select', payload: index })}
+        key={index}
+      >
+        <div className={
             `
               ${isSelected ? 'text-slate-800' : 'text-slate-400'} text-md hover:text-slate-800 transition-all flex items-center font-garamond
             `
-          }>
-            {nft.title}
-          </div>
-          <div className={
+          }
+        >
+          {nft.title}
+        </div>
+        <div className={
             `
               hidden sm:block
               ${isSelected ? 'text-slate-800' : 'text-slate-400'}
               text-sm hover:text-slate-800 transition-all flex items-center font-garamond
             `
-          }>
-            {nft.text}
-          </div>
+          }
+        >
+          {nft.text}
         </div>
+      </div>
     )
   })
   return elements

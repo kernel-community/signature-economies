@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import { sealedNFTS } from '../SliderModal/nft'
 import Card from '../../layouts/Card'
 import { useProvider } from 'wagmi'
-import { addresses } from '../../utils/constants'
+import { addresses } from '../../utils/constants/addresses'
 import opensea from '../../utils/constants/opensea'
 import { useDisplayableAddress } from '../../hooks/useDisplayableAddress'
 import { ReactP5Wrapper } from 'react-p5-wrapper'
-import Canvas from "../HighlightModal/Canvas"
-import Text from "../text"
+import Canvas from '../HighlightModal/Canvas'
+import Text from '../text'
 
 const numberToIndex = (i) => {
   switch (i) {
@@ -68,8 +68,8 @@ const NftCard = ({
       const { chainId } = await provider.getNetwork()
       const { signatureFund, signatureNFT } = addresses(chainId)
       const openseaUrl = opensea.chainIdToUrl(chainId)
-      if(isSeal) setUrl(`${openseaUrl}/${signatureFund}/${id}`)
-      if(isCanvas) setUrl(`${openseaUrl}/${signatureNFT}/${id}`)
+      if (isSeal) setUrl(`${openseaUrl}/${signatureFund}/${id}`)
+      if (isCanvas) setUrl(`${openseaUrl}/${signatureNFT}/${id}`)
     }
     f()
   }, [id, provider, isSeal, isCanvas])

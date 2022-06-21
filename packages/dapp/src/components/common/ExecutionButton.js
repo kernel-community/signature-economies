@@ -43,7 +43,7 @@ const ExecutionButton = ({
   fixed = false,
   bringToFront = false,
   loading = false,
-  isError = false,
+  isError = false
 }) => {
   if (!tween) {
     return (

@@ -5,7 +5,6 @@
 import { useReducer, createContext, useMemo } from 'react'
 import { sealedNFTS } from '../components/SliderModal/nft'
 
-
 const getImg = (index, variation) => {
   if (variation >= 10) {
     return sealedNFTS[index].image_Front_10

@@ -1,5 +1,5 @@
-const axios = require('axios').default
-const Constants = require('./constants')
+import axios from 'axios'
+import { graph } from './constants/graph'
 
 const GET_STEWARD_NFTS = `
   query getStewardNfts($steward: String, $first: Int) {
@@ -65,7 +65,7 @@ const Queries = {
 }
 
 const graphQuery = axios.create({
-  baseURL: Constants.graph.baseURL,
+  baseURL: graph.baseURL,
   headers: {
     'Content-type': 'Application/Json'
   }
