@@ -4,11 +4,9 @@ import { useConnect, useSigner } from 'wagmi'
 import ConnectButton from '../common/ConnectButton'
 import signText from '../text'
 import { useState, useEffect } from 'react'
-import { get, getSignOf } from '../../utils/signatures'
+import { get, getSignatureCount, getSignOf } from '../../utils/signatures'
 import { uploadToArweave } from '../../utils/arweave'
 import { useDisplayableAddress } from '../../hooks/useDisplayableAddress'
-
-const TEXT = 'If you find this essay meaningful, you may sign a message crafted from the entire text. This can be done freely: signed messages are just unique data which can be verified in many different ways. Your singular, iterable mark will be stored on Arweave and become a permanent part of this document\'s history.'
 
 const FreeSign = () => {
   const { activeConnector } = useConnect()
@@ -19,6 +17,7 @@ const FreeSign = () => {
   const [isSuccess, setIsSuccess] = useState(false)
   const [isAlreadySigned, setIsAlreadySigned] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [sigCount, setSigCount] = useState(undefined)
 
   // list: {id, date, data: {account, signature}}[]
   const [list, setList] = useState([])
@@ -27,6 +26,13 @@ const FreeSign = () => {
     const signatures = await get()
     setList(signatures)
   }
+
+  useEffect(() => {
+    const f = async () => {
+      setSigCount(await getSignatureCount())
+    }
+    f()
+  }, [])
 
   useEffect(() => {
     const fetchAlreadySigned = async () => {
@@ -85,7 +91,7 @@ const FreeSign = () => {
     <>
       <div id='free-sign' className='mx-96 bg-white rounded-md flex flex-col px-8 md:px-0 py-16 w-4/5 md:w-2/3 gap-y-12 text-md md:text-2xl font-garamond text-justify items-center justify-center border-2 '>
         <div className='px-2 md:px-16 text-center'>
-          {TEXT}
+          If you find this essay meaningful, you may join {sigCount > 15 && <span className='font-bold'>{sigCount}</span>} others to sign a message crafted from the entire text. This can be done freely: signed messages are just unique data which can be verified in many different ways. Your singular, iterable mark will be stored on Arweave and become a permanent part of this document's history.
         </div>
         {
         !activeConnector
