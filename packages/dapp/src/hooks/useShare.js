@@ -19,14 +19,18 @@ export const ShareProvider = ({ children }) => {
   const [url, setUrl] = useState('')
   const [image, setImage] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
+  const [message, setMesage] = useState('')
+  const [shareOnTwitter, setShareOnTwitter] = useState(false)
   const close = () => setIsOpen(false)
   const value = useMemo(() => {
     return {
       isOpen,
-      open: (url, img) => {
+      open: ({ url, img, msg, shareOnTwitter }) => {
         setUrl(url)
         setIsOpen(true)
         setImage(img)
+        setMesage(msg)
+        if (shareOnTwitter) setShareOnTwitter(shareOnTwitter)
       },
       close,
       setIsOpen,
@@ -37,8 +41,16 @@ export const ShareProvider = ({ children }) => {
   return (
     <ShareContext.Provider value={value}>
       <>
-        {isOpen &&
-          <ShareModal url={url} onClose={close} image={image} />}
+        {
+          isOpen &&
+            <ShareModal
+              url={url}
+              onClose={close}
+              image={image}
+              message={message}
+              shareOnTwitter={shareOnTwitter}
+            />
+        }
         {children}
       </>
     </ShareContext.Provider>
