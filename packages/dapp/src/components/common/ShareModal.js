@@ -20,10 +20,13 @@ const Share = ({ url, onClose, image }) => {
     <Modal>
       <div className='p-8 w-full h-min-content sm:w-96 my-auto rounded-lg shadow-xl bg-white font-garamond text-lg backdrop-blur-lg'>
         <div className='flex flex-row gap-2'>
-          <div>
-            <img src={image} alt='minted-nft' />
-            <Message url={url} />
-          </div>
+          {
+            image &&
+              <div>
+                <img src={image} alt='minted-nft' />
+                <Message url={url} />
+              </div>
+          }
         </div>
         <div className='flex flex-row gap-2 pt-4 justify-center'>
           <div>

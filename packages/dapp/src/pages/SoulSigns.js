@@ -41,10 +41,12 @@ const SoulSigns = () => {
           activeConnector && (
             <>
               <SignedOnNfts />
-              <PersonalView
-                url={"https://opensea.io/account"}
-                text="Your NFTs"
-              />
+              <div className='self-start w-32'>
+                <PersonalView
+                  url={"https://opensea.io/account"}
+                  text="Your NFTs"
+                />
+              </div>
               <HorizontalSpace />
             </>
           )
@@ -101,11 +103,9 @@ const SoulSigns = () => {
 const PersonalView = ({url, text}) => {
   return (
     <a className='
-      text-center no-underline font-garamond font-normal border-gray-600 py-2 px-2 sm:w-48 border-2 rounded-md hover:border-black ease-in-out duration-200 flex flex-row items-center cursor-pointer text-xl
+    py-2 px-6 rounded-lg hover:border-slate-300 flex flex-row items-center gap-2 border-2 border-slate-200 no-underline font-garamond font-normal
     ' href={url} target="_blank" rel='noreferrer'>
-      <div className='mx-10'>
         {text}
-      </div>
     </a>
   )
 }
