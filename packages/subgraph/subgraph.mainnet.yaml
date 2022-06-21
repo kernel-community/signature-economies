@@ -1,0 +1,50 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SignatureNFT
+    network: mainnet
+    source:
+      address: "0xd9B6206D7001AEdC02CeA223D4E905fF3AD77e8c"
+      abi: SignatureNFT
+      startBlock: 15003775
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - SignatureNFT
+        - Account
+      abis:
+        - name: SignatureNFT
+          file: ../../packages/hardhat/deployments/mainnet/SignatureNFT.json
+      eventHandlers:
+        - event: NewSignature(address,indexed uint256,uint16,uint16)
+          handler: handleNewSignature
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/signatureNFT-mapping.ts
+  - kind: ethereum
+    name: SignatureFund
+    network: mainnet
+    source:
+      address: "0x779982C042E3038D6dbEC81Ce09643E1AE8Cdec1"
+      abi: SignatureFund
+      startBlock: 15003775
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - SignatureFund
+        - Account
+      abis:
+        - name: SignatureFund
+          file: ../../packages/hardhat/deployments/mainnet/SignatureFund.json
+      eventHandlers:
+        - event: SignCreated(indexed address,uint256,indexed uint256,string,string)
+          handler: handleSignCreated
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/signatureFund-mapping.ts

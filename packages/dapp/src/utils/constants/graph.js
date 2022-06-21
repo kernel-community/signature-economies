@@ -1,3 +1,3 @@
 export const graph = {
-    baseURL: 'https://api.studio.thegraph.com/query/24825/sign-eco/0.0.7'
+    baseURL: 'https://api.studio.thegraph.com/query/24825/signature-economies/0.0.1'
 }

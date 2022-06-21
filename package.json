@@ -37,6 +37,8 @@
     "hardhat:deployrinkeby": "yarn workspace hardhat deployrinkeby",
     "hardhat:mintrinkeby": "yarn workspace hardhat mintrinkeby",
     "hardhat:signrinkeby": "yarn workspace hardhat signrinkeby",
+    "hardhat:deploymain": "yarn workspace hardhat deploymain",
+    "hardhat:mintmain": "yarn workspace hardhat mintmain",
     "hardhat:accounts": "yarn workspace hardhat accounts",
     "hardhat:check": "yarn workspace hardhat checksol",
     "hardhat:lint": "yarn workspace hardhat lint",

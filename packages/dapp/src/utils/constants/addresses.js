@@ -12,8 +12,8 @@ export const addresses = (chainId) => {
       }
     default:
       return {
-        signatureFund: 'mainnet sigNFT address',
-        signatureNFT: 'mainnet sigFund address'
+        signatureFund: '0x779982C042E3038D6dbEC81Ce09643E1AE8Cdec1',
+        signatureNFT: '0xd9B6206D7001AEdC02CeA223D4E905fF3AD77e8c'
       }
   }
 }
