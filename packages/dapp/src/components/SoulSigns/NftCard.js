@@ -66,7 +66,7 @@ const NftCard = ({
   useEffect(() => {
     const f = async () => {
       const { chainId } = await provider.getNetwork()
-      const { signatureFund, signatureNFT } = addresses(chainId)
+      const { signatureFund, signatureNFT } = addresses.chainIdToContractAddresses(chainId)
       const openseaUrl = opensea.chainIdToUrl(chainId)
       if (isSeal) setUrl(`${openseaUrl}/${signatureFund}/${id}`)
       if (isCanvas) setUrl(`${openseaUrl}/${signatureNFT}/${id}`)
