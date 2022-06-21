@@ -52,12 +52,12 @@ export const opensea = {
         sig: 'https://testnets.opensea.io/collection/signature-nfts-pur5qvcsa0'
       }
       case 1: return {
-        seals: '',
-        sig: ''
+        seals: 'https://opensea.io/collection/signature-fund',
+        sig: 'https://opensea.io/collection/signature-nfts-v2'
       }
       default: return {
-        seals: '',
-        sig: ''
+        seals: 'https://testnets.opensea.io/collection/signature-fund-qtvtcxcndr',
+        sig: 'https://testnets.opensea.io/collection/signature-nfts-pur5qvcsa0'
       }
     }
   }
