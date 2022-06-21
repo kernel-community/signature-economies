@@ -1,12 +1,12 @@
-import { addresses } from './constants/addresses'
-import { abis } from './constants/abi'
+import { addresses } from './constants'
+import { abis } from './constants'
 import { ethers, Contract } from 'ethers'
 
 export const estimateCreateSeal = ({
   ethValue, token, chainId, signer
 }) => {
   const contract = new Contract(
-    addresses(chainId).signatureFund,
+    addresses.chainIdToContractAddresses(chainId).signatureFund,
     abis.signatureFund,
     signer)
   const value = ethers.utils.parseEther(ethValue)
@@ -17,7 +17,7 @@ export const createSeal = ({
   ethValue, token, chainId, signer
 }) => {
   const contract = new Contract(
-    addresses(chainId).signatureFund,
+    addresses.chainIdToContractAddresses(chainId).signatureFund,
     abis.signatureFund,
     signer)
   const value = ethers.utils.parseEther(ethValue)
@@ -29,7 +29,7 @@ export const estimateHighlightMint = ({
   chainId, signer, start, end
 }) => {
   const contract = new Contract(
-    addresses(chainId).signatureNFT,
+    addresses.chainIdToContractAddresses(chainId).signatureNFT,
     abis.signatureNFT,
     signer
   )
@@ -40,7 +40,7 @@ export const highlightMint = ({
   chainId, signer, start, end
 }) => {
   const contract = new Contract(
-    addresses(chainId).signatureNFT,
+    addresses.chainIdToContractAddresses(chainId).signatureNFT,
     abis.signatureNFT,
     signer
   )
@@ -50,7 +50,7 @@ export const highlightMint = ({
 export const ownerOf = async (provider, id) => {
   const { chainId } = await provider.getNetwork()
   const signatureNFTContract = new Contract(
-    addresses(chainId).signatureNFT,
+    addresses.chainIdToContractAddresses(chainId).signatureNFT,
     abis.signatureNFT,
     provider)
   return signatureNFTContract.ownerOf(id)

@@ -1,7 +1,6 @@
 import { getAllSignatures, getUserSignature, getSignaturesCount } from './arweave'
 import { ethers } from 'ethers'
-
-const infuraId = process.env.INFURA_ID
+import { INFURA_ID as infuraId } from './constants'
 
 const cleanResponse = (data) => {
   const { data: { transactions: { edges } } } = data
@@ -43,7 +42,6 @@ export const getSignatureCount = async () => {
     ;({ data: { transactions: { pageInfo: { hasNextPage: hasMore } } } } = r.data)
     count += edges.length
     cursor = edges[edges.length - 1].cursor
-    console.log('cursor', cursor)
   } while (hasMore)
   return count
 }
