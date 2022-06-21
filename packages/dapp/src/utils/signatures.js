@@ -1,9 +1,9 @@
-import { getAllSignatures, getTransactionData } from './arweave'
+import { getAllSignatures, getUserSignature } from './arweave'
 const { ethers } = require('ethers')
 
 const infuraId = process.env.INFURA_ID
 
-const cleanResponse = async (data) => {
+const cleanResponse = (data) => {
   const { data: { transactions: { edges } } } = data
   return edges.map(edge => {
     let date
@@ -11,41 +11,35 @@ const cleanResponse = async (data) => {
       const epoch = edge.node.block.timestamp * 1000
       date = new Date(epoch)
     }
+    const signatory = edge.node.tags.find((tag) => tag.name === 'Signatory')
     return {
       id: edge.node.id, // arweave tx id
-      date: date ? date.toLocaleDateString() : undefined // block.timestamp
+      date: date ? date.toLocaleDateString(): undefined, // block.timestamp,
+      account: signatory?.value
     }
   })
-}
-
-const fetchCompleteResponse = async (transactionIds) => {
-  const txDataPromises = transactionIds.map((tx) => getTransactionData(tx.id))
-  const txData = await Promise.all(txDataPromises)
-  const response = transactionIds.map((tx, index) => {
-    return {
-      id: tx.id, // arweave transaction id
-      date: tx.date, // arweave transaction block timestamp
-      data: JSON.parse(txData[index]) // {account, signature}
-    }
-  })
-  return response
 }
 
 // returns an array of {id: arweave tx, signature}
 export const get = async () => {
   const r = await getAllSignatures()
-  const responses = await cleanResponse(r.data)
-  const withCompleteData = await fetchCompleteResponse(responses)
-  return lookupEnsNames(withCompleteData)
+  const responses = cleanResponse(r.data)
+  return lookupEnsNames(responses)
+}
+
+export const getSignOf = async({ signatory }) => {
+  const r = await getUserSignature({ signatory })
+  const data = cleanResponse(r.data)
+  return data.length > 0
 }
 
 const lookupEnsNames = async (data) => {
-  const ensNamePromises = data.map((sigObj) => lookUpEns(sigObj.data.account))
+  const ensNamePromises = data.map((sigObj) => lookUpEns(sigObj?.account))
   const ensNames = await Promise.all(ensNamePromises)
   const withEns = data.map((sigObj, key) => {
     return {
       ...sigObj,
-      ens: ensNames[key] === sigObj.data.account ? null : ensNames[key]
+      ens: ensNames[key] === sigObj.account ? null : ensNames[key]
     }
   })
   return withEns

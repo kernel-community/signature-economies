@@ -1,31 +1,17 @@
 import { useNetwork } from 'wagmi'
 import etherscan from '../../utils/constants/etherscan'
+import {useDisplayableAddress} from "../../hooks/useDisplayableAddress"
 
 const Constants = require('../../utils/constants')
 
 const { protocol, host, port } = Constants.arweave.gateway
 const arweaveUrl = protocol + '://' + host + ':' + port
 
-const trimAddress = (address) => address.substring(0, 8).concat('...')
 
-const AccountAddress = ({ account, ens }) => {
-  const toDisplay = ens || (account ? trimAddress(account) : 'Anonymous')
-  const { activeChain: { id } } = useNetwork();
-  return (
-    account
-      ? (
-        <a
-          href={etherscan.chainIdToUrl(id) + '/' + account}
-          target='_blank' rel='noreferrer'
-          className='no-underline text-gray-500 hover:text-black'
-        >
-          {toDisplay}
-        </a>
-        )
-      : (
-          { toDisplay }
-        )
-  )
+
+const AccountAddress = ({ account }) => {
+  const toDisplay = useDisplayableAddress(account)
+  return (toDisplay)
 }
 
 const SignatureList = ({ list }) => {
@@ -37,8 +23,7 @@ const SignatureList = ({ list }) => {
             <div className='flex flex-row gap-x-8 w-max flex-shrink-0 items-center justify-left flex-grow'>
               <p className='flex flex-grow'>
                 <AccountAddress
-                  account={signature.data.account}
-                  ens={signature.ens}
+                  account={signature.account}
                 />
               </p>
               <a
