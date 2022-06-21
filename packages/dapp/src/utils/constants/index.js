@@ -18,8 +18,8 @@ export const addresses =  {
         }
       default:
         return {
-          signatureFund: 'mainnet sigNFT address',
-          signatureNFT: 'mainnet sigFund address'
+          signatureFund: '0x779982C042E3038D6dbEC81Ce09643E1AE8Cdec1',
+          signatureNFT: '0xd9B6206D7001AEdC02CeA223D4E905fF3AD77e8c'
         }
     }
   },
@@ -27,7 +27,7 @@ export const addresses =  {
 }
 export {abis}
 export const arweave = {
-  appName: "Kernel-Signature-Economies-Staging"
+  appName: "Kernel-Signature-Economies"
 }
 export const etherscan = {
   chainIdToUrl: (id) => {
@@ -39,14 +39,14 @@ export const etherscan = {
   }
 }
 export const graph = {
-  baseURL: 'https://api.studio.thegraph.com/query/24825/sign-eco/0.0.7'
+  baseURL: 'https://api.studio.thegraph.com/query/24825/signature-economies/0.0.1'
 }
 export const opensea = {
   chainIdToUrl: (id) => {
     switch (id) {
       case 4: return 'https://testnets.opensea.io/assets'
       case 1: return 'https://opensea.io/assets/ethereum'
-      default: return 'https://opensea.io/assets/ethereum'
+      default: return 'https://testnets.opensea.io/assets/'
     }
   },
   chainIdToCollectionSlug: (id) => {
@@ -56,8 +56,8 @@ export const opensea = {
         sig: 'https://testnets.opensea.io/collection/signature-nfts-zcv8rnfntv'
       }
       case 1: return {
-        seals: '',
-        sig: ''
+        seals: 'https://opensea.io/collection/signature-fund',
+        sig: 'https://opensea.io/collection/signature-nfts-v2'
       }
       default: return {
         seals: 'https://testnets.opensea.io/collection/signature-fund-2uiw9cnuki',
@@ -68,7 +68,9 @@ export const opensea = {
 }
 export const twitter = {
   shareIntent: 'https://twitter.com/intent/tweet?text=',
-  shareContent: 'Make money significant with me. This new kind of essay on ownership from @KERNEL0x helps to expand our minds from control to care, possession to reciprocity. Make your own beautiful mark from the 24th of June...'
+  shareContent: `This new kind of essay on signatures from @KERNEL0x suggests ownership may be moving from control to care, from possession to reciprocity.
+
+See my signs & make your own beautiful, eternal mark with me from the 24th of June...`
 }
 export const weaver = {
   endpoint: 'https://staging.sign.kernel.community/rpc/sign'

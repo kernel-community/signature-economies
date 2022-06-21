@@ -31,6 +31,12 @@ const Content = () => {
           All funds will be used transparently, as we keep cultivating <a href='https://www.kernel.community/en/learn/module-6/learn/#a-surprisingly-educated-public' target='_blank' rel='noreferrer'>open educational webs</a>. While seal holders will not have governance rights, we will explore and suggest healthy ways to encourage your participation in the never-ending story of peer-to-peer learning.
         </div>
         <div>
+          There is no limit on the number of seals that can be minted. However, over time, new seals might appear. This means these particular seals are only guaranteed to be available until September 9th, 2022.
+        </div>
+        <div>
+          The signs change with the times. The spirit is eternal.
+        </div>
+        <div>
           <a href='/essay' className='bg-white select-none text-center border-gray-600 border-2 py-2 px-6 md:px-12 md:py-4 rounded-md w-48 md:w-64 font-redaction no-underline cursor-pointer'>
             Begin
           </a>

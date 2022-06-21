@@ -30,7 +30,7 @@ task('mint', 'Mints a reader-generated SignatureNFT')
   .addParam('start', 'The character index the highlight starts at')
   .addParam('end', 'The character index the highlight ends at')
   .setAction(async (taskArgs) => {
-    const addressData = require('./deployments/rinkeby/SignatureNFT.json')
+    const addressData = require('./deployments/mainnet/SignatureNFT.json')
     const address = addressData.address
     const signatureNFT = await ethers.getContractAt('SignatureNFT', address)
     await signatureNFT.mintSelected(taskArgs.start, taskArgs.end)
