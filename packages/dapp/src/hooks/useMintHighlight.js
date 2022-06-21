@@ -4,7 +4,7 @@ import { HighlightContext } from '../contexts/Highlight'
 import { estimateHighlightMint, highlightMint } from '../utils/contracts'
 import useError from './useError'
 import useLoading from './useLoading'
-import etherscan from '../utils/constants/etherscan'
+import {etherscan} from '../utils/constants'
 import useShare from './useShare'
 
 const useMintHighlight = () => {

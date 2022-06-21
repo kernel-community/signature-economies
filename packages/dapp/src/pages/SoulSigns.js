@@ -5,7 +5,7 @@ import SignedOnNfts from '../components/SoulSigns/SignedOnNfts'
 import NftCard from '../components/SoulSigns/NftCard'
 import { useEffect, useState } from 'react'
 import { highlightNfts, sealedNfts } from '../utils/fetchNfts'
-import opensea from '../utils/constants/opensea'
+import {opensea} from '../utils/constants'
 
 const SoulSigns = () => {
   const { activeConnector } = useConnect()

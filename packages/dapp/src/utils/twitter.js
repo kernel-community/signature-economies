@@ -1,4 +1,4 @@
-import { twitter } from "./constants/twitter"
+import { twitter } from "./constants"
 
 const shareTweet = (toFetchFor) => window.open(
   `${twitter.shareIntent}${encodeURIComponent(

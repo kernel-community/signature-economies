@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { graph } from './constants/graph'
+import { graph } from './constants'
 
 const GET_STEWARD_NFTS = `
   query getStewardNfts($steward: String, $first: Int) {
