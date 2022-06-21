@@ -1,9 +1,9 @@
 import { allChains } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { providers } from 'ethers'
-import { INFURA_ID as infuraId } from './constants'
 
-// only rinkeby
+const infuraId = process.env.INFURA_ID
+
 const chains = allChains.filter(c => c.id === 1)
 
 export const connectors = () => [

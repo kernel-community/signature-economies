@@ -66,7 +66,7 @@ const DisplayButtonOrMessage = () => {
             loading={isSigning || isUploading}
             disabled={isSigning || isUploading || isAlreadySigned}
           />
-          <div className='w-3/4 text-base'>
+          <div className='w-3/4 text-base text-center'>
               If you have already signed, the signature takes about ~10 minutes to upload on Arweave. Until then,&nbsp;
               <span className='italic underline cursor-pointer' onClick={() => shareTweet(data.address)}>
                 fancy a tweet?
