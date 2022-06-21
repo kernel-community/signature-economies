@@ -4,6 +4,7 @@ import FreeSign from '../components/FreeSign'
 import HorizontalRule from '../components/common/HorizontalRule'
 import Poem from '../components/Poem'
 import Main from '../layouts/Main'
+import HighlightModal from '../components/HighlightModal'
 
 const Essay = () => {
   return (
@@ -12,6 +13,7 @@ const Essay = () => {
         flex flex-col items-center mx-auto pb-32 bg-white
       '
       >
+        <HighlightModal />
         {/* only the Essay component is highlight-mintable */}
         <EssayContent />
         <HorizontalRule />

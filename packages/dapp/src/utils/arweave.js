@@ -14,31 +14,19 @@ const arweaveQuery = axios.create({
 // arweave client sdk
 const arweaveClient = Arweave.init(Constants.arweave.gateway)
 
-// to upload singatures to arweave
-const weaver = axios.create({
-  baseURL: Constants.weaver,
-  headers: {
-    'Content-type': 'Application/Json'
-  }
-})
-
 // upload to arweave
-// tags = array of objects
-// {key: "", value: ""}
-export const uploadToArweave = async ({ data, contentType, tags }) => {
-  const { arUrl } = (await weaver.post('/upload', {
-    data, contentType, tags
-  })).data
-  return { arUrl }
+export const uploadToArweave = async ({ signature, account }) => {
+  await axios.post(Constants.weaver + '/rpc/sign', JSON.stringify({signature, account}), {
+    headers: {
+      "content-type": "application/json"
+    }
+  })
 }
 
-export const saveSig = async ({ signer, signature }) => await weaver.post('/save', {
-  signer, signature
-})
-
-export const sigCheck = async ({ signer }) => {
-  const { found } = (await weaver.post('/check', { signer })).data
-  return { found }
+export const getUserSignature = async ({ signatory }) => {
+  return (await arweaveQuery.post('/graphql', {
+    ...Queries.getUserSignatures(signatory)
+  }))
 }
 
 export const getAllSignatures = () => {
@@ -65,19 +53,64 @@ const GET_SIGNATURE_QUERY = `
           block {
             timestamp
           }
+          tags {
+            name
+            value
+          }
         }
       }
     }
   }
 `
-const VARS = {
-  appName: 'Kernel-Signature-Economies',
+
+const GET_USER_SIGNATURE_QUERY = `
+  query getSignatures(
+    $appName: String!, $first: Int, $signatory: String!
+  ) {
+    transactions(tags:[
+      {
+        name:"App-Name",
+        values:[$appName],
+      },
+      {
+        name:"Signatory",
+        values: [$signatory]
+      }
+    ], sort:HEIGHT_DESC, first: $first) {
+      edges {
+        node {
+          id
+          block {
+            timestamp
+          }
+          tags {
+            name
+            value
+          }
+        }
+      }
+    }
+  }
+`
+
+const GET_SIGNATURE_QUERY_VARS = {
+  appName: Constants.arweave.appName,
   first: 15
 }
 
 const Queries = {
   getSignatures: {
     query: GET_SIGNATURE_QUERY,
-    variables: VARS
+    variables: GET_SIGNATURE_QUERY_VARS
+  },
+  getUserSignatures: (signatory) => {
+    return {
+      query: GET_USER_SIGNATURE_QUERY,
+      variables: {
+        appName: Constants.arweave.appName,
+        first: 1,
+        signatory
+      }
+    }
   }
 }
