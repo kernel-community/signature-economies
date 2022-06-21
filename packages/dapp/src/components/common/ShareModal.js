@@ -22,7 +22,7 @@ const Share = ({ url, onClose, image, message, shareOnTwitter }) => {
   return (
     <Modal>
       <div className='p-8 w-full h-min-content sm:w-96 my-auto rounded-lg shadow-xl bg-white font-garamond text-lg backdrop-blur-lg'>
-        <div className='flex flex-row gap-2'>
+        <div className='flex flex-col gap-2'>
           {
             image &&
               <div>
