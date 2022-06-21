@@ -13,7 +13,7 @@
     "build:mainnet": "graph build ./subgraph.mainnet.yaml",
     "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ sign-eco",
     "deploy:rinkeby": "yarn codegen:rinkeby && yarn build:rinkeby && graph auth --studio <auth_token> && graph deploy --studio sign-eco ./subgraph.rinkeby.yaml",
-    "deploy:mainnet": "yarn codegen:mainnet && yarn build:mainnet && graph auth --studio b70cdce0218073e76c33a1ae9eab5f25 && graph deploy --studio signature-economies ./subgraph.mainnet.yaml",
+    "deploy:mainnet": "yarn codegen:mainnet && yarn build:mainnet && graph auth --studio <auth_token> && graph deploy --studio signature-economies ./subgraph.mainnet.yaml",
     "create:local": "graph create --node http://localhost:8020/ sign-eco/sign-eco-subgraph-localhost",
     "remove:local": "graph remove --node http://localhost:8020/ sign-eco/sign-eco-subgraph-localhost",
     "deploy:local": "yarn clean && yarn prepare-yaml && yarn codegen && graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sign-eco/sign-eco-subgraph-localhost ./subgraph.localhost.yaml",
