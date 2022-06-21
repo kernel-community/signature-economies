@@ -1,22 +1,15 @@
 import { SwitchNetworkContext } from '../contexts/SwitchNetwork'
 import { useContext } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useNetwork } from 'wagmi'
 import Spinner from './common/Spinner'
+import Modal from '../layouts/Modal'
 
 const SwitchNetworkModal = () => {
   const { state } = useContext(SwitchNetworkContext)
   const { chains, switchNetwork, activeChain, isLoading, pendingChainId } = useNetwork()
   if (!state.modal) return
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, type: 'tween' }}
-        className='flex justify-center z-[100] fixed top-0 left-0 bg-gray-500/30 backdrop-blur-md w-screen h-screen'
-      >
+    <Modal bringToFront>
         <div className='p-8 w-full h-min-content sm:w-80 my-auto rounded-lg shadow-xl bg-white font-garamond text-lg backdrop-blur-lg'>
           <div>
             Please switch to&nbsp;
@@ -46,8 +39,7 @@ const SwitchNetworkModal = () => {
             </div>
           </div>
         </div>
-      </motion.div>
-    </AnimatePresence>
+    </Modal>
   )
 }
 
