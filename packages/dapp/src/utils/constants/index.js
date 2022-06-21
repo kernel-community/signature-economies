@@ -2,6 +2,7 @@ import { abis } from "./abi"
 
 export const env = process.env.REACT_APP_DEPLOY_TARGET === 'STAGING' || 'PROD'
 export const isDev = env !== 'PROD'
+
 export const addresses =  {
   chainIdToContractAddresses: (chainId) => {
     switch (chainId) {
