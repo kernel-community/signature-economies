@@ -24,9 +24,9 @@ export const uploadToArweave = async ({ signature, account }) => {
 }
 
 export const getUserSignature = async ({ signatory }) => {
-  return (await arweaveQuery.post('/graphql', {
+  return arweaveQuery.post('/graphql', {
     ...Queries.getUserSignatures(signatory)
-  }))
+  })
 }
 
 export const getAllSignatures = () => {
@@ -37,6 +37,12 @@ export const getAllSignatures = () => {
 
 export const getTransactionData = async (tx, opts = { decode: true, string: true }) => {
   return arweaveClient.transactions.getData(tx, { ...opts })
+}
+
+export const getSignaturesCount = async(cursor) => {
+  return arweaveQuery.post('/graphql', {
+    ...Queries.getSignatureCount(cursor)
+  })
 }
 
 const GET_SIGNATURE_QUERY = `
@@ -93,6 +99,24 @@ const GET_USER_SIGNATURE_QUERY = `
   }
 `
 
+const GET_SIGNATURE_COUNT = `
+  query getSignatureCount($appName: String!, $after: String!) {
+    transactions(
+      tags: [{ name: "App-Name", values: [$appName] }]
+      sort: HEIGHT_DESC
+      after: $after
+      first: 100
+    ) {
+      edges {
+        cursor
+      }
+      pageInfo {
+        hasNextPage
+      }
+    }
+  }
+`
+
 const GET_SIGNATURE_QUERY_VARS = {
   appName: Constants.arweave.appName,
   first: 15
@@ -110,6 +134,16 @@ const Queries = {
         appName: Constants.arweave.appName,
         first: 1,
         signatory
+      }
+    }
+  },
+  getSignatureCount: (cursor) => {
+    return {
+      query: GET_SIGNATURE_COUNT,
+      variables: {
+        appName: Constants.arweave.appName,
+        first: 100,
+        after: cursor
       }
     }
   }

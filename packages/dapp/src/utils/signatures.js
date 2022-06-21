@@ -1,4 +1,4 @@
-import { getAllSignatures, getUserSignature } from './arweave'
+import { getAllSignatures, getUserSignature, getSignaturesCount } from './arweave'
 const { ethers } = require('ethers')
 
 const infuraId = process.env.INFURA_ID
@@ -6,16 +6,18 @@ const infuraId = process.env.INFURA_ID
 const cleanResponse = (data) => {
   const { data: { transactions: { edges } } } = data
   return edges.map(edge => {
-    let date
+    let date, signatory
     if (edge.node.block) {
       const epoch = edge.node.block.timestamp * 1000
       date = new Date(epoch)
     }
-    const signatory = edge.node.tags.find((tag) => tag.name === 'Signatory')
+    if (edge.node.tags) {
+      signatory = edge.node.tags.find((tag) => tag.name === 'Signatory')
+    }
     return {
       id: edge.node.id, // arweave tx id
       date: date ? date.toLocaleDateString(): undefined, // block.timestamp,
-      account: signatory?.value
+      account: signatory?.value ?? undefined
     }
   })
 }
@@ -31,6 +33,19 @@ export const getSignOf = async({ signatory }) => {
   const r = await getUserSignature({ signatory })
   const data = cleanResponse(r.data)
   return data.length > 0
+}
+
+export const getSignatureCount = async() => {
+  let count = 0, cursor = '', hasMore = undefined
+  do {
+    let r = await getSignaturesCount(cursor)
+    const { data: { transactions: { edges } } } = r.data
+    ;({ data: {transactions: {pageInfo: {hasNextPage: hasMore}}}} = r.data)
+    count += edges.length
+    cursor = edges[edges.length-1].cursor
+    console.log("cursor", cursor)
+  } while (hasMore)
+  return count
 }
 
 const lookupEnsNames = async (data) => {
