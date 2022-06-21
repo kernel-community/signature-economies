@@ -4,7 +4,6 @@ import { providers } from 'ethers'
 
 const infuraId = process.env.INFURA_ID
 
-// only rinkeby
 const chains = allChains.filter(c => c.id === 1)
 
 export const connectors = () => [
