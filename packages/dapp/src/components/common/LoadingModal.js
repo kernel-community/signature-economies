@@ -5,7 +5,7 @@ import Modal from '../../layouts/Modal'
 const PauseForLoadingModal = ({ text }) => {
   return (
     <Modal bringToFront>
-      <div className='md:p-8 w-full h-min-content md:w-80 my-auto rounded-lg shadow-xl bg-white font-garamond text-lg text-center'>
+      <div className='md:p-8 w-full h-min-content md:w-80 my-auto rounded-lg shadow-xl bg-white font-garamond text-lg text-center flex flex-col items-center py-6 sm:py-0'>
         <div className=' w-64 h-64 relative flex justify-center items-center'>
           <motion.span
             className='animate-pulse block w-64 h-64 border-4 border-gray-300 border-t-[#07eb9f] rounded-full absolute border-box top-0 left-0'

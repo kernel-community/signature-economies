@@ -78,7 +78,7 @@ const useCreateSeal = () => {
     closeLoading()
 
     openShare({
-      url: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${'tx.hash'}`,
+      url: `${etherscan.chainIdToUrl(activeConnector?.id)}/tx/${tx.hash}`,
       img: slider.state.image
     })
     slider.dispatch({ type: 'close' })
