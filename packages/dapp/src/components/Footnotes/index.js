@@ -71,6 +71,17 @@ const FootNotes = () => {
           />
         </div>
       </div>
+
+      <div className='py-10 font-mono text-center text-sm text-gray-600 items-center'>
+        <div className='mt-10 px-8 md:px-20 flex flex-col items-center font-body text-xs md:text-sm text-gray-600 content-center'>
+          <div className='md:max-w-3xl text-center space-y-3'>
+            Designed by Malay Vasa. Implemented by Angela Gilhotra, with help from simonpure and Daanish Shabbir. Seals created by Kirill Noskov and Binnie Kwon. Written by Andy Tudhope. 
+          </div>
+          <div className='md:max-w-3xl text-center space-y-3 mt-4'>
+            In truth, it has taken a whole village.
+          </div>
+        </div>
+      </div>
     </div>
 
   )
