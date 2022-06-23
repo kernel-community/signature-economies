@@ -31,7 +31,7 @@ const Content = () => {
           All funds will be used transparently, as we keep cultivating <a href='https://www.kernel.community/en/learn/module-6/learn/#a-surprisingly-educated-public' target='_blank' rel='noreferrer'>open educational webs</a>. While seal holders will not have governance rights, we will explore and suggest healthy ways to encourage your participation in the never-ending story of peer-to-peer learning.
         </div>
         <div>
-          There is no limit on the number of seals that can be minted. However, over time, new seals might appear. This means these particular seals are only guaranteed to be available until September 9th, 2022.
+          There is no limit on the number of seals that can be minted, and you will always be able to mint seals of some kind. However, these particular seal images represent the first season of many, and will not be available forever.
         </div>
         <div>
           The signs change with the times. The spirit is eternal.
