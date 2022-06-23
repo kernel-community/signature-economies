@@ -64,7 +64,7 @@ const FootNotes = () => {
       </div>
 
       <div className='flex flex-col py-16 items-center justify-center'>
-        <div className='relative group z-40 '>
+        <div className='relative group'>
           <img
             src={signatureDerrida}
             alt='Signature_Derrida'
