@@ -35,7 +35,7 @@ const FootNotes = () => {
 
             <p>
               <sup> * </sup>
-              Please enjoy a conversational exploration of the text by clicking <a href='https://youtu.be/yfQVevK0eI0' target='_blank' rel='noreferrer'>here</a>.
+              Please enjoy a conversational exploration of the text by clicking <a href='https://youtu.be/yfQVevK0eI0' target='_blank' rel='noreferrer'>here</a>. You can also find two "Signature Spaces" on twitter about <a href="https://twitter.com/i/spaces/1OyKADYgjOrxb" target="_blank" rel="noreferrer">care</a> and <a href="https://twitter.com/i/spaces/1OdKrBWkMlVKX" target="_blank" rel="noreferrer">memory</a> as they relate to this text, and the many others it references.
             </p>
           </div>
         </div>
