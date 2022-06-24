@@ -16,7 +16,7 @@ const Description = () => {
       <div>
         Each seal signifies a planet. Look closely for the inscription.
       </div>
-      <div>
+      <div className='font-bold'>
         Click on the image to read the meaning behind each sign.
       </div>
       <div>

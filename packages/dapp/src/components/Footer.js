@@ -8,25 +8,25 @@ const Footer = () => {
       <div className='
         flex
         flex-col
-        text-gray-800
+        text-gray-500
         w-full
         justify-center
         sm:py-6
         py-6
         text-base
-        sm:text-3xl
-        font-garamond
+        sm:text-2xl
+        font-redaction
         fixed bottom-0
-        bg-white
+        bg-gray-200
         items-center
-        gap-2 shadow-2xl shadow-black z-10
+        gap-2 z-10
       '
       >
         <div
           className='flex flex-row gap-2 items-center'
         >
           <div
-            className='cursor-pointer border-b-2'
+            className='cursor-pointer hover:text-gray-800 border-b-2'
             onClick={() => window.open('/essay#free-sign', '_self')}
           >
             sign freely
@@ -35,7 +35,7 @@ const Footer = () => {
             /
           </div>
           <div
-            className='cursor-pointer border-b-2'
+            className='cursor-pointer hover:text-gray-800 border-b-2'
             onClick={() => slider.dispatch({ type: 'open' })}
           >
             mint a seal

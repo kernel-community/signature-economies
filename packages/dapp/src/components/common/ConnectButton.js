@@ -3,27 +3,29 @@ import { Connector } from '../../utils/connect'
 
 const base = `
   text-center
-  text-green-300
+  text-gray-500
   border-2
-  border-transparent
+  border-gray-500
   rounded-md
   py-1
   px-4
 
   sm:px-4 sm:py-2
-  sm:shadow sm:shadow-green-300
+  sm:shadow sm:shadow-gray-300
   sm:transition-all
+  font-redaction
 
   hover:shadow-md
-  hover:shadow-green-500
-  hover:text-green-50
+  hover:shadow-gray-500
+  hover:text-gray-800
+  hover:bg-gray-100
 `
 
 const greenButtonStyle = `
-  ${base} bg-green-600 cursor-pointer
+  ${base} bg-transparent cursor-pointer
 `
 const greenButtonDisabledStyle = `
-  ${base} bg-gray-600  cursor-wait
+  ${base} bg-transparent  cursor-wait
 `
 
 const ConnectButton = ({ disabled = false }) => {
