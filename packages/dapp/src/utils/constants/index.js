@@ -70,7 +70,7 @@ export const twitter = {
   shareIntent: 'https://twitter.com/intent/tweet?text=',
   shareContent: `This new kind of essay on signatures from @KERNEL0x suggests ownership may be moving from control to care, from possession to reciprocity.
 
-See my signs & make your own beautiful, eternal mark with me from the 24th of June...`
+See my signs & make your own beautiful, eternal mark with me at https://sign.kernel.community`
 }
 export const weaver = {
   endpoint: 'https://staging.sign.kernel.community/rpc/sign'
