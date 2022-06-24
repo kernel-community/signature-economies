@@ -26,7 +26,7 @@ const Footer = () => {
           className='flex flex-row gap-2 items-center'
         >
           <div
-            className='cursor-pointer hover:text-gray-800 border-b-2'
+            className='cursor-pointer text-gray-800 hover:underline border-b-2'
             onClick={() => window.open('/essay#free-sign', '_self')}
           >
             sign freely
@@ -35,7 +35,7 @@ const Footer = () => {
             /
           </div>
           <div
-            className='cursor-pointer hover:text-gray-800 border-b-2'
+            className='cursor-pointer text-gray-800 hover:underline border-b-2'
             onClick={() => slider.dispatch({ type: 'open' })}
           >
             mint a seal

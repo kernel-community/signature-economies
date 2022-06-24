@@ -2,8 +2,8 @@ import { motion } from 'framer-motion'
 import Spinner from './Spinner'
 const styles = {
   green: {
-    main: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 bg-green-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-pointer flex justify-center',
-    disabled: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 bg-gray-600 shadow shadow-green-300 transition-all hover:shadow-md hover:text-green-50 hover:shadow-green-500 text-green-300 border-2 border-transparent rounded-md cursor-wait flex justify-center'
+    main: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 border-gray-600 transition-all hover:border-black text-black border-2 rounded-md cursor-pointer flex justify-center',
+    disabled: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 bg-gray-600 transition-all text-white border-2 border-transparent rounded-md cursor-wait flex justify-center'
   },
   basic: {
     main: 'sm:w-32 sm:px-4 sm:py-2 w-24 px-2 py-1 border-2 border-gray-200 rounded-md hover:border-gray-400 transition-all cursor-pointer flex justify-center',
