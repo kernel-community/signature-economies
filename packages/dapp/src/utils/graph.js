@@ -52,11 +52,11 @@ const GET_ALL_HIGHLIGHT_NFTS = `
 const Queries = {
   getAllHighlightNfts: {
     query: GET_ALL_HIGHLIGHT_NFTS,
-    variables: { first: 4 }
+    variables: { first: 12 }
   },
   getAllSealedNfts: {
     query: GET_ALL_SEALED_NFTS,
-    variables: { first: 4 }
+    variables: { first: 12 }
   },
   getStewardNfts: {
     query: GET_STEWARD_NFTS,
