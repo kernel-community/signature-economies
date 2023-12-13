@@ -27,8 +27,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: CI=false yarn workspace dapp build --if-present
-    - run: yarn workspace services build --if-present
+    - run: CI=false yarn workspace dapp build 
+    - run: yarn workspace services build 
     - run: cp -r packages/dapp/dist/build/ packages/services/dist/
     - id: 'auth'
       uses: 'google-github-actions/auth@v0'

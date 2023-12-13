@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ca0d9543.css",
+    "main.js": "/static/js/main.c752446b.js",
+    "static/media/Garamond.ttf": "/static/media/Garamond.3fb4dd2923a5b4136a34.ttf",
+    "static/media/3.png": "/static/media/3.83d8744175cded03d685.png",
+    "static/media/5.png": "/static/media/5.36ecaf0b97cf14b2c388.png",
+    "static/media/1.png": "/static/media/1.bf908819053c51093c4a.png",
+    "static/media/8.png": "/static/media/8.b0a4b14db9afc5164409.png",
+    "static/media/6.png": "/static/media/6.c2a0fa198ae86c6ebbfe.png",
+    "static/media/4.png": "/static/media/4.b07a0b292754e0b601e3.png",
+    "static/media/7.png": "/static/media/7.82c4cce8676a52699edf.png",
+    "static/media/2.png": "/static/media/2.d0636426f422908753e6.png",
+    "static/media/Redaction50-Italic.otf": "/static/media/Redaction50-Italic.63c05c6fe83090bfeae8.otf",
+    "static/media/signature_derrida.png": "/static/media/signature_derrida.53722673323938038550.png",
+    "static/media/kernel_logo.png": "/static/media/kernel_logo.ad8f047ef531c1a35319.png",
+    "static/media/signature_ethblock.png": "/static/media/signature_ethblock.0ebfb16597a4a6753690.png",
+    "index.html": "/index.html",
+    "main.ca0d9543.css.map": "/static/css/main.ca0d9543.css.map",
+    "main.c752446b.js.map": "/static/js/main.c752446b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca0d9543.css",
+    "static/js/main.c752446b.js"
+  ]
+}
