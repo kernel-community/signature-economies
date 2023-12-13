@@ -1,0 +1,36 @@
+{
+  "name": "@fastify/fast-json-stringify-compiler",
+  "description": "Build and manage the fast-json-stringify instances for the fastify framework",
+  "version": "3.0.1",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "lint:fix": "standard --fix",
+    "unit": "tap --100 test/**/*.test.js",
+    "test": "standard && npm run unit && npm run test:typescript",
+    "test:typescript": "tsd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fastify/fast-json-stringify-compiler.git"
+  },
+  "keywords": [],
+  "author": "Manuel Spigolon <manuel.spigolon@nearform.com> (https://github.com/Eomm)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fastify/fast-json-stringify-compiler/issues"
+  },
+  "homepage": "https://github.com/fastify/fast-json-stringify-compiler#readme",
+  "devDependencies": {
+    "fastify": "^4.0.0",
+    "standard": "^17.0.0",
+    "tap": "^16.0.0",
+    "tsd": "^0.20.0"
+  },
+  "dependencies": {
+    "fast-json-stringify": "^4.2.0"
+  },
+  "tsd": {
+    "directory": "test/types"
+  }
+}
