@@ -26,12 +26,11 @@ npm i -g yarn
 npm i -g hardhat
 ```
 
-3. Clone this repo and install all the necessary dependcies:
+3. Clone this repo. Unfortunately, we have had to add the node_modules folder manually as some dependencies are no longer available:
 
 ```bash
 git clone https://github.com/kernel-community/signature-economies.git
 cd signature-economies
-yarn install
 ```
 
 4. Now you can begin running the various scripts in the `package.json` file. For instance, to run the smart contract tests found in `packages/hardhat/test`:
