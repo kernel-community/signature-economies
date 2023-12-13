@@ -27,7 +27,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: CI=false yarn workspace dapp build 
     - run: yarn workspace services build 
     - run: cp -r packages/dapp/dist/build/ packages/services/dist/
     - id: 'auth'
