@@ -29,8 +29,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - run: yarn install --frozen-lockfile
+    - run: npm install
     - run: CI=false yarn workspace dapp build --if-present
     - run: yarn workspace services build --if-present
     - run: cp -r packages/dapp/dist/build/ packages/services/dist/
