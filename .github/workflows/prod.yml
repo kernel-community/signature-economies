@@ -27,7 +27,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+    - run: npm install --legacy-peer-deps
     - run: CI=false yarn workspace dapp build --if-present
     - run: yarn workspace services build --if-present
     - run: cp -r packages/dapp/dist/build/ packages/services/dist/
