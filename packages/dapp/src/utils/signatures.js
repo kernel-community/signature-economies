@@ -59,7 +59,7 @@ const lookupEnsNames = async (data) => {
 
 export const lookUpEns = async (account) => {
   if (!account) return account
-  const provider = new ethers.providers.CloudflareProvider() // defaults to homestead
+  const provider = new ethers.providers.JsonRpcProvider('https://eth-mainnet.g.alchemy.com/v2/EPx6hNqYZwrb0hhmr9nsmavrbM8b6wch')
   const ens = await provider.lookupAddress(account)
   return ens ?? account
 }
