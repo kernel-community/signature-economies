@@ -1,8 +1,16 @@
+import { useSearchParams } from 'react-router-dom'
 import { SliderContext } from '../contexts/Slider'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 const Footer = () => {
   const slider = useContext(SliderContext)
+  const [params] = useSearchParams();
+  const toOpenMint = params.get('mint');
+  useEffect(() => {
+    if (toOpenMint) {
+      slider.dispatch({ type: 'open' })
+    }
+  }, [])
   return (
     <>
       <div className='
