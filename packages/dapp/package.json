@@ -20,8 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "BUILD_PATH='./dist/build' react-scripts build",
-    "deploy:staging": "gcloud app deploy dist/app.yaml --project kernel-signature-staging",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "npx standard",
     "format": "npx standard --fix",

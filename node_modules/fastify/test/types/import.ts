@@ -1,1 +1,0 @@
-import { FastifyLogFn } from '../../fastify'

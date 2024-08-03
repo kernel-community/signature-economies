@@ -1,4 +1,4 @@
-package-lock.json
+node_modules
 
 #env
 .env
@@ -19,3 +19,4 @@ yarn-error.log*
 # IDEs
 .vscode
 .idea
+

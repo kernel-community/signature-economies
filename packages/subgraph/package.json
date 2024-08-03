@@ -20,8 +20,8 @@
     "create:rinkeby": "graph create --node http://localhost:8020/ sign-eco/sign-eco-subgraph-rinkeby"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.29.0",
-    "@graphprotocol/graph-ts": "0.26.0",
+    "@graphprotocol/graph-cli": "0.80.0",
+    "@graphprotocol/graph-ts": "0.35.1",
     "mustache": "^4.2.0",
     "typescript": "^4.6.4"
   },
