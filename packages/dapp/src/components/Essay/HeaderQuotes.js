@@ -10,7 +10,7 @@ const HeaderPoem = () => {
       <div>
         -- Chapter 2,{' '}
         <span className='font-bold underline'>
-          <a target='_blank' rel='noreferrer' href='http://www.sfhunyuan.com/images/TAO_TE_CHING_-_LE_GUIN_edition.pdf'>
+          <a target='_blank' rel='noreferrer' href='https://web.archive.org/web/20220313183710/http://www.sfhunyuan.com/images/TAO_TE_CHING_-_LE_GUIN_edition.pdf'>
             Tao Te Ching
           </a>
         </span>
